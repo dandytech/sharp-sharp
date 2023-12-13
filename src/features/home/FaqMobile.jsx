@@ -44,17 +44,17 @@ function FaqMobile() {
   const [selectedId, setSelected] = useState(null);
 
   function handleClick(id) {
-    console.log(id, "yes");
+    //console.log(id, "yes");
     setSelected(id !== selectedId ? id : null);
   }
 
   return (
-    <div className="m-auto border-2  text-center mb-[120px] lg:hidden mt-[120px]">
+    <div className="m-auto mb-[120px]  mt-[120px] border-2 text-center lg:hidden">
       <h3 className="text-[30px]">
         FA<span className="text-blue-500">Q</span>s
       </h3>
       Click for <span className="text-[30px] text-blue-500">A</span>nswers!
-      <div className="grid-flow-col-3 m-auto grid w-[100%] gap-5 border-2 p-10 shadow-sm border-blue-50">
+      <div className="grid-flow-col-3 m-auto grid w-[100%] gap-5 border-2 border-blue-50 p-10 shadow-sm">
         {questions.map((question) => (
           <div
             key={question.id}
