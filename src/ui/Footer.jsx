@@ -75,7 +75,7 @@ export default function Footer() {
               <div className="text-right">
                 <p className="mb-3">
                   {" "}
-                  <NavLink to="/home">Home</NavLink>
+                  <NavLink to="/">Home</NavLink>
                 </p>
                 <p className="mb-3">
                   {" "}

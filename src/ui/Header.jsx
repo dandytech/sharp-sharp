@@ -155,7 +155,7 @@ export default function Header() {
 
   const closeDropdown = () => {
     setTimeout(() => {
-      if (!isOpen) {
+      if (isOpen) {
         setIsOpen(false);
       }
     }, 1000);
@@ -167,12 +167,12 @@ export default function Header() {
       <div className="relative z-20 hidden  overflow-x-hidden  lg:block">
         <nav
           className={`fixed m-auto w-full ${
-            isSticky ? "overflow-x-hidden bg-gray-800 " : "bg-transparent"
+            isSticky ? " bg-gray-800 " : "bg-transparent"
           }`}
         >
           <div
             className={`flex justify-between bg-gray-800 p-2 px-10 text-white ${
-              isSticky ? "overflow-hidden border-b-2" : ""
+              isSticky ? " border-b-2" : ""
             }`}
           >
             <span>Support: +234 7065123746 | sharpsharp@gmail.com</span>
@@ -193,7 +193,7 @@ export default function Header() {
               </NavLink>
             </div>
 
-            <div className="relative overflow-x-hidden">
+            <div className="relative z-50">
               <span
                 onClick={openDropdown}
                 onMouseLeave={closeDropdown}
@@ -204,7 +204,7 @@ export default function Header() {
               </span>
 
               {isOpen && (
-                <div className="absolute mt-1 rounded-md border border-gray-300 bg-white text-black  shadow-md">
+                <div className="absolute mt-1 rounded-md border border-gray-300 bg-white text-black shadow-md">
                   <ul className="grid w-[600px] grid-cols-4 overflow-y-auto">
                     {categories.map((category) => (
                       <QuickBookList category={category} key={category.id} />

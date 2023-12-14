@@ -25,7 +25,7 @@ export default function Testimonies({ testimony }) {
             )}
 
             <Modal.Window name="more">
-              <div className="h-[80vh] w-[80%]   overflow-y-auto p-0  ">
+              <div className="h-auto w-[100%]   overflow-y-auto p-5  ">
                 <h1 className="font-lg font-bold"> {testimony.name}</h1>
                 <p> {testimony.testimony}</p>
               </div>
