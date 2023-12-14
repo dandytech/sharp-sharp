@@ -4,7 +4,7 @@ export default function Providers({ provider }) {
   return (
     <Modal>
       <div className="slider  flex-col-reverse bg-cover bg-center  bg-no-repeat p-5  lg:flex lg:flex-row-reverse  ">
-        <div className="lg:p-10 sm:w-[70%] w-full ">
+        <div className="w-full sm:w-[70%] lg:p-10 ">
           <p className="font-bold text-black underline">Service Description</p>
           <p className="font-normal text-black">
             {provider.description.length < 500 ? (
@@ -18,7 +18,7 @@ export default function Providers({ provider }) {
               </>
             )}
             <Modal.Window name="more">
-              <div className="mx-auto w-[340px] h-[90vh] overflow-y-auto lg:w-[600px] ">
+              <div className="mx-auto h-[70vh] w-[340px] overflow-y-auto lg:w-[600px] ">
                 <h1 className="font-lg font-bold"> {provider.name}</h1>
                 <h1 className="font-lg font-thin text-blue-500">
                   {" "}

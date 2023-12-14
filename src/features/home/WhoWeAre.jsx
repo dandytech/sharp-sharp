@@ -11,7 +11,7 @@ export default function WhoWeAre() {
       </div>
 
       <div>
-        <div className="m-auto  gap-10 p-5 md:block lg:flex lg:w-[70%] ">
+        <div className="who m-auto  gap-10 p-5 md:block lg:flex lg:w-[70%] ">
           <div>
             <h1 className="border-l-2 border-blue-500 px-5 text-left text-[22px] font-extrabold  lg:text-[34px]">
               We Are Service Provider Agent, Ensuring That Clients Hire The

@@ -145,9 +145,10 @@
     /* display: block !important; */
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 1828px) {
   .who {
-    /* display: block !important;
-      background-color: green; */
+    display: block !important;
+    background-color: green;
+    
   }
 }
