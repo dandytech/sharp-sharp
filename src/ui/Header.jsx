@@ -164,15 +164,15 @@ export default function Header() {
   // <div className=" flex items-center  gap-10 pb-20 justify-between lg:m-auto  lg:mt-[60px] mt-[80px] sm:px-10 lg:px-10 lg:w-[70%]">
   return (
     <>
-      <div className="relative z-20 hidden  lg:block">
+      <div className="relative z-20 hidden  overflow-x-hidden  lg:block">
         <nav
           className={`fixed m-auto w-full ${
-            isSticky ? "bg-gray-800 " : "bg-transparent"
+            isSticky ? "overflow-x-hidden bg-gray-800 " : "bg-transparent"
           }`}
         >
           <div
             className={`flex justify-between bg-gray-800 p-2 px-10 text-white ${
-              isSticky ? "border-b-2" : ""
+              isSticky ? "overflow-hidden border-b-2" : ""
             }`}
           >
             <span>Support: +234 7065123746 | sharpsharp@gmail.com</span>
@@ -193,7 +193,7 @@ export default function Header() {
               </NavLink>
             </div>
 
-            <div className="relative ">
+            <div className="relative overflow-x-hidden">
               <span
                 onClick={openDropdown}
                 onMouseLeave={closeDropdown}

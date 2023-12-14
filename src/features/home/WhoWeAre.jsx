@@ -40,19 +40,19 @@ export default function WhoWeAre() {
 
         <div className="mt-[80px] flex items-center  justify-between gap-5 px-10 pb-20  sm:px-10 lg:m-auto lg:mt-[60px] lg:w-[70%] lg:px-10">
           <div className="text-center">
-            <p className="text-[44px] font-bold text-blue-500">
+            <p className="text-[34px] font-bold text-blue-500  md:text-[44px] lg:text-[44px]">
               <CountUp end={3000} duration={5} enableScrollSpy />+
             </p>
             <p>Clients</p>
           </div>
           <div className="text-center">
-            <p className="text-[44px] font-bold text-blue-500">
+            <p className="text-[34px] font-bold text-blue-500  md:text-[44px] lg:text-[44px]">
               <CountUp end={230} duration={5} enableScrollSpy />+
             </p>
             <p>Service Providers</p>
           </div>
           <div className="text-center">
-            <p className="text-[44px] font-bold text-blue-500">
+            <p className="text-[34px] font-bold text-blue-500  md:text-[44px] lg:text-[44px]">
               <CountUp end={10} duration={5} enableScrollSpy />+
             </p>
             <p>Partners</p>
