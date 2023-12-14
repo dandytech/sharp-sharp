@@ -16,7 +16,7 @@ import FaqMobile from "../features/home/FaqMobile";
 export default function Home() {
   return (
     <>
-      <div className=" h-auto bg-gradient-to-r from-violet-100 to-blue-100 ">
+      <div className=" h-auto  overflow-x-hidden bg-gradient-to-r from-violet-100 to-blue-100 ">
         {/* Solutions */}
         <Solutions />
 

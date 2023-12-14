@@ -10,7 +10,7 @@ export default function SmallScreenHeader() {
   };
 
   return (
-    <div className="mb:block  sm:block lg:hidden lg:pt-[80px] ">
+    <div className="mb:block  overflow-x-hidden sm:block lg:hidden lg:pt-[80px]  ">
       <div className="flex items-center  justify-between bg-gradient-to-t from-slate-900 to-gray-900 px-5 ">
         <div className="flex items-center justify-evenly gap-20">
           <div className="">

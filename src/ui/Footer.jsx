@@ -39,7 +39,7 @@ export default function Footer() {
 
   return (
     <>
-      <div className=" bg-gradient-to-t from-gray-900 to-blue-700 pt-10 sm:p-10 ">
+      <div className=" overflow-x-hidden bg-gradient-to-t  from-gray-900 to-blue-700 pt-10 sm:p-10 ">
         <div className="m-auto  text-center  text-gray-400 sm:grid-cols-3 sm:gap-10  sm:py-[10px] lg:grid lg:w-[70%]">
           <div className="flex flex-col items-center text-left">
             <span>
@@ -171,7 +171,7 @@ export default function Footer() {
           </div>
         </NavLink>
       </div>
-      <div className="z-40  flex w-[100%] items-center justify-center bg-gray-700 bg-gradient-to-b from-gray-800 to-blue-800 p-10 text-center font-light text-white">
+      <div className="z-40 flex   w-[100%] items-center justify-center overflow-x-hidden bg-gray-700 bg-gradient-to-b from-gray-800 to-blue-800 p-10 text-center font-light text-white">
         Copyright©{today}. Designed by Dandytech | All Rights Reserved.
       </div>
     </>

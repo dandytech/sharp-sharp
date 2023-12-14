@@ -75,7 +75,7 @@ export default function Services() {
   return (
     <Modal>
       <div className="from-white-100 bg-gray-100 bg-gradient-to-r p-5 text-center">
-        <h2 className="text-center text-6xl font-bold lg:text-7xl ">
+        <h2 className="overflow-x-hidden text-center  text-6xl font-bold lg:text-7xl ">
           SERVICES
         </h2>
         <p className="">
@@ -112,7 +112,7 @@ export default function Services() {
               <>
                 <div className="m-auto  flex h-[100px] w-[100px] items-center justify-center rounded-full bg-white">
                   <img
-                    className="rounded-full h-[100px] w-[100px]"
+                    className="h-[100px] w-[100px] rounded-full"
                     src={highestRate.photo}
                     alt="highest Rated"
                     width="100"

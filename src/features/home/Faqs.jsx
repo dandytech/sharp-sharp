@@ -77,7 +77,7 @@ export default function Faqs() {
   }, []);
 
   return (
-    <div className="hidden bg-gradient-to-b from-white p-10 pt-[140px] md:mb-[70px] lg:block ">
+    <div className="hidden overflow-x-hidden  bg-gradient-to-b from-white p-10 pt-[140px] md:mb-[70px] lg:block ">
       <div className="pb-10">
         <h2 className="p-5 text-center text-6xl font-bold lg:text-7xl ">
           ASK &{" "}
@@ -107,7 +107,7 @@ export default function Faqs() {
             </p>
           ))}
         </div>
-        <div className="w-auto h-auto shadow-2xl shadow-red-50">
+        <div className="h-auto w-auto shadow-2xl shadow-red-50">
           <p className="font-xl font-bolder font-bold text-blue-500 ">
             {disQuestion}
           </p>

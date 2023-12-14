@@ -13,7 +13,7 @@ export default function SliderDivs() {
   };
 
   return (
-    <div className=" h-[600px] w-[100%]">
+    <div className=" h-[600px] w-[100%] overflow-x-hidden ">
       <Slider {...settings}>
         <div className="slider h-[600px] bg-[url('/src/data/bg2.jpeg')]  bg-cover bg-center bg-no-repeat ">
           <p className="mb-10 text-[34px] font-bold leading-[40px] sm:w-[50%] lg:w-[50%]">

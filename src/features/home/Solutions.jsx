@@ -7,13 +7,12 @@ import { GiTakeMyMoney } from "react-icons/gi";
 
 export default function Solutions() {
   return (
-    <div className=" mt-0 items-center md:pt-5 lg:pt-0 md:pb-5 lg:mb-0  justify-between p-10 w-[70%] m-auto bg-gradient-to-b  lg:flex md:flex  hidden">
-
+    <div className="m-auto  mt-0 hidden w-[70%] items-center justify-between overflow-x-hidden  bg-gradient-to-b p-10 md:flex md:pb-5 md:pt-5  lg:mb-0 lg:flex  lg:pt-0">
       <div className="w-auto gap-3">
         <div className="mb-3 text-[30px]">
           <HiOutlineBuildingStorefront />
         </div>
-        <div className="mb-5 lg:flex items-center justify-between gap-3">
+        <div className="mb-5 items-center justify-between gap-3 lg:flex">
           <span>Solutions</span>
           <span>
             <GiForwardSun />
@@ -25,7 +24,7 @@ export default function Solutions() {
         <div className="mb-3  text-[30px]">
           <FaUsersGear />
         </div>
-        <div className="mb-5 lg:flex items-center justify-between gap-5">
+        <div className="mb-5 items-center justify-between gap-5 lg:flex">
           <span>Best Providers</span>
           <span>
             <GiForwardSun />
@@ -37,7 +36,7 @@ export default function Solutions() {
         <div className="mb-3  text-[30px]">
           <GoPasskeyFill />
         </div>
-        <div className="mb-5 lg:flex items-center justify-between gap-7">
+        <div className="mb-5 items-center justify-between gap-7 lg:flex">
           <span>Most Secured</span>
           <span>
             <GiForwardSun />
@@ -50,7 +49,7 @@ export default function Solutions() {
           {" "}
           <TbWorldWww />
         </div>
-        <div className="mb-5 lg:flex items-center justify-between gap-5">
+        <div className="mb-5 items-center justify-between gap-5 lg:flex">
           <span>Online Booking</span>
           <span>
             <GiForwardSun />
@@ -62,7 +61,7 @@ export default function Solutions() {
         <div className="mb-3  text-[30px]">
           <GiTakeMyMoney />
         </div>
-        <div className="mb-5 lg:flex items-center justify-between gap-5">
+        <div className="mb-5 items-center justify-between gap-5 lg:flex">
           <span>Low Cost</span>
           <span>
             <GiForwardSun />

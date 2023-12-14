@@ -49,7 +49,7 @@ function FaqMobile() {
   }
 
   return (
-    <div className="m-auto mb-[120px]  mt-[120px] border-2 text-center lg:hidden">
+    <div className="m-auto mb-[120px] mt-[120px]  overflow-x-hidden border-2 text-center lg:hidden">
       <h3 className="text-[30px]">
         FA<span className="text-blue-500">Q</span>s
       </h3>
