@@ -24,7 +24,7 @@ export default function Home() {
         <SliderDivs />
 
         {/* who we are */}
-        {/* <WhoWeAre /> */}
+        <WhoWeAre />
 
         {/* WHY CHOSE US */}
         <WhyUs />
@@ -37,7 +37,7 @@ export default function Home() {
         <Services />
 
         {/* What our client say */}
-        {/* <Testimonial /> */}
+        <Testimonial />
 
         {/* menu */}
 
