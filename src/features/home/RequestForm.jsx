@@ -8,7 +8,7 @@ import { CiEdit } from "react-icons/ci";
 export default function RequestForm() {
   return (
     <div className="h-auto bg-gradient-to-b from-gray-800 to-white sm:mt-[100px] ">
-      <div className=" h-[100vh]  bg-[url('/src/data/bg7.jpeg')] bg-cover bg-center bg-no-repeat text-center sm:px-20">
+      <div className=" h-[80vh]  bg-[url('/src/data/bg7.jpeg')] bg-cover bg-center bg-no-repeat text-center sm:px-20">
         <div className="float-right rounded-b-[30px] bg-gray-800 p-10 text-white lg:w-[50%] ">
           <p className=" mt-20 text-center text-6xl sm:px-20 sm:text-5xl lg:text-center">
             SUBMIT REQUEST!!!
