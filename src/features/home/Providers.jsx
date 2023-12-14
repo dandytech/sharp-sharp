@@ -18,7 +18,7 @@ export default function Providers({ provider }) {
               </>
             )}
             <Modal.Window name="more">
-              <div className="h-[70vh] w-[100%] overflow-y-auto ">
+              <div className="h-[70vh] w-[200px]  overflow-y-auto md:w-[300px] lg:w-[400px] ">
                 <h1 className="font-lg font-bold"> {provider.name}</h1>
                 <h1 className="font-lg font-thin text-blue-500">
                   {" "}
@@ -29,7 +29,7 @@ export default function Providers({ provider }) {
             </Modal.Window>
           </p>
         </div>
-        <div className="flex flex-col items-center gap-5 p-5 lg:w-[30%]">
+        <div className="mt-10 flex flex-col items-center gap-5 p-5 lg:w-[30%]">
           <img
             src={provider.photo}
             width="200px"
