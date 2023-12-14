@@ -54,7 +54,7 @@ function FaqMobile() {
         FA<span className="text-blue-500">Q</span>s
       </h3>
       Click for <span className="text-[30px] text-blue-500">A</span>nswers!
-      <div className="grid-flow-col-3 m-auto grid w-[100%] gap-5 border-2 border-blue-50 p-10 shadow-sm">
+      <div className="grid-flow-col-3 m-auto grid w-[100%] gap-5 border-2 border-blue-50 p-5 shadow-sm">
         {questions.map((question) => (
           <div
             key={question.id}
@@ -62,11 +62,13 @@ function FaqMobile() {
             className="gap flex h-auto cursor-pointer items-center justify-center rounded-full bg-white p-5 text-black shadow-2xl"
           >
             {question.id !== selectedId && (
-              <div className="card">{question.question}</div>
+              <div className="h-auto cursor-pointer p-7 hover:text-blue-500">
+                {question.question}
+              </div>
             )}
 
             {question.id === selectedId && (
-              <div className="gap flex h-auto cursor-pointer items-center justify-center rounded-full bg-blue-500 p-5 text-white shadow-2xl">
+              <div className="gap flex h-auto cursor-pointer items-center justify-center rounded-full bg-blue-500 p-7 text-white shadow-2xl">
                 {question.answer}
               </div>
             )}
