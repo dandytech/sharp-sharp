@@ -3,7 +3,7 @@ import Modal from "../../ui/Modal";
 export default function Providers({ provider }) {
   return (
     <Modal>
-      <div className="slider  flex-col-reverse bg-cover bg-center  bg-no-repeat p-5  lg:flex lg:flex-row-reverse  ">
+      <div className="slider  flex-col-reverse bg-cover bg-center  bg-no-repeat p-5  sm:flex-col-reverse lg:flex lg:flex-row-reverse  ">
         <div className="w-full sm:w-[70%] lg:p-10 ">
           <p className="font-bold text-black underline">Service Description</p>
           <p className="font-normal text-black">

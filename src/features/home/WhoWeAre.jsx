@@ -10,53 +10,50 @@ export default function WhoWeAre() {
         ho We Are?
       </div>
 
-      <div>
-        <div className="who m-auto  gap-10 p-5 md:block lg:flex lg:w-[70%] ">
-          <div>
-            <h1 className="border-l-2 border-blue-500 px-5 text-left text-[22px] font-extrabold  lg:text-[34px]">
-              We Are Service Provider Agent, Ensuring That Clients Hire The
-              Best, Affordable & Availble Service Providers!!!
-            </h1>
-            <p className="px-5 text-justify">
-              We Are Responsible and dedicated In Helping Individuals or
-              Corporate Bodies To Get Best Out Of Their Income By Hiring The
-              Best, Affordable and Availble Service Provider Nearest & Fast for
-              Their Home Services. We Are Licensed And Registered Legally To
-              Operate, Ensuring Good And Harmonized Client-Provider
-              Relationship.
-            </p>
-          </div>
-
-          <div className="m-5 flex items-center justify-center pt-10 sm:mt-20 lg:mt-0">
-            <ReactPlayer
-              className="videoFrame"
-              url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-              light="https://i.pravatar.cc/4783"
-              playing
-              controls
-            />
-          </div>
+      <div className="who m-auto block  lg:flex xl:flex gap-10 p-5  lg:w-[70%] ">
+        <div>
+          <h1 className="border-l-2 border-blue-500 px-5 text-left text-[22px] font-extrabold  lg:text-[34px]">
+            We Are Service Provider Agent, Ensuring That Clients Hire The Best,
+            Affordable & Availble Service Providers!!!
+          </h1>
+          <p className="px-5 text-justify">
+            We Are Responsible and dedicated In Helping Individuals or Corporate
+            Bodies To Get Best Out Of Their Income By Hiring The Best,
+            Affordable and Availble Service Provider Nearest & Fast for Their
+            Home Services. We Are Licensed And Registered Legally To Operate,
+            Ensuring Good And Harmonized Client-Provider Relationship.
+          </p>
         </div>
 
-        <div className="mt-[80px] flex items-center  justify-between gap-5 px-10 pb-20  sm:px-10 lg:m-auto lg:mt-[60px] lg:w-[70%] lg:px-10">
-          <div className="text-center">
-            <p className="text-[34px] font-bold text-blue-500  md:text-[44px] lg:text-[44px]">
-              <CountUp end={3000} duration={5} enableScrollSpy />+
-            </p>
-            <p>Clients</p>
-          </div>
-          <div className="text-center">
-            <p className="text-[34px] font-bold text-blue-500  md:text-[44px] lg:text-[44px]">
-              <CountUp end={230} duration={5} enableScrollSpy />+
-            </p>
-            <p>Service Providers</p>
-          </div>
-          <div className="text-center">
-            <p className="text-[34px] font-bold text-blue-500  md:text-[44px] lg:text-[44px]">
-              <CountUp end={10} duration={5} enableScrollSpy />+
-            </p>
-            <p>Partners</p>
-          </div>
+        <div className=" flex items-center justify-center mt-20 lg:mt-0">
+          <ReactPlayer
+            className="videoFrame"
+            url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            light="https://i.pravatar.cc/4783"
+            playing
+            controls
+          />
+        </div>
+      </div>
+
+      <div className="mt-[80px] flex items-center  justify-between gap-5 px-10 pb-20  sm:px-10 lg:m-auto lg:mt-[60px] lg:w-[70%] lg:px-10">
+        <div className="text-center">
+          <p className="text-[34px] font-bold text-blue-500  md:text-[44px] lg:text-[44px]">
+            <CountUp end={3000} duration={5} enableScrollSpy />+
+          </p>
+          <p>Clients</p>
+        </div>
+        <div className="text-center">
+          <p className="text-[34px] font-bold text-blue-500  md:text-[44px] lg:text-[44px]">
+            <CountUp end={230} duration={5} enableScrollSpy />+
+          </p>
+          <p>Service Providers</p>
+        </div>
+        <div className="text-center">
+          <p className="text-[34px] font-bold text-blue-500  md:text-[44px] lg:text-[44px]">
+            <CountUp end={10} duration={5} enableScrollSpy />+
+          </p>
+          <p>Partners</p>
         </div>
       </div>
     </div>

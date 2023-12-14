@@ -139,14 +139,3 @@
   }
 }
 
-/* who we are */
-@media (min-width: 1402px) {
-  .who {
-    /* display: block !important; */
-  }
-}
-@media (max-width: 1828px) {
-  .who {
-    display: block !important;
-  }
-}

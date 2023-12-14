@@ -83,7 +83,7 @@ export default function Services() {
           <span className="font-bold text-blue-500">Service Provider</span>
         </p>
 
-        <div className="gap-10 lg:flex">
+        <div className="gap-10 lg:flex ">
           <div className="text-black-300 bg-wite-500 rounded-3xl p-2 text-center sm:h-auto sm:px-10 md:h-auto lg:h-[450px] lg:w-[70%]   ">
             <div className=" rounded-[40px] border-[10px] bg-gray-100 shadow-lg">
               <Slider {...settings}>

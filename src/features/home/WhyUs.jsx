@@ -6,7 +6,7 @@ import cert from "../../data/cert.png";
 
 export default function WhyUs() {
   return (
-    <div className="overflow-x-hidden bg-gray-100  bg-gradient-to-b from-white px-10 sm:px-[30px]">
+    <div className="bg-gray-100  bg-gradient-to-b from-white px-10 sm:px-[30px]">
       <div className="mb-0 pt-[80px] text-center">
         <h2 className="p-5 text-center text-6xl font-bold lg:text-7xl">
           WHY CHOSE US?
