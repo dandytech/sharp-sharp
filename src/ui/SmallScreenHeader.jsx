@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../data/sharpLogo1.png";
 
 export default function SmallScreenHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,12 +16,7 @@ export default function SmallScreenHeader() {
           <div className="">
             <NavLink to="home">
               {" "}
-              <img
-                src="/src/data/sharpLogo1.png"
-                alt="logo"
-                width="80"
-                height="80"
-              />
+              <img src={logo} alt="logo" width="80" height="80" />
             </NavLink>
           </div>
 
