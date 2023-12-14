@@ -36,7 +36,7 @@ export default function SliderDivs() {
           </p>
         </div>
 
-        <div className="slider h-[600px] bg-[url('/src/data/bg11.jpeg')] bg-cover bg-center bg-no-repeat ">
+        <div className="slider h-[600px] bg-[url('/src/data/bg3.jpeg')]  from-white bg-cover bg-center bg-no-repeat lg:w-[50%] ">
           <p className="mb-10 text-[34px] font-bold leading-[40px] sm:w-[50%]">
             YOUR <span className="text-blue-500">SATISFACTION & COMFORT </span>
             IS OUR PRIORITY
