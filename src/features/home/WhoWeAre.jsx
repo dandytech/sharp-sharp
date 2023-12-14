@@ -27,7 +27,7 @@ export default function WhoWeAre() {
             </p>
           </div>
 
-          <div className="m-5 flex items-center justify-center sm:mt-20 lg:mt-0">
+          <div className="m-5 flex items-center justify-center pt-10 sm:mt-20 lg:mt-0">
             <ReactPlayer
               className="videoFrame"
               url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
