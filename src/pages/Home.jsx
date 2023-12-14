@@ -12,7 +12,7 @@ import Solutions from "../features/home/Solutions";
 
 import RequestForm from "../features/home/RequestForm";
 import Partners from "../features/home/Partners";
-import FaqMobile from "../features/home/faqMobile";
+import FaqMobile from "../features/home/FaqMobile";
 
 export default function Home() {
   return (
