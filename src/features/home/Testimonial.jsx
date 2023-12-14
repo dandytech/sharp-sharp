@@ -135,7 +135,7 @@ export const testimonies = [
 
 export default function Testimonial() {
   return (
-    <div className="bg-gradient-to-l from-white  pt-[120px] text-center lg:px-[40px] ">
+    <div className="bg-gradient-to-l from-white  px-[40px] pt-[160px] text-center ">
       <h2 className=" p-5 text-center text-6xl font-bold lg:text-7xl">
         WHAT OUR <span className="text-blue-500">CLIENTS</span> SAY
       </h2>
@@ -148,7 +148,7 @@ export default function Testimonial() {
           <PlayerComponent />
         </div>
 
-        <div className="z-0 mt-20 flex items-center justify-center  border-2 lg:mt-0">
+        <div className="z-0 mt-20 flex w-full items-center justify-center overflow-x-auto  border-2 lg:mt-0">
           <Marquee>
             <ul className="flex gap-3 p-5 ">
               {testimonies.map((testimony) => (

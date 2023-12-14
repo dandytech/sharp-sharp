@@ -5,13 +5,13 @@ import ReactPlayer from "react-player";
 export default function WhoWeAre() {
   return (
     <div id="about" className="bg-gradient-to-t from-white p-5">
-      <div className="mt-[100px] py-10 text-center text-6xl font-bold lg:text-7xl">
+      <div className="mt-[80px] py-10 text-center text-6xl font-bold lg:text-7xl">
         <span className=" border-b-2 border-b-blue-500 ">W</span>
         ho We Are?
       </div>
 
       <div>
-        <div className="m-auto gap-10 sm:p-5 lg:flex lg:w-[70%]">
+        <div className="m-auto gap-10 p-5 lg:flex  w-[70%]">
           <div className="p-3  sm:px-5 lg:w-[50%]">
             <h1 className="border-l-2 border-blue-500 px-5 text-left text-[22px] font-extrabold  lg:text-[34px]">
               We Are Service Provider Agent, Ensuring That Clients Hire The

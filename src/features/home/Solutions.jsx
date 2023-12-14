@@ -7,7 +7,7 @@ import { GiTakeMyMoney } from "react-icons/gi";
 
 export default function Solutions() {
   return (
-    <div className=" mt-0 items-center md:pt-20 lg:pt-10 md:pb-10 lg:mb-10  justify-between p-10 w-[70%] m-auto bg-gradient-to-b  py-[0px] lg:flex md:flex   hidden">
+    <div className=" mt-0 items-center md:pt-5 lg:pt-0 md:pb-5 lg:mb-0  justify-between p-10 w-[70%] m-auto bg-gradient-to-b  lg:flex md:flex  hidden">
 
       <div className="w-auto gap-3">
         <div className="mb-3 text-[30px]">

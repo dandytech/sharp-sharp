@@ -166,7 +166,7 @@ export default function Header() {
     <>
       <div className="relative z-20 hidden  lg:block">
         <nav
-          className={`fixed m-auto w-full   ${
+          className={`fixed m-auto w-full ${
             isSticky ? "bg-gray-800 " : "bg-transparent"
           }`}
         >
@@ -183,7 +183,7 @@ export default function Header() {
           </div>
 
           <div
-            className={`m-auto flex h-[90px] w-[70%] items-center justify-between gap-10 p-10 py-[70px] ${
+            className={`m-auto flex  w-[70%] items-center justify-between gap-10 px-10  ${
               isSticky ? " text-white" : ""
             }`}
           >
@@ -205,7 +205,7 @@ export default function Header() {
 
               {isOpen && (
                 <div className="absolute mt-1 rounded-md border border-gray-300 bg-white text-black  shadow-md">
-                  <ul className="grid h-[200px] w-[600px] grid-cols-4 overflow-y-auto">
+                  <ul className="grid w-[600px] grid-cols-4 overflow-y-auto">
                     {categories.map((category) => (
                       <QuickBookList category={category} key={category.id} />
                     ))}
@@ -247,7 +247,7 @@ export default function Header() {
                 Login
               </NavLink>
 
-              <button className="rounded-full border-2 bg-blue-500 px-7 py-3">
+              <button className="rounded-full  bg-blue-500 px-7 py-3">
                 <NavLink
                   className="cursor-pointer hover:font-bold"
                   to="signup"
@@ -259,7 +259,7 @@ export default function Header() {
             </div>
           </div>
         </nav>
-        <div className="h-40 bg-gradient-to-r from-violet-100 to-blue-100 md:h-[195px]">
+        <div className="h-[160px] bg-gradient-to-r from-violet-100 to-blue-100 ">
           {" "}
         </div>
       </div>

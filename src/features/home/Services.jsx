@@ -75,14 +75,16 @@ export default function Services() {
   return (
     <Modal>
       <div className="from-white-100 bg-gray-100 bg-gradient-to-r p-5 text-center">
-        <h2 className="text-center lg:text-7xl text-6xl font-bold ">SERVICES</h2>
-        <p className="py-10">
+        <h2 className="text-center text-6xl font-bold lg:text-7xl ">
+          SERVICES
+        </h2>
+        <p className="">
           Request for a{" "}
           <span className="font-bold text-blue-500">Service Provider</span>
         </p>
 
         <div className="gap-10 lg:flex">
-          <div className="text-black-300 bg-wite-500 lg:h-[450px] rounded-3xl p-2 text-center sm:h-auto sm:px-10 md:h-auto lg:w-[70%]   ">
+          <div className="text-black-300 bg-wite-500 rounded-3xl p-2 text-center sm:h-auto sm:px-10 md:h-auto lg:h-[450px] lg:w-[70%]   ">
             <div className=" rounded-[40px] border-[10px] bg-gray-100 shadow-lg">
               <Slider {...settings}>
                 {providers.map((provider) => (
@@ -93,7 +95,7 @@ export default function Services() {
               </Slider>
               <p className="py-10">
                 {" "}
-                <button className="rounded-full bg-blue-500 py-5 font-light text-white hover:bg-gray-900 hover:text-blue-500 px-10">
+                <button className="rounded-full bg-blue-500 px-10 py-5 font-light text-white hover:bg-gray-900 hover:text-blue-500">
                   {" "}
                   <NavLink to="/signup">Request Service</NavLink>
                 </button>
@@ -103,10 +105,7 @@ export default function Services() {
             </div>
           </div>
 
-        
-
-          <div className="text-black-300  items-center  bg-gray-100 rounded-[40px]  bg-wite-500 border-[10px] lg:h-[450px]  p-2 mt-5 text-center sm:h-auto sm:px-10 md:h-auto lg:w-[30%]  pb-10 ">
-
+          <div className="text-black-300  bg-wite-500  mt-5 items-center  rounded-[40px] border-[10px] bg-gray-100  p-2 pb-10 text-center sm:h-auto sm:px-10 md:h-auto lg:h-[450px]  lg:w-[30%] ">
             <p className="py-10 font-bold">Best Rated Service Providers</p>
 
             {highestRate && (

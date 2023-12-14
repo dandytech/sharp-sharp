@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../data/sharpLogo1.png";
-
 export default function SmallScreenHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
