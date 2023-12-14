@@ -111,10 +111,10 @@ export const categories = [
 
 import { NavLink } from "react-router-dom";
 import "../index.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import QuickBookList from "./QuickBookList";
 import { HashLink } from "react-router-hash-link";
-import logo1 from '../data/sharpLogo1.png'
+import logo1 from "../data/sharpLogo1.png";
 
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
