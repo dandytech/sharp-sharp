@@ -43,7 +43,7 @@ export default function Footer() {
         <div className="m-auto  text-center  text-gray-400 sm:grid-cols-3 sm:gap-10  sm:py-[10px] lg:grid lg:w-[70%]">
           <div className="flex flex-col items-center text-left">
             <span>
-              <img src={logo2} alt="logo" width="80" height="80" />
+              <img src={logo2} alt="logo2" width="80" height="80" />
             </span>
 
             <p className=" mt-[-5px] text-left">
@@ -160,7 +160,7 @@ export default function Footer() {
 
         <NavLink onClick={scroll}>
           <div
-            className={` bottom-0 right-0 flex h-[50px] w-[40px] justify-center rounded-lg border-2 bg-black text-[34px] text-white hover:bg-blue-500 ${
+            className={` bottom-0 right-0 flex h-[50px] w-[30px] justify-center rounded-lg border-2 bg-black text-[34px] text-white hover:bg-blue-500 ${
               visible ? "fixed" : "block"
             }`}
           >

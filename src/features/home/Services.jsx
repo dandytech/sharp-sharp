@@ -110,9 +110,9 @@ export default function Services() {
 
             {highestRate && (
               <>
-                <div className="m-auto  flex h-[200px] w-[200px] items-center justify-center rounded-full bg-white">
+                <div className="m-auto  flex h-[100px] w-[100px] items-center justify-center rounded-full bg-white">
                   <img
-                    className="h-[200px] w-[200px] rounded-full"
+                    className="rounded-full h-[100px] w-[100px]"
                     src={highestRate.photo}
                     alt="highest Rated"
                     width="100"
