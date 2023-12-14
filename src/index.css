@@ -115,4 +115,18 @@
       display: block;
     }
   }
+
+  /* who we are */
+  @media (min-width: 768px) {
+    .who {
+      /* display: flex !important;
+      background-color: red; */
+    }
+  }
+  @media (max-width: 768px) {
+    .who {
+      /* display: block !important;
+      background-color: green; */
+    }
+  }
 }

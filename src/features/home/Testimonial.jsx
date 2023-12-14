@@ -135,7 +135,7 @@ export const testimonies = [
 
 export default function Testimonial() {
   return (
-    <div className="bg-gradient-to-l from-white  px-[40px] pt-[160px] text-center ">
+    <div className="bg-gradient-to-l from-white  lg:pt-[160px] pt-[100px] text-center ">
       <h2 className=" p-5 text-center text-6xl font-bold lg:text-7xl">
         WHAT OUR <span className="text-blue-500">CLIENTS</span> SAY
       </h2>

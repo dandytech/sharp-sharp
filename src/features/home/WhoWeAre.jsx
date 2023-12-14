@@ -4,14 +4,14 @@ import ReactPlayer from "react-player";
 
 export default function WhoWeAre() {
   return (
-    <div id="about" className="bg-gradient-to-t from-white p-5">
+    <div id="about" className="bg-gradient-to-t from-white">
       <div className="mt-[80px] py-10 text-center text-6xl font-bold lg:text-7xl">
         <span className=" border-b-2 border-b-blue-500 ">W</span>
         ho We Are?
       </div>
 
       <div>
-        <div className="m-auto gap-10 p-5 lg:flex  w-[70%]">
+        <div className="who xsm:block m-auto  w-[100%] gap-10 p-5 md:block lg:flex  ">
           <div className="p-3  sm:px-5 lg:w-[50%]">
             <h1 className="border-l-2 border-blue-500 px-5 text-left text-[22px] font-extrabold  lg:text-[34px]">
               We Are Service Provider Agent, Ensuring That Clients Hire The
@@ -38,7 +38,7 @@ export default function WhoWeAre() {
           </div>
         </div>
 
-        <div className=" mt-[80px] flex  items-center justify-between gap-10 pb-20  sm:px-10 lg:m-auto lg:mt-[60px] lg:w-[70%] lg:px-10">
+        <div className="mt-[80px] flex items-center  justify-between gap-5 px-10 pb-20  sm:px-10 lg:m-auto lg:mt-[60px] lg:w-[70%] lg:px-10">
           <div className="text-center">
             <p className="text-[44px] font-bold text-blue-500">
               <CountUp end={3000} duration={5} enableScrollSpy />+
