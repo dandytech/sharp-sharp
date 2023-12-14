@@ -2,6 +2,7 @@ import { FaPeopleLine } from "react-icons/fa6";
 import { MdCardGiftcard } from "react-icons/md";
 import { PiCertificateDuotone } from "react-icons/pi";
 import { SiSpringsecurity } from "react-icons/si";
+import cert from '../../data/cert.png'
 
 export default function WhyUs() {
   return (
@@ -21,7 +22,7 @@ export default function WhyUs() {
       >
         <div className="text-6x flex items-center justify-center text-center">
           <span>
-            <img src="/src/data/cert.png" width="100" height="100" />
+            <img src={cert} width="100" height="100" />
           </span>
         </div>
         <h1 className="mb-3 mt-3 font-bold">Registered Agent</h1>

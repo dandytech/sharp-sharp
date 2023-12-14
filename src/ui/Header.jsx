@@ -114,6 +114,7 @@ import "../index.css";
 import { useEffect, useRef, useState } from "react";
 import QuickBookList from "./QuickBookList";
 import { HashLink } from "react-router-hash-link";
+import logo1 from '../data/sharpLogo1.png'
 
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
@@ -188,7 +189,7 @@ export default function Header() {
           >
             <div className="flex items-center ">
               <NavLink to="/">
-                <img src="/src/data/sharpLogo1.png" alt="logo" width="100" />
+                <img src={logo1} alt="logo" width="100" />
               </NavLink>
             </div>
 
