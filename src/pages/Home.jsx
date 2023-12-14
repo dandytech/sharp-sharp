@@ -37,7 +37,7 @@ export default function Home() {
         <Services />
 
         {/* What our client say */}
-        <Testimonial />
+        {/* <Testimonial /> */}
 
         {/* menu */}
 

@@ -107,12 +107,12 @@ export default function Faqs() {
             </p>
           ))}
         </div>
-        <div className="w-[500px] shadow-2xl shadow-red-50">
+        <div className="w-auto h-auto shadow-2xl shadow-red-50">
           <p className="font-xl font-bolder font-bold text-blue-500 ">
             {disQuestion}
           </p>
 
-          <p className="mt-5 w-[100%] ">{disAns}</p>
+          <p className="mt-5 h-auto w-auto p-5 ">{disAns}</p>
         </div>
       </div>
     </div>

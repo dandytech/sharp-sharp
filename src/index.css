@@ -4,20 +4,21 @@
 
 @layer components {
   body {
-    font-family: Arial, sans-serif;
+    background: #eee;
+    font-family:
+      Helvetica Neue,
+      Helvetica,
+      Arial,
+      sans-serif;
+    font-size: 14px;
+    color: #000;
     margin: 0;
     padding: 0;
   }
-
   .active {
     color: FaBluetooth;
   }
-  body {
-    margin: 0;
-    overflow-x: hidden;
-    background-color: #fff6f6 !important;
-    font-family: "DM Sans", sans-serif !important;
-  }
+
   .menu {
     background: #eeeef0;
     width: 100% !important;
@@ -43,19 +44,6 @@
     color: white;
     font-weight: bold;
     font-size: 20;
-  }
-
-  body {
-    background: #eee;
-    font-family:
-      Helvetica Neue,
-      Helvetica,
-      Arial,
-      sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
   }
 
   .swiper {

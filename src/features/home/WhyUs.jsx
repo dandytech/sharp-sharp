@@ -2,7 +2,7 @@ import { FaPeopleLine } from "react-icons/fa6";
 import { MdCardGiftcard } from "react-icons/md";
 import { PiCertificateDuotone } from "react-icons/pi";
 import { SiSpringsecurity } from "react-icons/si";
-import cert from '../../data/cert.png'
+import cert from "../../data/cert.png";
 
 export default function WhyUs() {
   return (
