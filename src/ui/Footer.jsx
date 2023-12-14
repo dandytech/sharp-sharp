@@ -6,7 +6,7 @@ import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoMdArrowUp } from "react-icons/io";
 import { useEffect, useState } from "react";
-import logo from "../data/sharpLogo.png";
+import logo2 from "../data/logo2.png";
 
 export default function Footer() {
   const [visible, setVisible] = useState(false);
@@ -43,7 +43,7 @@ export default function Footer() {
         <div className="m-auto  text-center  text-gray-400 sm:grid-cols-3 sm:gap-10  sm:py-[10px] lg:grid lg:w-[70%]">
           <div className="flex flex-col items-center text-left">
             <span>
-              <img src={logo} alt="logo" width="80" height="80" />
+              <img src={logo2} alt="logo" width="80" height="80" />
             </span>
 
             <p className=" mt-[-5px] text-left">

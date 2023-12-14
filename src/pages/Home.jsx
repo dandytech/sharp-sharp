@@ -9,7 +9,6 @@ import Testimonial from "../features/home/Testimonial";
 import SliderDivs from "../features/home/SliderDivs";
 import WhoWeAre from "../features/home/WhoWeAre";
 import Solutions from "../features/home/Solutions";
-
 import RequestForm from "../features/home/RequestForm";
 import Partners from "../features/home/Partners";
 import FaqMobile from "../features/home/FaqMobile";

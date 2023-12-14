@@ -11,6 +11,7 @@ import { useEffect } from "react";
 //animation
 import AOS from "aos";
 import "aos/dist/aos.css";
+import './index.css'
 
 export default function App() {
   //animation
