@@ -14,8 +14,8 @@ export default function Providers({ provider }) {
           <p className="font-bold text-black">{provider.name}</p>
           <p className=" font-bold text-blue-500">{provider.service}</p>
         </div>
-
-        <div className="w-full sm:w-[70%] lg:p-10 ">
+        <div className=" p-5 pb-10 flex items-center flex-col lg:w-[70%]">
+      
           <p className="font-bold text-black underline">Service Description</p>
           <p className="font-normal text-black">
             {provider.description.length < 500 ? (
