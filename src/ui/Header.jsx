@@ -175,7 +175,7 @@ export default function Header() {
               isSticky ? " border-b-2" : ""
             }`}
           >
-            <span>Support: +234 7065123746 | sharpsharp@gmail.com</span>
+            <span>Support: +234 08099999999 | sharpsharp@gmail.com</span>
             <span>Working Hour: Mon-Sat 8am-5pm</span>
             <span className="cursor-pointer">
               News & Media | Carrier | Blog

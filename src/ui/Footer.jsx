@@ -172,7 +172,7 @@ export default function Footer() {
         </NavLink>
       </div>
       <div className="z-40 flex   w-[100%] items-center justify-center overflow-x-hidden bg-gray-700 bg-gradient-to-b from-gray-800 to-blue-800 p-10 text-center font-light text-white">
-        Copyright©{today}. Designed by Dandytech | All Rights Reserved.
+        Copyright©{today}. All Rights Reserved.
       </div>
     </>
   );
