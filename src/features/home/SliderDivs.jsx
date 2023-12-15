@@ -22,7 +22,7 @@ export default function SliderDivs() {
             <span className="text-blue-500">SERVICE PROVIDER</span>
           </p>
           <p className="text-[24px] font-bold sm:w-[55%]">
-            <NavLink to="signup" className="bg-blue-500 font-semibold">
+            <NavLink to="signup" className="font-semibold text-blue-500">
               {" "}
               Get Started
             </NavLink>{" "}
@@ -36,7 +36,7 @@ export default function SliderDivs() {
             REGISTER AS A <span className="text-blue-500">CLIENT</span>
           </p>
           <p className="text-[24px] font-bold sm:w-[55%]">
-            <NavLink to="signup" className="bg-blue-500 font-semibold">
+            <NavLink to="signup" className="font-semibold text-blue-500">
               {" "}
               Get Started
             </NavLink>{" "}
