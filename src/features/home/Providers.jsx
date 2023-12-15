@@ -3,7 +3,18 @@ import Modal from "../../ui/Modal";
 export default function Providers({ provider }) {
   return (
     <Modal>
-      <div className="slider  flex-col-reverse bg-cover bg-center  bg-no-repeat p-5  sm:flex-col-reverse lg:flex lg:flex-row-reverse  ">
+      <div className="slider gap-10 p-5 lg:flex">
+        <div className=" p-5 pb-10 flex items-center flex-col lg:w-[30%]">
+          <img
+            src={provider.photo}
+            width="200px"
+            height="300px"
+            className="rounded-[20px]"
+          />
+          <p className="font-bold text-black">{provider.name}</p>
+          <p className=" font-bold text-blue-500">{provider.service}</p>
+        </div>
+
         <div className="w-full sm:w-[70%] lg:p-10 ">
           <p className="font-bold text-black underline">Service Description</p>
           <p className="font-normal text-black">
@@ -18,7 +29,7 @@ export default function Providers({ provider }) {
               </>
             )}
             <Modal.Window name="more">
-              <div className="h-[70vh] w-[200px]  overflow-y-auto md:w-[300px] lg:w-[400px] ">
+              <div className="h-[70vh] w-[200px]  overflow-y-auto ">
                 <h1 className="font-lg font-bold"> {provider.name}</h1>
                 <h1 className="font-lg font-thin text-blue-500">
                   {" "}
@@ -28,16 +39,6 @@ export default function Providers({ provider }) {
               </div>
             </Modal.Window>
           </p>
-        </div>
-        <div className="mt-10 flex flex-col items-center gap-5 p-5 lg:w-[30%]">
-          <img
-            src={provider.photo}
-            width="200px"
-            height="300px"
-            className="rounded-[20px]"
-          />
-          <p className="gap-10 font-bold text-black">{provider.name}</p>
-          <p className="gap-10 font-bold text-blue-500">{provider.service}</p>
         </div>
       </div>
     </Modal>

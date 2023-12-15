@@ -61,10 +61,21 @@
   text-decoration: none;
   background-color: white;
 }
-
-.slider {
+.slider1 {
   display: flex !important;
   flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  text-indent: 20px;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 20;
+}
+.slider {
+  /* display: flex !important;
+  flex-direction: column; */
   justify-content: center !important;
   align-items: center !important;
   text-align: center !important;
@@ -138,4 +149,3 @@
     display: block;
   }
 }
-

@@ -74,11 +74,11 @@ export default function Services() {
   );
   return (
     <Modal>
-      <div className="from-white-100 bg-gray-100 bg-gradient-to-r p-5 text-center">
-        <h2 className="overflow-x-hidden text-center  text-6xl font-bold lg:text-7xl ">
+      <div className="from-white-100 bg-gray-100 bg-gradient-to-r p-5  text-center">
+        <h2 className=" text-center  text-6xl font-bold lg:text-7xl ">
           SERVICES
         </h2>
-        <p className="">
+        <p className="mb-5 mt-5">
           Request for a{" "}
           <span className="font-bold text-blue-500">Service Provider</span>
         </p>
@@ -110,9 +110,9 @@ export default function Services() {
 
             {highestRate && (
               <>
-                <div className="m-auto  flex h-[100px] w-[100px] items-center justify-center rounded-full bg-white">
+                <div className="m-auto  flex h-[150px] w-[150px] items-center justify-center rounded-full bg-white">
                   <img
-                    className="h-[100px] w-[100px] rounded-full"
+                    className="h-[150px] w-[150px] rounded-full"
                     src={highestRate.photo}
                     alt="highest Rated"
                     width="100"

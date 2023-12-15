@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../data/logo.png";
-
 export default function SmallScreenHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -10,7 +9,7 @@ export default function SmallScreenHeader() {
   };
 
   return (
-    <div className="mb:block  overflow-x-hidden sm:block lg:hidden lg:pt-[80px]  ">
+    <div className="mb:block  sm:block lg:hidden lg:pt-[80px] fixed top-0 z-30 w-full ">
       <div className="flex items-center  justify-between bg-gradient-to-t from-slate-900 to-gray-900 px-5 ">
         <div className="flex items-center justify-evenly gap-20">
           <div className="">
