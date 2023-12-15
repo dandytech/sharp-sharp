@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 
 export default function SliderDivs() {
@@ -21,8 +22,12 @@ export default function SliderDivs() {
             <span className="text-blue-500">SERVICE PROVIDER</span>
           </p>
           <p className="text-[24px] font-bold sm:w-[55%]">
-            Get Started as a Service Provider to get latest job from our
-            Potential Customers closest to you.
+            <NavLink to="signup" className="bg-blue-500 font-semibold">
+              {" "}
+              Get Started
+            </NavLink>{" "}
+            as a Service Provider to get latest job from our Potential Customers
+            closest to you.
           </p>
         </div>
 
@@ -31,8 +36,12 @@ export default function SliderDivs() {
             REGISTER AS A <span className="text-blue-500">CLIENT</span>
           </p>
           <p className="text-[24px] font-bold sm:w-[55%]">
-            Get Started as a Client to hire the Best Available & Affordable
-            Professional Service Providers for your Home Services.
+            <NavLink to="signup" className="bg-blue-500 font-semibold">
+              {" "}
+              Get Started
+            </NavLink>{" "}
+            as a Client to hire the Best Available & Affordable Professional
+            Service Providers for your Home Services.
           </p>
         </div>
 
