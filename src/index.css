@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+  .active {
+    color: #3c82f6;
+  }
   body {
     background: #eee;
     font-family:
@@ -41,14 +44,6 @@
       overflow-x: hiden;
     }
   }
-
-  .active-link {
-    color: #ff0000; /* Change this to your desired color */
-  }
-}
-
-.active {
-  color: FaBluetooth;
 }
 
 .menu {

@@ -161,7 +161,7 @@ export default function Footer() {
         <NavLink onClick={scroll}>
           <div
             className={` bottom-0 right-0 flex h-[50px] w-[30px] justify-center rounded-lg border-2 bg-black text-[34px] text-white hover:bg-blue-500 ${
-              visible ? "fixed" : "block"
+              visible ? "fixed right-0 bottom-0" : "block"
             }`}
           >
             <sp className="mt-[-27px]">

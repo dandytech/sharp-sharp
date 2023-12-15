@@ -217,8 +217,8 @@ export default function Header() {
             <div className=" flex items-center gap-20">
               <NavLink
                 className="cursor-pointer hover:font-bold "
-                to="/"
-                activeClassName="active-link"
+                to="home"
+                activeClassName="active"
               >
                 Home
               </NavLink>
@@ -226,7 +226,7 @@ export default function Header() {
                 smooth
                 className="cursor-pointer hover:font-bold "
                 to="home#about"
-                activeClassName="active-link"
+                activeClassName="active"
               >
                 About{" "}
               </HashLink>
@@ -234,7 +234,7 @@ export default function Header() {
               <NavLink
                 className="cursor-pointer hover:font-bold "
                 to="contact"
-                activeClassName="active-link"
+                activeClassName="active"
               >
                 Contact{" "}
               </NavLink>
@@ -242,16 +242,16 @@ export default function Header() {
               <NavLink
                 className="cursor-pointer hover:font-bold"
                 to="login"
-                activeClassName="active-link"
+                activeClassName="active"
               >
                 Login
               </NavLink>
 
-              <button className="rounded-full  bg-blue-500 px-7 py-3">
+              <button className="rounded-full border-2 border-blue-500 bg-white  px-7 py-3 text-black">
                 <NavLink
                   className="cursor-pointer hover:font-bold"
                   to="signup"
-                  activeClassName="active-link"
+                  activeClassName="active"
                 >
                   Get-Started
                 </NavLink>
