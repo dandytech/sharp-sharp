@@ -10,7 +10,7 @@ export default function WhoWeAre() {
         ho We Are?
       </div>
 
-      <div className="who m-auto block  lg:flex xl:flex gap-10 p-5  lg:w-[70%] ">
+      <div className="who m-auto block  gap-10 p-5 lg:flex lg:w-[70%]  xl:flex ">
         <div>
           <h1 className="border-l-2 border-blue-500 px-5 text-left text-[22px] font-extrabold  lg:text-[34px]">
             We Are Service Provider Agent, Ensuring That Clients Hire The Best,
@@ -19,13 +19,13 @@ export default function WhoWeAre() {
           <p className="px-5 text-justify">
             We Are Responsible and dedicated In Helping Individuals or Corporate
             Bodies To Get Best Out Of Their Income By Hiring The Best,
-            Affordable and Availble Service Provider Nearest & Fast for Their
+            Affordable and Available Service Provider Nearest & Fast for Their
             Home Services. We Are Licensed And Registered Legally To Operate,
             Ensuring Good And Harmonized Client-Provider Relationship.
           </p>
         </div>
 
-        <div className=" flex items-center justify-center mt-20 lg:mt-0">
+        <div className=" mt-20 flex items-center justify-center lg:mt-0">
           <ReactPlayer
             className="videoFrame"
             url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"

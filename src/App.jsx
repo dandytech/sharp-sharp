@@ -11,7 +11,11 @@ import { useEffect } from "react";
 //animation
 import AOS from "aos";
 import "aos/dist/aos.css";
-import './index.css'
+import "./index.css";
+
+import SignupLayout from "./features/signup/signupLayout";
+import ProviderSignup from "./features/signup/ProviderSignup";
+import ClientSignup from "./features/signup/ClientSignup";
 
 export default function App() {
   //animation
@@ -24,6 +28,7 @@ export default function App() {
 
       <BrowserRouter>
         <Routes>
+          {/* main route */}
           <Route element={<PageLayout />}>
             <Route index element={<Navigate replace to="home" />} />
 
@@ -32,7 +37,14 @@ export default function App() {
             <Route path="about" element={<About />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
+
             <Route path="*" element={<PageNotFound />} />
+          </Route>
+
+          {/* signup route */}
+          <Route element={<SignupLayout />}>
+            <Route path="providerReg" element={<ProviderSignup />} />
+            <Route path="clientReg" element={<ClientSignup />} />
           </Route>
         </Routes>
       </BrowserRouter>
