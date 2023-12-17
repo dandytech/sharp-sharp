@@ -25,7 +25,7 @@ export default function Footer() {
       const scrollY = window.scrollY;
 
       // Check if the scroll position is greater than or equal to 20 pixels
-      setVisible(scrollY > 1500);
+      setVisible(scrollY > 500);
     };
 
     // Attach the scroll event listener when the component mounts
@@ -158,18 +158,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <NavLink onClick={scroll}>
-          <div
-            className={` bottom-0 right-0 flex h-[50px] w-[30px] justify-center rounded-lg border-2 bg-black text-[34px] text-white hover:bg-blue-500 ${
-              visible ? "fixed right-0 bottom-0" : "block"
-            }`}
-          >
-            <sp className="mt-[-27px]">
-              {" "}
-              <IoMdArrowUp />
-            </sp>
-          </div>
-        </NavLink>
+        <div
+          onClick={scroll}
+          className={` bottom-0 right-0 flex h-[50px] w-[30px] cursor-pointer justify-center rounded-lg border-2 bg-black text-[34px] text-white hover:bg-blue-500 ${
+            visible ? "fixed bottom-0 right-0" : "bottom-0 right-0"
+          }`}
+        >
+          <sp className="mt-[-27px]">
+            {" "}
+            <IoMdArrowUp />
+          </sp>
+        </div>
       </div>
       <div className="z-40 flex   w-[100%] items-center justify-center overflow-x-hidden bg-gray-700 bg-gradient-to-b from-gray-800 to-blue-800 p-10 text-center font-light text-white">
         Copyright©{today}. All Rights Reserved.

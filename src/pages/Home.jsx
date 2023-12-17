@@ -13,6 +13,7 @@ import RequestForm from "../features/home/RequestForm";
 import Partners from "../features/home/Partners";
 import FaqMobile from "../features/home/FaqMobile";
 
+
 export default function Home() {
   return (
     <>
@@ -46,6 +47,8 @@ export default function Home() {
         <RequestForm />
 
         <Partners />
+
+      
       </div>
     </>
   );
