@@ -8,6 +8,14 @@ export default function SmallScreenHeader() {
     setMenuOpen(!menuOpen);
   };
 
+  const closeMenu = () => {
+    setTimeout(() => {
+      if (menuOpen) {
+        setMenuOpen(!menuOpen);
+      }
+    }, 1000);
+  };
+
   return (
     <div className="mb:block  fixed top-0 z-30 w-full sm:block lg:hidden lg:pt-[80px] ">
       <div className="flex items-center  justify-between bg-gradient-to-t from-slate-900 to-gray-900 px-5 ">
@@ -41,25 +49,35 @@ export default function SmallScreenHeader() {
           <ul className="absolute z-20 flex flex-col-reverse text-white">
             <li>
               {" "}
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" onClick={closeMenu}>
+                Home
+              </NavLink>
             </li>
             <li>
               {" "}
-              <NavLink to="/about">About</NavLink>
+              <NavLink to="/about" onClick={closeMenu}>
+                About
+              </NavLink>
             </li>
 
             <li>
               {" "}
-              <NavLink to="/service">Services</NavLink>
+              <NavLink to="/service" onClick={closeMenu}>
+                Services
+              </NavLink>
             </li>
 
             <li>
               {" "}
-              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/contact" onClick={closeMenu}>
+                Contact
+              </NavLink>
             </li>
             <li>
               {" "}
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/login" onClick={closeMenu}>
+                Login
+              </NavLink>
             </li>
           </ul>
         </div>
