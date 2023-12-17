@@ -15,7 +15,7 @@ import "./index.css";
 
 import ProviderSignup from "./features/signup/ProviderSignup";
 import ClientSignup from "./features/signup/ClientSignup";
-
+import SignupLayot from "./features/signup/SignupLayout";
 export default function App() {
   //animation
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function App() {
           </Route>
 
           {/* signup route */}
-          <Route element={<SignupLayout />}>
+          <Route element={<SignupLayot />}>
             <Route path="providerReg" element={<ProviderSignup />} />
             <Route path="clientReg" element={<ClientSignup />} />
           </Route>

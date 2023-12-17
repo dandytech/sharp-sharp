@@ -5,6 +5,7 @@ import { IoIosPhonePortrait } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 export default function ClientSignup() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -130,6 +131,12 @@ export default function ClientSignup() {
             </i>
           </div>
         </div>
+        <p className="lg:mt-10">
+          Already Have An Account?{" "}
+          <NavLink to="/login" className="font-semibold text-blue-500">
+            Login
+          </NavLink>
+        </p>
         <button className="my-20 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black  ">
           Submit
         </button>

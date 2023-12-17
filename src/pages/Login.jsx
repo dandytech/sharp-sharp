@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { NavLink } from "react-router-dom";
 
 export default function Login() {
   const [password, setPassword] = useState("");
@@ -53,6 +54,12 @@ export default function Login() {
                 {showPassword ? "👁️" : "👁️‍🗨️"}
               </i>
             </div>
+            <p className="lg:mt-10">
+              <span className="text-white">Don't Have An Account?</span>{" "}
+              <NavLink to="/signup" className="font-semibold text-blue-500">
+                Signup
+              </NavLink>
+            </p>
             <button className="my-20 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black  ">
               Login
             </button>
