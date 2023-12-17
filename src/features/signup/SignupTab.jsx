@@ -5,7 +5,7 @@ export default function SignupTab() {
   return (
     <div className="m-auto flex flex-col items-center justify-center  pt-[120px]  shadow-2xl md:w-[80%] lg:w-[50%] lg:pt-10 ">
       <div className="mb-10 text-[24px] text-blue-500 lg:mb-0 lg:mt-20">
-        SELECT ACCOUNT TYPE
+        SELECT ACCOUNT TYPE !!!
       </div>
 
       <div className="flex  items-center justify-center gap-10 text-center md:w-[80%] lg:w-[50%] lg:pt-20">
