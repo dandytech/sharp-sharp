@@ -25,7 +25,7 @@ export default function Footer() {
       const scrollY = window.scrollY;
 
       // Check if the scroll position is greater than or equal to 20 pixels
-      setVisible(scrollY > 500);
+      setVisible(scrollY > 100);
     };
 
     // Attach the scroll event listener when the component mounts
