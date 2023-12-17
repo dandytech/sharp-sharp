@@ -12,14 +12,14 @@ export default function Login() {
   };
 
   return (
-    <div className="h-[80vh]  bg-[url('/src/data/bg9.jpeg')] bg-cover bg-center bg-no-repeat p-10  pt-[100px] lg:py-0 lg:pt-0 ">
+    <div className="h-[90vh]  bg-[url('/src/data/bg9.jpeg')] bg-cover bg-center bg-no-repeat pt-[100px]  lg:p-10 lg:py-0 lg:pt-0 ">
       <form>
         <div className="m-auto justify-center p-10 pt-[10px] text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-20">
           {" "}
           <p className="pb-5 pt-10 text-center font-semibold text-white">
             Enter The Required Details!
           </p>
-          <div className="m-auto  h-auto rounded-2xl border-2 border-white px-10  pt-20 text-center lg:w-[50%]">
+          <div className="m-auto h-auto w-[100%] rounded-2xl border-2 border-white px-3 pt-20  text-center lg:w-[50%] lg:px-10">
             <div className="m-auto mb-10 flex h-[50px]  items-center rounded-2xl border-2 border-white bg-gray-800 text-center text-white focus:border-white lg:mb-10 lg:w-[100%]">
               <span className=" flex h-[45px] w-[10%]  items-center justify-center  border-r text-center text-[30px] text-white  ">
                 <MdOutlineAttachEmail />
@@ -28,7 +28,7 @@ export default function Login() {
                 type="email"
                 id="email"
                 name="email"
-                className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+                className=" h-[45px] w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white lg:w-[90%] "
                 placeholder="Email"
                 required
               />
@@ -43,7 +43,7 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 id="password"
                 name="password"
-                className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+                className=" h-[45px] w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white lg:w-[90%] "
                 placeholder="Password"
                 required
               />
