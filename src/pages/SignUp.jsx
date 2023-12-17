@@ -1,4 +1,4 @@
-import SignupTab from "../features/signup/signupTab";
+import SignupTab from "../features/signup/SignupTab";
 
 export default function SignUp() {
   return (
