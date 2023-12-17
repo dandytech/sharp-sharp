@@ -161,7 +161,7 @@ export default function Footer() {
         <div
           onClick={scroll}
           className={` bottom-0 right-0 flex h-[50px] w-[30px] cursor-pointer justify-center rounded-lg border-2 bg-black text-[34px] text-white hover:bg-blue-500 ${
-            visible ? "fixed bottom-0 right-0" : "bottom-0 right-0"
+            visible ? "fixed bottom-0 right-0" : ""
           }`}
         >
           <sp className="mt-[-27px]">
