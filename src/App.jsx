@@ -13,7 +13,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./index.css";
 
-import SignupLayout from "./features/signup/signupLayout";
 import ProviderSignup from "./features/signup/ProviderSignup";
 import ClientSignup from "./features/signup/ClientSignup";
 
