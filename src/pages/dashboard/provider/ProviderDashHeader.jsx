@@ -8,9 +8,9 @@ export default function ProviderHeader() {
   return (
     <div className="fixed top-0  flex h-[70px] w-full items-center justify-between  px-10 py-2 shadow-2xl">
      
-      <div className="flex w-[50%] items-center justify-between gap-20 text-[24px]">
+      <div className="flex w-[50%] items-center justify-between text-[24px]">
         <NavLink to="/">
-          <img src={logo} alt="logo" width="90" to="/" />
+          <img src={logo} alt="logo" width="100" to="/" />
         </NavLink>
 
         <span>

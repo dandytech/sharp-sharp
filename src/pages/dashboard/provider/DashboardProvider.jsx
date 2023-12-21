@@ -4,7 +4,7 @@ import Table from "./Table";
 
 export default function DashboardProvider() {
   const div =
-    "text-bold flex w-[100%] lg:w-[40%] gap-2 flex-col lg:gap-5  md:gap-3 rounded-2xl border-2  lg:p-5 w-[30%] p-3  lg:h-auto md:h-auto text-center md:text-[18px] text-[13px] lg:text-[20px]  shadow-2xl ";
+    "text-bold flex w-[100%] lg:w-[40%] gap-2 flex-col lg:gap-5  md:gap-3 rounded-2xl border-2  lg:p-5 w-[30%] p-3  lg:h-auto md:h-auto text-center md:text-[18px] text-[12px] lg:text-[20px]  shadow-2xl ";
   return (
     <div className="right-0 mt-[80px] h-auto w-[100%]  p-10 shadow-lg lg:ml-[170px]">
       <div className="justify-between lg:flex lg:gap-5">

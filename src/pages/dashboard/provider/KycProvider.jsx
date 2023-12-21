@@ -56,15 +56,15 @@ export default function KycProvider() {
     "mb-10 flex h-[50px] items-center rounded-xl border-2 border-blue-500 bg-gray-800 text-center text-white focus:border-white lg:mb-0 lg:w-[50%]";
 
   const span =
-    "flex h-[45px] w-[10%]  items-center justify-center  border-r text-center text-[22px] text-white ";
+    "flex h-[45px] w-[15%]  items-center justify-center  border-r text-center text-[22px] text-white ";
 
   const input =
-    " h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white ";
+    " h-[45px] w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white rounded-xl";
 
   return (
-    <div className="right-0  lg:ml-[200px] mt-[80px] h-auto w-[100%] p-10 shadow-lg">
+    <div className="right-0  lg:ml-[200px] mt-[80px] h-auto w-[100%] lg:p-10 shadow-lg">
         <form className=" lg:w-[70%] rounded-2xl m-auto border-2 border-white">
-        <div className="m-auto justify-center p-10 text-center  shadow-2xl ">
+        <div className="m-auto justify-center lg:p-10 p-3 text-center  shadow-2xl ">
           {" "}
           <p className="pb-10 pt-0 text-center font-bold">
             Complete Your KYC As A Service Provider !
