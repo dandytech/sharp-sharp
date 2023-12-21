@@ -9,7 +9,7 @@ export default function DashboardProvider() {
     <div className="right-0 mt-[80px] h-auto w-[100%] border-2 p-10 shadow-lg lg:ml-[170px]">
       <div className="justify-between lg:flex lg:gap-5">
         <div className="lg:w-[70%]">
-          <div className="flex items-center justify-between gap-1 text-black lg:gap-10">
+          <div className="flex items-center justify-between gap-1 text-[14px] text-black lg:gap-10 lg:text-[20px]">
             <div className={`${div} bg-yellow-500 text-white`}>
               <p>23</p>
               <p> Ongoing Service</p>
@@ -42,7 +42,7 @@ export default function DashboardProvider() {
             <Table />
           </div>
 
-          <div className="h-[400px] p-5">
+          <div className="mt-20 h-[400px] text-center lg:p-5 lg:text-left">
             <p className="py-10 font-bold">
               Monthy Completed & Canceled Requests{" "}
             </p>{" "}
@@ -50,7 +50,7 @@ export default function DashboardProvider() {
           </div>
         </div>
 
-        <div className="bg-white-700 mt-[110px] rounded-2xl border-2 text-center text-[18px]  shadow-2xl lg:mt-0 lg:w-[30%]">
+        <div className="bg-white-700 mt-[130px] rounded-2xl border-2 text-center shadow-2xl md:text-[18px]  lg:mt-0 lg:w-[30%] lg:text-[18px]">
           <div className="rounded-bl-xl rounded-br-xl">
             <div className="flex h-[20px] items-center justify-center border-b-2 border-white bg-blue-500 py-10 text-center font-bold text-white ">
               Completed Service Summary !!!
@@ -117,7 +117,7 @@ export default function DashboardProvider() {
             </div>
           </div>
 
-          <div className="h-[400px] p-5">
+          <div className="mb-[70px] mt-[50px] h-[400px] p-5">
             <p className="py-10 font-bold">Monthy Income </p> <Barchart />
           </div>
         </div>
