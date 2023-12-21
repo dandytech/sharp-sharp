@@ -17,7 +17,7 @@ export default function ProviderHeader() {
         </span>
       </div>
 
-      <div className="lg:gap-10 flex w-[40%]  items-center justify-evenly text-[34px]">
+      <div className="lg:gap-10 flex w-[40%]  items-center justify-evenly text-[28px]">
         <span>
           <IoIosNotificationsOutline />
         </span>
