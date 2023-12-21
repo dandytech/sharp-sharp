@@ -195,6 +195,7 @@ export default function Table() {
 
     enableRowSelection: true,
     //passing the callback function variant. (You should get type hints for all the callback parameters available)
+
     muiSelectCheckboxProps: ({ row }) => ({
       color: "secondary",
       disabled: row.original.isAccountLocked, //access the row data to determine if the checkbox should be disabled
