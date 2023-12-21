@@ -3,7 +3,6 @@ import { MdOutlineAttachEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 
-
 export default function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -61,13 +60,14 @@ export default function Login() {
                 Signup
               </NavLink>
             </p>
-            <button className="my-20 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black  ">
-              Login
-            </button>
+            <NavLink to="/provider">
+              <button className="my-20 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black  ">
+                Login
+              </button>
+            </NavLink>
           </div>
         </div>
       </form>
-     
     </div>
   );
 }
