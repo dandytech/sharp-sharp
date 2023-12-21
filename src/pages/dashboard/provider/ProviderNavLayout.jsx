@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function NavbarLayout() {
   return (
-    <div className=" mt-[70px] h-[100vh] fixed  left-0 w-[200px] bg-gradient-to-t from-gray-300 p-10">
+    <div className=" fixed left-0 mt-[70px]  h-[100vh] w-[200px]  p-10">
       <div className="mb-5">
         <NavLink to="dashboard" activeClassName="active">
           Dashboard

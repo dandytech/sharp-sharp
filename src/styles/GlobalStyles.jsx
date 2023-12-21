@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 const GlobalStyles = createGlobalStyle`
 
 :root {
@@ -19,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
       --color-grey-800: #1f2937;
       --color-grey-900: #111827;
       
-      --color-blue-100: #e0f2fe;
+      --color-blue-100: #f2f4f6;
       --color-blue-700: #0369a1;
       --color-green-100: #dcfce7;
       --color-green-700: #15803d;
@@ -40,9 +39,9 @@ const GlobalStyles = createGlobalStyle`
       --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
       --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
 
-  
     --image-grayscale: 0;
     --image-opacity: 100%;
+    --text-color: black
       
     }
       
@@ -60,7 +59,7 @@ const GlobalStyles = createGlobalStyle`
 --color-grey-800: #f3f4f6;
 --color-grey-900: #f9fafb;
 
---color-blue-100: #075985;
+--color-blue-100: #050318;
 --color-blue-700: #e0f2fe;
 --color-green-100: #166534;
 --color-green-700: #dcfce7;
@@ -83,6 +82,7 @@ const GlobalStyles = createGlobalStyle`
 
 --image-grayscale: 10%;
 --image-opacity: 90%;
+--text-color: white;
     }
 
  /* Indigo */
@@ -188,7 +188,22 @@ const GlobalStyles = createGlobalStyle`
     /* For dark mode */
     filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
   }  
-`;
+  .text-style{
+    color: var(--color-green-100);
+  }
 
+  .bg-style{
+    background-color: var(--color-grey-50);
+   
+  }
+
+  .bgsummary{
+    background-color: var(--color-blue-100);
+    color: var(--text-color);
+    border-bottom-color: var(--text-color)
+  }
+
+
+`;
 
 export default GlobalStyles;

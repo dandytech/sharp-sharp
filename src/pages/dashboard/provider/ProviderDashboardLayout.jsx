@@ -4,7 +4,7 @@ import ProviderNavLayout from "./ProviderNavLayout";
 
 export default function DashbordLayout() {
   return (
-    <div className="flex flex-col">
+    <div className="bg-style flex h-auto flex-col">
       <div>
         <ProviderDashHeader />
       </div>

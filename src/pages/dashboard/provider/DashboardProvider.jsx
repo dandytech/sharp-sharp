@@ -53,11 +53,11 @@ export default function DashboardProvider() {
         <div className="bg-white-700 mt-[130px] rounded-2xl border-2 text-center shadow-2xl md:text-[18px]  lg:mt-0 lg:w-[30%] lg:text-[18px]">
           <div className="rounded-bl-xl rounded-br-xl">
             <div className="flex h-[20px] items-center justify-center border-b-2 border-white bg-blue-500 py-10 text-center font-bold text-white ">
-              Completed Service Summary !!!
+              <p> Completed Service Summary !!!</p>
             </div>
 
             <div className="h-[620px] overflow-y-auto">
-              <div className="flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black bg-gray-100 py-5 text-black shadow-2xl">
+              <div className="bgsummary flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black py-5 text-black shadow-2xl">
                 <div className="flex items-center text-right">
                   <p>2:00 PM</p>
                 </div>
@@ -67,7 +67,7 @@ export default function DashboardProvider() {
                 </div>
               </div>
 
-              <div className="flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black bg-gray-100 py-5 text-black shadow-2xl">
+              <div className="bgsummary flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black py-5 text-black shadow-2xl">
                 <div className="flex items-center text-right">
                   <p>4:00 PM</p>
                 </div>
@@ -77,7 +77,7 @@ export default function DashboardProvider() {
                   <p>30/11/2023</p>
                 </div>
               </div>
-              <div className="flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black bg-gray-100 py-5 text-black shadow-2xl">
+              <div className="bgsummary flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black py-5 text-black shadow-2xl">
                 <div className="flex items-center text-right">
                   <p>12:00 PM</p>
                 </div>
@@ -86,7 +86,7 @@ export default function DashboardProvider() {
                   <p>30/11/2023</p>
                 </div>
               </div>
-              <div className="flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black bg-gray-100 py-5 text-black shadow-2xl">
+              <div className="bgsummary flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black py-5 text-black shadow-2xl">
                 <div className="flex items-center text-right">
                   <p>12:00 PM</p>
                 </div>
@@ -95,7 +95,7 @@ export default function DashboardProvider() {
                   <p>30/11/2023</p>
                 </div>
               </div>
-              <div className="flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black bg-gray-100 py-5 text-black shadow-2xl">
+              <div className="bgsummary flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black py-5 text-black shadow-2xl">
                 <div className="flex items-center text-right">
                   <p>12:00 PM</p>
                 </div>
@@ -105,7 +105,7 @@ export default function DashboardProvider() {
                 </div>
               </div>
 
-              <div className="flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black bg-gray-100 py-5 text-black shadow-2xl">
+              <div className="bgsummary flex justify-center gap-5 rounded-b-2xl border-b-2 border-b-black py-5 text-black shadow-2xl">
                 <div className="flex items-center text-right">
                   <p>4:00 PM</p>
                 </div>
@@ -118,7 +118,7 @@ export default function DashboardProvider() {
           </div>
 
           <div className="mb-[70px] mt-[50px] h-[400px] p-5">
-            <p className="py-10 font-bold">Monthy Income </p> <Barchart />
+            <p className="py-10 font-bold ">Monthy Income </p> <Barchart />
           </div>
         </div>
       </div>

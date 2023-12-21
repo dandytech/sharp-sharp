@@ -62,8 +62,8 @@ export default function KycProvider() {
     " h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white ";
 
   return (
-    <form>
-      <div className="right-0  lg:ml-[200px] mt-[80px] h-auto w-[100%] border-2 p-10 shadow-lg">
+    <div className="right-0  lg:ml-[200px] mt-[80px] h-auto w-[100%] p-10 shadow-lg">
+        <form className=" lg:w-[70%] rounded-2xl m-auto border-2 border-white">
         <div className="m-auto justify-center p-10 text-center  shadow-2xl ">
           {" "}
           <p className="pb-10 pt-0 text-center font-bold">
@@ -225,7 +225,7 @@ export default function KycProvider() {
             Submit
           </button>
         </div>
-      </div>
     </form>
+      </div>
   );
 }

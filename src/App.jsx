@@ -22,6 +22,8 @@ import DashboardProvider from "./pages/dashboard/provider/DashboardProvider";
 import KycProvider from "./pages/dashboard/provider/KycProvider";
 import ServiceRequests from "./pages/dashboard/provider/ServiceRequests.jsx";
 
+import { DarkModeProvider } from "./context/DarkModeContext";
+
 export default function App() {
   //animation
   useEffect(() => {
@@ -29,40 +31,42 @@ export default function App() {
   }, []);
   return (
     <>
-      <GlobalStyles />
+      <DarkModeProvider>
+        
+        <GlobalStyles />
+        <BrowserRouter>
+          <Routes>
+            {/* main route */}
+            <Route element={<PageLayout />}>
+              <Route index element={<Navigate replace to="home" />} />
 
-      <BrowserRouter>
-        <Routes>
-          {/* main route */}
-          <Route element={<PageLayout />}>
-            <Route index element={<Navigate replace to="home" />} />
+              <Route path="home" element={<Home />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="about" element={<About />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="login" element={<Login />} />
 
-            <Route path="home" element={<Home />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="about" element={<About />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="login" element={<Login />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Route>
 
-            <Route path="*" element={<PageNotFound />} />
-          </Route>
+            {/* signup route */}
+            <Route element={<SignupLayot />}>
+              <Route path="providerReg" element={<ProviderSignup />} />
+              <Route path="clientReg" element={<ClientSignup />} />
+            </Route>
 
-          {/* signup route */}
-          <Route element={<SignupLayot />}>
-            <Route path="providerReg" element={<ProviderSignup />} />
-            <Route path="clientReg" element={<ClientSignup />} />
-          </Route>
+            {/* Provider Dashboard */}
+            <Route path="provider" element={<ProviderDashbordLayout />}>
+              <Route index element={<Navigate replace to="dashboard" />} />
 
-          {/* Provider Dashboard */}
-          <Route path="provider" element={<ProviderDashbordLayout />}>
-            <Route index element={<Navigate replace to="dashboard" />} />
-
-            <Route path="dashboard" element={<DashboardProvider />} />
-            <Route path="kyc" element={<KycProvider />} />
-            <Route path="services" element={<ServiceRequests />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+              <Route path="dashboard" element={<DashboardProvider />} />
+              <Route path="kyc" element={<KycProvider />} />
+              <Route path="services" element={<ServiceRequests />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </DarkModeProvider>
     </>
   );
 }
