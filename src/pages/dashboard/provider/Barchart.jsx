@@ -73,8 +73,7 @@ export default class Barchart extends PureComponent {
           data={data}
           margin={{
             top: 20,
-            right: 30,
-            left: 20,
+
             bottom: 5,
           }}
         >

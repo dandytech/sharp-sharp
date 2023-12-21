@@ -115,6 +115,7 @@ import { useEffect, useState } from "react";
 import QuickBookList from "./QuickBookList";
 import { HashLink } from "react-router-hash-link";
 import logo from "../data/logo.png";
+import DarkModeToggle from "./DarkModeToggle";
 
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);

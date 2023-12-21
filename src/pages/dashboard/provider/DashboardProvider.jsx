@@ -4,7 +4,7 @@ import Table from "./Table";
 
 export default function DashboardProvider() {
   const div =
-    "text-bold flex w-[30%] lg:w-[40%] flex-col gap-5 rounded-2xl border-2 p-5 text-center lg:text-[20px]  shadow-2xl ";
+    "text-bold flex w-[100%] lg:w-[40%] gap-2 flex-col lg:gap-5  md:gap-3 rounded-2xl border-2  lg:p-5 w-[30%] p-3 h-[90px] lg:h-auto md:h-auto text-center lg:text-[20px]  shadow-2xl ";
   return (
     <div className="right-0 mt-[80px] h-auto w-[100%]  p-10 shadow-lg lg:ml-[170px]">
       <div className="justify-between lg:flex lg:gap-5">
@@ -117,7 +117,7 @@ export default function DashboardProvider() {
             </div>
           </div>
 
-          <div className="mb-[70px] mt-[50px] h-[400px] p-5">
+          <div className="mb-[70px] mt-[50px] h-[400px] ">
             <p className="py-10 font-bold ">Monthy Income </p> <Barchart />
           </div>
         </div>
