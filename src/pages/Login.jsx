@@ -12,7 +12,7 @@ export default function Login() {
   };
 
   return (
-    <div className="h-[90vh]  bg-[url('/src/data/bg9.jpeg')] bg-cover bg-center bg-no-repeat pt-[100px]  lg:p-10 lg:py-0 lg:pt-0 ">
+    <div className="h-auto  bg-[url('/src/data/bg9.jpeg')] bg-cover bg-center bg-no-repeat pt-[100px]  lg:p-10 lg:py-0 lg:pt-0 ">
       <form>
         <div className="m-auto justify-center p-10 pt-[10px] text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-20">
           {" "}
