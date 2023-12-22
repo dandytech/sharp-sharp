@@ -66,7 +66,7 @@ export default function KycProvider() {
         <form className=" lg:w-[70%] rounded-2xl m-auto border-2 border-white">
         <div className="m-auto justify-center lg:p-10 p-3 text-center  shadow-2xl ">
           {" "}
-          <p className="pb-10 pt-0 text-center font-bold">
+          <p className="lg:pb-10 pt-0 text-center font-bold text-[24px]">
             Complete Your KYC As A Service Provider !
           </p>
           <div className="mt-10 gap-10 lg:flex">

@@ -7,10 +7,9 @@ import DarkModeToggle from "../../../ui/DarkModeToggle";
 export default function ProviderHeader() {
   return (
     <div className="fixed top-0  flex h-[70px] w-full items-center justify-between  px-10 py-2 shadow-2xl">
-     
-      <div className="flex w-[50%] items-center justify-between text-[24px]">
+      <div className="flex w-[60%] items-center justify-between text-[24px]">
         <NavLink to="/">
-          <img src={logo} alt="logo" width="100" to="/" />
+          <img src={logo} alt="logo" width="90" to="/" />
         </NavLink>
 
         <span>
@@ -18,7 +17,7 @@ export default function ProviderHeader() {
         </span>
       </div>
 
-      <div className="lg:gap-10 flex w-[10%] items-center justify-center  gap-2 md:gap-5 text-[28px]">
+      <div className="flex w-[10%] items-center justify-center gap-2  text-[28px] md:gap-5 lg:gap-10">
         <span>
           <IoIosNotificationsOutline />
         </span>
