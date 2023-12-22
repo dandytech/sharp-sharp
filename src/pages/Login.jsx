@@ -28,7 +28,7 @@ export default function Login() {
                 type="email"
                 id="email"
                 name="email"
-                className=" h-[45px] w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white lg:w-[90%] "
+                className=" h-[45px] rounded-xl w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white lg:w-[90%] "
                 placeholder="Email"
                 required
               />

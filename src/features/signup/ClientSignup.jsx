@@ -20,7 +20,7 @@ export default function ClientSignup() {
     setShowcPassword(!showcPassword);
   };
   return (
-    <form>
+    <form className="mt-[40px] lg:mt-0">
       <div className="m-auto justify-center p-10 pt-[10px] text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-20">
         {" "}
         <p className="pb-10 pt-0 text-center font-semibold">
@@ -36,7 +36,7 @@ export default function ClientSignup() {
               id="name"
               name="name"
               required
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" w-[90%]rounded-xl h-[45px] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               placeholder="Full Name"
             />
           </div>
@@ -45,7 +45,7 @@ export default function ClientSignup() {
               <FaTransgender />
             </span>
             <select
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               id="gender"
               name="gender"
               label="gender"
@@ -66,7 +66,7 @@ export default function ClientSignup() {
               type="email"
               id="email"
               name="email"
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               placeholder="Email"
               required
             />
@@ -80,7 +80,7 @@ export default function ClientSignup() {
               type="text"
               id="phone"
               name="phone"
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               placeholder="Phone"
               required
             />

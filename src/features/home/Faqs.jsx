@@ -79,7 +79,7 @@ export default function Faqs() {
   return (
     <div className="hidden overflow-x-hidden  bg-gradient-to-b from-white p-10 pt-[140px] md:mb-[70px] lg:block ">
       <div className="pb-10">
-        <h2 className="p-5 text-center text-6xl font-bold lg:text-7xl ">
+        <h2 className="p-5 text-center text-6xl font-bold lg:text-5xl ">
           ASK &{" "}
           <span className="text-blue-500">
             <span className="underline">Q</span>UESTIONS

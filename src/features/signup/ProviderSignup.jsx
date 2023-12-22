@@ -62,7 +62,7 @@ export default function ProviderSignup() {
     setShowcPassword(!showcPassword);
   };
   return (
-    <form>
+    <form className="mt-[40px] lg:mt-0">
       <div className="m-auto justify-center p-10 pt-[10px] text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-20">
         {" "}
         <p className="pb-10 pt-0 text-center font-semibold">
@@ -78,7 +78,7 @@ export default function ProviderSignup() {
               id="name"
               name="name"
               required
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               placeholder="Full Name"
             />
           </div>
@@ -87,7 +87,7 @@ export default function ProviderSignup() {
               <FaTransgender />
             </span>
             <select
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               id="gender"
               name="gender"
               label="gender"
@@ -105,7 +105,7 @@ export default function ProviderSignup() {
               <MdOutlineHomeRepairService />
             </span>
             <select
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               id="service"
               name="service"
               required
@@ -128,7 +128,7 @@ export default function ProviderSignup() {
               type="text"
               id="location"
               name="location"
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               placeholder="Business Address"
               required
             />
@@ -143,7 +143,7 @@ export default function ProviderSignup() {
               type="email"
               id="email"
               name="email"
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               placeholder="Email"
               required
             />
@@ -157,7 +157,7 @@ export default function ProviderSignup() {
               type="text"
               id="phone"
               name="phone"
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               placeholder="Phone"
               required
             />
@@ -174,7 +174,7 @@ export default function ProviderSignup() {
               onChange={(e) => setPassword(e.target.value)}
               id="password"
               name="password"
-              className=" h-[45px] w-[90%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               placeholder="Password"
               required
             />

@@ -12,7 +12,7 @@ export default function SignupTab() {
         <div className="text-[20px]">
           <NavLink
             to="/providerReg"
-            className="cursor-pointer rounded-full  hover:text-blue-500  border-2 border-t-blue-500 px-7 py-3 pb-0 hover:font-bold"
+            className="cursor-pointer rounded-full border-2 border-t-blue-500  bg-gray-100 px-7 py-3 pb-0 hover:font-bold hover:text-blue-500"
             activeClassName="active"
           >
             Service Provider
@@ -21,7 +21,7 @@ export default function SignupTab() {
         <div className="text-[20px]">
           <NavLink
             to="/clientReg"
-            className="cursor-pointer rounded-full hover:text-blue-500  border-2 border-t-blue-500 px-7 py-3 pb-0 hover:font-bold"
+            className="cursor-pointer rounded-full border-2  border-t-blue-500  bg-gray-100 px-7 py-3 pb-0 hover:font-bold hover:text-blue-500"
             activeClassName="active"
           >
             Client

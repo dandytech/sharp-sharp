@@ -215,7 +215,7 @@ export default function Header() {
               )}
             </div>
 
-            <div className=" flex items-center gap-20">
+            <div className=" flex items-center gap-20 text-[18px]">
               <NavLink
                 className="cursor-pointer hover:font-bold "
                 to="home"

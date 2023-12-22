@@ -8,7 +8,7 @@ export default function WhyUs() {
   return (
     <div className="bg-gray-100  bg-gradient-to-b from-white px-10 sm:px-[30px]">
       <div className="mb-0 pt-[80px] text-center">
-        <h2 className="p-5 text-center text-6xl font-bold lg:text-7xl">
+        <h2 className="p-5 text-center text-4xl font-bold lg:text-5xl">
           WHY CHOSE US?
         </h2>
         There are alot of Reasons to Chosing us!!!

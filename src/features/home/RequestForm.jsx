@@ -9,7 +9,7 @@ export default function RequestForm() {
     <div className="h-auto overflow-x-hidden bg-gradient-to-b  from-gray-800 to-white sm:mt-[100px] ">
       <div className=" h-auto  bg-[url('/src/data/bg7.jpeg')]  bg-cover bg-center bg-no-repeat text-center sm:px-20 lg:h-[110vh]">
         <div className="float-right rounded-b-[30px] bg-gray-800 p-10 text-white lg:w-[50%] ">
-          <p className=" mt-20 text-center text-6xl sm:px-20 sm:text-5xl lg:text-center">
+          <p className=" mt-20 text-center text-4xl sm:px-20 lg:text-5xl lg:text-center">
             SUBMIT REQUEST!!!
           </p>
           <p className="my-10 text-center text-4xl leading-relaxed lg:my-0 lg:p-20 lg:text-left lg:text-4xl xl:text-4xl ">

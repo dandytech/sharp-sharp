@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 export default function WhoWeAre() {
   return (
     <div id="about" className="overflow-x-hidden bg-gradient-to-t  from-white">
-      <div className="mt-[80px] py-10 text-center text-6xl font-bold lg:text-7xl">
+      <div className="mt-[80px] py-10 text-center text-4xl font-bold lg:text-5xl">
         <span className=" border-b-2 border-b-blue-500 ">W</span>
         ho We Are?
       </div>
