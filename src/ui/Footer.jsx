@@ -141,15 +141,15 @@ export default function Footer() {
               </p>
 
               <form>
-                <div className="m-auto flex h-[50px]  w-[100%]  items-center rounded-xl border-2 border-blue-500  bg-gray-800 text-center focus:border-white lg:m-0">
+                <div className="m-auto flex h-[50px]  w-[100%]   items-center rounded-xl border-2 border-blue-500  bg-gray-800 text-center focus:border-white lg:m-0">
                   <input
                     type="email"
                     id="name"
                     name="name"
-                    className=" h-[45px] w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+                    className=" h-[45px] w-[100%] bg-gray-800 px-5 rounded-xl font-semibold text-white focus:border-2 focus:border-white "
                     placeholder="Email"
                   />
-                  <button className=" flex h-[45px]  w-[20%] items-center  justify-center border-r text-center text-[30px]">
+                  <button className=" flex h-[45px]  w-[20%] items-center  justify-center rounded-xl border-r text-center text-[30px]">
                     <IoIosSend />
                   </button>
                 </div>
