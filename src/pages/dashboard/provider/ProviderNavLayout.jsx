@@ -7,8 +7,8 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 
 export default function NavbarLayout() {
   return (
-    <div className=" fixed left-0 mt-[70px]  h-[100vh] w-[200px]  p-10">
-    <div className="flex">
+    <div className=" fixed  left-0 mt-[70px]  h-[100vh] w-[200px]  p-10">
+    <div className="flex gap-2">
     
      <div className="text-[24px]">
      <div className="mb-5">
