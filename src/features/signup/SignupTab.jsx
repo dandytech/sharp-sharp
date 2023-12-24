@@ -9,7 +9,7 @@ export default function SignupTab() {
       </div>
 
       <div className="flex  items-center justify-center gap-10 text-center md:w-[80%] lg:w-[50%] lg:pt-20">
-        <div className="text-[20px]">
+        <div className="lg:text-[20px] text-[16px]">
           <NavLink
             to="/providerReg"
             className="cursor-pointer rounded-full border-2 border-t-blue-500  bg-gray-100 px-7 py-3 pb-0 hover:font-bold hover:text-blue-500"
@@ -18,7 +18,7 @@ export default function SignupTab() {
             Service Provider
           </NavLink>
         </div>
-        <div className="text-[20px]">
+        <div className="lg:text-[20px] text-[16px]">
           <NavLink
             to="/clientReg"
             className="cursor-pointer rounded-full border-2  border-t-blue-500  bg-gray-100 px-7 py-3 pb-0 hover:font-bold hover:text-blue-500"
