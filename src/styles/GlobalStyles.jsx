@@ -41,7 +41,9 @@ const GlobalStyles = createGlobalStyle`
 
     --image-grayscale: 0;
     --image-opacity: 100%;
-    --text-color: black
+    --text-color: black;
+    --navborderleft: none;
+   --service-bg: white;
       
     }
       
@@ -83,11 +85,14 @@ const GlobalStyles = createGlobalStyle`
 --image-grayscale: 10%;
 --image-opacity: 90%;
 --text-color: white;
+
+--navborderleft: 1px solid #eeebf487;
+--service-bg: black;
     }
 
  /* Indigo */
  --color-brand-50: #eef2ff;
-    --color-brand-100: #e0e7ff;
+    --color-brand-100: #e4e8f4;
     --color-brand-200: #c7d2fe;
     --color-brand-500: #6366f1;
     --color-brand-600: #4f46e5;
@@ -131,7 +136,7 @@ const GlobalStyles = createGlobalStyle`
   button:focus,
   textarea:focus,
   select:focus {
-    outline: 2px solid var(--color-brand-600);
+    outline: 2px solid var(--color-brand-00);
     outline-offset: -1px;
   }
   
@@ -160,6 +165,7 @@ const GlobalStyles = createGlobalStyle`
   img {
     max-width: 100%;
   
+
     /* For dark mode */
     filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
   }  
@@ -170,18 +176,65 @@ const GlobalStyles = createGlobalStyle`
   .bg-style{
     background-color: var(--color-grey-50);
     color: var(--text-color);
+    z-index:0 !important;
     
-   
   }
 
 
   .bgsummary{
     background-color: var(--color-blue-100);
     color: var(--text-color);
-    border-bottom-color: var(--text-color)
+    border-bottom-color: var(--text-color);
+    z-index: 0 !important;
   }
 
+  .navDashboard{
+    border-color: white;
+   background-color: var(--color-grey-100);
+   
+  }
+  .dashHeader{
+   // border-bottom: var(--navborderleft);
+    background-color: var(--color-grey-100);
+   
+  }
+  .servicebg{
+    background-color: var(--service-bg);
+    z-index: 0 !important;
+  }
 
+  input:hover,select:hover,textarea:hover{
+    background-color:white;
+    color: black;
+   // border-top-left-radius: 0px;border-bottom-left-radius:0px;
+  }
+
+.modalOverlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--backdrop-color);
+  backdrop-filter: blur(4px);
+  z-index: 100000 !important;
+  transition: all 0.5s;
+  overflow-y: auto;
+}
+.modalDiv{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index:1000 !important;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-grey-0);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  //padding: 30px 25px 25px 25px;
+
+  transition: all 0.5s;
+  color: var(--text-color);
+}
 `;
 
 export default GlobalStyles;

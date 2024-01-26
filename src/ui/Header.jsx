@@ -102,9 +102,15 @@ export const categories = [
     name: "Barbing",
     icon: "😇",
   },
+
   {
     id: 20,
-    name: "Barbing",
+    name: "Web Designer",
+    icon: "😇",
+  },
+  {
+    id: 21,
+    name: "Gardener",
     icon: "😇",
   },
 ];
@@ -112,10 +118,12 @@ export const categories = [
 import { NavLink } from "react-router-dom";
 import "../index.css";
 import { useEffect, useState } from "react";
-import QuickBookList from "./QuickBookList";
+
 import { HashLink } from "react-router-hash-link";
 import logo from "../data/logo.png";
-import DarkModeToggle from "./DarkModeToggle";
+import { Button, Menu, MenuHandler, MenuList } from "@material-tailwind/react";
+
+import { IoMdArrowForward } from "react-icons/io";
 
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
@@ -148,19 +156,19 @@ export default function Header() {
   }, []); // Empty dependency array ensures the effect runs only once
 
   //Dropdown for Quick request
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const openDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  // const openDropdown = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
-  const closeDropdown = () => {
-    setTimeout(() => {
-      if (isOpen) {
-        setIsOpen(false);
-      }
-    }, 1000);
-  };
+  // const closeDropdown = () => {
+  //   setTimeout(() => {
+  //     if (isOpen) {
+  //       setIsOpen(false);
+  //     }
+  //   }, 1000);
+  // };
 
   // <div className=" flex items-center  gap-10 pb-20 justify-between lg:m-auto  lg:mt-[60px] mt-[80px] sm:px-10 lg:px-10 lg:w-[70%]">
   return (
@@ -184,17 +192,19 @@ export default function Header() {
           </div>
 
           <div
-            className={`m-auto flex  w-[70%] items-center justify-between gap-10 px-10  ${
-              isSticky ? " text-white" : ""
+            className={`${
+              isSticky
+                ? "m-auto flex w-[70%] p-5 h-[120px]  items-center justify-between text-white"
+                : "m-auto flex w-[70%] px-5 items-center justify-between"
             }`}
           >
-            <div className="flex items-center ">
+            <div >
               <NavLink to="/">
                 <img src={logo} alt="logo" width="100" />
               </NavLink>
             </div>
 
-            <div className="relative z-50">
+            {/* <div className="relative z-50">
               <span
                 onClick={openDropdown}
                 onMouseLeave={closeDropdown}
@@ -213,9 +223,52 @@ export default function Header() {
                   </ul>
                 </div>
               )}
+            </div> */}
+
+            <div className="relative z-50">
+              <Menu>
+                <MenuHandler>
+                  <Button className="flex cursor-pointer items-center gap-1 rounded-full  border-2 bg-blue-500 p-2 px-7 py-3 text-white focus:outline-none">
+                    <span> Services</span>
+                    <span>
+                      {" "}
+                      <TfiAngleDown />
+                    </span>
+                  </Button>
+                </MenuHandler>
+
+                <MenuList>
+                  <div className="ml-3 mt-5  grid h-[250px] grid-cols-3 gap-5 overflow-y-auto p-5">
+                    {categories.map((category) => (
+                      <div
+                        key={category.id}
+                        className="flex cursor-pointer items-center justify-center gap-1 rounded-2xl border-2 px-2 py-1 hover:bg-black hover:text-white "
+                      >
+                        <NavLink to="/">
+                          <span> {category.icon}</span>
+                          <span> {category.name}</span>
+                        </NavLink>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="mt-10 text-center">
+                    {" "}
+                    <NavLink
+                      to="services"
+                      className="flex items-center justify-center gap-1 text-[16px]"
+                    >
+                      <span> View All</span>
+                      <span>
+                        <IoMdArrowForward />
+                      </span>
+                    </NavLink>
+                  </p>
+                </MenuList>
+              </Menu>
             </div>
 
-            <div className=" flex items-center gap-20 text-[18px]">
+            <div className=" flex items-center gap-5 text-[18px]">
               <NavLink
                 className="cursor-pointer hover:font-bold "
                 to="home"
@@ -258,8 +311,11 @@ export default function Header() {
                 </NavLink>
               </button>
             </div>
+
           </div>
+
         </nav>
+
         <div className="h-[160px] bg-gradient-to-r from-violet-100 to-blue-100 ">
           {" "}
         </div>

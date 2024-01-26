@@ -12,7 +12,7 @@ export default function Testimonies({ testimony }) {
         </div>
         <div>
           <span className="font-bold">{testimony.name}</span>
-          <div className="w-[100%] w-[200px] p-1">
+          <div className="w-[200px] p-1">
             {testimony.testimony.length < 30 ? (
               testimony.testimony
             ) : (
@@ -25,7 +25,7 @@ export default function Testimonies({ testimony }) {
             )}
 
             <Modal.Window name="more">
-              <div className="h-[70vh] w-[200px] overflow-y-auto p-5   md:w-[300px] lg:w-[400px]  ">
+              <div className="h-[70vh] w-[100%] overflow-y-auto lg:p-5     ">
                 <h1 className="font-lg font-bold"> {testimony.name}</h1>
                 <p> {testimony.testimony}</p>
               </div>

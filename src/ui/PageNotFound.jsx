@@ -5,7 +5,7 @@ function PageNotFound() {
 
   return (
     <>
-      <div className="mt-20 flex h-[90vh] flex-col-reverse items-center justify-center p-10">
+      <div className="flex m-auto h-[90vh] flex-col-reverse items-center justify-center p-10">
         <span>
           {" "}
           <button onClick={moveBack} className="text-[26px]">

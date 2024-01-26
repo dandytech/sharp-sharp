@@ -26,7 +26,7 @@ export default function SliderDivs() {
               {" "}
               Get Started
             </NavLink>{" "}
-            as a Service Provider to get latest job from our Potential Customers
+            as a Service Provider to get latest jobs from our Potential Customers
             closest to you.
           </p>
         </div>
