@@ -29,7 +29,7 @@ export default function Providers({ provider }) {
               </>
             )}
             <Modal.Window name="more">
-              <div className="h-[70vh] w-[200px]  overflow-y-auto ">
+              <div className="h-[70vh] w-[100%]   overflow-y-auto ">
                 <h1 className="font-lg font-bold"> {provider.name}</h1>
                 <h1 className="font-lg font-thin text-blue-500">
                   {" "}

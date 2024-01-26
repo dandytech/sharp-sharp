@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../data/logo.png";
+
+
 export default function SmallScreenHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -62,7 +64,7 @@ export default function SmallScreenHeader() {
 
             <li>
               {" "}
-              <NavLink to="/service" onClick={closeMenu}>
+              <NavLink to="/services" onClick={closeMenu}>
                 Services
               </NavLink>
             </li>

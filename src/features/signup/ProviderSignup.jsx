@@ -48,11 +48,26 @@ import { GiConfirmed } from "react-icons/gi";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import "react-phone-number-input/style.css";
+
+import PhoneInput, {
+ 
+  isValidPhoneNumber,
+
+} from "react-phone-number-input";
+
+// import styled from "styled-components";
+
+// const StyledPhoneInput = styled.input`
+//   background-color: gray;
+// `;
+
 export default function ProviderSignup() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [cpassword, setcPassword] = useState("");
   const [showcPassword, setShowcPassword] = useState(false);
+  const [phone, setPhone] = useState();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -62,10 +77,12 @@ export default function ProviderSignup() {
     setShowcPassword(!showcPassword);
   };
   return (
-    <form className="mt-[40px] lg:mt-0">
-      <div className="m-auto justify-center p-10 pt-[10px] text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-20">
+     <div className="h-auto  bg-[url('/src/data/bg2.jpeg')] bg-cover bg-center bg-no-repeat ">
+
+    <form className=" lg:mt-0">
+      <div className="m-auto justify-center  p-5 text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-10">
         {" "}
-        <p className="pb-10 pt-0 text-center font-semibold">
+        <p className="pb-10 pt-0 text-center font-semibold text-white">
           Signup As A Service Provider !
         </p>
         <div className="gap-10 lg:flex">
@@ -153,14 +170,28 @@ export default function ProviderSignup() {
             <span className=" flex h-[45px] w-[10%]  items-center justify-center  border-r text-center text-[30px] text-white  ">
               <IoIosPhonePortrait />
             </span>
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              className=" h-[45px] w-[90%] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
-              placeholder="Phone"
-              required
-            />
+            <span className="relative w-full">
+              <PhoneInput
+                className="PhoneInputInput pl-5 font-semibold"
+                placeholder="Phone number"
+                country="NG"
+                defaultCountry="NG"
+                value={phone}
+                onChange={setPhone}
+                international={true}
+                error={
+                  phone
+                    ? isValidPhoneNumber(phone)
+                      ? undefined
+                      : "Invalid phone number"
+                    : "Phone number required"
+                }
+              />
+
+              <p className="absolute right-0 text-red-500">
+                {phone && isValidPhoneNumber(phone) ? "" : "invalid phone"}
+              </p>
+            </span>
           </div>
         </div>
         <div className="mt-10 gap-10 lg:flex">
@@ -208,7 +239,7 @@ export default function ProviderSignup() {
             </i>
           </div>
         </div>
-        <p className="lg:mt-10">
+        <p className="lg:mt-10 text-white">
           Already Have An Account?{" "}
           <NavLink to="/login" className="font-semibold text-blue-500">
             Login
@@ -219,5 +250,6 @@ export default function ProviderSignup() {
         </button>
       </div>
     </form>
+    </div>
   );
 }

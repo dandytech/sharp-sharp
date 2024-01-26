@@ -1,0 +1,71 @@
+const notifications = [
+  {
+    id: 1,
+    photo: "https://i.pravatar.cc/48?u=4442896764",
+    action: "There a cleaner  service request",
+    time: "2 mins ago",
+  },
+  {
+    id: 2,
+    photo: "",
+    action: "There is a payment made by a client",
+    time: "5 mins ago",
+  },
+  {
+    id: 3,
+    photo: "https://i.pravatar.cc/48?u=44428954764",
+    action: "A client canceled Service Request",
+    time: "7 mins ago",
+  },
+  {
+    id: 4,
+    photo: "https://i.pravatar.cc/48?u=4442896764",
+    action: "There a reschedule service delivery request from a client",
+    time: "10 mins ago",
+  },
+];
+
+import { IoEllipsisVerticalSharp } from "react-icons/io5";
+import Modal from "../Modal";
+
+export default function AllNotifications() {
+  return (
+    <Modal>
+      <div className="mt-10">
+        {notifications.map((notification) => (
+          <div
+            key={notification.id}
+            className=" m-auto mt-3 flex items-center justify-start gap-2 rounded-xl border-2 border-blue-500 p-3  transition-all duration-300 hover:scale-105 lg:w-[70%]"
+          >
+            <div className="flex h-[50px] w-[50px] items-center justify-center rounded-full border-2  ">
+              <img
+                src={notification.photo}
+                alt="photo"
+                className="rounded-full"
+              />
+            </div>
+            <div className="w-[90%] text-left">
+              <p>{notification.action}</p>
+              <p>{notification.time}</p>
+            </div>
+
+            <Modal.Open opens="notify">
+              <div className="w-[3%] cursor-pointer">
+                <IoEllipsisVerticalSharp />
+              </div>
+            </Modal.Open>
+
+            <Modal.Window name="notify">
+              <div className="text-center mt-5  m-auto shadow-2xl border-2 p-5" >
+                <p>Mark as Unread</p>
+                <p className="rounded-xl bg-blue-500  text-white cursor-pointer mt-10">
+                  Ok
+                </p>
+              </div>
+            </Modal.Window>
+          </div>
+        ))}
+      </div>
+    </Modal>
+  );
+}

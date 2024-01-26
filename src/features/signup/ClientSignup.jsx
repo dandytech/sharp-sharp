@@ -6,12 +6,16 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import PhoneInput from "react-phone-number-input";
+
+import "react-phone-number-input/style.css";
+
 export default function ClientSignup() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [cpassword, setcPassword] = useState("");
   const [showcPassword, setShowcPassword] = useState(false);
-
+  const [phone, setPhone] = useState();
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -20,10 +24,12 @@ export default function ClientSignup() {
     setShowcPassword(!showcPassword);
   };
   return (
-    <form className="mt-[40px] lg:mt-0">
-      <div className="m-auto justify-center p-10 pt-[10px] text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-20">
+    <div className="h-auto  bg-[url('/src/data/bg2.jpeg')] bg-cover bg-center bg-no-repeat ">
+
+    <form className=" lg:mt-0">
+      <div className="m-auto justify-center  p-5 text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-10">
         {" "}
-        <p className="pb-10 pt-0 text-center font-semibold">
+        <p className="pb-10 pt-0 text-center font-semibold text-white">
           Signup As A Client !
         </p>
         <div className="gap-10 lg:flex">
@@ -36,7 +42,7 @@ export default function ClientSignup() {
               id="name"
               name="name"
               required
-              className=" w-[90%]rounded-xl h-[45px] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+              className=" h-[45px] w-[90%] rounded-xl bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
               placeholder="Full Name"
             />
           </div>
@@ -76,13 +82,14 @@ export default function ClientSignup() {
             <span className=" flex h-[45px] w-[10%]  items-center justify-center  border-r text-center text-[30px] text-white  ">
               <IoIosPhonePortrait />
             </span>
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              className=" h-[45px] w-[90%] rounded-xl bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
-              placeholder="Phone"
-              required
+            <PhoneInput
+              className="PhoneInputInput pl-5 font-semibold"
+              placeholder="Phone number"
+              country="NG"
+              defaultCountry="NG"
+              value={phone}
+              onChange={setPhone}
+              international={true}
             />
           </div>
         </div>
@@ -131,7 +138,7 @@ export default function ClientSignup() {
             </i>
           </div>
         </div>
-        <p className="lg:mt-10">
+        <p className="lg:mt-10 text-white">
           Already Have An Account?{" "}
           <NavLink to="/login" className="font-semibold text-blue-500">
             Login
@@ -142,5 +149,6 @@ export default function ClientSignup() {
         </button>
       </div>
     </form>
+    </div>
   );
 }

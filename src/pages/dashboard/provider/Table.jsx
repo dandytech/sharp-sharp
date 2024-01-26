@@ -5,6 +5,8 @@ import {
   useMaterialReactTable,
 } from "material-react-table";
 
+import { FaEllipsisVertical } from "react-icons/fa6";
+
 //nested data is ok, see accessorKeys in ColumnDef below
 const data = [
   {
@@ -180,11 +182,12 @@ export default function Table() {
         header: "Service",
         size: 100,
       },
-      // {
-      //   accessorKey: "busaddress",
-      //   header: "Business-Address",
-      //   size: 150,
-      // },
+      {
+        accessorKey: "...",
+        header: "Action",
+        size: 150,
+        cell: () => <FaEllipsisVertical />,
+      },
     ],
     [],
   );
@@ -194,11 +197,14 @@ export default function Table() {
     data, //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
 
     enableRowSelection: true,
+    position: "relative",
+    zIndex: 0,
     //passing the callback function variant. (You should get type hints for all the callback parameters available)
 
     muiSelectCheckboxProps: ({ row }) => ({
       color: "secondary",
       disabled: row.original.isAccountLocked, //access the row data to determine if the checkbox should be disabled
+      fontWeight: row.getIsSelected() ? "bold" : "normal",
     }),
 
     muiTableHeadCellProps: {
@@ -212,7 +218,12 @@ export default function Table() {
           lg: "14px",
           xl: "15px",
         },
+        position: "relative",
+        zIndex: 0,
       },
+
+      position: "relative",
+      zIndex: 0,
     },
     muiTableBodyCellProps: {
       sx: {
@@ -225,6 +236,8 @@ export default function Table() {
           lg: "11px",
           xl: "12px",
         },
+        position: "relative",
+        zIndex: 0,
       },
     },
   });

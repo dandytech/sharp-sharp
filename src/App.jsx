@@ -24,6 +24,14 @@ import ServiceRequests from "./pages/dashboard/provider/ServiceRequests.jsx";
 
 import { DarkModeProvider } from "./context/DarkModeContext";
 
+import ProviderNotifications from "./pages/dashboard/provider/ProviderNotifications";
+import ProviderSettings from "./pages/dashboard/provider/ProviderSettings.jsx";
+import Services from "./pages/Services.jsx";
+import Logout from "./pages/dashboard/provider/Logout.jsx";
+import AdminDashboardLayout from "./pages/dashboard/admin/AdminDashboardLayout.jsx";
+import AdminDashboard from "./pages/dashboard/admin/AdminDashboard.jsx";
+import AdminLogin from "./pages/dashboard/admin/adminLogin.jsx";
+
 export default function App() {
   //animation
   useEffect(() => {
@@ -32,7 +40,6 @@ export default function App() {
   return (
     <>
       <DarkModeProvider>
-        
         <GlobalStyles />
         <BrowserRouter>
           <Routes>
@@ -46,6 +53,8 @@ export default function App() {
               <Route path="signup" element={<SignUp />} />
               <Route path="login" element={<Login />} />
 
+              <Route path="services" element={<Services />} />
+
               <Route path="*" element={<PageNotFound />} />
             </Route>
 
@@ -53,6 +62,7 @@ export default function App() {
             <Route element={<SignupLayot />}>
               <Route path="providerReg" element={<ProviderSignup />} />
               <Route path="clientReg" element={<ClientSignup />} />
+              <Route path="*" element={<PageNotFound />} />
             </Route>
 
             {/* Provider Dashboard */}
@@ -60,8 +70,30 @@ export default function App() {
               <Route index element={<Navigate replace to="dashboard" />} />
 
               <Route path="dashboard" element={<DashboardProvider />} />
+
               <Route path="kyc" element={<KycProvider />} />
               <Route path="services" element={<ServiceRequests />} />
+
+              <Route path="notifications" element={<ProviderNotifications />} />
+
+              <Route path="providerSettings" element={<ProviderSettings />} />
+
+              <Route path="logout" element={<Logout />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Route>
+
+            {/* Admin Route */}
+            <Route path="adminLogin" element={<AdminLogin />} />
+            <Route path="admin" element={<AdminDashboardLayout />}>
+              <Route index element={<Navigate replace to="dashboard" />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="providers" />
+              <Route path="clients" />
+              <Route path="subadmins" />
+              <Route path="categories" />
+              <Route path="notifications" />
+              <Route path="settings" />
+              <Route path="logout" />
               <Route path="*" element={<PageNotFound />} />
             </Route>
           </Routes>

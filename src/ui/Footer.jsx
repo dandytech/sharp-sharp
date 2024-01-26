@@ -113,7 +113,7 @@ export default function Footer() {
                 </p>
                 <p className="mb-3">
                   {" "}
-                  <NavLink to="/privacy">Request Status</NavLink>
+                  <NavLink to="/">FAQs</NavLink>
                 </p>
                 <p className="mb-3">
                   {" "}

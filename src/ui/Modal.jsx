@@ -12,8 +12,11 @@ const StyledModal = styled.div`
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
-  padding: 3.2rem 4rem;
+  padding: 70px 25px 25px 25px;
   transition: all 0.5s;
+  color: var(--text-color);
+
+  
 `;
 
 const Overlay = styled.div`
@@ -26,6 +29,7 @@ const Overlay = styled.div`
   backdrop-filter: blur(4px);
   z-index: 1000;
   transition: all 0.5s;
+  overflow-y: auto;
 `;
 
 const Button = styled.button`
@@ -53,7 +57,7 @@ const Button = styled.button`
   }
 `;
 
-const ModalContext = createContext();
+export const ModalContext = createContext();
 
 export default function Modal({ children }) {
   const [openName, setOpenName] = useState("");
@@ -73,6 +77,16 @@ function Open({ children, opens: opensWindowName }) {
 
   return cloneElement(children, { onClick: () => open(opensWindowName) });
 }
+
+const Close = ({ children }) => {
+  const { close } = useContext(ModalContext);
+
+  return (
+    <div>
+      <button onClick={close}>{children}</button>
+    </div>
+  );
+};
 
 function Window({ children, name }) {
   const { openName, close } = useContext(ModalContext);
@@ -101,3 +115,4 @@ function Window({ children, name }) {
 
 Modal.Open = Open;
 Modal.Window = Window;
+Modal.Close = Close;

@@ -43,7 +43,7 @@ export default function Partners() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   return (
-    <div className="overflow-x-hidden bg-gradient-to-t  from-blue-700 to-blue-900 p-10 pb-20 text-white">
+    <div className="overflow-x-hidden bg-gradient-to-t  from-blue-700 to-blue-900 py-10 pb-20 text-white">
       <div className="m-auto flex w-[70%]">
         <ReactSimplyCarousel
           activeSlideIndex={activeSlideIndex}
