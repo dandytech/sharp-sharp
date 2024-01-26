@@ -30,7 +30,7 @@ import Services from "./pages/Services.jsx";
 import Logout from "./pages/dashboard/provider/Logout.jsx";
 import AdminDashboardLayout from "./pages/dashboard/admin/AdminDashboardLayout.jsx";
 import AdminDashboard from "./pages/dashboard/admin/AdminDashboard.jsx";
-import AdminLogin from "./pages/dashboard/admin/adminLogin.jsx";
+import AdminLogin from "./pages/dashboard/admin/AdminLogin.jsx";
 
 export default function App() {
   //animation
