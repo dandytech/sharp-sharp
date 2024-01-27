@@ -39,33 +39,41 @@ export default function NavbarMobileLayout({ hideNav }) {
     <div className="navDashboard fixed left-0 mt-10 h-auto w-auto p-10 shadow-xl">
       <div className="flex gap-2">
         <div className="text-[24px]">
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="dashboard" activeClassName="active">
+          <div className="mb-5">
+            <NavLink to="dashboard" activeClassName="active" onClick={hideNav}>
               <MdDashboard />
             </NavLink>
           </div>
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="kyc" activeClassName="active">
+          <div className="mb-5">
+            <NavLink to="kyc" activeClassName="active" onClick={hideNav}>
               <FaUserPlus />
             </NavLink>
           </div>
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="services" activeClassName="active">
+          <div className="mb-5">
+            <NavLink to="services" activeClassName="active" onClick={hideNav}>
               <GrServices />
             </NavLink>
           </div>
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="payments" activeClassName="active">
+          <div className="mb-5">
+            <NavLink to="payments" activeClassName="active" onClick={hideNav}>
               <MdOutlinePayments />
             </NavLink>
           </div>
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="notifications" activeClassName="active">
+          <div className="mb-5">
+            <NavLink
+              to="notifications"
+              activeClassName="active"
+              onClick={hideNav}
+            >
               <IoIosNotifications />
             </NavLink>
           </div>
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="providerSettings" activeClassName="active">
+          <div className="mb-5">
+            <NavLink
+              to="providerSettings"
+              activeClassName="active"
+              onClick={hideNav}
+            >
               <IoSettingsSharp />
             </NavLink>
           </div>
@@ -76,23 +84,23 @@ export default function NavbarMobileLayout({ hideNav }) {
           </div>
         </div>
         <div className="text-[16px]">
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="dashboard" activeClassName="active">
+          <div className="mb-5">
+            <NavLink to="dashboard" activeClassName="active" onClick={hideNav}>
               Dashboard
             </NavLink>
           </div>
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="kyc" activeClassName="active">
+          <div className="mb-5">
+            <NavLink to="kyc" activeClassName="active" onClick={hideNav}>
               KYC
             </NavLink>
           </div>
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="services" activeClassName="active">
+          <div className="mb-5 ">
+            <NavLink to="services" activeClassName="active" onClick={hideNav}>
               Service_Requests
             </NavLink>
           </div>
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="payments" activeClassName="active">
+          <div className="mb-5">
+            <NavLink to="payments" activeClassName="active" onClick={hideNav}>
               Payments
             </NavLink>
           </div>
@@ -105,8 +113,12 @@ export default function NavbarMobileLayout({ hideNav }) {
               Notifications
             </NavLink>
           </div>
-          <div className="mb-5" onClick={hideNav}>
-            <NavLink to="providerSettings" activeClassName="active">
+          <div className="mb-5">
+            <NavLink
+              to="providerSettings"
+              activeClassName="active"
+              onClick={hideNav}
+            >
               Settings
             </NavLink>
           </div>
