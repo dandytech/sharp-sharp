@@ -59,10 +59,9 @@ export default function BankInfo({ handleTabClick }) {
 
   //Phone number API
   const [bank, setBank] = useState(null);
- 
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
 
   //fetch baks on Load
   useEffect(() => {
@@ -92,7 +91,6 @@ export default function BankInfo({ handleTabClick }) {
     }
   }, [actno]);
 
-
   //validate if Account Number exist
   const fetchBankInfo = async () => {
     try {
@@ -114,8 +112,7 @@ export default function BankInfo({ handleTabClick }) {
       // console.log(data);
       // console.log(data.account_name);
 
-     setActname(data.account_name)
-
+      setActname(data.account_name);
     } catch (error) {
       setError(error);
     } finally {
@@ -222,7 +219,7 @@ export default function BankInfo({ handleTabClick }) {
         </button>
 
         <button
-          className="5ext-white my-4 rounded-full border-2 bg-blue-500 px-7 py-3 hover:bg-black lg:my-20  "
+          className="5ext-white my-4 rounded-full border-2 bg-blue-500 px-7 py-3 hover:bg-black hover:text-white lg:my-20  "
           onClick={handleSubmit}
         >
           Submit
