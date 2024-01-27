@@ -44,7 +44,7 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
   return (
     <div className="dashHeader fixed top-0 z-[1000] flex h-[70px] w-[100%] items-center  justify-between px-10 py-2 shadow-2xl">
       
-      <div className="flex w-[20%] items-center justify-between  text-[24px] md:w-[30%] lg:w-[15%]">
+      <div className="flex w-30%] items-center justify-between  text-[24px] md:w-[30%] lg:w-[15%]">
         <span
           className="cursor-pointer text-[35px] lg:hidden"
           onClick={handleHideMenu}
@@ -68,7 +68,7 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
       </div>
 
      
-      <div className="flex  w-[100%] md:w-[40%] items-center justify-between gap-5 text-[28px] lg:w-[30%]">
+      <div className="flex  w-[75%] md:w-[40%] items-center justify-between gap-5 text-[28px] lg:w-[30%]">
         <div>
           <Menu>
             <MenuHandler className="relative text-[35px] text-[bg-text]  shadow-none">
