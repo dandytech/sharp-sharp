@@ -50,13 +50,13 @@ export default function AdminMobileNavMenus({ hideNav }) {
 
   return (
     <Card
-      className={`lg:hidden ${
+      className={`absolute z-[1000] lg:hidden ${
         hideNav
           ? "hidden"
-          : "bg-style text-bg-text absolute left-0 top-0 mt-[98px] h-auto pb-0 transition-transform ease-in-out rounded-none rounded-b-xl"
+          : "bg-style text-bg-text fixed left-0 top-0 z-[1000] mt-[98px] h-auto rounded-none rounded-b-xl pb-0 "
       }`}
     >
-      <div className="mb-0 h-[120px] px-4">
+      <div className="z-[1000] mb-0 h-[120px] px-4">
         <Typography variant="h5" color="blue-gray">
           <span className={`${hideNav ? "hidden" : ""}`}>
             <NavLink to="/">
@@ -88,7 +88,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
               />
             </span>
           }
-          className="overflow-hidden"
+          className="z-[1000] overflow-hidden"
         >
           <ListItem className="p-0" selected={open === 1}>
             <AccordionHeader
@@ -141,16 +141,16 @@ export default function AdminMobileNavMenus({ hideNav }) {
         <Accordion
           open={open === 2}
           icon={
-            <span className={`${hideNav ? "hidden" : ""}`}>
+            <span className={`${hideNav ? "hidden" : "z-[1000]"}`}>
               <ChevronDownIcon
                 strokeWidth={2.5}
-                className={`mx-auto h-4 w-4 transition-transform ${
+                className={`z-[1000] mx-auto h-4 w-4 transition-transform ${
                   open === 2 ? "rotate-180" : ""
                 }`}
               />
             </span>
           }
-          className="overflow-hidden"
+          className="z-[1000] overflow-hidden"
         >
           <ListItem className="p-0" selected={open === 2}>
             <AccordionHeader

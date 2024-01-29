@@ -3,7 +3,7 @@ import Modal from "../../ui/Modal";
 export default function Providers({ provider }) {
   return (
     <Modal>
-      <div className="slider gap-10 p-5 lg:flex">
+      <div className="slider gap-10 p-5 lg:flex ">
         <div className=" p-5 pb-10 flex items-center flex-col lg:w-[30%]">
           <img
             src={provider.photo}
@@ -29,7 +29,7 @@ export default function Providers({ provider }) {
               </>
             )}
             <Modal.Window name="more">
-              <div className="h-[70vh] w-[100%]   overflow-y-auto ">
+              <div className="h-[70vh] w-[100%] p-5  overflow-y-auto ">
                 <h1 className="font-lg font-bold"> {provider.name}</h1>
                 <h1 className="font-lg font-thin text-blue-500">
                   {" "}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import AllNotifications from "../../../ui/adminNotifications/AllNotifications";
 import UnreadNotifications from "../../../ui/adminNotifications/UnreadNotifications";
 
-export default function ProvidersNotifications() {
+export default function AdminNotifications() {
   const [activeTab, setActiveTab] = useState(1);
 
   const handleTabClick = (tabNumber) => {
@@ -10,16 +10,15 @@ export default function ProvidersNotifications() {
   };
 
   return (
-    <div className="servicebg mt-[80px] h-[100vh] w-[100%] overflow-y-auto shadow-2xl ">
-      <div className="m-auto justify-center p-3 text-center ">
-        {" "}
-        <p className="mb-10 pt-5 text-center text-[24px] font-bold lg:pb-10">
-          Notifications !!!
+    <div className="servicebg z-0 h-[100vh] overflow-y-auto text-center lg:w-[85%]">
+      <div className="justify-center p-3 text-center">
+        <p className="mb-10 pt-10 text-center text-[24px] font-bold lg:pb-10 lg:pt-20">
+          Admin Notifications !!!
         </p>
         <div>
           <div className="tab-buttons">
             <button
-              className={activeTab === 1 ? "active relative" : " relative"}
+              className={activeTab === 1 ? "active " : " "}
               onClick={() => handleTabClick(1)}
             >
               All Notifications
@@ -42,7 +41,6 @@ export default function ProvidersNotifications() {
           <div className="tab-content">
             {activeTab === 1 && (
               <p>
-                {" "}
                 <AllNotifications />
               </p>
             )}

@@ -81,10 +81,10 @@ export default function Login() {
         </form>
 
         <Modal.Window name="forgotpassword">
-          <form className="w-[300px]"> 
+          <form className="w-[300px] p-10"> 
             <p className="font-semibold">FORGOT PASSWORD?</p>
             <p className="py-7">
-              <input className="border-2 w-[300px] border-gray-200 px-3 py-1 rounded-lg"
+              <input className="border-2 w-full border-gray-200 px-3 py-1 rounded-lg"
                 type="email"
                 name="email"
                 id="email"

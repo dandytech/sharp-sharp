@@ -6,18 +6,22 @@ import { CiCamera } from "react-icons/ci";
 export default function MyProfile() {
   return (
     <Modal>
-      <div className="rounded-xl">
+      <div className="rounded-xl  p-3 ">
         <p className="mb-3 flex font-bold">My Profile</p>
 
         <div className="grid items-center justify-center gap-3 border-2 border-gray-300 p-5 lg:flex   lg:justify-start lg:p-10">
-          <div className="relative z-0 grid h-[100px] w-[100px] items-center justify-center rounded-full bg-black text-[30px] text-white">
-            <spam> PD</spam>
-
-            <span className="absolute bottom-0 right-0 z-50 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-[22px] text-black">
+          
+            <div className="grid relative h-[100px] w-[100px] items-center justify-center rounded-full bg-black text-[30px] text-white z-0">
+              <spam> PD</spam>
+             
+              <span className="absolute flex justify-center items-center w-8 h-8 right-0 bottom-0 z-50 text-black bg-gray-200 rounded-full text-[22px]">
               <CiCamera />
-              <input type="file" name="" id="" className="absolute opacity-0" />
+              <input type="file" name="" id="" className="opacity-0 absolute" />
             </span>
-          </div>
+
+            </div>
+           
+          
 
           <div className="text-left">
             <p className="font-semibold">Prince Daniel</p>{" "}
@@ -26,7 +30,7 @@ export default function MyProfile() {
         </div>
 
         <div className="border-2 border-gray-300 p-3 lg:p-10">
-          <div className="mb-5 flex items-center justify-between gap-1 font-semibold">
+          <div className="mb-5 flex gap-1 items-center justify-between font-semibold">
             <p>Personal Information</p>
             <Modal.Open opens="profile">
               <button className="flex items-center">

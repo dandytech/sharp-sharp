@@ -48,7 +48,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
           : "bg-style text-bg-text fixed right-0 top-0 flex  h-[100px]  items-center justify-between py-2 shadow-2xl lg:w-[calc(100%-250px)]"
       }`}
     >
-      <div className="flex w-[30%] items-center  justify-between text-[24px] md:w-[30%] lg:w-[40%]">
+      <div className="flex w-[20%] items-center  justify-between text-[24px] md:w-[55%] lg:w-[30%]">
         <span
           className="cursor-pointer text-[35px] lg:hidden"
           onClick={handleHideNav}
@@ -63,6 +63,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
           <FaAlignCenter />
         </span>
 
+        <span className="hidden md:block">Admin Dashboard</span>
         <span className="hidden md:block lg:hidden ">
           <NavLink to="/">
             <img src={logo} alt="logo" width="80" to="/" />
@@ -70,7 +71,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
         </span>
       </div>
 
-      <div className="flex  w-[100%] items-center justify-between gap-5 text-[28px] md:w-[50%] lg:w-[35%]">
+      <div className="flex  w-[100%] items-center justify-between gap-5 text-[28px] md:w-[40%] lg:w-auto">
         <div>
           <Menu>
             <MenuHandler className="relative text-[35px] text-[bg-text]  shadow-none">
@@ -134,10 +135,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
             <MenuList>
               <MenuItem>
                 {" "}
-                <NavLink
-                  to="providerSettings"
-                  className="flex  items-center gap-1"
-                >
+                <NavLink to="settings" className="flex  items-center gap-1">
                   <IoSettingsSharp />
                   Settings{" "}
                 </NavLink>

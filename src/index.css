@@ -159,7 +159,7 @@
 @media screen and (max-width: 768px) {
   .tab-buttons {
     display: block;
-    width: 100%;
+    width: 70%;
   }
 }
 

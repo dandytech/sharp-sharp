@@ -31,6 +31,9 @@ import Logout from "./pages/dashboard/provider/Logout.jsx";
 import AdminDashboardLayout from "./pages/dashboard/admin/AdminDashboardLayout.jsx";
 import AdminDashboard from "./pages/dashboard/admin/AdminDashboard.jsx";
 import AdminLogin from "./pages/dashboard/admin/AdminLogin.jsx";
+import AdminNotifications from "./pages/dashboard/admin/adminNotifications.jsx";
+import AdminSettings from "./pages/dashboard/admin/AdminSettings.jsx";
+import AdminServiceCategories from "./pages/dashboard/admin/AdminServiceCategories.jsx";
 
 export default function App() {
   //animation
@@ -90,9 +93,9 @@ export default function App() {
               <Route path="providers" />
               <Route path="clients" />
               <Route path="subadmins" />
-              <Route path="categories" />
-              <Route path="notifications" />
-              <Route path="settings" />
+              <Route path="categories" element={<AdminServiceCategories />} />
+              <Route path="notifications" element={<AdminNotifications />} />
+              <Route path="settings" element={<AdminSettings />} />
               <Route path="logout" />
               <Route path="*" element={<PageNotFound />} />
             </Route>

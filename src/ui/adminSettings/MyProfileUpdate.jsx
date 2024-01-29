@@ -16,7 +16,7 @@ export default function MyProfileUpdate() {
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <div className="overflow-y-auto text-center  mb-10 p-5 py-10">
+      <div className="overflow-y-auto text-center mb-20 p-5">
         <div className="w-[360px] border-gray-300 lg:p-10 lg:w-[800px]">
           
 
