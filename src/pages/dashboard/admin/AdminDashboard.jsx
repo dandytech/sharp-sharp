@@ -212,7 +212,7 @@ export default function AdminDashboard() {
                     </div>
                     <Tooltip content="View details">
                       <div className="px-5">
-                        <Modal.Open opens="details">
+                        <Modal.Open opens="requestdetails">
                           <button className="shadow-none">
                             <FaEye />
                           </button>
@@ -220,9 +220,11 @@ export default function AdminDashboard() {
                       </div>
                     </Tooltip>
                   </div>
-                  <Modal.Window name="details">
+
+                  <Modal.Window name="requestdetails">
                     <AdminViewRecentRequests serviceRequest={serviceRequest} />
                   </Modal.Window>
+
                 </div>
               ))}
             </div>

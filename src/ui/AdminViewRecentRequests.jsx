@@ -1,8 +1,8 @@
-import Modal from "./Modal";
+
 
 export default function AdminViewRecentRequests({ serviceRequest }) {
   return (
-    <Modal>
+    
       <div className="w-[300px] overflow-y-auto overflow-x-hidden border-l-2 px-5 md:mt-0 md:w-full md:px-5  lg:mt-0 lg:w-full lg:px-5">
         <p className="mb-4 underline">REQUEST DETAILS</p>
         <p>
@@ -47,7 +47,7 @@ export default function AdminViewRecentRequests({ serviceRequest }) {
           </p>
         </div>
       </div>
-      {/* <Modal.Close>close</Modal.Close> */}
-    </Modal>
+    
+ 
   );
 }

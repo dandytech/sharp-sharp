@@ -31,7 +31,7 @@ import Logout from "./pages/dashboard/provider/Logout.jsx";
 import AdminDashboardLayout from "./pages/dashboard/admin/AdminDashboardLayout.jsx";
 import AdminDashboard from "./pages/dashboard/admin/AdminDashboard.jsx";
 import AdminLogin from "./pages/dashboard/admin/AdminLogin.jsx";
-import AdminNotifications from "./pages/dashboard/admin/adminNotifications.jsx";
+import AdminNotifications from "./pages/dashboard/admin/AdminNotifications.jsx";
 import AdminSettings from "./pages/dashboard/admin/AdminSettings.jsx";
 import AdminServiceCategories from "./pages/dashboard/admin/AdminServiceCategories.jsx";
 
