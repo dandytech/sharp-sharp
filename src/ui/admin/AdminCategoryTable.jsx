@@ -30,7 +30,7 @@ export default function AdminCategoryTable({ data, columns }) {
   //Download Table
   const downloadAsPDF = () => {
     const doc = new jsPDF();
-    doc.text("SHARP APP SERVICE CATEGORY DETAILS", 20, 10);
+    doc.text("SHARP APP SERVICE CATEGORY LIST", 20, 10);
     doc.autoTable({
       head: [["S/N", "Category", "Charge", "Description"]],
       body: data.map((item) => [
@@ -75,7 +75,7 @@ export default function AdminCategoryTable({ data, columns }) {
             {data.map((row, index) => (
               <TableRow key={index}>
                 {columns.map((column, colIndex) => (
-                  <TableCell className="bg-style text-[bg-text]" key={colIndex}>
+                  <TableCell className="bg-style text-white" key={colIndex}>
                     {row[column.accessorKey]}
                   </TableCell>
                 ))}
