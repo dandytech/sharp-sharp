@@ -7,6 +7,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { IoMdArrowUp } from "react-icons/io";
 import { useEffect, useState } from "react";
 import logo2 from "../data/logo2.png";
+import { HashLink } from "react-router-hash-link";
 
 export default function Footer() {
   const [visible, setVisible] = useState(false);
@@ -79,7 +80,7 @@ export default function Footer() {
                 </p>
                 <p className="mb-3">
                   {" "}
-                  <NavLink to="/about">About Us</NavLink>
+                  <HashLink to="home#about">About Us</HashLink>
                 </p>
                 <p className="mb-3">
                   {" "}
@@ -95,7 +96,7 @@ export default function Footer() {
                 </p>
                 <p className="mb-3">
                   {" "}
-                  <NavLink to="/sevices">Services</NavLink>
+                  <NavLink to="/services">Services</NavLink>
                 </p>
               </div>
               <div className="text-left">
@@ -105,7 +106,7 @@ export default function Footer() {
                 </p>
                 <p className="mb-3">
                   {" "}
-                  <NavLink to="/privacy">Privacy</NavLink>
+                  <NavLink to="/">Privacy</NavLink>
                 </p>
                 <p className="mb-3">
                   {" "}
@@ -113,7 +114,12 @@ export default function Footer() {
                 </p>
                 <p className="mb-3">
                   {" "}
-                  <NavLink to="/">FAQs</NavLink>
+                  <HashLink to="home#faq" className="hidden lg:block">
+                    FAQs
+                  </HashLink>
+                  <HashLink to="home#faqMobile" className="lg:hidden">
+                    FAQs
+                  </HashLink>
                 </p>
                 <p className="mb-3">
                   {" "}
@@ -146,7 +152,7 @@ export default function Footer() {
                     type="email"
                     id="name"
                     name="name"
-                    className=" h-[45px] w-[100%] bg-gray-800 px-5 rounded-xl font-semibold text-white focus:border-2 focus:border-white "
+                    className=" h-[45px] w-[100%] rounded-xl bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
                     placeholder="Email"
                   />
                   <button className=" flex h-[45px]  w-[20%] items-center  justify-center rounded-xl border-r text-center text-[30px]">

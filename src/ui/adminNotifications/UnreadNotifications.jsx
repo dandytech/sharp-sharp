@@ -27,7 +27,7 @@ export default function UnreadNotifications() {
             key={notification.id}
             className=" m-auto mt-3 flex items-center justify-start gap-2 rounded-xl border-2 border-blue-500 p-3  transition-all duration-300 hover:scale-105 lg:w-[70%]"
           >
-            <div className="flex h-[50px] w-[50px] items-center justify-center rounded-full border-2  ">
+            <div className="flex h-[50px] z-0 w-[50px] items-center justify-center rounded-full border-2  ">
               <img
                 src={notification.photo}
                 alt="photo"

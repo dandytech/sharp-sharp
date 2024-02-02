@@ -31,17 +31,17 @@ import Modal from "../Modal";
 export default function AllNotifications() {
   return (
     <Modal>
-      <div className="z-0 mt-10">
+      <div className="mt-10 lg:mt-0">
         {notifications.map((notification) => (
           <div
             key={notification.id}
-            className=" left-0 z-0  m-auto mt-3 flex items-center justify-start gap-2 rounded-xl border-2  border-blue-500 p-3 transition-all duration-300 hover:scale-105 lg:w-[70%]"
+            className="z-0  m-auto mt-3 flex items-center justify-start gap-2 rounded-xl border-2  border-blue-500 p-3 transition-all duration-300 hover:scale-105 lg:w-[70%]"
           >
             <div className="z-0 flex h-[50px] w-[50px] items-center justify-center rounded-full border-2 ">
               <img
                 src={notification.photo}
                 alt="photo"
-                className=" rounded-full"
+                className=" rounded-full z-0"
               />
             </div>
             <div className="w-[90%] text-left">

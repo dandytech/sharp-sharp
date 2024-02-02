@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
+import playstore from "../../../src/data/playstore.png";
+import appstore from "../../../src/data/appstore.png";
+import Marquee from "react-fast-marquee";
 
 export default function SliderDivs() {
   //Carousel Slider
@@ -26,8 +29,8 @@ export default function SliderDivs() {
               {" "}
               Get Started
             </NavLink>{" "}
-            as a Service Provider to get latest jobs from our Potential Customers
-            closest to you.
+            as a Service Provider to get latest jobs from our Potential
+            Customers closest to you.
           </p>
         </div>
 
@@ -57,6 +60,20 @@ export default function SliderDivs() {
 
         {/* Add more slides as needed */}
       </Slider>
+      <div className="flex items-center justify-between px-3 py-1">
+        <span>
+          <img src={playstore} alt="PlaySotre" width="100" />
+        </span>{" "}
+        <span className="font-semibold text-blue-500">
+          <Marquee>
+            Sharp, Best & Affordable!{" "}
+          </Marquee>
+        </span>
+        <span>
+          {" "}
+          <img src={appstore} alt="AppStore" width="100" />
+        </span>
+      </div>
     </div>
   );
 }

@@ -186,6 +186,7 @@
 
 .tab-content {
   margin-top: 10px;
+  z-index: 0 !important;
 }
 
 .PhoneInputInput {

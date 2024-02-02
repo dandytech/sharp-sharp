@@ -63,7 +63,6 @@ export default function adminLogin() {
             <div className="flex items-center justify-between">
               {" "}
               <label>Password</label>
-              <label>Forgot Password?</label>
             </div>
             <div className="flex h-10 items-center justify-between border-2">
               <span className="px-2 py-1 text-2xl">

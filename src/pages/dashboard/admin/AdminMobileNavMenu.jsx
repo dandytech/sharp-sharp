@@ -141,7 +141,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
         <Accordion
           open={open === 2}
           icon={
-            <span className={`${hideNav ? "hidden" : "z-[1000]"}`}>
+            <span className={`${hideNav ? "hidden" : ""}`}>
               <ChevronDownIcon
                 strokeWidth={2.5}
                 className={`z-[1000] mx-auto h-4 w-4 transition-transform ${

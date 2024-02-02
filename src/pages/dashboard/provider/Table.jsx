@@ -5,10 +5,19 @@ import {
   useMaterialReactTable,
 } from "material-react-table";
 
-import { FaEllipsisVertical } from "react-icons/fa6";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import {
+  Button,
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
+} from "@material-tailwind/react";
+import Modal from "../../../ui/Modal";
+import ViewDetails from "./ViewDetails";
 
 //nested data is ok, see accessorKeys in ColumnDef below
-const data = [
+export const data = [
   {
     id: 1,
     name: {
@@ -19,6 +28,8 @@ const data = [
     city: "East Daphne",
     state: "Kentucky",
     service: "Web Developer",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
     // busaddress: "2 metalbox Rd, Ikeja Lagos",
   },
   {
@@ -31,7 +42,8 @@ const data = [
     city: "Columbus",
     state: "Ohio",
     service: "Shoe-maker",
-    // busaddress: "2 Ogba Rd, Ikeja Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
   {
     id: 3,
@@ -43,7 +55,8 @@ const data = [
     city: "South Linda",
     state: "West Virginia",
     service: "Cook",
-    // busaddress: "5 College Rd, Ikeja Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
   {
     id: 4,
@@ -55,7 +68,8 @@ const data = [
     city: "Lincoln",
     state: "Nebraska",
     service: "Tailor",
-    //busaddress: "Ogun Exp. way, Ikeja Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
   {
     id: 5,
@@ -67,7 +81,8 @@ const data = [
     city: "Charleston",
     state: "South Carolina",
     service: "Driver",
-    //busaddress: "PMT Ojota Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
   {
     id: 6,
@@ -79,7 +94,8 @@ const data = [
     city: "Ikeja",
     state: "Lagos Nigeria",
     service: "Web Developer",
-    //busaddress: "PMT Ojota Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
   {
     id: 7,
@@ -91,7 +107,8 @@ const data = [
     city: "Ikeja",
     state: "Lagos Nigeria",
     service: "Web Developer",
-    //busaddress: "PMT Ojota Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
   {
     id: 8,
@@ -103,7 +120,8 @@ const data = [
     city: "Ikeja",
     state: "Lagos Nigeria",
     service: "Web Developer",
-    //busaddress: "PMT Ojota Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
   {
     id: 9,
@@ -115,7 +133,8 @@ const data = [
     city: "Ikeja",
     state: "Lagos Nigeria",
     service: "Web Developer",
-    //busaddress: "PMT Ojota Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
   {
     id: 10,
@@ -127,7 +146,8 @@ const data = [
     city: "Ikeja",
     state: "Lagos Nigeria",
     service: "Mobile Developer",
-    //busaddress: "PMT Ojota Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
   {
     id: 11,
@@ -139,11 +159,18 @@ const data = [
     city: "Ikeja",
     state: "Lagos Nigeria",
     service: "UI/UX Designer",
-    //busaddress: "PMT Ojota Lagos",
+    phone: "+234 7087876765",
+    email: "name@gmail.com",
   },
 ];
 
 export default function Table() {
+  // const [selected, setSelected] = useState();
+
+  // const handleOpenModal = (id) => {
+  //   setSelected(item);
+  // };
+
   //should be memoized or stable
   const columns = useMemo(
     () => [
@@ -155,38 +182,49 @@ export default function Table() {
       {
         accessorKey: "name.firstName", //access nested data with dot notation
         header: "First Name",
-        size: 100,
+        size: 170,
       },
       {
         accessorKey: "name.lastName",
         header: "Last Name",
-        size: 100,
+        size: 170,
       },
       {
         accessorKey: "address", //normal accessorKey
         header: "Address",
-        size: 150,
+        size: 180,
       },
-      {
-        accessorKey: "city",
-        header: "City",
-        size: 100,
-      },
-      {
-        accessorKey: "state",
-        header: "State",
-        size: 100,
-      },
+
       {
         accessorKey: "service",
         header: "Service",
-        size: 100,
+        size: 180,
       },
       {
-        accessorKey: "...",
+        accessorKey: "id",
         header: "Action",
-        size: 150,
-        cell: () => <FaEllipsisVertical />,
+        size: 130,
+        Cell: ({ renderedCellValue, row }) => (
+          <Menu>
+            <MenuHandler>
+              <Button className="text-black shadow-none">
+                {" "}
+                <BsThreeDotsVertical />
+              </Button>
+            </MenuHandler>
+            <MenuList>
+              <Modal.Open opens="detail">
+                <MenuItem>View Details</MenuItem>
+              </Modal.Open>
+              {/* <MenuItem>Menu Item 2</MenuItem>
+    <MenuItem>Menu Item 3</MenuItem> */}
+            </MenuList>
+
+            <Modal.Window name="detail">
+              <ViewDetails details={row.id} />
+            </Modal.Window>
+          </Menu>
+        ),
       },
     ],
     [],
@@ -199,6 +237,9 @@ export default function Table() {
     enableRowSelection: true,
     position: "relative",
     zIndex: 0,
+
+    enableColumnResizing: true,
+    enableRowPinning: true,
     //passing the callback function variant. (You should get type hints for all the callback parameters available)
 
     muiSelectCheckboxProps: ({ row }) => ({
@@ -211,13 +252,15 @@ export default function Table() {
       //easier way to create media queries, no useMediaQuery hook needed.
       sx: {
         fontWeight: "normal",
+
         fontSize: {
           xs: "11px",
           sm: "12px",
           md: "13px",
-          lg: "14px",
+          lg: "16px",
           xl: "15px",
         },
+        backgroundColor: "#f0f0f0", // Add background color
         position: "relative",
         zIndex: 0,
       },
@@ -236,15 +279,24 @@ export default function Table() {
           lg: "11px",
           xl: "12px",
         },
+        background: "bg-style", // Add background color
+        color: "bg-text",
         position: "relative",
         zIndex: 0,
       },
     },
+
+    mrtTheme: (theme) => ({
+      //baseBackgroundColor: '',
+      draggingBorderColor: theme.palette.secondary.main,
+    }),
   });
 
   return (
-    <div>
-      <MaterialReactTable table={table} />
-    </div>
+    <Modal>
+      <div>
+        <MaterialReactTable table={table} />
+      </div>
+    </Modal>
   );
 }

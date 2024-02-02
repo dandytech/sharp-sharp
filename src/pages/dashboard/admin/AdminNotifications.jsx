@@ -45,7 +45,7 @@ export default function AdminNotifications() {
               </p>
             )}
             {activeTab === 2 && (
-              <p className="mt-10">
+              <p className="mt-10 lg:mt-0">
                 <UnreadNotifications />
               </p>
             )}

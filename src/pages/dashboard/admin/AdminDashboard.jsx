@@ -62,18 +62,91 @@ export const serviceRequests = [
     deliveryTime: "8:00am Sat. January 13, 2024",
   },
 ];
+const data = [
+  {
+    name: "January",
+    completedService: 4000,
+    canceledService: 240,
+    amt: 2400,
+  },
+  {
+    name: "February",
+    completedService: 3400,
+    canceledService: 139,
+    amt: 24210,
+  },
+  {
+    name: "March",
+    completedService: 20300,
+    canceledService: 948,
+    amt: 25290,
+  },
+  {
+    name: "April",
+    completedService: 27480,
+    canceledService: 108,
+    amt: 20600,
+  },
+  {
+    name: "May",
+    completedService: 1890,
+    canceledService: 48,
+    amt: 2181,
+  },
+  {
+    name: "June",
+    completedService: 23490,
+    canceledService: 3890,
+    amt: 2500,
+  },
+  {
+    name: "July",
+    completedService: 3490,
+    canceledService: 493,
+    amt: 23100,
+  },
+  {
+    name: "August",
+    completedService: 340,
+    canceledService: 30,
+    amt: 23400,
+  },
+  {
+    name: "September",
+    completedService: 34090,
+    canceledService: 4090,
+    amt: 23400,
+  },
+  {
+    name: "October",
+    completedService: 35990,
+    canceledService: 40,
+    amt: 13500,
+  },
+  {
+    name: "November",
+    completedService: 14890,
+    canceledService: 3050,
+    amt: 124100,
+  },
+  {
+    name: "December",
+    completedService: 390,
+    canceledService: 160,
+    amt: 22100,
+  },
+];
 
 import { BsGraphUpArrow } from "react-icons/bs";
 
 import { VscGraph } from "react-icons/vsc";
 
 import Modal from "../../../ui/Modal";
-import { Tooltip } from "@material-tailwind/react";
-import { IoLocationSharp } from "react-icons/io5";
-import { FaEye } from "react-icons/fa";
-import { MdMedicalServices } from "react-icons/md";
-import { RiUserSearchFill } from "react-icons/ri";
-import AdminViewRecentRequests from "../../../ui/AdminViewRecentRequests";
+
+import AdminViewRecentRequests from "../../../ui/admin/AdminViewRecentRequests";
+
+import AdminAreaChart from "../../../ui/admin/AdminAreaChart";
+import AdminPieChart from "../../../ui/admin/AdminPieChart";
 
 export default function AdminDashboard() {
   return (
@@ -176,64 +249,22 @@ export default function AdminDashboard() {
 
             <div className="h-[240px] space-y-5 overflow-y-auto p-5">
               {serviceRequests.map((serviceRequest, index) => (
-                <div
+                <AdminViewRecentRequests
+                  serviceRequest={serviceRequest}
                   key={index}
-                  className={`space-y-1 border-l-4 border-l-blue-500 px-2 transition-transform  duration-300 ease-in hover:scale-110 hover:bg-blue-500 hover:p-3  hover:text-white ${
-                    serviceRequest?.id == 2
-                      ? "border-l-green-500 "
-                      : serviceRequest?.id == 4
-                        ? "border-l-yellow-500 "
-                        : ""
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="flex items-center  justify-start gap-2">
-                        <span>
-                          <RiUserSearchFill />
-                        </span>
-                        <span>
-                          {serviceRequest?.name.firstName}{" "}
-                          {serviceRequest.name.lastName}
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-start gap-2">
-                        <span>
-                          <MdMedicalServices />
-                        </span>
-                        <span>{serviceRequest?.service}</span>
-                      </div>
-                      <div className="flex items-center justify-start gap-2">
-                        <span>
-                          <IoLocationSharp />
-                        </span>
-                        <span>{serviceRequest?.address}</span>
-                      </div>
-                    </div>
-                    <Tooltip content="View details">
-                      <div className="px-5">
-                        <Modal.Open opens="requestdetails">
-                          <button className="shadow-none">
-                            <FaEye />
-                          </button>
-                        </Modal.Open>
-                      </div>
-                    </Tooltip>
-                  </div>
-
-                  <Modal.Window name="requestdetails">
-                    <AdminViewRecentRequests serviceRequest={serviceRequest} />
-                  </Modal.Window>
-
-                </div>
+                />
               ))}
             </div>
           </div>
         </div>
 
-        <div className="mt-10 items-center justify-between space-y-5 gap-5 lg:flex">
-          <div className="p-5 shadow-md lg:w-[70%]">BarChart</div>
-          <div className="p-5  shadow-md lg:w-[30%]">Pie Chart</div>
+        <div className="mt-10 items-center justify-between gap-5 space-y-5 lg:flex">
+          <div className="p-5 shadow-md lg:w-[70%]">
+            <AdminAreaChart data={data} />
+          </div>
+          <div className="p-5  shadow-md lg:w-[30%]">
+            <AdminPieChart data={data} />
+          </div>
         </div>
       </div>
     </Modal>
