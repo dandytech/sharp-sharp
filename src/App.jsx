@@ -34,6 +34,9 @@ import AdminLogin from "./pages/dashboard/admin/AdminLogin.jsx";
 import AdminNotifications from "./pages/dashboard/admin/AdminNotifications.jsx";
 import AdminSettings from "./pages/dashboard/admin/AdminSettings.jsx";
 import AdminServiceCategories from "./pages/dashboard/admin/AdminServiceCategories.jsx";
+import Providers from "./pages/dashboard/admin/Providers.jsx";
+import Clients from "./pages/dashboard/admin/Clients.jsx";
+import SubAdmins from "./pages/dashboard/admin/SubAdmins.jsx";
 
 export default function App() {
   //animation
@@ -90,9 +93,9 @@ export default function App() {
             <Route path="admin" element={<AdminDashboardLayout />}>
               <Route index element={<Navigate replace to="dashboard" />} />
               <Route path="dashboard" element={<AdminDashboard />} />
-              <Route path="providers" />
-              <Route path="clients" />
-              <Route path="subadmins" />
+              <Route path="providers" element={<Providers />} />
+              <Route path="clients" element={<Clients />} />
+              <Route path="subadmins" element={<SubAdmins />} />
               <Route path="categories" element={<AdminServiceCategories />} />
               <Route path="notifications" element={<AdminNotifications />} />
               <Route path="settings" element={<AdminSettings />} />

@@ -6,7 +6,7 @@ import { useOutSideClick } from "../hooks/useOutSideClick";
 
 const StyledModal = styled.div`
   position: fixed;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--color-grey-0);
@@ -15,6 +15,15 @@ const StyledModal = styled.div`
   //padding: 70px 25px 25px 25px;
   transition: all 0.5s;
   color: var(--text-color);
+  overflow-y: auto;
+  width: auto;
+  // Media query for large screens
+  @media (min-width: 1024px) {
+    top: 50%;
+  }
+  @media (min-width: 600px) {
+    top: 65%;
+  }
 `;
 
 const Overlay = styled.div`

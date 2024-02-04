@@ -31,7 +31,7 @@ export default function AdminEditCategories({ row, data }) {
         <TableCell className="bg-style">
           <MenuHandler className="bg-style border-none shadow-none">
             <Button className="border-none shadow-none">
-              <FaEllipsisV />
+            <FaEllipsisV />
             </Button>
           </MenuHandler>
           <MenuList className="space-y-3 bg-black">
