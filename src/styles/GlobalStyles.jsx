@@ -235,6 +235,15 @@ const GlobalStyles = createGlobalStyle`
   transition: all 0.5s;
   color: var(--text-color);
 }
+
+
+
+@media screen and (max-width: 1280px) {
+  .who {
+    display: block;
+  }
+}
+
 `;
 
 export default GlobalStyles;

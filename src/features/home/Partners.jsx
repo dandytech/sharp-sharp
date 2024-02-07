@@ -44,7 +44,7 @@ export default function Partners() {
 
   return (
     <div className="overflow-x-hidden bg-gradient-to-t  from-blue-700 to-blue-900 py-10 pb-20 text-white">
-      <div className="m-auto flex w-[70%]">
+      <div className="m-auto flex lg:w-[70%]">
         <ReactSimplyCarousel
           activeSlideIndex={activeSlideIndex}
           onRequestChange={setActiveSlideIndex}
@@ -101,7 +101,7 @@ export default function Partners() {
           {partners.map((partner) => (
             <div
               key={partner.id}
-              className="flex h-[200px] w-[230px] flex-col-reverse items-center justify-center text-center "
+              className="flex h-[200px] w-[200px] flex-col-reverse items-center justify-center gap-2 text-center "
             >
               <p>{partner.name}</p>
               <p className="text-[45px]">{partner.logo}</p>

@@ -4,9 +4,10 @@ import {
   MenuHandler,
   MenuItem,
   MenuList,
+  Tooltip,
 } from "@material-tailwind/react";
 import { TableCell } from "@mui/material";
-import { FaEllipsisV } from "react-icons/fa";
+import { FaEllipsisV, FaEye } from "react-icons/fa";
 import Modal from "../../../ui/Modal";
 import Avatar from "react-avatar";
 
@@ -84,6 +85,16 @@ export default function ViewClientKYC({ row }) {
               <p>
                 <span className="font-semibold">Home Address: </span>
                 <span></span>
+              </p>
+              <p>
+                <span className="font-semibold ">Utility Bill: </span>
+                <button onClick={() => window.open(row.utility, "blank")}>
+                  <span className="flex items-center">
+                    <Tooltip content="View Document">
+                      <FaEye />
+                    </Tooltip>
+                  </span>
+                </button>
               </p>
 
               <p className="flex pt-5 text-lg font-bold text-blue-500 underline">

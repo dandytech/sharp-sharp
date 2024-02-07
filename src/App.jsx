@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import "./index.css";
 import Login from "./pages/Login";
 import About from "./pages/About";
-import SignUp from "./pages/SignUp";
+
 import GlobalStyles from "./styles/GlobalStyles";
 import PageNotFound from "./ui/PageNotFound";
 //animation
@@ -15,7 +15,7 @@ import "aos/dist/aos.css";
 
 import ProviderSignup from "./features/signup/ProviderSignup";
 import ClientSignup from "./features/signup/ClientSignup";
-import SignupLayot from "./features/signup/SignupLayout";
+
 import ProviderDashbordLayout from "./pages/dashboard/provider/ProviderDashboardLayout";
 
 import DashboardProvider from "./pages/dashboard/provider/DashboardProvider";
@@ -38,6 +38,7 @@ import Providers from "./pages/dashboard/admin/Providers.jsx";
 import Clients from "./pages/dashboard/admin/Clients.jsx";
 import SubAdmins from "./pages/dashboard/admin/SubAdmins.jsx";
 import AdminServiceRequests from "./pages/dashboard/admin/AdminServiceRequests.jsx";
+import SignupOption from "./features/signup/SignupOption.jsx";
 
 export default function App() {
   //animation
@@ -57,16 +58,10 @@ export default function App() {
               <Route path="home" element={<Home />} />
               <Route path="contact" element={<Contact />} />
               <Route path="about" element={<About />} />
-              <Route path="signup" element={<SignUp />} />
+              <Route path="signup" element={<SignupOption />} />
               <Route path="login" element={<Login />} />
 
               <Route path="services" element={<Services />} />
-
-              <Route path="*" element={<PageNotFound />} />
-            </Route>
-
-            {/* signup route */}
-            <Route element={<SignupLayot />}>
               <Route path="providerReg" element={<ProviderSignup />} />
               <Route path="clientReg" element={<ClientSignup />} />
               <Route path="*" element={<PageNotFound />} />
@@ -98,7 +93,10 @@ export default function App() {
               <Route path="clients" element={<Clients />} />
               <Route path="subadmins" element={<SubAdmins />} />
               <Route path="categories" element={<AdminServiceCategories />} />
-              <Route path="serviceRequests" element={<AdminServiceRequests />} />
+              <Route
+                path="serviceRequests"
+                element={<AdminServiceRequests />}
+              />
               <Route path="notifications" element={<AdminNotifications />} />
               <Route path="settings" element={<AdminSettings />} />
               <Route path="logout" />

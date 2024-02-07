@@ -24,6 +24,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "ICT",
     businessaddress: "2 metalbox rd",
   },
@@ -34,6 +35,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "ICT",
     businessaddress: "2 metalbox rd",
   },
@@ -44,6 +46,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "maintenance",
     businessaddress: "2 metalbox rd",
   },
@@ -54,6 +57,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "ICT",
     businessaddress: "2 metalbox rd",
   },
@@ -64,6 +68,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "House Cleaning",
     businessaddress: "2 metalbox rd",
   },
@@ -74,6 +79,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "ICT",
     businessaddress: "2 metalbox rd",
   },
@@ -84,6 +90,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "ICT",
     businessaddress: "2 metalbox rd",
   },
@@ -94,6 +101,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "Kitchen",
     businessaddress: "2 metalbox rd",
   },
@@ -104,6 +112,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "Maintain",
     businessaddress: "2 metalbox rd",
   },
@@ -114,6 +123,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "ICT",
     businessaddress: "2 metalbox rd",
   },
@@ -124,6 +134,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "ICT",
     businessaddress: "2 metalbox rd",
   },
@@ -134,6 +145,7 @@ export const providers = [
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
+    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
     servicecategory: "ICT",
     businessaddress: "2 metalbox rd",
   },
@@ -271,7 +283,7 @@ export default function Providers() {
               <TableRow key={index}>
                 {columns.map((column, colIndex) => (
                   <TableCell className="bg-style text-white" key={colIndex}>
-                   {row[column.accessorKey]}
+                    {row[column.accessorKey]}
                   </TableCell>
                 ))}
 

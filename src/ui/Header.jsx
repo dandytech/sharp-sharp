@@ -155,22 +155,6 @@ export default function Header() {
     };
   }, []); // Empty dependency array ensures the effect runs only once
 
-  //Dropdown for Quick request
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const openDropdown = () => {
-  //   setIsOpen(!isOpen);
-  // };
-
-  // const closeDropdown = () => {
-  //   setTimeout(() => {
-  //     if (isOpen) {
-  //       setIsOpen(false);
-  //     }
-  //   }, 1000);
-  // };
-
-  // <div className=" flex items-center  gap-10 pb-20 justify-between lg:m-auto  lg:mt-[60px] mt-[80px] sm:px-10 lg:px-10 lg:w-[70%]">
   return (
     <>
       <div className="relative z-20 hidden  overflow-x-hidden  lg:block">
@@ -194,36 +178,15 @@ export default function Header() {
           <div
             className={`${
               isSticky
-                ? "m-auto flex w-[70%] p-5 h-[120px]  items-center justify-between text-white"
-                : "m-auto flex w-[70%] px-5 items-center justify-between"
+                ? "m-auto flex h-[120px] w-[70%] items-center  justify-between p-5 text-white"
+                : "m-auto flex w-[70%] items-center justify-between px-5"
             }`}
           >
-            <div >
+            <div>
               <NavLink to="/">
                 <img src={logo} alt="logo" width="100" />
               </NavLink>
             </div>
-
-            {/* <div className="relative z-50">
-              <span
-                onClick={openDropdown}
-                onMouseLeave={closeDropdown}
-                className="flex cursor-pointer items-center gap-1 rounded-full  border-2 bg-blue-500 p-2 px-7 py-3 text-white focus:outline-none"
-              >
-                Quick-Request
-                <TfiAngleDown />
-              </span>
-
-              {isOpen && (
-                <div className="absolute mt-1 rounded-md border border-gray-300 bg-white text-black shadow-md">
-                  <ul className="grid w-[600px] grid-cols-4 overflow-y-auto">
-                    {categories.map((category) => (
-                      <QuickBookList category={category} key={category.id} />
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div> */}
 
             <div className="relative z-50">
               <Menu>
@@ -311,9 +274,7 @@ export default function Header() {
                 </NavLink>
               </button>
             </div>
-
           </div>
-
         </nav>
 
         <div className="h-[160px] bg-gradient-to-r from-violet-100 to-blue-100 ">

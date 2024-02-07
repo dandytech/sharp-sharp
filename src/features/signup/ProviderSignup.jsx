@@ -56,12 +56,6 @@ import "react-phone-number-input/style.css";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
-// import styled from "styled-components";
-
-// const StyledPhoneInput = styled.input`
-//   background-color: gray;
-// `;
-
 export default function ProviderSignup() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -79,7 +73,7 @@ export default function ProviderSignup() {
   };
 
   return (
-    <div className="h-auto  bg-[url('/src/data/bg2.jpeg')] bg-cover bg-center bg-no-repeat ">
+    <div className="h-auto bg-[url('/src/data/bg2.jpeg')] bg-cover bg-center bg-no-repeat pt-20 ">
       <form className=" lg:mt-0">
         <div className="m-auto justify-center  p-5 text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-10">
           {" "}
@@ -130,10 +124,9 @@ export default function ProviderSignup() {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                 <option>SELECT CATEGORY</option>
+                <option>SELECT CATEGORY</option>
                 {serviceCategories.map((serviceCategory) => (
                   <>
-                   
                     <option key={serviceCategory.id}>
                       {serviceCategory.name}
                     </option>
