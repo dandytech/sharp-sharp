@@ -9,13 +9,13 @@ import {
   TablePagination,
 } from "@mui/material";
 
-import AdminEditCategories from "./AdminEditCategories";
 import { useState } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { FaCloudDownloadAlt } from "react-icons/fa";
+import AllRequestsActions from "./AllRequestsActions";
 
-export default function AdminCategoryTable({ data, columns }) {
+export default function AllRequests({ data, columns }) {
   //Pagination
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -36,18 +36,39 @@ export default function AdminCategoryTable({ data, columns }) {
   //Download Table
   const downloadAsPDF = () => {
     const doc = new jsPDF();
-    doc.text("SHARP APP SERVICE CATEGORY LIST", 20, 10);
+    doc.text("SHARP APP ALL SERVICE REQUESTS LIST", 20, 10);
     doc.autoTable({
-      head: [["S/N", "Category", "Charge", "Description"]],
+      head: [
+        [
+          "S/N",
+          "Service",
+          "Description",
+          "Charge",
+          "Client Name",
+          "Phone",
+          "Email",
+          "Address",
+          "Request Time",
+          "Delivery Tinme",
+          "Status",
+        ],
+      ],
       body: data.map((item) => [
         item.id,
-        item.name,
-        item.charge,
+        item.service,
         item.description,
+        item.charge,
+        item.client,
+        item.phone,
+        item.email,
+        item.address,
+        item.requestTime,
+        item.serviceTime,
+        item.status,
       ]),
     });
 
-    doc.save("Service_Categories.pdf");
+    doc.save("AllServiceRequest.pdf");
   };
 
   return (
@@ -65,17 +86,18 @@ export default function AdminCategoryTable({ data, columns }) {
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
-            <TableRow className="bg-gray-style font-bold text-[bg-text]">
+            <TableRow className="bg-style font-bold text-[bg-text]">
               {columns.map((column, colIndex) => (
-                <TableCell
-                  key={colIndex}
-                  className="bg-style font-bold text-[bg-text]"
-                >
-                  {column.header}
+                <TableCell key={colIndex}>
+                  <span className="bg-style font-bold text-[bg-text]font-bold text-[bg-text]">
+                    {column.header}
+                  </span>{" "}
                 </TableCell>
               ))}
               <TableCell className="bg-style font-bold text-[bg-text]">
-                Actions
+                <span className="bg-style font-bold text-[bg-text]">
+                  Actions
+                </span>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -89,7 +111,7 @@ export default function AdminCategoryTable({ data, columns }) {
                   </TableCell>
                 ))}
 
-                <AdminEditCategories row={row} data={data} />
+                <AllRequestsActions data={data} row={row} />
               </TableRow>
             ))}
           </TableBody>

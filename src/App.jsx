@@ -37,6 +37,7 @@ import AdminServiceCategories from "./pages/dashboard/admin/AdminServiceCategori
 import Providers from "./pages/dashboard/admin/Providers.jsx";
 import Clients from "./pages/dashboard/admin/Clients.jsx";
 import SubAdmins from "./pages/dashboard/admin/SubAdmins.jsx";
+import AdminServiceRequests from "./pages/dashboard/admin/AdminServiceRequests.jsx";
 
 export default function App() {
   //animation
@@ -97,6 +98,7 @@ export default function App() {
               <Route path="clients" element={<Clients />} />
               <Route path="subadmins" element={<SubAdmins />} />
               <Route path="categories" element={<AdminServiceCategories />} />
+              <Route path="serviceRequests" element={<AdminServiceRequests />} />
               <Route path="notifications" element={<AdminNotifications />} />
               <Route path="settings" element={<AdminSettings />} />
               <Route path="logout" />

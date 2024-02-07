@@ -9,16 +9,16 @@ import {
   TablePagination,
 } from "@mui/material";
 
-import AdminEditCategories from "./AdminEditCategories";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 
-export default function AdminCategoryTable({ data, columns }) {
+export default function CompletedRequests({ data, columns }) {
   //Pagination
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [slicedData, setSlicedData] = useState([]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -31,23 +31,53 @@ export default function AdminCategoryTable({ data, columns }) {
 
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const slicedData = data.slice(startIndex, endIndex);
+
+  // const slicedData = data.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    const handleFilter = () => {
+      const selected = data?.filter((where) => where.status === "completed");
+      setSlicedData(selected.slice(startIndex, endIndex));
+    };
+    handleFilter();
+  }, []);
 
   //Download Table
   const downloadAsPDF = () => {
     const doc = new jsPDF();
-    doc.text("SHARP APP SERVICE CATEGORY LIST", 20, 10);
+    doc.text("SHARP APP COMPLETED REQUESTS LIST", 20, 10);
     doc.autoTable({
-      head: [["S/N", "Category", "Charge", "Description"]],
-      body: data.map((item) => [
+      head: [
+        [
+          "S/N",
+          "Service",
+          "Description",
+          "Charge",
+          "Client Name",
+          "Phone",
+          "Email",
+          "Address",
+          "Request Time",
+          "Delivery Tinme",
+          "Status",
+        ],
+      ],
+      body: slicedData.map((item) => [
         item.id,
-        item.name,
-        item.charge,
+        item.service,
         item.description,
+        item.charge,
+        item.client,
+        item.phone,
+        item.email,
+        item.address,
+        item.requestTime,
+        item.serviceTime,
+        item.status,
       ]),
     });
 
-    doc.save("Service_Categories.pdf");
+    doc.save("completed-Service-Request.pdf");
   };
 
   return (
@@ -65,17 +95,18 @@ export default function AdminCategoryTable({ data, columns }) {
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
-            <TableRow className="bg-gray-style font-bold text-[bg-text]">
+            <TableRow className="bg-style font-bold text-[bg-text]">
               {columns.map((column, colIndex) => (
-                <TableCell
-                  key={colIndex}
-                  className="bg-style font-bold text-[bg-text]"
-                >
-                  {column.header}
+                <TableCell key={colIndex}>
+                  <span className="bg-style text-[bg-text]font-bold font-bold text-[bg-text]">
+                    {column.header}
+                  </span>{" "}
                 </TableCell>
               ))}
               <TableCell className="bg-style font-bold text-[bg-text]">
-                Actions
+                <span className="bg-style font-bold text-[bg-text]">
+                  Actions
+                </span>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -89,7 +120,7 @@ export default function AdminCategoryTable({ data, columns }) {
                   </TableCell>
                 ))}
 
-                <AdminEditCategories row={row} data={data} />
+                {/* <AllRequestsActions data={data} row={row} /> */}
               </TableRow>
             ))}
           </TableBody>
@@ -98,7 +129,7 @@ export default function AdminCategoryTable({ data, columns }) {
           className="bg-style text-[bg-text]"
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={data.length}
+          count={slicedData.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

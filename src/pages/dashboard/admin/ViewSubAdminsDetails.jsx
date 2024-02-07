@@ -11,7 +11,6 @@ import Modal from "../../../ui/Modal";
 import Avatar from "react-avatar";
 
 export default function ViewSubAdminsDetails({ row }) {
-  console.log(row);
   return (
     <Modal>
       <div>

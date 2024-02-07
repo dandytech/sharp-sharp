@@ -39,6 +39,7 @@ export default function AdminServiceCategories() {
     setActiveTab(tabNumber);
   };
 
+  //add category function
   let nextId = 4;
   const handleSave = (e) => {
     e.preventDefault();
@@ -54,18 +55,10 @@ export default function AdminServiceCategories() {
       },
     ]);
     // const id = crypto.randomUUID();
-    // const newService = {
-    //   id: id,
-    //   name,
-    //   price,
-    //   description,
-    // };
-    // handleAddService(newService);
-
     setName("");
     setCharge("");
     setDescription("");
-    toast("Submited Successfully");
+    toast.success("Submited Successfully");
   };
 
   const columns = useMemo(
@@ -96,7 +89,7 @@ export default function AdminServiceCategories() {
   );
 
   return (
-    <div className="servicebg h-[100vh] overflow-y-auto px-5 pt-[80px] lg:w-[85%] lg:pr-10">
+    <div className="servicebg h-[100vh] overflow-y-auto px-5 pt-[80px] lg:w-[84%] lg:pr-10">
       <div>
         <div className="tab-buttons flex w-[100%] items-center justify-between">
           <div className="font-bold lg:w-[50%]">
@@ -128,7 +121,7 @@ export default function AdminServiceCategories() {
           {activeTab === 1 && (
             <div className="lag:mt-0 mt-10">
               <div>
-                <AdminCategoryTable data={data} columns={columns} />
+                <AdminCategoryTable data={categories} columns={columns} />
               </div>
             </div>
           )}

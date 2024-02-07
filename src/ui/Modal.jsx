@@ -6,8 +6,11 @@ import { useOutSideClick } from "../hooks/useOutSideClick";
 
 const StyledModal = styled.div`
   position: fixed;
-  top: 70%;
+  top: 55%;
   left: 50%;
+  height: auto;
+  inset: 50;
+  width: auto;
   transform: translate(-50%, -50%);
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-lg);
@@ -18,12 +21,19 @@ const StyledModal = styled.div`
   overflow-y: auto;
   width: auto;
   // Media query for large screens
-  @media (min-width: 1024px) {
+  /* @media (min-width: 1024px) {
     top: 50%;
   }
   @media (min-width: 600px) {
-    top: 65%;
+    width: auto;
+    top: 50%;
+   
   }
+  @media screen and (max-width: 768px) {
+    & {
+      width: auto;
+    }
+  } */
 `;
 
 const Overlay = styled.div`
@@ -37,6 +47,10 @@ const Overlay = styled.div`
   z-index: 1000;
   transition: all 0.5s;
   overflow-y: auto;
+  @media screen and (max-width: 768px) {
+    & {
+    }
+  }
 `;
 
 const Button = styled.button`
@@ -51,7 +65,7 @@ const Button = styled.button`
   right: 0;
 
   &:hover {
-    background-color: var(--color-grey-100);
+    /* background-color: var(--color-grey-100); */
   }
 
   & svg {

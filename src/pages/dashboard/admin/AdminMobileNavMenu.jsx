@@ -167,7 +167,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
           </ListItem>
           <AccordionBody className="py-1">
             <List className="p-0">
-              <NavLink to="services" onClick={!hideNav}>
+              <NavLink to="serviceRequests" onClick={!hideNav}>
                 <ListItem>
                   <ListItemPrefix>
                     <IoIosGitPullRequest strokeWidth={3} className="h-3 w-5" />

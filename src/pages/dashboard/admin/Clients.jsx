@@ -195,7 +195,7 @@ export default function Clients() {
   };
 
   return (
-    <div className="bg-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[85%] lg:pr-10 ">
+    <div className="bg-style text-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
       <p className="flex border-t-2 p-2 font-semibold">CLIENTS DETAILS</p>
       <button
         className="float-right mb-5 flex items-center px-3 text-right"

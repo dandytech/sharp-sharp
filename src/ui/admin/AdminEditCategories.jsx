@@ -13,15 +13,25 @@ import { useState } from "react";
 
 export default function AdminEditCategories({ row, data }) {
   const [deleteCat, setDeleteCat] = useState(data);
-  console.log(data);
-  const deleteItem = (itemId) => {
-    const shouldDelete = window.confirm(
+  const [name, setName] = useState(row.name);
+  const [charge, setCharge] = useState(row.charge);
+  const [description, setDescription] = useState(row.description);
+
+  console.log(row);
+
+  //Delete function
+  const handleDelete = (itemId) => {
+    // Show confirmation dialog
+    const isConfirmed = window.confirm(
       "Are you sure you want to delete this item?",
     );
 
-    if (shouldDelete) {
-      const updatedItems = deleteCat.filter((item) => item.id !== itemId);
-      setDeleteCat(updatedItems);
+    if (isConfirmed) {
+      // Filter out the item with the specified ID
+      const updatedData = deleteCat.filter((item) => item.id !== itemId);
+
+      // Update the state with the modified array
+      setDeleteCat(updatedData);
     }
   };
 
@@ -31,7 +41,7 @@ export default function AdminEditCategories({ row, data }) {
         <TableCell className="bg-style">
           <MenuHandler className="bg-style border-none shadow-none">
             <Button className="border-none shadow-none">
-            <FaEllipsisV />
+              <FaEllipsisV />
             </Button>
           </MenuHandler>
           <MenuList className="space-y-3 bg-black">
@@ -40,7 +50,7 @@ export default function AdminEditCategories({ row, data }) {
             </Modal.Open>
             <Modal.Open opens="delete">
               <MenuItem className="bg-style">
-                <button onClick={deleteItem}>Delete</button>
+                <button onClick={() => handleDelete(item.id)}>Delete</button>
               </MenuItem>
             </Modal.Open>
           </MenuList>
@@ -49,7 +59,7 @@ export default function AdminEditCategories({ row, data }) {
         </TableCell>
       </Menu>
       <Modal.Window name="edit">
-        <div className="bg-style shadow-md border-2">
+        <div className="bg-style border-2 shadow-md">
           <p className=" bg-black px-5 py-2 text-white">DELETE CATEGORY</p>
           <div className="space-y-3 p-5">
             <p>
@@ -57,8 +67,9 @@ export default function AdminEditCategories({ row, data }) {
               <span>
                 <input
                   type="text"
-                  value={row.name}
+                  value={name}
                   className="w-full border-2 px-2 py-1"
+                  onChange={(e) => setName(e.target.value)}
                 />
               </span>
             </p>
@@ -67,8 +78,9 @@ export default function AdminEditCategories({ row, data }) {
               <span>
                 <input
                   type="text"
-                  value={row.charge}
+                  value={charge}
                   className="w-full border-2 px-2 py-1"
+                  onChange={(e) => setCharge(e.target.value)}
                 />
               </span>
             </p>
@@ -77,13 +89,14 @@ export default function AdminEditCategories({ row, data }) {
               <textarea
                 cols={20}
                 rows={5}
-                value={row.description}
+                value={description}
                 className="w-full border-2 px-2 py-1"
+                onChange={(e) => setDescription(e.target.value)}
               />
             </p>
             <p className="text-center">
               <button className="mt-5 rounded-full bg-blue-500 px-5 py-2 text-center font-semibold text-white hover:bg-black">
-                Submite
+                Submit
               </button>
             </p>
           </div>

@@ -234,7 +234,7 @@ export default function Providers() {
   };
 
   return (
-    <div className="bg-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[85%] lg:pr-10 ">
+    <div className="bg-style text-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
       <p className="flex border-t-2 p-2 font-semibold">
         SERVICE PROVERS DETAILS
       </p>

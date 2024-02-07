@@ -10,7 +10,7 @@ export default function AdminNotifications() {
   };
 
   return (
-    <div className="servicebg z-0 h-[100vh] overflow-y-auto text-center lg:w-[85%]">
+    <div className="servicebg z-0 h-[100vh] overflow-y-auto text-center lg:w-[84%]">
       <div className="justify-center p-3 text-center">
         <p className="mb-10 pt-10 text-center text-[24px] font-bold lg:pb-10 lg:pt-20">
           Admin Notifications !!!

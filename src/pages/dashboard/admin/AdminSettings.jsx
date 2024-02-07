@@ -10,11 +10,11 @@ export default function AdminSettings() {
   };
 
   return (
-    <div className="servicebg h-[100vh] overflow-y-auto text-center lg:w-[85%] lg:pr-10 ">
+    <div className="servicebg z-0 h-[100vh] overflow-y-auto text-center lg:w-[85%] lg:pr-10 ">
       <div className="m-auto justify-center p-3 text-center ">
         {" "}
-        <p className="mb-10 lg:pt-20 pt-10 text-center text-[24px] font-bold lg:pb-10">
-        Admin Account Settings !!!
+        <p className="mb-10 pt-10 text-center text-[24px] font-bold lg:pb-10 lg:pt-20">
+          Admin Account Settings !!!
         </p>
         <div className="gap-10 lg:flex">
           <div className="flex  gap-5 rounded-xl shadow-md lg:w-[15%] lg:flex-col  ">
@@ -47,7 +47,7 @@ export default function AdminSettings() {
             </button> */}
           </div>
 
-          <div className="tab-content lg:w-[85%]">
+          <div className="tab-content lg:w-[85%] z-0">
             {activeTab === 1 && (
               <p>
                 <MyProfile />

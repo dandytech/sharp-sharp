@@ -13,16 +13,18 @@ import jsPDF from "jspdf";
 import { useMemo, useState } from "react";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import ViewSubAdminsDetails from "./ViewSubAdminsDetails";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const subadmins = [
   {
     id: 1,
     photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Nwankwo Daniel Amaech",
+    fullname: "Obi Nweke",
     gender: "Male",
-    email: "dannkwo@gmail.com",
+    email: "obi@gmail.com",
     phone: "+2347098787875",
-    role: "ICT",
+    role: "Installations",
     homeaddress: "2 metalbox rd",
   },
   {
@@ -38,106 +40,165 @@ export const subadmins = [
   {
     id: 3,
     photo: "",
-    fullname: "Nwankwo Daniel Amaech",
+    fullname: "Mary David",
     gender: "Male",
-    email: "dannkwo@gmail.com",
+    email: "mary@gmail.com",
     phone: "+2347098787875",
     role: "maintenance",
     homeaddress: "2 metalbox rd",
   },
-  {
-    id: 4,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Nwankwo Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    role: "ICT",
-    homeaddress: "2 metalbox rd",
-  },
-  {
-    id: 5,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Nwankwo Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    role: "House Cleaning",
-    homeaddress: "2 metalbox rd",
-  },
-  {
-    id: 6,
-    photo: "",
-    fullname: "henry Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    role: "ICT",
-    homeaddress: "2 metalbox rd",
-  },
-  {
-    id: 7,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Sunday Kalu Daniel ",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    role: "ICT",
-    homeaddress: "2 metalbox rd",
-  },
-  {
-    id: 8,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Mary Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    role: "Kitchen",
-    homeaddress: "2 metalbox rd",
-  },
-  {
-    id: 9,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Marthina Kenn John",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    role: "Maintain",
-    homeaddress: "2 metalbox rd",
-  },
-  {
-    id: 10,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Paul Oke ",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    role: "ICT",
-    homeaddress: "2 metalbox rd",
-  },
-  {
-    id: 11,
-    photo: "",
-    fullname: "Ikenna Daniel Oni",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    role: "ICT",
-    homeaddress: "2 metalbox rd",
-  },
-  {
-    id: 12,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Obi Ola Amah",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    role: "ICT",
-    homeaddress: "2 metalbox rd",
-  },
+  // {
+  //   id: 4,
+  //   photo: "https://i.pravatar.cc/48?u=4442896764",
+  //   fullname: "Nwankwo Daniel Amaech",
+  //   gender: "Male",
+  //   email: "dannkwo@gmail.com",
+  //   phone: "+2347098787875",
+  //   role: "ICT",
+  //   homeaddress: "2 metalbox rd",
+  // },
+  // {
+  //   id: 5,
+  //   photo: "https://i.pravatar.cc/48?u=4442896764",
+  //   fullname: "Nwankwo Daniel Amaech",
+  //   gender: "Male",
+  //   email: "dannkwo@gmail.com",
+  //   phone: "+2347098787875",
+  //   role: "House Cleaning",
+  //   homeaddress: "2 metalbox rd",
+  // },
+  // {
+  //   id: 6,
+  //   photo: "",
+  //   fullname: "henry Daniel Amaech",
+  //   gender: "Male",
+  //   email: "dannkwo@gmail.com",
+  //   phone: "+2347098787875",
+  //   role: "ICT",
+  //   homeaddress: "2 metalbox rd",
+  // },
+  // {
+  //   id: 7,
+  //   photo: "https://i.pravatar.cc/48?u=4442896764",
+  //   fullname: "Sunday Kalu Daniel ",
+  //   gender: "Male",
+  //   email: "dannkwo@gmail.com",
+  //   phone: "+2347098787875",
+  //   role: "ICT",
+  //   homeaddress: "2 metalbox rd",
+  // },
+  // {
+  //   id: 8,
+  //   photo: "https://i.pravatar.cc/48?u=4442896764",
+  //   fullname: "Mary Daniel Amaech",
+  //   gender: "Male",
+  //   email: "dannkwo@gmail.com",
+  //   phone: "+2347098787875",
+  //   role: "Kitchen",
+  //   homeaddress: "2 metalbox rd",
+  // },
+  // {
+  //   id: 9,
+  //   photo: "https://i.pravatar.cc/48?u=4442896764",
+  //   fullname: "Marthina Kenn John",
+  //   gender: "Male",
+  //   email: "dannkwo@gmail.com",
+  //   phone: "+2347098787875",
+  //   role: "Maintain",
+  //   homeaddress: "2 metalbox rd",
+  // },
+  // {
+  //   id: 10,
+  //   photo: "https://i.pravatar.cc/48?u=4442896764",
+  //   fullname: "Paul Oke ",
+  //   gender: "Male",
+  //   email: "dannkwo@gmail.com",
+  //   phone: "+2347098787875",
+  //   role: "ICT",
+  //   homeaddress: "2 metalbox rd",
+  // },
+  // {
+  //   id: 11,
+  //   photo: "",
+  //   fullname: "Ikenna Daniel Oni",
+  //   gender: "Male",
+  //   email: "dannkwo@gmail.com",
+  //   phone: "+2347098787875",
+  //   role: "ICT",
+  //   homeaddress: "2 metalbox rd",
+  // },
+  // {
+  //   id: 12,
+  //   photo: "https://i.pravatar.cc/48?u=4442896764",
+  //   fullname: "Obi Ola Amah",
+  //   gender: "Male",
+  //   email: "dannkwo@gmail.com",
+  //   phone: "+2347098787875",
+  //   role: "ICT",
+  //   homeaddress: "2 metalbox rd",
+  // },
 ];
 
 export default function SubAdmins() {
+  //add Subamdin function
+  const [newsubadmins, setNewsubadmins] = useState(subadmins);
+  const [photo, setPhoto] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [gender, setGender] = useState("Male");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [role, setRole] = useState("ICT Admin");
+  const [homeaddress, setHomeaddress] = useState("");
+
+  let nextId = 13;
+  const handleSubmit = (e) => {
+    console.log(gender);
+    console.log(role);
+    console.log(photo);
+    console.log(fullname);
+    e.preventDefault();
+    if (
+      !photo ||
+      !fullname ||
+      !gender ||
+      !email ||
+      !phone ||
+      !role ||
+      !homeaddress
+    )
+      toast.error("Fill the Required Details");
+    else {
+      setNewsubadmins([
+        ...newsubadmins,
+        {
+          id: nextId++,
+          photo: photo,
+          fullname: fullname,
+          gender: gender,
+          email: email,
+          phone: phone,
+          role: role,
+          homeaddress: homeaddress,
+        },
+      ]);
+
+      setPhoto("");
+      setFullname("");
+      setGender("");
+      setEmail("");
+      setPhone("");
+      setRole("");
+      setHomeaddress("");
+
+      toast.success("Submited Successfully");
+
+      setInterval(() => {
+        if (showAdd === true) setShowAdd(false);
+      }, 7000);
+    }
+  };
+
+  //column function
   const columns = useMemo(
     () => [
       {
@@ -230,6 +291,7 @@ export default function SubAdmins() {
 
   const input = `border-2 border-gray-300 px-3 py-2`;
 
+  //show form function
   const [showAdd, setShowAdd] = useState(false);
 
   const handleShowAdd = () => {
@@ -237,7 +299,7 @@ export default function SubAdmins() {
   };
 
   return (
-    <div className="bg-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[85%] lg:pr-10 ">
+    <div className="bg-style text-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
       <p
         className="mb-5 w-auto cursor-pointer border-2 p-2 px-3 text-center font-bold text-blue-500"
         onClick={handleShowAdd}
@@ -249,39 +311,96 @@ export default function SubAdmins() {
         <div className="mb-10 space-y-5 border-2 p-3 text-left">
           <p className="text-center font-bold">Add Sub-Admin</p>
           <p className="flex flex-col">
+            <label>Photo </label>
+            <input
+              type="file"
+              placeholder="Full Name"
+              className={input}
+              value={photo}
+              onChange={(e) => setPhoto(e.target.value)}
+            />
+          </p>
+          <p className="flex flex-col">
             <label>Name </label>
-            <input type="text" placeholder="Full Name" className={input} />
+            <input
+              type="text"
+              placeholder="Full Name"
+              className={input}
+              value={fullname}
+              onChange={(e) => setFullname(e.target.value)}
+            />
           </p>
           <p className="flex flex-col">
             <label>Gender </label>
-            <select className={input}>
-              <option>Male</option>
-              <option>Female</option>
+            <select
+              className={input}
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
           </p>
           <p className="flex flex-col">
             <label>Email </label>
-            <input type="email" placeholder="Email" className={input} />
+            <input
+              type="email"
+              placeholder="Email"
+              className={input}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </p>
           <p className="flex flex-col">
             <label>Phone </label>
-            <input type="text" placeholder="Phone Number" className={input} />
+            <input
+              type="text"
+              placeholder="Phone Number"
+              className={input}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </p>
           <p className="flex flex-col">
             <label>Role </label>
-            <select className={input}>
-              <option>ICT Admin</option>
-              <option>Cleaning Admin</option>
-              <option>Maintenance Admin</option>
+            <select
+              className={input}
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            >
+              <option value="ICT Admin">ICT Admin</option>
+              <option value="Cleaning Admin">Cleaning Admin</option>
+              <option value="Maintenance Admin">Maintenance Admin</option>
             </select>
           </p>
           <p className="flex flex-col">
             <label>Address </label>
-            <input type="text" placeholder="Home Address" className={input} />
+            <input
+              type="text"
+              placeholder="Home Address"
+              className={input}
+              value={homeaddress}
+              onChange={(e) => setHomeaddress(e.target.value)}
+            />
           </p>
           <p className="cursor-pointer rounded-full bg-blue-500 px-7 py-3 text-center font-semibold text-white hover:bg-black">
-            <button>Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
           </p>
+
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition:Bounce
+            ToastContainer
+          />
         </div>
       )}
 
@@ -315,7 +434,7 @@ export default function SubAdmins() {
           </TableHead>
 
           <TableBody>
-            {slicedData.map((row, index) => (
+            {slicedData.reverse().map((row, index) => (
               <TableRow key={index}>
                 {columns.map((column, colIndex) => (
                   <TableCell className="bg-style text-white" key={colIndex}>

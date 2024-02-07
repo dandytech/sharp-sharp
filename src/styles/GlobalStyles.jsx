@@ -176,7 +176,7 @@ const GlobalStyles = createGlobalStyle`
   .bg-style{
     background-color: var(--color-grey-50);
     color: var(--text-color);
-    z-index:0 !important;
+    
     
   }
 

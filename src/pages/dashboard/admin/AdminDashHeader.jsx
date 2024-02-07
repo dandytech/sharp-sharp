@@ -6,7 +6,10 @@ import {
   MenuList,
 } from "@material-tailwind/react";
 import { useState } from "react";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import {
+  IoIosArrowRoundForward,
+  IoIosNotificationsOutline,
+} from "react-icons/io";
 import { RxDropdownMenu } from "react-icons/rx";
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
@@ -17,6 +20,8 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import YesModal from "../../../ui/YesModal";
 import logo from "../../../../src/data/logo.png";
 import { FaAlignCenter } from "react-icons/fa6";
+import { GrStatusGood } from "react-icons/gr";
+import { MdAvTimer } from "react-icons/md";
 
 export default function AdminDashHeader({ handleHideNav, hideNav }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,7 +47,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
 
   return (
     <div
-      className={`w-[100%] p-5 ${
+      className={`w-[100%] pr-3 pl-5 ${
         !hideNav
           ? "bg-style text-bg-text fixed right-0 top-0 flex  h-[100px]  items-center justify-between py-2 shadow-2xl lg:w-[calc(100%-80px)]"
           : "bg-style text-bg-text fixed right-0 top-0 flex  h-[100px]  items-center justify-between py-2 shadow-2xl lg:w-[calc(100%-250px)]"
@@ -71,14 +76,16 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
         </span>
       </div>
 
-      <div className="flex  w-[100%] items-center justify-between gap-5 text-[28px] md:w-[40%] lg:w-auto">
+      <div className="flex  w-[100%] items-center justify-between text-[28px] md:w-[40%] lg:w-auto">
         <div>
           <Menu>
             <MenuHandler className="relative text-[35px] text-[bg-text]  shadow-none">
-              <Button className="text-text-style border-none bg-none text-black shadow-none">
-                <IoIosNotificationsOutline />
-                <div className="absolute right-0 top-1">
-                  <span className="flex h-[20px] w-[20px] items-center justify-center rounded-full bg-red-100 text-sm text-black">
+              <Button className="text-text-style relative border-none bg-none text-black shadow-none">
+                <div>
+                  <span>
+                    <IoIosNotificationsOutline />
+                  </span>
+                  <span className="absolute right-5 top-0 flex h-[20px] w-[20px] items-center justify-center rounded-full bg-red-100 text-sm text-black">
                     {" "}
                     2
                   </span>
@@ -86,19 +93,66 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
               </Button>
             </MenuHandler>
 
-            <MenuList className="border-none p-0 text-center">
+            <MenuList className="bg-style text-style border-2 p-0 text-center">
               <p className=" bg-black p-3 text-[20px] text-white">
                 Notifications
               </p>
+              <MenuItem className="text-blue500 mb-3 mt-3 text-right text-blue-500">
+                <NavLink to="notifications">View All </NavLink>
+              </MenuItem>
 
-              <MenuItem className="mt-3 p-3">
-                <NavLink to="notifications">
-                  There a cleaner service request
-                </NavLink>
+              <MenuItem className="mt-3 space-y-4 px-5 py-2">
+                <p>
+                  <p className="flex items-center gap-1">
+                    <span className="text-lg text-blue-500">
+                      <GrStatusGood />
+                    </span>
+                    <span className="text-lg">
+                      {" "}
+                      There is a maintenance service request
+                    </span>
+                  </p>
+                  <p className="flex items-center gap-1 px-6 font-light">
+                    <span>
+                      {" "}
+                      <MdAvTimer />
+                    </span>
+                    <span>5 mins ago</span>
+                  </p>
+                </p>
+              </MenuItem>
+              <MenuItem className="mt-3 space-y-4 px-5 py-2">
+                <p>
+                  <p className="flex items-center gap-1">
+                    <span className="text-lg text-blue-500">
+                      <GrStatusGood />
+                    </span>
+                    <span className="text-lg">
+                      {" "}
+                      A client made payment for service
+                    </span>
+                  </p>
+                  <p className="flex items-center gap-1 px-6 font-light">
+                    <span>
+                      {" "}
+                      <MdAvTimer />
+                    </span>
+                    <span>5 mins ago</span>
+                  </p>
+                </p>
               </MenuItem>
 
               <MenuItem className="mb-3 mt-3 text-center">
-                <NavLink to="notifications">View All </NavLink>
+                <NavLink
+                  to="notifications"
+                  className="text-md flex items-center justify-center pb-5 text-blue-500"
+                >
+                  <span>
+                    {" "}
+                    <IoIosArrowRoundForward />
+                  </span>
+                  <span> View More...</span>
+                </NavLink>
               </MenuItem>
             </MenuList>
           </Menu>

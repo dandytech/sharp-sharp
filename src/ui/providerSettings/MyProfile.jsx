@@ -6,7 +6,7 @@ import { CiCamera } from "react-icons/ci";
 export default function MyProfile() {
   return (
     <Modal>
-      <div className="rounded-xl">
+      <div className="z-0 rounded-xl">
         <p className="mb-3 flex font-bold">My Profile</p>
 
         <div className="grid items-center justify-center gap-3 border-2 border-gray-300 p-5 lg:flex   lg:justify-start lg:p-10">

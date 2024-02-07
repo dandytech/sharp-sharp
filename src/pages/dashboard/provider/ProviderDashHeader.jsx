@@ -1,4 +1,7 @@
-import { IoIosNotificationsOutline } from "react-icons/io";
+import {
+  IoIosArrowRoundForward,
+  IoIosNotificationsOutline,
+} from "react-icons/io";
 
 import { GiExpand } from "react-icons/gi";
 import logo from "../../../../src/data/logo.png";
@@ -19,6 +22,8 @@ import Avatar from "react-avatar";
 import { useState } from "react";
 
 import YesModal from "../../../ui/YesModal";
+import { GrStatusGood } from "react-icons/gr";
+import { MdAvTimer } from "react-icons/md";
 
 export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,9 +47,8 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
   const userName = "Daniel Amaechi";
 
   return (
-    <div className="dashHeader fixed top-0 z-[1000] flex h-[70px] w-[100%] items-center  justify-between px-10 py-2 shadow-2xl">
-      
-      <div className="flex w-30%] items-center justify-between  text-[24px] md:w-[30%] lg:w-[15%]">
+    <div className="dashHeader fixed top-0 z-[1000] flex h-[70px] w-[100%] items-center  justify-between px-5 py-2 shadow-2xl">
+      <div className=" flex items-center justify-between  text-[24px] md:w-[30%] lg:w-[15%]">
         <span
           className="cursor-pointer text-[35px] lg:hidden"
           onClick={handleHideMenu}
@@ -67,15 +71,16 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
         </span>
       </div>
 
-     
-      <div className="flex  w-[75%] md:w-[40%] items-center justify-between gap-5 text-[28px] lg:w-[30%]">
+      <div className="flex  items-center justify-between text-[28px] md:w-[40%] lg:w-[24%]">
         <div>
           <Menu>
             <MenuHandler className="relative text-[35px] text-[bg-text]  shadow-none">
-              <Button className="text-text-style border-none bg-none text-black shadow-none">
-                <IoIosNotificationsOutline />
-                <div className="absolute right-0 top-1">
-                  <span className="flex h-[20px] w-[20px] items-center justify-center rounded-full bg-red-100 text-sm text-black">
+              <Button className="text-text-style relative border-none bg-none text-black shadow-none">
+                <div>
+                  <span>
+                    <IoIosNotificationsOutline />
+                  </span>
+                  <span className="absolute right-5 top-0 flex h-[20px] w-[20px] items-center justify-center rounded-full bg-red-100 text-sm text-black">
                     {" "}
                     2
                   </span>
@@ -83,19 +88,60 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
               </Button>
             </MenuHandler>
 
-            <MenuList className="p-0 border-none text-center">
+            <MenuList className="bg-style text-style z-50 border-2 p-0 text-center">
               <p className=" bg-black p-3 text-[20px] text-white">
                 Notifications
               </p>
+              <MenuItem className="text-blue500 mb-3 mt-3 text-right text-blue-500">
+                <NavLink to="notifications">View All </NavLink>
+              </MenuItem>
 
-              <MenuItem className="mt-3 p-3">
-                <NavLink to="notifications">
-                  There a cleaner service request
-                </NavLink>
+              <MenuItem className="mt-3 space-y-4 px-5 py-2">
+                <p>
+                  <p className="flex items-center gap-1">
+                    <span className="text-lg text-blue-500">
+                      <GrStatusGood />
+                    </span>
+                    <span> There is a maintenance service request</span>
+                  </p>
+                  <p className="flex items-center gap-1 px-6">
+                    <span>
+                      {" "}
+                      <MdAvTimer />
+                    </span>
+                    <span className="font-light">5 mins ago</span>
+                  </p>
+                </p>
+              </MenuItem>
+              <MenuItem className="mt-3 space-y-4 px-5 py-2">
+                <p>
+                  <p className="flex items-center gap-1">
+                    <span className="text-lg text-blue-500">
+                      <GrStatusGood />
+                    </span>
+                    <span> A client made payment for service</span>
+                  </p>
+                  <p className="flex items-center gap-1 px-6 font-light ">
+                    <span>
+                      {" "}
+                      <MdAvTimer />
+                    </span>
+                    <span>1 day ago</span>
+                  </p>
+                </p>
               </MenuItem>
 
               <MenuItem className="mb-3 mt-3 text-center">
-                <NavLink to="notifications">View All </NavLink>
+                <NavLink
+                  to="notifications"
+                  className="text-md flex items-center justify-center pb-5 text-blue-500"
+                >
+                  <span>
+                    {" "}
+                    <IoIosArrowRoundForward />
+                  </span>
+                  <span> View More...</span>
+                </NavLink>
               </MenuItem>
             </MenuList>
           </Menu>

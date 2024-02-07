@@ -160,7 +160,7 @@ export default function AdminNavMenus({ hideNav }) {
           </ListItem>
           <AccordionBody className="py-1">
             <List className="p-0">
-              <NavLink to="services">
+              <NavLink to="serviceRequests">
                 <ListItem>
                   <ListItemPrefix>
                     <IoIosGitPullRequest strokeWidth={3} className="h-3 w-5" />
