@@ -282,7 +282,7 @@ export default function Providers() {
             {slicedData.map((row, index) => (
               <TableRow key={index}>
                 {columns.map((column, colIndex) => (
-                  <TableCell className="bg-style text-white" key={colIndex}>
+                  <TableCell className="bg-style  text-white" key={colIndex}>
                     {row[column.accessorKey]}
                   </TableCell>
                 ))}
@@ -293,7 +293,7 @@ export default function Providers() {
           </TableBody>
         </Table>
         <TablePagination
-          className="bg-style text-[bg-text]"
+          className="bg-style text-style"
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
           count={providers.length}

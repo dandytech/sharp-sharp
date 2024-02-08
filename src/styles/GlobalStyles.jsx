@@ -175,11 +175,26 @@ const GlobalStyles = createGlobalStyle`
 
   .bg-style{
     background-color: var(--color-grey-50);
-    color: var(--text-color);
+    color: var(--text-color); 
     
+  }
+  .bg-style-table{
+    background-color: var(--color-grey-50);
+    color: var(--text-color); 
     
   }
 
+  .bg-style-table{
+   background-color: var(--color-grey-50);
+    color:  var(--text-color);
+   }
+
+   .bg-style-table:hover{
+   background-color: var(--color-grey-50);
+    color:  black;
+   }
+    
+    
 
   .bgsummary{
     background-color: var(--color-blue-100);

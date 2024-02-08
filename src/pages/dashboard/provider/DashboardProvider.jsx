@@ -75,7 +75,6 @@ export default function DashboardProvider() {
 
   return (
     <div className="servicebg mt-[100px] w-[100%] overflow-y-auto shadow-lg lg:px-5">
-      
       <div className="justify-between lg:flex lg:gap-5">
         <div className="lg:w-[70%]">
           <div className="flex items-center justify-between gap-1 px-1 text-[14px] text-black lg:gap-10 lg:px-0 lg:text-[20px] ">

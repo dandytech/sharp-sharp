@@ -65,18 +65,16 @@ export default function AdminCategoryTable({ data, columns }) {
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
-            <TableRow className="bg-gray-style font-bold text-[bg-text]">
+            <TableRow className="bg-gray-style font-bold">
               {columns.map((column, colIndex) => (
                 <TableCell
                   key={colIndex}
-                  className="bg-style font-bold text-[bg-text]"
+                  className="bg-style text-style font-bold"
                 >
                   {column.header}
                 </TableCell>
               ))}
-              <TableCell className="bg-style font-bold text-[bg-text]">
-                Actions
-              </TableCell>
+              <TableCell className="bg-style font-bold">Actions</TableCell>
             </TableRow>
           </TableHead>
 
@@ -95,7 +93,7 @@ export default function AdminCategoryTable({ data, columns }) {
           </TableBody>
         </Table>
         <TablePagination
-          className="bg-style text-[bg-text]"
+          className="bg-style"
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
           count={data.length}

@@ -5,16 +5,8 @@ import {
   useMaterialReactTable,
 } from "material-react-table";
 
-import { BsThreeDotsVertical } from "react-icons/bs";
-import {
-  Button,
-  Menu,
-  MenuHandler,
-  MenuItem,
-  MenuList,
-} from "@material-tailwind/react";
-import Modal from "../../../ui/Modal";
 import ViewDetails from "./ViewDetails";
+import { MenuItem } from "@material-tailwind/react";
 
 //nested data is ok, see accessorKeys in ColumnDef below
 export const data = [
@@ -165,19 +157,12 @@ export const data = [
 ];
 
 export default function Table() {
-  // const [selected, setSelected] = useState();
-
-  // const handleOpenModal = (id) => {
-  //   setSelected(item);
-  // };
-
-  //should be memoized or stable
   const columns = useMemo(
     () => [
       {
         accessorKey: "id", //access nested data with dot notation
         header: "S/N",
-        size: 10,
+        size: 5,
       },
       {
         accessorKey: "name.firstName", //access nested data with dot notation
@@ -189,42 +174,18 @@ export default function Table() {
         header: "Last Name",
         size: 170,
       },
-      {
-        accessorKey: "address", //normal accessorKey
-        header: "Address",
-        size: 180,
-      },
 
       {
         accessorKey: "service",
         header: "Service",
-        size: 180,
+        size: 170,
       },
       {
         accessorKey: "id",
         header: "Action",
-        size: 130,
-        Cell: ({ renderedCellValue, row }) => (
-          <Menu>
-            <MenuHandler>
-              <Button className="text-black shadow-none">
-                {" "}
-                <BsThreeDotsVertical />
-              </Button>
-            </MenuHandler>
-            <MenuList>
-              <Modal.Open opens="detail">
-                <MenuItem>View Details</MenuItem>
-              </Modal.Open>
-              {/* <MenuItem>Menu Item 2</MenuItem>
-    <MenuItem>Menu Item 3</MenuItem> */}
-            </MenuList>
+        size: 170,
 
-            <Modal.Window name="detail">
-              <ViewDetails details={row.id} />
-            </Modal.Window>
-          </Menu>
-        ),
+        Cell: ({ row }) => <ViewDetails row={row.original} />,
       },
     ],
     [],
@@ -234,9 +195,8 @@ export default function Table() {
     columns,
     data, //data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
 
+    enableFullScreenToggle: false,
     enableRowSelection: true,
-    position: "relative",
-    zIndex: 0,
 
     enableColumnResizing: true,
     enableRowPinning: true,
@@ -245,14 +205,21 @@ export default function Table() {
     muiSelectCheckboxProps: ({ row }) => ({
       color: "secondary",
       disabled: row.original.isAccountLocked, //access the row data to determine if the checkbox should be disabled
+      className: "bg-style",
       fontWeight: row.getIsSelected() ? "bold" : "normal",
     }),
 
-    muiTableHeadCellProps: {
-      //easier way to create media queries, no useMediaQuery hook needed.
-      sx: {
-        fontWeight: "normal",
+    muiTableHeadRowProps: ({ row }) => ({
+      //className: "bg-style-table",
+      className: "#ec0a0a",
+      color: "#e30b0b",
+    }),
 
+    muiTableHeadCellProps: {
+      className: "bg-style",
+
+      sx: {
+        fontWeight: "bold",
         fontSize: {
           xs: "11px",
           sm: "12px",
@@ -260,43 +227,38 @@ export default function Table() {
           lg: "16px",
           xl: "15px",
         },
-        backgroundColor: "#f0f0f0", // Add background color
+
         position: "relative",
         zIndex: 0,
       },
-
-      position: "relative",
-      zIndex: 0,
     },
+
     muiTableBodyCellProps: {
+      className: "bg-style",
+
       sx: {
         fontWeight: "normal",
+
         //borderRight: "2px solid #e0e0e0", //add a border between columns
-        fontSize: {
-          xs: "8px",
-          sm: "9px",
-          md: "10px",
-          lg: "11px",
-          xl: "12px",
-        },
-        background: "bg-style", // Add background color
-        color: "bg-text",
-        position: "relative",
-        zIndex: 0,
+
+        // fontSize: {
+        //   xs: "8px",
+        //   sm: "9px",
+        //   md: "10px",
+        //   lg: "11px",
+        //   xl: "12px",
+        // },
       },
     },
 
-    mrtTheme: (theme) => ({
-      //baseBackgroundColor: '',
-      draggingBorderColor: theme.palette.secondary.main,
-    }),
+    // muiCreateRowModalProps: {
+    //   className: "bg-style-table",
+    //   color: "#ed0a30",
+    //   sx: {
+    //     fontWeight: "normal",
+    //   },
+    // },
   });
 
-  return (
-    <Modal>
-      <div>
-        <MaterialReactTable table={table} />
-      </div>
-    </Modal>
-  );
+  return <MaterialReactTable table={table} />;
 }
