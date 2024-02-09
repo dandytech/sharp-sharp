@@ -429,7 +429,7 @@ export default function DashboardProvider() {
               <p> Completed Service Summary !!!</p>
             </div>
 
-            <div className="h-[820px] overflow-y-auto">
+            <div className="h-[1020px] overflow-y-auto">
               {completedResquests.map((completedResquest) => (
                 <div
                   key={completedResquest.id}
