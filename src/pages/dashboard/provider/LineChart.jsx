@@ -1,6 +1,6 @@
 import {
-  BarChart,
-  Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -9,27 +9,32 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function Barchart({ barchartData }) {
+export default function Chart({ linechartdata }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <BarChart
+      <LineChart
         width={500}
         height={300}
-        data={barchartData}
+        data={linechartdata}
         margin={{
-          top: 20,
+          top: 5,
+
           bottom: 5,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
-        {/* <YAxis tick={{ fill: 'blue' }} /> */}
         <YAxis />
-        <Tooltip contentStyle={{ color: "black", backgroundColor: "white" }} />
+        <Tooltip />
         <Legend />
-
-        <Bar dataKey="amt" stackId="a" fill="rgba(17, 59, 223, 0.828)" />
-      </BarChart>
+        <Line
+          type="monotone"
+          dataKey="completedService"
+          stroke="#0a3dd6"
+          activeDot={{ r: 8 }}
+        />
+        <Line type="monotone" dataKey="canceledService" stroke="#f80314" />
+      </LineChart>
     </ResponsiveContainer>
   );
 }
