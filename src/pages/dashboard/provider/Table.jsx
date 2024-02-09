@@ -1,11 +1,7 @@
-
 import {
   MaterialReactTable,
   useMaterialReactTable,
 } from "material-react-table";
-
-
-
 
 //nested data is ok, see accessorKeys in ColumnDef below
 // export const data = [
@@ -155,7 +151,7 @@ import {
 //   },
 // ];
 
-export default function Table({columns, data}) {
+export default function Table({ columns, data }) {
   // const columns = useMemo(
   //   () => [
   //     {
@@ -199,7 +195,7 @@ export default function Table({columns, data}) {
 
     enableColumnResizing: true,
     enableRowPinning: true,
-  
+
     muiSelectCheckboxProps: ({ row }) => ({
       color: "secondary",
       disabled: row.original.isAccountLocked, //access the row data to determine if the checkbox should be disabled
@@ -207,7 +203,6 @@ export default function Table({columns, data}) {
       fontWeight: row.getIsSelected() ? "bold" : "normal",
     }),
 
-  
     muiTableHeadCellProps: {
       className: "bg-style",
 
@@ -217,8 +212,8 @@ export default function Table({columns, data}) {
           xs: "11px",
           sm: "12px",
           md: "13px",
-          lg: "16px",
-          xl: "18px",
+          lg: "14px",
+          xl: "16px",
         },
 
         position: "relative",

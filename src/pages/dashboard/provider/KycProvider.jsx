@@ -1,10 +1,68 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "../../../index.css";
 import GeneralInfo from "../../../ui/kycProvider/GeneralInfo";
 import ServiceInfo from "../../../ui/kycProvider/ServiceInfo";
 import BankInfo from "../../../ui/kycProvider/BankInfo";
+import ServiceActions from "../../../ui/kycProvider/ServiceActions";
+
+//nested data is ok, see accessorKeys in ColumnDef below
+const serviceData = [
+  {
+    id: 1,
+    name: "UX/UX",
+    price: "N300-N500",
+    description: "design of prototype",
+  },
+  {
+    id: 2,
+    name: "Frontend",
+    price: "N500-N50100",
+    description: "design of Frontend",
+  },
+  {
+    id: 3,
+    name: "API",
+    price: "N3000-N5000",
+    description: "Creation & Integration of APIs",
+  },
+];
 
 export default function KycProvider() {
+  //should be memoized or stable
+  const serviceColumns = useMemo(
+    () => [
+      {
+        accessorKey: "id", //access nested data with dot notation
+        header: "S/N",
+        size: 10,
+      },
+      {
+        accessorKey: "name", //access nested data with dot notation
+        header: "Service Type",
+        size: 200,
+      },
+      {
+        accessorKey: "price", //access nested data with dot notation
+        header: "Price Range",
+        size: 200,
+      },
+      {
+        accessorKey: "description",
+        header: "Service Description",
+        size: 250,
+      },
+
+      {
+        accessorKey: "id",
+        header: "Action",
+        size: 170,
+
+        Cell: ({ row }) => <ServiceActions row={row.original} />,
+      },
+    ],
+    [],
+  );
+
   const [activeTab, setActiveTab] = useState(1);
 
   const handleTabClick = (tabNumber) => {
@@ -12,10 +70,10 @@ export default function KycProvider() {
   };
 
   return (
-    <div className="servicebg mt-[80px] w-[100%]">
-      <div className="m-auto justify-center p-3 text-center shadow-2xl  lg:p-10 ">
+  
+    <div className="z-0 rounded-xl py-5 text-center lg:py-10 border-2 p-5 mt-5">
         {" "}
-        <p className="mb-10 pt-0 text-center text-[24px] font-bold lg:pb-10">
+        <p className="mb-10 pt-0 text-center text-lg font-bold ">
           Complete Your KYC As A Service Provider !!!
         </p>
         <div>
@@ -49,7 +107,11 @@ export default function KycProvider() {
               )}
               {activeTab === 2 && (
                 <p>
-                  <ServiceInfo handleTabClick={handleTabClick} />
+                  <ServiceInfo
+                    handleTabClick={handleTabClick}
+                    serviceData={serviceData}
+                    serviceColumns={serviceColumns}
+                  />
                 </p>
               )}
               {activeTab === 3 && (
@@ -61,6 +123,6 @@ export default function KycProvider() {
           </form>
         </div>
       </div>
-    </div>
+  
   );
 }

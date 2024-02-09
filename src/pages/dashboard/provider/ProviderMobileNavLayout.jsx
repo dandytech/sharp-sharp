@@ -44,11 +44,7 @@ export default function NavbarMobileLayout({ hideNav }) {
               <MdDashboard />
             </NavLink>
           </div>
-          <div className="mb-5">
-            <NavLink to="kyc" activeClassName="active" onClick={hideNav}>
-              <FaUserPlus />
-            </NavLink>
-          </div>
+         
           <div className="mb-5">
             <NavLink to="services" activeClassName="active" onClick={hideNav}>
               <GrServices />
@@ -89,11 +85,7 @@ export default function NavbarMobileLayout({ hideNav }) {
               Dashboard
             </NavLink>
           </div>
-          <div className="mb-5">
-            <NavLink to="kyc" activeClassName="active" onClick={hideNav}>
-              KYC
-            </NavLink>
-          </div>
+         
           <div className="mb-5 ">
             <NavLink to="services" activeClassName="active" onClick={hideNav}>
               Service_Requests

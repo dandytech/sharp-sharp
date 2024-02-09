@@ -192,6 +192,15 @@ const GlobalStyles = createGlobalStyle`
       color: black!important;
     }
 
+    .css-bye78u-MuiTableRow-root td{
+      background-color: var(--color-grey-50);
+    color:  var(--text-color);
+    }
+    //Material Tailwind table
+    .css-1ex1afd-MuiTableCell-root {
+       background-color: var(--color-grey-50);
+    color:  var(--text-color);
+    }
   .bgsummary{
     background-color: var(--color-blue-100);
     color: var(--text-color);
