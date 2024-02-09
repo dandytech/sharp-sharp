@@ -174,8 +174,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .bg-style{
-    background-color: var(--color-grey-50);
-    color: var(--text-color); 
+    background-color: var(--color-grey-50) !important;
+    color: var(--text-color) !important; 
     
   }
   
@@ -186,21 +186,28 @@ const GlobalStyles = createGlobalStyle`
    }
 
   
-  //MUI table 
+  //MUI table used for provider
     .css-bye78u-MuiTableRow-root:hover td{
       background-color: none !important;
       color: black!important;
     }
 
     .css-bye78u-MuiTableRow-root td{
-      background-color: var(--color-grey-50);
-    color:  var(--text-color);
+      background-color: var(--color-grey-50) !important;
+    color: var(--text-color) !important; 
+    
     }
-    //Material Tailwind table
-    .css-1ex1afd-MuiTableCell-root {
-       background-color: var(--color-grey-50);
-    color:  var(--text-color);
+    //Material Tailwind table used for admin
+  .css-1ex1afd-MuiTableCell-root {
+    background-color: var(--color-grey-50) !important;
+    color: var(--text-color) !important; 
+    
     }
+    .font-bold{
+      background-color: var(--color-grey-50) !important;
+    color: var(--text-color) !important; 
+
+
   .bgsummary{
     background-color: var(--color-blue-100);
     color: var(--text-color);
@@ -209,10 +216,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .navDashboard{
-    border-color: white;
-   background-color: var(--color-grey-100);
-   
+    background-color: red;
+    color: var(--text-color) !important; 
+    z-index: 1000px !important;
   }
+  
   .dashHeader{
    // border-bottom: var(--navborderleft);
     background-color: var(--color-grey-100);
@@ -229,6 +237,8 @@ const GlobalStyles = createGlobalStyle`
    // border-top-left-radius: 0px;border-bottom-left-radius:0px;
   }
 
+
+  //Yes No Modal
 .modalOverlay{
   position: fixed;
   top: 0;
@@ -263,7 +273,7 @@ const GlobalStyles = createGlobalStyle`
     display: block;
   }
 }
-
+    }
 `;
 
 export default GlobalStyles;

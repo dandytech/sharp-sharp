@@ -246,7 +246,7 @@ export default function Providers() {
   };
 
   return (
-    <div className="bg-style text-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
+    <div className="bg-style  h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
       <p className="flex border-t-2 p-2 font-semibold">
         SERVICE PROVERS DETAILS
       </p>
@@ -263,16 +263,13 @@ export default function Providers() {
       <TableContainer component={Paper}>
         <Table className="bg-style">
           <TableHead className="border-t-2 border-l-gray-500 border-r-gray-500 border-t-gray-500">
-            <TableRow className="bg-gray-style font-bold text-[bg-text]">
+            <TableRow className="bg-gray-style font-bold ">
               {columns.map((column, colIndex) => (
-                <TableCell
-                  key={colIndex}
-                  className="bg-style font-bold text-[bg-text]"
-                >
+                <TableCell key={colIndex} className="bg-style font-bold">
                   <span className="font-bold"> {column.header}</span>
                 </TableCell>
               ))}
-              <TableCell className="bg-style font-bold text-[bg-text]">
+              <TableCell className="bg-style font-bold">
                 <span className="font-bold ">Actions</span>
               </TableCell>
             </TableRow>
@@ -282,7 +279,7 @@ export default function Providers() {
             {slicedData.map((row, index) => (
               <TableRow key={index}>
                 {columns.map((column, colIndex) => (
-                  <TableCell className="bg-style  text-white" key={colIndex}>
+                  <TableCell key={colIndex}>
                     {row[column.accessorKey]}
                   </TableCell>
                 ))}
@@ -293,7 +290,6 @@ export default function Providers() {
           </TableBody>
         </Table>
         <TablePagination
-          className="bg-style text-style"
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
           count={providers.length}

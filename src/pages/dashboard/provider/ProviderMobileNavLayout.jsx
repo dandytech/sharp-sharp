@@ -1,5 +1,4 @@
 import { MdDashboard } from "react-icons/md";
-import { FaUserPlus } from "react-icons/fa6";
 import { GrServices } from "react-icons/gr";
 import { IoSettingsSharp } from "react-icons/io5";
 import { MdOutlinePayments } from "react-icons/md";
@@ -8,6 +7,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import YesModal from "../../../ui/YesModal";
 import { RiLogoutCircleRLine } from "react-icons/ri";
+import logo from "../../../../src/data/logo.png";
 
 export default function NavbarMobileLayout({ hideNav }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,25 +26,19 @@ export default function NavbarMobileLayout({ hideNav }) {
     setIsModalOpen(false);
   };
 
-  // const closeNav=()=>{
-  //   setTimeout(() => {
-  //     if (hideNav) {
-  //       hideNav;
-  //     }
-
-  //   }, 5000);
-  // }
-
   return (
-    <div className="navDashboard fixed left-0 mt-10 h-auto w-auto p-10 shadow-xl">
-      <div className="flex gap-2">
+    <div className="bg-style lg:hidden z-5 fixed left-0 mt-10 h-auto w-auto p-10 shadow-xl">
+      <NavLink to="/" className="md:hidden">
+        <img src={logo} alt="logo" width="100" />
+      </NavLink>
+      <div className="flex gap-2 ">
         <div className="text-[24px]">
           <div className="mb-5">
             <NavLink to="dashboard" activeClassName="active" onClick={hideNav}>
               <MdDashboard />
             </NavLink>
           </div>
-         
+
           <div className="mb-5">
             <NavLink to="services" activeClassName="active" onClick={hideNav}>
               <GrServices />
@@ -85,7 +79,7 @@ export default function NavbarMobileLayout({ hideNav }) {
               Dashboard
             </NavLink>
           </div>
-         
+
           <div className="mb-5 ">
             <NavLink to="services" activeClassName="active" onClick={hideNav}>
               Service_Requests

@@ -195,7 +195,7 @@ export default function Clients() {
   };
 
   return (
-    <div className="bg-style text-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
+    <div className="bg-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
       <p className="flex border-t-2 p-2 font-semibold">CLIENTS DETAILS</p>
       <button
         className="float-right mb-5 flex items-center px-3 text-right"
@@ -210,16 +210,13 @@ export default function Clients() {
       <TableContainer component={Paper}>
         <Table className="bg-style">
           <TableHead className="border-t-2 border-l-gray-500 border-r-gray-500 border-t-gray-500">
-            <TableRow className="bg-gray-style font-bold text-[bg-text]">
+            <TableRow className="bg-style font-bold ">
               {columns.map((column, colIndex) => (
-                <TableCell
-                  key={colIndex}
-                  className="bg-style font-bold text-[bg-text]"
-                >
+                <TableCell key={colIndex} className="bg-style font-bold">
                   <span className="font-bold"> {column.header}</span>
                 </TableCell>
               ))}
-              <TableCell className="bg-style font-bold text-[bg-text]">
+              <TableCell className="bg-style font-bold">
                 <span className="font-bold ">Actions</span>
               </TableCell>
             </TableRow>
@@ -229,7 +226,7 @@ export default function Clients() {
             {slicedData.map((row, index) => (
               <TableRow key={index}>
                 {columns.map((column, colIndex) => (
-                  <TableCell className="bg-style text-white" key={colIndex}>
+                  <TableCell className="bg-style" key={colIndex}>
                     {row[column.accessorKey]}
                   </TableCell>
                 ))}
@@ -240,7 +237,7 @@ export default function Clients() {
           </TableBody>
         </Table>
         <TablePagination
-          className="bg-style text-[bg-text]"
+          className="bg-style"
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
           count={clients.length}
