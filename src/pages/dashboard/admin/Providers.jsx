@@ -246,7 +246,7 @@ export default function Providers() {
   };
 
   return (
-    <div className="bg-style  h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
+    <div className="bg-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
       <p className="flex border-t-2 p-2 font-semibold">
         SERVICE PROVERS DETAILS
       </p>
@@ -279,7 +279,7 @@ export default function Providers() {
             {slicedData.map((row, index) => (
               <TableRow key={index}>
                 {columns.map((column, colIndex) => (
-                  <TableCell key={colIndex}>
+                  <TableCell className="bg-style" key={colIndex}>
                     {row[column.accessorKey]}
                   </TableCell>
                 ))}
@@ -290,6 +290,7 @@ export default function Providers() {
           </TableBody>
         </Table>
         <TablePagination
+          className="bg-style"
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
           count={providers.length}
