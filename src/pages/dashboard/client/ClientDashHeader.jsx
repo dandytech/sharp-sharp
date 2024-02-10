@@ -23,7 +23,7 @@ import { FaAlignCenter } from "react-icons/fa6";
 import { GrStatusGood } from "react-icons/gr";
 import { MdAvTimer } from "react-icons/md";
 
-export default function AdminDashHeader({ handleHideNav, hideNav }) {
+export default function ClientDashHeader({ handleHideNav, hideNav }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -68,7 +68,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
           <FaAlignCenter />
         </span>
 
-        <span className="hidden md:block">Admin Dashboard</span>
+        <span className="hidden md:block">Client Dashboard</span>
         <span className="hidden md:block lg:hidden ">
           <NavLink to="/">
             <img src={logo} alt="logo" width="80" to="/" />
@@ -93,7 +93,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
               </Button>
             </MenuHandler>
 
-            <MenuList className="bg-style text-style mt-5 border-2 p-0 text-center">
+            <MenuList className="bg-style mt-5 text-style border-2 p-0 text-center">
               <p className=" bg-black p-3 text-[20px] text-white">
                 Notifications
               </p>

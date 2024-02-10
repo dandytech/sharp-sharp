@@ -59,8 +59,8 @@ export default function AdminEditCategories({ row, data }) {
         </TableCell>
       </Menu>
       <Modal.Window name="edit">
-        <div className="bg-style border-2 shadow-md">
-          <p className=" bg-black px-5 py-2 text-white">DELETE CATEGORY</p>
+        <div className="bg-style border-2 shadow-md rounded-lg py-7">
+          <p className=" bg-black px-5 py-2 text-white">EDIT CATEGORY</p>
           <div className="space-y-3 p-5">
             <p>
               <label className="font-semibold">Name </label>{" "}

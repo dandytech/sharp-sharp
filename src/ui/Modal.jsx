@@ -6,7 +6,7 @@ import { useOutSideClick } from "../hooks/useOutSideClick";
 
 const StyledModal = styled.div`
   position: fixed;
-  top: 55%;
+  top: 65%;
   left: 50%;
   height: auto;
   inset: 50;

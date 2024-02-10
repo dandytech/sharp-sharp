@@ -38,7 +38,7 @@ export default function OngoingRequestsActions({ row }) {
         </TableCell>
       </Menu>
       <Modal.Window name="view">
-        <div className="bg-style border-2 shadow-md">
+        <div className="bg-style border-2 shadow-md rounded-lg py-7 ">
           <p className=" bg-black py-5 pl-5 pr-10 text-white">
             {" "}
             <span className="uppercase"> {row.status}</span> SERVICE REQUEST

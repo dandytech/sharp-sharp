@@ -178,6 +178,9 @@ const GlobalStyles = createGlobalStyle`
     color: var(--text-color) !important; 
     
   }
+  .bg-style input, textarea, select{
+    color: black;
+  }
   
 
   .bg-style-table{
@@ -188,8 +191,8 @@ const GlobalStyles = createGlobalStyle`
   
   //MUI table used for provider
     .css-bye78u-MuiTableRow-root:hover td{
-      background-color: none !important;
-      color: black!important;
+      background-color: none ;
+      color: black;
     }
 
     .css-bye78u-MuiTableRow-root td{
@@ -203,10 +206,7 @@ const GlobalStyles = createGlobalStyle`
     color: var(--text-color) !important; 
     
     }
-    .font-bold{
-      background-color: var(--color-grey-50) !important;
-    color: var(--text-color) !important; 
-
+   
 
   .bgsummary{
     background-color: var(--color-blue-100);
@@ -216,14 +216,15 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .navDashboard{
-    background-color: red;
+    background-color: var(--color-grey-50) !important;
     color: var(--text-color) !important; 
     z-index: 1000px !important;
   }
   
   .dashHeader{
    // border-bottom: var(--navborderleft);
-    background-color: var(--color-grey-100);
+    background-color: var(--color-grey-100) !important;
+    z-index: 1000px;
    
   }
   .servicebg{

@@ -289,7 +289,7 @@ export default function SubAdmins() {
     doc.save("sharpapp_subadmins.pdf");
   };
 
-  const input = `border-2 border-gray-300 px-3 py-2`;
+  const input = `border-2 border-gray-300 px-3 py-2 bg-white`;
 
   //show form function
   const [showAdd, setShowAdd] = useState(false);

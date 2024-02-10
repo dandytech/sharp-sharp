@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { FaCloudDownloadAlt } from "react-icons/fa";
+import CancelledRequestsActions from "../CancelledRequestActions";
 
 export default function CancelledRequests({ data, columns }) {
   //Pagination
@@ -120,7 +121,7 @@ export default function CancelledRequests({ data, columns }) {
                   </TableCell>
                 ))}
 
-                {/* <AllRequestsActions data={data} row={row} /> */}
+                <CancelledRequestsActions data={data} row={row} />
               </TableRow>
             ))}
           </TableBody>

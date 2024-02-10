@@ -8,10 +8,9 @@ import {
   MenuItem,
   MenuList,
 } from "@material-tailwind/react";
-import Modal from "../../Modal";
+import Modal from "../Modal";
 
-
-export default function AllRequestsActions({ row, data }) {
+export default function CancelledRequestsActions({ row }) {
   return (
     <Modal>
       <Menu>
@@ -26,10 +25,10 @@ export default function AllRequestsActions({ row, data }) {
               <MenuItem className="bg-style ">View Details</MenuItem>
             </Modal.Open>
 
-            {row.status === "pending" && (
+            {row.status === "ongoing" && (
               <Modal.Open opens="">
                 <MenuItem className="bg-style">
-                  <button>Approve</button>
+                  <button>Track Progress</button>
                 </MenuItem>
               </Modal.Open>
             )}
@@ -39,7 +38,7 @@ export default function AllRequestsActions({ row, data }) {
         </TableCell>
       </Menu>
       <Modal.Window name="view">
-        <div className="bg-style border-2 rounded-lg py-7 shadow-md">
+        <div className="bg-style rounded-lg border-2 py-7 shadow-md ">
           <p className=" bg-black py-5 pl-5 pr-10 text-white">
             {" "}
             <span className="uppercase"> {row.status}</span> SERVICE REQUEST

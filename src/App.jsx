@@ -39,6 +39,7 @@ import Clients from "./pages/dashboard/admin/Clients.jsx";
 import SubAdmins from "./pages/dashboard/admin/SubAdmins.jsx";
 import AdminServiceRequests from "./pages/dashboard/admin/AdminServiceRequests.jsx";
 import SignupOption from "./features/signup/SignupOption.jsx";
+import ClientDashLayout from "./pages/dashboard/client/ClientDashLayout.jsx";
 
 export default function App() {
   //animation
@@ -100,6 +101,18 @@ export default function App() {
               <Route path="notifications" element={<AdminNotifications />} />
               <Route path="settings" element={<AdminSettings />} />
               <Route path="logout" />
+              <Route path="*" element={<PageNotFound />} />
+            </Route>
+
+            {/* Client Route */}
+            <Route path="client" element={<ClientDashLayout />}>
+              <Route index element={<Navigate replace to="dashboard" />} />
+              <Route path="dashboard" element="" />
+              <Route path="requests" element="" />
+              <Route path="services" element="" />
+              <Route path="payments" element="" />
+              <Route path="settings" element="" />
+              <Route path="notifications" element="" />
               <Route path="*" element={<PageNotFound />} />
             </Route>
           </Routes>

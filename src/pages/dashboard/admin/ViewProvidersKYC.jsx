@@ -39,7 +39,7 @@ export default function ViewClientKYC({ row }) {
           </Menu>
         </TableCell>
         <Modal.Window name="providerkyc">
-          <div className="w-auto overflow-y-auto pb-10">
+          <div className="w-auto overflow-y-auto pb-10 border-2 rounded-lg">
             <p className="mt-8 bg-black px-3 py-2 text-lg font-bold text-white">
               PROVIDER'S DETAILS{" "}
             </p>
