@@ -47,7 +47,7 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
   const userName = "Daniel Amaechi";
 
   return (
-    <div className="dashHeader bg-style fixed top-0 z-50 flex h-[70px] w-[100%] items-center  justify-between px-5 py-2 shadow-2xl">
+    <div className="dashHeader bg-style fixed top-0 z-50 flex h-[70px] w-[100%] items-center lg:pr-0 justify-between px-5 py-2 shadow-2xl">
       <div className=" flex items-center justify-between  text-[24px] md:w-[30%] lg:w-[15%]">
         <span
           className="cursor-pointer text-[35px] lg:hidden"
@@ -71,7 +71,7 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
         </span>
       </div>
 
-      <div className="flex  items-center justify-between text-[28px] md:w-[40%] lg:w-[24%]">
+      <div className="flex  items-center justify-between text-[28px] md:w-[50%] lg:w-[33%]">
         <div>
           <Menu>
             <MenuHandler className="relative text-[35px] text-[bg-text]  shadow-none">
@@ -88,7 +88,7 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
               </Button>
             </MenuHandler>
 
-            <MenuList className="bg-style text-style z-50 border-2 p-0 text-center">
+            <MenuList className="bg-style mt-3 text-style z-50 border-2 p-0 text-center">
               <p className=" bg-black p-3 text-[20px] text-white">
                 Notifications
               </p>
@@ -152,10 +152,10 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
         </div>
 
         <Menu>
-          <MenuHandler className="text-text-style border-none bg-none shadow-none">
+          <MenuHandler className="text-text-style  border-none bg-none shadow-none">
             <Button className="border-none bg-none shadow-none">
               {" "}
-              <div className="flex items-center justify-start">
+              <div className="flex gap-3  items-center justify-start">
                 {" "}
                 <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border-2 ">
                   <Avatar

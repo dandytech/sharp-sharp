@@ -166,7 +166,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
           <MenuHandler className="text-text-style border-none bg-none shadow-none">
             <Button className="border-none bg-none shadow-none">
               {" "}
-              <div className="flex items-center justify-start">
+              <div className="flex gap-3 items-center justify-start">
                 {" "}
                 <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border-2 ">
                   <Avatar

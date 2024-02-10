@@ -66,12 +66,12 @@ export default function ServiceInfo({
   return (
     <div>
       <div className="flex items-center justify-between">
-        <p className="mb-3 mt-20 flex text-[18px] font-semibold">
+        <p className="mb-3 mt-20 flex text-[18px] font-semibold lg:text-lg xl:text-xl ">
           Your Service Varieties Details
         </p>
 
         <button
-          className="my-5 mt-20 flex rounded-xl bg-blue-500 p-3 text-white"
+          className="md:text-md my-5 mt-20 flex rounded-xl bg-blue-500 p-3 text-sm text-white lg:text-lg xl:text-xl"
           onClick={handleShow}
         >
           + Add

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Modal from "./Modal";
 
 export default function ServiceDetails({ service }) {
@@ -35,7 +36,7 @@ export default function ServiceDetails({ service }) {
         </div>
 
         <button className="mt-4 rounded-full border-2 bg-blue-500 px-3 py-1 text-white hover:bg-gray-800">
-          Book
+          <NavLink to="/requestService">Book</NavLink>
         </button>
       </div>
     </Modal>

@@ -93,7 +93,7 @@ export default function ClientDashHeader({ handleHideNav, hideNav }) {
               </Button>
             </MenuHandler>
 
-            <MenuList className="bg-style mt-5 text-style border-2 p-0 text-center">
+            <MenuList className="bg-style text-style mt-5 border-2 p-0 text-center">
               <p className=" bg-black p-3 text-[20px] text-white">
                 Notifications
               </p>
@@ -166,7 +166,7 @@ export default function ClientDashHeader({ handleHideNav, hideNav }) {
           <MenuHandler className="text-text-style border-none bg-none shadow-none">
             <Button className="border-none bg-none shadow-none">
               {" "}
-              <div className="flex items-center justify-start">
+              <div className="flex items-center justify-start gap-3">
                 {" "}
                 <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border-2 ">
                   <Avatar

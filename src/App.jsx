@@ -40,6 +40,7 @@ import SubAdmins from "./pages/dashboard/admin/SubAdmins.jsx";
 import AdminServiceRequests from "./pages/dashboard/admin/AdminServiceRequests.jsx";
 import SignupOption from "./features/signup/SignupOption.jsx";
 import ClientDashLayout from "./pages/dashboard/client/ClientDashLayout.jsx";
+import RequestService from "./pages/RequestService.jsx";
 
 export default function App() {
   //animation
@@ -65,6 +66,7 @@ export default function App() {
               <Route path="services" element={<Services />} />
               <Route path="providerReg" element={<ProviderSignup />} />
               <Route path="clientReg" element={<ClientSignup />} />
+              <Route path="requestService" element={<RequestService />} />
               <Route path="*" element={<PageNotFound />} />
             </Route>
 
