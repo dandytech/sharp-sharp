@@ -57,7 +57,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
       </div>
 
       <List>
-        <NavLink to="dashboard">
+        <NavLink to="dashboard" onClick={!hideNav}>
           <ListItem className="flex gap-1">
             <ListItemPrefix>
               <MdDashboard className="h-5 w-5" />
@@ -66,7 +66,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
           </ListItem>
         </NavLink>
 
-        <NavLink to="requests">
+        <NavLink to="requests" onClick={!hideNav}>
           <ListItem className="flex gap-1">
             <ListItemPrefix>
               <FaCodePullRequest className="h-5 w-5" />
@@ -87,7 +87,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
           </ListItem>
         </NavLink>
 
-        <NavLink to="services ">
+        <NavLink to="services" onClick={!hideNav}>
           <ListItem className="flex gap-1">
             <ListItemPrefix>
               <MdMedicalServices className="h-5 w-5" />
@@ -108,7 +108,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
           </ListItem>
         </NavLink>
 
-        <NavLink to="payments">
+        <NavLink to="payments" onClick={!hideNav}>
           <ListItem className="flex gap-1">
             <ListItemPrefix>
               <TbZoomMoney className="h-5 w-5" />
@@ -117,7 +117,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
           </ListItem>
         </NavLink>
 
-        <NavLink to="notifications">
+        <NavLink to="notifications" onClick={!hideNav}>
           <ListItem className="flex gap-1">
             <ListItemPrefix>
               <MdNotificationsNone className="h-5 w-5" />
@@ -138,7 +138,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
           </ListItem>
         </NavLink>
 
-        <NavLink to="settings">
+        <NavLink to="settings" onClick={!hideNav}>
           <ListItem className="flex gap-1">
             <ListItemPrefix>
               <Cog6ToothIcon className="h-5 w-5" />
