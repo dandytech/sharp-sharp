@@ -47,7 +47,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
 
   return (
     <div
-      className={`w-[100%] pl-5 pr-3 ${
+      className={`w-[100%] border-b-2 pl-5 pr-3 ${
         !hideNav
           ? "bg-style text-bg-text fixed right-0 top-0 flex  h-[100px]  items-center justify-between py-2 shadow-2xl lg:w-[calc(100%-80px)]"
           : "bg-style text-bg-text fixed right-0 top-0 flex  h-[100px]  items-center justify-between py-2 shadow-2xl lg:w-[calc(100%-250px)]"
@@ -163,7 +163,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
         </div>
 
         <Menu>
-          <MenuHandler className="text-text-style border-none bg-none shadow-none">
+          <MenuHandler className="text-text-style  border-none bg-none shadow-none">
             <Button className="border-none bg-none shadow-none">
               {" "}
               <div className="flex gap-3 items-center justify-start">

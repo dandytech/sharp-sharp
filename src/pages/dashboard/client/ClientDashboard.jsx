@@ -1,6 +1,8 @@
 import { GiTakeMyMoney } from "react-icons/gi";
 import { VscGitPullRequestNewChanges } from "react-icons/vsc";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
+import LineChart from "./LineChart";
+import PieChart from "./PieChart";
 
 export default function ClientDashboard() {
   return (
@@ -8,8 +10,8 @@ export default function ClientDashboard() {
       <section>
         <div className="justify-between lg:flex">
           <div className="lg:w-[70%]">
-            <div className="items-center justify-between gap-3 px-5 lg:flex">
-              <div className="flex justify-center space-y-3 rounded-lg border-2 bg-blue-200 p-5 text-center  shadow-md hover:bg-blue-500 hover:text-white">
+            <div className="items-center justify-between gap-3 px-5 text-black lg:flex">
+              <div className="flex  justify-center space-y-3 rounded-lg border-2 bg-blue-200 p-5 text-center  shadow-md hover:bg-blue-500 hover:text-white">
                 <div className="flex justify-start gap-1">
                   <div className="border-2-gray-500 flex h-[90px] w-[90px] items-center rounded-full border-2 bg-blue-500 p-2 text-[100px] text-white">
                     <AiOutlineDeliveredProcedure />
@@ -59,15 +61,17 @@ export default function ClientDashboard() {
               </div>{" "}
             </div>
 
-            <div className="px-5 border-t-2 mt-5 py-20">TABLE HERE</div>
+            <div className="mt-5 border-t-2 px-5 py-20">TABLE HERE</div>
           </div>
 
-          <div className="border-l-2 lg:w-[30%]">
-            <p className="w-full bg-black py-3 text-center font-semibold text-white">
-              ANNOUNCEMENTS
-            </p>
-            <p>Contectes here</p>
-
+          <div className=" lg:w-[30%]">
+           
+            <div>
+              <LineChart />
+            </div>
+            <div className="mt-10">
+              <PieChart />
+            </div>
           </div>
         </div>
       </section>

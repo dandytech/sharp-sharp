@@ -49,7 +49,7 @@ export default function AdminNavMenus({ hideNav }) {
   };
 
   return (
-    <Card className="bg-style text-bg-text hidden h-[100vh] lg:block">
+    <Card className="bg-style border-r-2 text-bg-text hidden h-[100vh] lg:block">
       <div className="mb-2 h-[120px] px-4">
         <NavLink to="/">
           <Typography variant="h5" color="blue-gray">

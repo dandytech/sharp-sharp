@@ -183,6 +183,11 @@ const GlobalStyles = createGlobalStyle`
   }
   
 
+  //overwrite  default inechart bg
+  .bg-gray-900{
+    background-color: transparent;
+    
+
   .bg-style-table{
    background-color: var(--color-grey-50);
     color:  var(--text-color);

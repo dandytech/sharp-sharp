@@ -27,7 +27,7 @@ export default function NavbarMobileLayout({ hideNav }) {
   };
 
   return (
-    <div className="bg-style lg:hidden z-5 fixed left-0 mt-10 h-auto w-auto p-10 shadow-xl">
+    <div className="bg-style z-5 fixed left-0 mt-10 h-auto w-auto p-10 shadow-xl lg:hidden">
       <NavLink to="/" className="md:hidden">
         <img src={logo} alt="logo" width="100" />
       </NavLink>

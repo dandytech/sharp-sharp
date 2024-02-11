@@ -47,7 +47,7 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
   const userName = "Daniel Amaechi";
 
   return (
-    <div className="dashHeader bg-style fixed top-0 z-50 flex h-[70px] w-[100%] items-center lg:pr-0 justify-between px-5 py-2 shadow-2xl">
+    <div className="dashHeader border-b-2 bg-style fixed top-0 z-50 flex h-[90px] w-[100%] pb-3 items-center lg:pr-0 justify-between px-5 py-2 shadow-2xl">
       <div className=" flex items-center justify-between  text-[24px] md:w-[30%] lg:w-[15%]">
         <span
           className="cursor-pointer text-[35px] lg:hidden"
