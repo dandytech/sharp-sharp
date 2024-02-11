@@ -1,6 +1,7 @@
 import { useState } from "react";
-import AllNotifications from "../../../ui/client/clientsNotifications/AllNotifications";
-import UnreadNotifications from "../../../ui/client/clientsNotifications/UnreadNotifications";
+
+import AllNotifications from "../../../ui/clientsNotifications/AllNotifications";
+import UnreadNotifications from "../../../ui/clientsNotifications/UnreadNotifications";
 
 export default function ClientNotifications() {
   const [activeTab, setActiveTab] = useState(1);

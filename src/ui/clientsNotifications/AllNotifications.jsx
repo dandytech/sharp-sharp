@@ -26,7 +26,7 @@ const notifications = [
 ];
 
 import { IoEllipsisVerticalSharp } from "react-icons/io5";
-import Modal from "../../Modal";
+import Modal from "../Modal";
 
 export default function AllNotifications() {
   return (
