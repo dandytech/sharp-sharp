@@ -8,6 +8,7 @@ import ServiceInfo from "../ui/requestService/ServiceInfo";
 
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { TbSend } from "react-icons/tb";
+import MyButton from "../ui/MyButton";
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState(1);
@@ -20,8 +21,8 @@ export default function Contact() {
     <div className="bg-gradient-to-r from-violet-100 to-blue-100  pt-[85px] lg:mt-[0px] lg:py-0 lg:pt-0 ">
       <div className="h-[300px] bg-[url('/src/data/bgcontact.png')] bg-cover bg-center bg-no-repeat pt-10">
         {/* banner section */}
-        <section className="m-auto h-auto p-5 lg:w-[70%] lg:p-10">
-          <div className="flex items-center gap-1 rounded-xl border-2 border-gray-400 px-2 py-3  text-white lg:w-[50%] lg:px-5">
+        <section className="m-auto h-auto p-5 lg:w-[70%] lg:p-5">
+          <div className="flex items-center gap-1 rounded-xl border-2 border-gray-400 py-3  text-white lg:w-[50%] ">
             <span>
               <IoTimeOutline />
             </span>{" "}
@@ -33,7 +34,7 @@ export default function Contact() {
         </section>
       </div>{" "}
       <section>
-        <div className="px-2 lg:px-5">
+        <div className="px-4 lg:px-5">
           <div className="z-0 m-auto mt-10 flex w-full items-center justify-between border-t-2 border-t-gray-300 bg-transparent pl-[0px] pr-[0px] lg:w-[70%] lg:px-3">
             <button
               className={
@@ -115,36 +116,46 @@ export default function Contact() {
             {activeTab === 4 && <p>Payment Info</p>}
           </div>
 
-          <div className="m-auto mt-5 flex items-center justify-between px-5 pb-10 lg:w-[70%]">
+          <div className="m-auto mt-5 flex items-center justify-between px-3 pb-10 lg:w-[70%]">
             {activeTab < 4 && (
-              <button
-                className="flex items-center gap-1 rounded-full border-2 bg-blue-500 px-5 py-2 text-white hover:bg-black"
+              <MyButton
+                type="primary"
                 onClick={() => handleTabClick(activeTab + 1)}
               >
-                Next <FaArrowRight />
-              </button>
+                <span className="flex items-center gap-1 ">
+                  <span>Next</span>
+                  <span>
+                    <FaArrowRight />
+                  </span>
+                </span>
+              </MyButton>
             )}
 
             {activeTab > 1 && (
-              <button
-                className="flex items-center gap-1 rounded-full border-2 bg-blue-500 px-5 py-2 text-white hover:bg-black"
+              <MyButton
+                type="primary"
                 onClick={() => handleTabClick(activeTab - 1)}
               >
-                <span>
-                  {" "}
-                  <FaArrowLeft />
+                <span className="flex items-center gap-1">
+                  <span>
+                    {" "}
+                    <FaArrowLeft />
+                  </span>
+                  <span> Previous</span>
                 </span>
-                <span> Previous</span>
-              </button>
+              </MyButton>
             )}
 
             {activeTab == 4 && (
-              <button className="flex items-center gap-1 rounded-full border-2 bg-blue-500 px-5 py-2 text-white hover:bg-black">
-                <span> Submit</span>
-                <span>
-                  <TbSend />
+              <MyButton type="primary">
+                {" "}
+                <span className="flex items-start">
+                  <span> Submit</span>
+                  <span>
+                    <TbSend />
+                  </span>
                 </span>
-              </button>
+              </MyButton>
             )}
           </div>
         </div>

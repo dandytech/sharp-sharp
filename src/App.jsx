@@ -42,6 +42,12 @@ import SignupOption from "./features/signup/SignupOption.jsx";
 import ClientDashLayout from "./pages/dashboard/client/ClientDashLayout.jsx";
 import RequestService from "./pages/RequestService.jsx";
 
+import Requests from "./pages/dashboard/client/Requests.jsx";
+import ServicesAvailable from "./pages/dashboard/client/ServicesAvailble.jsx";
+import ClientNotifications from "./pages/dashboard/client/ClientNotifications.jsx";
+import ClientSettings from "./pages/dashboard/client/ClientSettings.jsx";
+import ClientDashboard from "./pages/dashboard/client/ClientDashboard.jsx";
+
 export default function App() {
   //animation
   useEffect(() => {
@@ -109,12 +115,13 @@ export default function App() {
             {/* Client Route */}
             <Route path="client" element={<ClientDashLayout />}>
               <Route index element={<Navigate replace to="dashboard" />} />
-              <Route path="dashboard" element="" />
-              <Route path="requests" element="" />
-              <Route path="services" element="" />
+              <Route path="dashboard" element={<ClientDashboard />} />
+              <Route path="requests" element={<Requests />} />
+              <Route path="services" element={<ServicesAvailable />} />
               <Route path="payments" element="" />
-              <Route path="settings" element="" />
-              <Route path="notifications" element="" />
+              <Route path="notifications" element={<ClientNotifications />} />
+              <Route path="settings" element={<ClientSettings />} />
+
               <Route path="*" element={<PageNotFound />} />
             </Route>
           </Routes>

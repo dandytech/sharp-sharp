@@ -47,7 +47,7 @@ export default function ClientDashHeader({ handleHideNav, hideNav }) {
 
   return (
     <div
-      className={`w-[100%] pl-5 pr-3 ${
+      className={`w-[100%] pl-5 pr-3 border-b-2 ${
         !hideNav
           ? "bg-style text-bg-text fixed right-0 top-0 flex  h-[100px]  items-center justify-between py-2 shadow-2xl lg:w-[calc(100%-80px)]"
           : "bg-style text-bg-text fixed right-0 top-0 flex  h-[100px]  items-center justify-between py-2 shadow-2xl lg:w-[calc(100%-250px)]"
