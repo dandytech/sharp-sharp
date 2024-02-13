@@ -1,12 +1,149 @@
+export const serviceProviders = [
+  {
+    id: 1,
+    photo: "https://i.pravatar.cc/48?u=49934455214",
+    name: {
+      firstName: "Obi",
+      lastName: "Godwin",
+    },
+    address: "3 Ogba rd, Ikeja Lagos",
+    phone: "+234 8098287874",
+    email: "obi@gmail.com",
+    service: "Cleaner",
+    charge: "NGN15000 per day",
+    detail: "I want to sow up and down senate cotton",
+    requestTime: "10:30pm Wed. January 11, 2024",
+    deliveryTime: "8:00am Sat. January 13, 2024",
+  },
+
+  {
+    id: 2,
+    photo: "https://i.pravatar.cc/48?u=4442896764",
+    name: {
+      firstName: "John",
+      lastName: "Okechukwu",
+    },
+    address: "4 uba rd, Ikeja Lagos",
+    phone: "+234 8228287874",
+    email: "john@gmail.com",
+    service: "Cleaner",
+    charge: "On Request",
+    detail: "",
+    requestTime: "10:30pm Wed. January 10, 2024",
+    deliveryTime: "8:00am Sat. January 13, 2024",
+  },
+
+  {
+    id: 3,
+    photo: "https://i.pravatar.cc/48?u=4442232764",
+    name: {
+      firstName: "John",
+      lastName: "Okechukwu",
+    },
+    address: "4 uba rd, Ikeja Lagos",
+    phone: "+234 8228287874",
+    email: "john@gmail.com",
+    service: "Cook",
+    charge: "NGN5000 per day",
+    detail: "I need need a cook for my wedding",
+    requestTime: "10:30pm Wed. January 10, 2024",
+    deliveryTime: "8:00am Sat. January 13, 2024",
+  },
+  {
+    id: 4,
+    photo: "https://i.pravatar.cc/48?u=44545289124",
+    name: {
+      firstName: "Grace",
+      lastName: "Umeh",
+    },
+    address: "4 uba rd, Ikeja Lagos",
+    phone: "+234 8228287874",
+    email: "grace@gmail.com",
+    service: "Therapist",
+    charge: "NGN50,000 per consultation",
+    detail: "best",
+    requestTime: "10:30pm Wed. January 10, 2024",
+    deliveryTime: "8:00am Sat. January 13, 2024",
+  },
+  {
+    id: 5,
+    photo: "https://i.pravatar.cc/48?u=44428954764",
+    name: {
+      firstName: "Mary",
+      lastName: "Olah",
+    },
+    address: "4 uba rd, Ikeja Lagos",
+    phone: "+234 8228287874",
+    email: "grace@gmail.com",
+    service: "Nany",
+    charge: "NGN4,500 per day",
+    detail: "I deliver best",
+    requestTime: "10:30pm Wed. January 10, 2024",
+    deliveryTime: "8:00am Sat. January 13, 2024",
+  },
+];
+
 import { GiTakeMyMoney } from "react-icons/gi";
 import { VscGitPullRequestNewChanges } from "react-icons/vsc";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import LineChart from "./LineChart";
 import PieChart from "./PieChart";
 import Modal from "../../../ui/Modal";
-import MyButton from "../../../ui/MyButton";
+import { useMemo } from "react";
+import Table from "../../../ui/Table";
+import { MdStarRate } from "react-icons/md";
 
 export default function ClientDashboard() {
+  const columns = useMemo(
+    () => [
+      {
+        accessorKey: "photo",
+        header: "Photo",
+        size: 150,
+        Cell: ({ row }) => (
+          <img
+            src={row.original.photo}
+            alt={row.original.photo}
+            width="50"
+            className="rounded-full"
+          />
+        ),
+      },
+
+      {
+        accessorKey: "name.firstName", //access nested data with dot notation
+        header: "First Name",
+        size: 170,
+      },
+      {
+        accessorKey: "name.lastName",
+        header: "Last Name",
+        size: 170,
+      },
+
+      {
+        accessorKey: "service",
+        header: "Service",
+        size: 170,
+      },
+      {
+        accessorKey: "id",
+        header: "Rate",
+        size: 170,
+
+        Cell: ({ row }) => (
+          <div className="flex items-center">
+            <span className="rounded-xl p-2 text-lg text-blue-500">
+              <MdStarRate />
+            </span>
+            <button>+Add</button>
+          </div>
+        ),
+      },
+    ],
+    [],
+  );
+
   return (
     <Modal>
       <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[100px] shadow-md lg:w-[85%]">
@@ -64,7 +201,16 @@ export default function ClientDashboard() {
                 </div>{" "}
               </div>
 
-              <div className="mt-5 border-t-2 px-5 py-20">TABLE HERE</div>
+              <div className="mt-5 border-t-2 px-5 py-10">
+                <div className="flex items-center justify-between px-2 font-semibold">
+                  <p>My Recent Providers</p>
+                  <p>View All</p>
+                </div>
+
+                <div>
+                  <Table data={serviceProviders} columns={columns} />
+                </div>
+              </div>
             </div>
 
             <div className=" lg:w-[30%]">
