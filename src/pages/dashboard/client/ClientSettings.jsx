@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MyProfile from "../../../ui/clientSettings/MyProfile";
 import Security from "../../../ui/clientSettings/Security";
+import KYC from "../../../ui/clientSettings/KYC";
 
 export default function ClientSettings() {
   const [activeTab, setActiveTab] = useState(1);
@@ -17,7 +18,7 @@ export default function ClientSettings() {
           Account Settings !!!
         </p>
         <div className="gap-10 lg:flex">
-          <div className="flex justify-between lg:justify-start gap-5 rounded-xl shadow-md lg:w-[10%] lg:flex-col lg:pt-5">
+          <div className="flex justify-between gap-5 rounded-xl shadow-md lg:w-[10%] lg:flex-col lg:justify-start lg:pt-5">
             <button
               className={
                 activeTab === 1
@@ -64,8 +65,7 @@ export default function ClientSettings() {
             )}
             {activeTab === 3 && (
               <p>
-                {/* <KycProvider /> */}
-                KYC
+                <KYC />
               </p>
             )}
           </div>

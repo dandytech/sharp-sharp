@@ -14,6 +14,7 @@ export const serviceProviders = [
     detail: "I want to sow up and down senate cotton",
     requestTime: "10:30pm Wed. January 11, 2024",
     deliveryTime: "8:00am Sat. January 13, 2024",
+    rate: "2",
   },
 
   {
@@ -31,6 +32,7 @@ export const serviceProviders = [
     detail: "",
     requestTime: "10:30pm Wed. January 10, 2024",
     deliveryTime: "8:00am Sat. January 13, 2024",
+    rate: "1",
   },
 
   {
@@ -48,6 +50,7 @@ export const serviceProviders = [
     detail: "I need need a cook for my wedding",
     requestTime: "10:30pm Wed. January 10, 2024",
     deliveryTime: "8:00am Sat. January 13, 2024",
+    rate: "4",
   },
   {
     id: 4,
@@ -64,6 +67,7 @@ export const serviceProviders = [
     detail: "best",
     requestTime: "10:30pm Wed. January 10, 2024",
     deliveryTime: "8:00am Sat. January 13, 2024",
+    rate: "3",
   },
   {
     id: 5,
@@ -80,6 +84,7 @@ export const serviceProviders = [
     detail: "I deliver best",
     requestTime: "10:30pm Wed. January 10, 2024",
     deliveryTime: "8:00am Sat. January 13, 2024",
+    rate: "0",
   },
 ];
 
@@ -91,7 +96,11 @@ import PieChart from "./PieChart";
 import Modal from "../../../ui/Modal";
 import { useMemo } from "react";
 import Table from "../../../ui/Table";
-import { MdStarRate } from "react-icons/md";
+import MyButton from "../../../ui/MyButton";
+
+import StarRating from "../../../ui/StarRating";
+import StarRating1 from "../../../ui/StarRaring1";
+import { Tooltip } from "@material-tailwind/react";
 
 export default function ClientDashboard() {
   const columns = useMemo(
@@ -129,15 +138,42 @@ export default function ClientDashboard() {
       {
         accessorKey: "id",
         header: "Rate",
-        size: 170,
+        size: 250,
 
         Cell: ({ row }) => (
-          <div className="flex items-center">
-            <span className="rounded-xl p-2 text-lg text-blue-500">
-              <MdStarRate />
-            </span>
-            <button>+Add</button>
-          </div>
+          <Modal>
+            <div className="flex items-center">
+              <span className="rounded-xl p-2 text-lg text-blue-500">
+                <StarRating totalStars={row.original.rate} />
+              </span>
+              <Modal.Open opens="rate">
+                <button className="text-lg">
+                  <Tooltip content="Rate Provider">+</Tooltip>
+                </button>
+              </Modal.Open>
+
+              <Modal.Window name="rate">
+                <div className="flex flex-col gap-5">
+                  <p className="mt-7 bg-black px-3 py-3 font-semibold text-white">
+                    Rate Provider {row.original.name.firstName}
+                  </p>
+                  <p className="px-3 py-3">
+                    {" "}
+                    <StarRating1
+                      defaultRating={0}
+                      maxRating={5}
+                      size={35}
+                      color={"#fcc419"}
+                    />
+                  </p>
+
+                  <MyButton type="primary">
+                    <Modal.Close>Submit</Modal.Close>
+                  </MyButton>
+                </div>
+              </Modal.Window>
+            </div>
+          </Modal>
         ),
       },
     ],

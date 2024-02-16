@@ -211,6 +211,14 @@ const GlobalStyles = createGlobalStyle`
     color: var(--text-color) !important; 
     
     }
+
+    .css-ptiqhd-MuiSvgIcon-root {
+      background-color: var(--color-grey-50) !important; 
+    color: var(--text-color) !important;
+    border: 2px solid red !important; 
+    
+    }
+
    
 
   .bgsummary{

@@ -1,7 +1,15 @@
-import { NavLink } from "react-router-dom";
 import Modal from "./Modal";
+import useCartStore from "../store/cartStore";
+import MyButton from "./MyButton";
 
 export default function ServiceDetails({ service }) {
+  //add booked service to cart
+  const addToCart = useCartStore((state) => state.addToCart);
+  const addFunction = () => {
+    addToCart(service);
+  };
+
+ 
   return (
     <Modal>
       <div className="rounded-lg border-2 bg-white p-3 text-center shadow-md hover:bg-blue-500 hover:text-white">
@@ -35,9 +43,9 @@ export default function ServiceDetails({ service }) {
           </div>
         </div>
 
-        <button className="mt-4 rounded-full border-2 bg-blue-500 px-3 py-1 text-white hover:bg-gray-800">
-          <NavLink to="/requestService">Book</NavLink>
-        </button>
+        <MyButton type="primary" onClick={addFunction}>
+          Book
+        </MyButton>
       </div>
     </Modal>
   );

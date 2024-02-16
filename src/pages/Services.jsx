@@ -193,11 +193,22 @@ import { IoFilter, IoSearch } from "react-icons/io5";
 import SmallServiceCategories from "../ui/SmallServiceCategories";
 import Modal from "../ui/Modal";
 import ServiceDetails from "../ui/ServiceDetails";
+import useCartStore from "../store/cartStore";
+import Cart from "./Cart";
 
 export default function Services() {
+  //cart array count
+  const items = useCartStore((state) => state.items);
+
+  //clear cart function
+  const clearCart = useCartStore((state) => state.clearCart);
+
+  //remove from cart function
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
+
+  //pagination
   const [data, setServices] = useState(services);
   const [currentPage, setCurrentPage] = useState(1);
-
   const itemsPerPage = 9;
   const totalItems = data.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -307,6 +318,8 @@ export default function Services() {
         </section>
 
         {/* services section */}
+        <Cart clearCart={clearCart} items={items} />
+
         <section className="m-auto gap-10 lg:flex lg:w-[100%] lg:px-5">
           <div className="hidden border-2 border-r-0 border-t-0 border-gray-300 p-5 lg:block lg:w-[15%]">
             <p>
