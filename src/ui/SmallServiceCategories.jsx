@@ -40,7 +40,7 @@ export default function SmallServiceCategories({
   return (
     <div>
       <select
-        className="rounded-xl px-3 py-1"
+        className="rounded-xl px-3 py-1 w-full"
         onChange={(e) => handleFilter(e.target.value)}
       >
         <option>Search Category</option>

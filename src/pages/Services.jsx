@@ -42,141 +42,216 @@ const services = [
     id: 1,
     category: "Cleaning & Pest Control",
     serviceRender: "House Cleaning",
-    price: "N15,000 per day",
+    quantity: 1,
+    price: 15000,
     details:
-      "Cleaning of sitting, bed room, kitchen, toilet, coaches, and compound",
+      "Cleaning of 1 sitting, 1 bed room, 1 kitchen, 5 toilet, coaches, and compound",
     rating: "",
+    provider: "Jackson Ben",
+    providerEmail: "jackson@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 2,
     category: "Washing",
     serviceRender: "Car Wash",
-    price: "N5,600 per Vehicle",
+    quantity: 1,
+    price: 8600,
     details:
       "We wash in and out of the vehicle. You provide us with detegent if you don't like the one we use.",
     rating: "",
+    provider: "Kenneth Mba",
+    providerEmail: "kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 3,
     category: "Hair",
     serviceRender: "Hair Cut",
-    price: "N3,000 for adult, N2,000 for children",
-    details: "We cut with good hair treatment materials and cream",
+    quantity: 1,
+    price: 3000,
+    details:
+      "Adult or Children hair cut, We cut with good hair treatment materials and cream",
     rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 4,
     category: "Repairs & Maintenance",
-    serviceRender: "Phone Repir",
-    price: "Charge on Request",
+    serviceRender: "Phone Repair",
+    quantity: 1,
+    price: 45000,
     details:
       "You are to buy any replacable damaged part expect if the damage is caused by us while repairing your phone",
     rating: "",
+    provider: "Kenneth Ike",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 5,
     category: "Tailoring & Fashion",
     serviceRender: "Fashion Design",
-    price: "Charge on Request",
+    quantity: 1,
+    price: 6000,
     details:
       "We sow for both men and women, adault and children. We also amend clothes for fit your taste",
     rating: "",
+    provider: "Grace Oko",
+    providerEmail: "Kenngraceeth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 4,
   },
   {
     id: 6,
     category: "Beauty & Makeup",
     serviceRender: "Wedding Make up",
-    price: "Full Wedding makeup (N50,000)",
+    quantity: 1,
+    price: 50500,
     details:
       "We do all sorts of make-up that you may want ranging from Wedding, Party and other form of make-ups",
     rating: "",
+    provider: "Diamond Kwere",
+    providerEmail: "diamond@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 7,
     category: "Health",
     serviceRender: "Massage",
-    price: "Charge on Request",
+    quantity: 1,
+    price: 8000,
     details:
       "We are specialize on massage, we provide a very reliable massage service as you may want. ",
     rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 8,
     category: "Garden",
     serviceRender: "Flower Dresser",
-    price: "Charge on Request",
+    quantity: 1,
+    price: 53000,
     details: "We cut and dress your flowers of any kind with specialized tools",
     rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 9,
     category: "Cleaning & Pest Control",
     serviceRender: "Electronics Cleaning",
-    price: "N3,000 per gadget",
+    quantity: 1,
+    price: 42000,
     details: "We clean any form of electronics with best tools and materials",
     rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 10,
     category: "Washing",
     serviceRender: "Laundry",
-    price: "N3,00 per cloth",
+    quantity: 1,
+    price: 20000,
     details:
-      "We wash and dry any form of cloth, material or bedshits. You provide us with detegent if you don't like the one we use.",
+      "Daily wash and dry any form of cloth, material or bedshits. You provide us with detegent if you don't like the one we use.",
     rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 11,
     category: "Hair",
     serviceRender: "Stylist",
-    price: "Charge per Request",
+    quantity: 1,
+    price: 4000,
     details: "We Style with good hair treatment materials and cream",
-    rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 12,
     category: "Electronics",
     serviceRender: "AC installation",
-    price: "N8,000 per AC",
+    quantity: 1,
+    price: 50000,
     details:
       "We insatll Air Conditioner of any kind for indiividuals with best practices",
-    rating: "",
+    rprovider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 13,
     category: "Tailoring",
     serviceRender: "Maintenance",
-    price: "Charge on Request",
+    quantity: 1,
+    price: 50090,
     details:
       "We maintain for both men and women, adault and children. We also amend clothes for fit your taste",
-    rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 14,
     category: "Makeup",
     serviceRender: "Medicure",
-    price: "Full cure N20,000",
+    quantity: 1,
+    price: 40900,
     details:
       "We do all sorts of nail-treatment that you may want ranging from finger, Toes and other form of cures",
-    rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 15,
     category: "Health & Wellness",
     serviceRender: "Consultant(Therapist)",
-    price: "N10,000",
+    quantity: 1,
+    price: 5000,
     details:
       "We are specialize on consultation, we provide a very reliable consultation service as you may want. ",
-    rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
   {
     id: 16,
     category: "Gardening & Holticulture",
     serviceRender: "Flower planter",
-    price: "Charge on Request",
+    quantity: 1,
+    price: 6902,
     details:
       "We plant and maintain your flowers of any kind with specialized tools",
-    rating: "",
+    provider: "Kenneth Oko",
+    providerEmail: "Kenneth@gmail.com",
+    providerPhone: "+234 7098987873",
+    providerStarRating: 3,
   },
 ];
 
@@ -186,6 +261,7 @@ import {
   MenuHandler,
   MenuItem,
   MenuList,
+  Tooltip,
 } from "@material-tailwind/react";
 import { useState } from "react";
 
@@ -196,15 +272,15 @@ import ServiceDetails from "../ui/ServiceDetails";
 import useCartStore from "../store/cartStore";
 import Cart from "./Cart";
 
+import { HashLink } from "react-router-hash-link";
+import MyButton from "../ui/MyButton";
+
 export default function Services() {
   //cart array count
   const items = useCartStore((state) => state.items);
 
   //clear cart function
   const clearCart = useCartStore((state) => state.clearCart);
-
-  //remove from cart function
-  const removeFromCart = useCartStore((state) => state.removeFromCart);
 
   //pagination
   const [data, setServices] = useState(services);
@@ -268,10 +344,10 @@ export default function Services() {
           <div className="">
             <p className="mb-4 font-semibold">Search For A Service</p>
 
-            <div className="flex border-gray-500">
+            <div className="flex justify-between border-2 border-gray-400">
               <span>
                 <input
-                  className="rounded-l-xl px-3 py-1"
+                  className="w-full px-3 py-1"
                   type="text"
                   placeholder="Search..."
                   value={searchInput}
@@ -287,6 +363,7 @@ export default function Services() {
               </span>
             </div>
           </div>
+
           <div className="mt-5 lg:hidden">
             {" "}
             <span>
@@ -295,6 +372,14 @@ export default function Services() {
                 handleFilter={handleFilter}
               />
             </span>
+          </div>
+          <div className="mb-5 hidden text-center lg:block">
+            {" "}
+            <Tooltip content="Let Service Providers bid for your service">
+              <HashLink smooth to="/home#quoteform">
+                <MyButton type="primary"> Request A Quote</MyButton>
+              </HashLink>
+            </Tooltip>
           </div>
           <div>
             <Menu>
@@ -318,6 +403,14 @@ export default function Services() {
         </section>
 
         {/* services section */}
+        <div className="mb-5 text-center lg:hidden">
+          {" "}
+          <Tooltip content="Let Service Providers bid for your service">
+            <HashLink smooth to="/home#quoteform">
+              <MyButton type="primary"> Request A Quote</MyButton>
+            </HashLink>
+          </Tooltip>
+        </div>
         <Cart clearCart={clearCart} items={items} />
 
         <section className="m-auto gap-10 lg:flex lg:w-[100%] lg:px-5">

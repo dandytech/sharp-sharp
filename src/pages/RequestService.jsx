@@ -23,6 +23,19 @@ export default function Contact() {
 
   //remove from cart function
   const removeFromCart = useCartStore((state) => state.removeFromCart);
+  //increment cart
+  const incrementQuantity = useCartStore((state) => state.incrementQuantity);
+  //decrement cart
+  const decrementQuantity = useCartStore((state) => state.decrementQuantity);
+  //sum prices to get total
+  const getTotalPrice = useCartStore((state) => state.getTotalPrice);
+  //format currency
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "NGN",
+    }).format(amount);
+  };
 
   return (
     <div className="bg-gradient-to-r from-violet-100 to-blue-100  pt-[85px] lg:mt-[0px] lg:py-0 lg:pt-0 ">
@@ -112,6 +125,9 @@ export default function Contact() {
           </div>
 
           <div className="m-auto px-3 py-10 lg:w-[70%]">
+            <p className="text-center mb-5">
+              <span className="font-light">Total:</span> {formatCurrency(getTotalPrice())}
+            </p>
             {activeTab === 1 && (
               <p>
                 {items.map((item, index) => (
@@ -120,16 +136,26 @@ export default function Contact() {
                     key={index}
                     index={index}
                     removeFromCart={removeFromCart}
+                    incrementQuantity={incrementQuantity}
+                    decrementQuantity={decrementQuantity}
+                    getTotalPrice={getTotalPrice}
+                    formatCurrency={formatCurrency}
                   />
                 ))}
               </p>
             )}
             {activeTab === 2 && <p>Profile Info</p>}
             {activeTab === 3 && <p>Payment Info</p>}
+
             {activeTab === 4 && (
               <p>
                 {items.map((item, index) => (
-                  <ProvidersInfo item={item} key={index} />
+                  <ProvidersInfo
+                    item={item}
+                    key={index}
+                    getTotalPrice={getTotalPrice}
+                    formatCurrency={formatCurrency}
+                  />
                 ))}
               </p>
             )}
