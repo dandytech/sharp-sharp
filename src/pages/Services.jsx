@@ -276,12 +276,6 @@ import { HashLink } from "react-router-hash-link";
 import MyButton from "../ui/MyButton";
 
 export default function Services() {
-  //cart array count
-  const items = useCartStore((state) => state.items);
-
-  //clear cart function
-  const clearCart = useCartStore((state) => state.clearCart);
-
   //pagination
   const [data, setServices] = useState(services);
   const [currentPage, setCurrentPage] = useState(1);
@@ -324,6 +318,19 @@ export default function Services() {
     setServices(filteredItems);
   };
 
+  //cart array count
+  const items = useCartStore((state) => state.items);
+
+  //clear cart function
+  const clearCart = useCartStore((state) => state.clearCart);
+
+  //format currency
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "NGN",
+    }).format(amount);
+  };
   return (
     <Modal>
       <div className="bg-gradient-to-r from-violet-100 to-blue-100  pb-10 pt-[85px] lg:mt-[0px] lg:py-0  lg:pb-10 lg:pt-0">
@@ -439,7 +446,7 @@ export default function Services() {
           <div className="border-2  border-l-0 border-t-0 border-gray-300 lg:p-5">
             <div className="grid w-[100%] gap-5 p-5 md:grid-cols-3 lg:grid-cols-3 lg:p-0">
               {currentItems.map((service) => (
-                <ServiceDetails key={service.id} service={service} />
+                <ServiceDetails key={service.id} service={service} formatCurrency={formatCurrency}/>
               ))}
             </div>
 

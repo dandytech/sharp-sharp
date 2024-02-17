@@ -13,6 +13,7 @@ import useCartStore from "../store/cartStore";
 import ProvidersInfo from "../ui/requestService/ProvidersInfo";
 import { useMoveBack } from "../hooks/useMoveBack";
 import ProfileInfo from "../ui/requestService/ProfileInfo";
+import PaymentInfo from "../ui/requestService/Paymentinfo";
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState(1);
@@ -161,7 +162,11 @@ export default function Contact() {
                 <ProfileInfo />
               </p>
             )}
-            {activeTab === 3 && <p>Payment Info</p>}
+            {activeTab === 3 && (
+              <p>
+                <PaymentInfo />
+              </p>
+            )}
 
             {activeTab === 4 && (
               <p>

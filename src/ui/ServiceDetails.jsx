@@ -2,7 +2,7 @@ import Modal from "./Modal";
 import useCartStore from "../store/cartStore";
 import MyButton from "./MyButton";
 
-export default function ServiceDetails({ service }) {
+export default function ServiceDetails({ service, formatCurrency }) {
   //add booked service to cart
   const addToCart = useCartStore((state) => state.addToCart);
   const addFunction = () => {
@@ -31,12 +31,14 @@ export default function ServiceDetails({ service }) {
 
           <Modal.Window name="more">
             <div className="w-[16rem] overflow-y-auto p-5 md:w-[30rem] lg:w-[40rem] ">
-              <p className="mb-3 font-semibold uppercase">{service.serviceRender}</p>
+              <p className="mb-3 font-semibold uppercase">
+                {service.serviceRender}
+              </p>
               {service.details}
             </div>
           </Modal.Window>
 
-          <div className="font-semibold">NGN {service.price}</div>
+          <div className="font-semibold"> {formatCurrency(service.price)}</div>
           <div className="font-extralight">
             {service.rating === "" ? "No Rating yet" : service.rating}
           </div>
