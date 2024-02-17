@@ -1,6 +1,7 @@
 export default function ProvidersInfo({ item, formatCurrency, getTotalPrice }) {
   return (
     <div className="border-4 border-stone-100 p-3 shadow-md">
+      
       <div className="mb-5 items-center justify-between gap-10 space-y-5 lg:flex">
         <div className="mt-5 lg:w-[50%]">
           <label>Service Provider</label>
@@ -26,6 +27,7 @@ export default function ProvidersInfo({ item, formatCurrency, getTotalPrice }) {
           </span>
         </div>
       </div>
+      
       <div className="items-center justify-between gap-10 space-y-3 lg:flex">
         <div className="lg:w-[50%]">
           <soan className="flex justify-between">

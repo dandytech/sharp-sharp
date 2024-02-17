@@ -11,6 +11,8 @@ import { TbSend } from "react-icons/tb";
 import MyButton from "../ui/MyButton";
 import useCartStore from "../store/cartStore";
 import ProvidersInfo from "../ui/requestService/ProvidersInfo";
+import { useMoveBack } from "../hooks/useMoveBack";
+import ProfileInfo from "../ui/requestService/ProfileInfo";
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState(1);
@@ -36,6 +38,9 @@ export default function Contact() {
       currency: "NGN",
     }).format(amount);
   };
+
+  //back button hook
+  const MoveBack = useMoveBack();
 
   return (
     <div className="bg-gradient-to-r from-violet-100 to-blue-100  pt-[85px] lg:mt-[0px] lg:py-0 lg:pt-0 ">
@@ -125,9 +130,16 @@ export default function Contact() {
           </div>
 
           <div className="m-auto px-3 py-10 lg:w-[70%]">
-            <p className="text-center mb-5">
-              <span className="font-light">Total:</span> {formatCurrency(getTotalPrice())}
-            </p>
+            <button onClick={MoveBack} className="mb-5 text-lg">
+              🔙
+            </button>
+            {getTotalPrice() > 0 && (
+              <p className="mb-5 text-center">
+                <span className="font-light">Total:</span>{" "}
+                {formatCurrency(getTotalPrice())}
+              </p>
+            )}
+
             {activeTab === 1 && (
               <p>
                 {items.map((item, index) => (
@@ -144,7 +156,11 @@ export default function Contact() {
                 ))}
               </p>
             )}
-            {activeTab === 2 && <p>Profile Info</p>}
+            {activeTab === 2 && (
+              <p>
+                <ProfileInfo />
+              </p>
+            )}
             {activeTab === 3 && <p>Payment Info</p>}
 
             {activeTab === 4 && (
@@ -162,20 +178,6 @@ export default function Contact() {
           </div>
 
           <div className="m-auto mt-5 flex items-center justify-between px-3 pb-10 lg:w-[70%]">
-            {activeTab < 4 && (
-              <MyButton
-                type="primary"
-                onClick={() => handleTabClick(activeTab + 1)}
-              >
-                <span className="flex items-center gap-1 ">
-                  <span>Next</span>
-                  <span>
-                    <FaArrowRight />
-                  </span>
-                </span>
-              </MyButton>
-            )}
-
             {activeTab > 1 && (
               <MyButton
                 type="primary"
@@ -187,6 +189,20 @@ export default function Contact() {
                     <FaArrowLeft />
                   </span>
                   <span> Previous</span>
+                </span>
+              </MyButton>
+            )}
+
+            {activeTab < 4 && (
+              <MyButton
+                type="primary"
+                onClick={() => handleTabClick(activeTab + 1)}
+              >
+                <span className="flex items-center gap-1 ">
+                  <span>Next</span>
+                  <span>
+                    <FaArrowRight />
+                  </span>
                 </span>
               </MyButton>
             )}

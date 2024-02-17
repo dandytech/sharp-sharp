@@ -12,42 +12,45 @@ export default function ServiceInfo({
 }) {
   return (
     <div className="border-4 border-stone-100 p-3 shadow-md">
+       <div className="flex items-center justify-between mb-5">
+          <label className="font-light"> Quantity: {item.quantity}</label>
+
+          <label>
+            <Tooltip content="Increase Qty">
+              <button
+                onClick={() => incrementQuantity(index)}
+                className=" text-blue-500"
+              >
+                +
+              </button>
+            </Tooltip>
+          </label>
+          <label>
+            <Tooltip content="Decrease Qty">
+              <button
+                onClick={() => decrementQuantity(index)}
+                className=" text-blue-500"
+              >
+                _
+              </button>
+            </Tooltip>
+          </label>
+          <label>
+            <Tooltip content="Remove item">
+              <button
+                onClick={() => removeFromCart(index)}
+                className="text-red-500 "
+              >
+                <HiOutlineTrash />
+              </button>
+            </Tooltip>
+          </label>
+        </div>
       <div className="items-center justify-between gap-5 space-y-3 lg:flex">
+       
         <div className="lg:w-[50%]">
-          <span className="flex items-center justify-between gap-5">
-            <label>Service ID: {item.id}</label>
-            <label className="font-light"> Quantity: {item.quantity}</label>
-            <label>
-              <Tooltip content="Increase Qty">
-                <button
-                  onClick={() => incrementQuantity(index)}
-                  className=" text-blue-500"
-                >
-                  +
-                </button>
-              </Tooltip>
-            </label>
-            <label>
-              <Tooltip content="Decrease Qty">
-                <button
-                  onClick={() => decrementQuantity(index)}
-                  className=" text-blue-500"
-                >
-                  _
-                </button>
-              </Tooltip>
-            </label>
-            <label>
-              <Tooltip content="Remove item">
-                <button
-                  onClick={() => removeFromCart(index)}
-                  className="text-red-500 "
-                >
-                  <HiOutlineTrash />
-                </button>
-              </Tooltip>
-            </label>
-          </span>
+          <label>Service ID: {item.id}</label>
+
           <span>
             <input
               type="text"
