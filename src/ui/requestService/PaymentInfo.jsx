@@ -9,7 +9,7 @@ import {
 import { LiaAddressCardSolid, LiaCcJcb } from "react-icons/lia";
 import { GoFileSubmodule } from "react-icons/go";
 
-export default function paymentInfo() {
+export default function PaymentInfo() {
   const [activeTab, setActiveTab] = useState(1);
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
