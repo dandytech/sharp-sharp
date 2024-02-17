@@ -54,7 +54,7 @@ export default function PaymentInfo() {
       <div>
         {activeTab === 1 && (
           <div>
-            <div className="flex items-center justify-between gap-3">
+            <div className="lg:flex space-y-5 items-center justify-between gap-3">
               <div className="w-full">
                 <label>Card number</label>
                 <p className={style}>
@@ -89,7 +89,7 @@ export default function PaymentInfo() {
               </div>
             </div>
 
-            <div className="mt-5 flex items-center justify-between gap-5">
+            <div className="mt-5 lg:flex space-y-5 items-center justify-between gap-5">
               <div className="w-full">
                 <label>Country</label>
 
@@ -115,7 +115,7 @@ export default function PaymentInfo() {
           <div>
             <div>
               <span>
-                <p className="flex w-[8%] items-center justify-center rounded-full border-2 border-gray-400 text-4xl">
+                <p className="flex w-[20%] items-center justify-center rounded-full border-2 border-gray-400 text-4xl lg:w-[8%]">
                   <FaGooglePay />
                 </p>
               </span>
