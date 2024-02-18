@@ -286,6 +286,7 @@ export default function Services() {
   const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
   const currentItems = data.slice(startIndex, endIndex);
   const [searchInput, setSearchInput] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const handleNext = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
@@ -298,11 +299,14 @@ export default function Services() {
   //Filter based on category
   const handleFilter = (value) => {
     console.log(value);
+
     if (value === "All") {
       setServices(services);
+      setActiveCategory(value);
     } else {
       const selected = services.filter((where) => where.category === value);
       setServices(selected);
+      setActiveCategory(value);
     }
   };
 
@@ -347,11 +351,11 @@ export default function Services() {
         </section>
 
         {/* Search section */}
-        <section className="m-auto items-center justify-between px-5 py-10 text-lg md:flex  md:w-[100%] lg:flex lg:w-[70%]  lg:px-5 lg:py-20 ">
+        <section className="m-auto items-center justify-between px-5 py-10 text-lg md:flex  md:w-[100%] lg:flex lg:w-[100%]  lg:px-7 lg:py-20 ">
           <div className="">
             <p className="mb-4 font-semibold">Search For A Service</p>
 
-            <div className="flex justify-between border-2 border-gray-400">
+            <div className="flex justify-between border-2 border-gray-400 bg-white">
               <span>
                 <input
                   className="w-full px-3 py-1"
@@ -418,6 +422,7 @@ export default function Services() {
             </HashLink>
           </Tooltip>
         </div>
+
         <Cart clearCart={clearCart} items={items} />
 
         <section className="m-auto gap-10 lg:flex lg:w-[100%] lg:px-5">
@@ -433,10 +438,13 @@ export default function Services() {
               {serviceCategories.map((category) => (
                 <p
                   key={category.id}
-                  className="cursor-pointer border-2 border-r-0 p-2 hover:bg-blue-500"
+                  className={`cursor-pointer border-2 border-r-0 p-2 hover:bg-blue-500 ${
+                    activeCategory === category.name
+                      ? "bg-blue-500"
+                      : "bg-white"
+                  }`}
                   onClick={() => handleFilter(category.name)}
                 >
-                  {" "}
                   {category.name}
                 </p>
               ))}
@@ -445,28 +453,40 @@ export default function Services() {
 
           <div className="border-2  border-l-0 border-t-0 border-gray-300 lg:p-5">
             <div className="grid w-[100%] gap-5 p-5 md:grid-cols-3 lg:grid-cols-3 lg:p-0">
-              {currentItems.map((service) => (
-                <ServiceDetails key={service.id} service={service} formatCurrency={formatCurrency}/>
-              ))}
+              {currentItems.length < 1 ? (
+                "S😞RRY!!! NO SERVICE AT A MOMENT"
+              ) : (
+                <>
+                  {currentItems.map((service) => (
+                    <ServiceDetails
+                      key={service.id}
+                      service={service}
+                      formatCurrency={formatCurrency}
+                    />
+                  ))}
+                </>
+              )}
             </div>
 
-            <div className="flex items-center justify-between  px-5 py-7">
-              <button
-                onClick={handlePrev}
-                disabled={currentPage === 1}
-                className="rounded-full border-2 bg-gray-800 px-5 py-2 text-white hover:bg-blue-500"
-              >
-                Previous
-              </button>
-              <span>{`Page ${currentPage} of ${totalPages}`}</span>
-              <button
-                onClick={handleNext}
-                disabled={currentPage === totalPages}
-                className="rounded-full border-2 bg-gray-800 px-5 py-2 text-white hover:bg-blue-500"
-              >
-                Next
-              </button>
-            </div>
+            {currentItems.length > 0 && (
+              <div className="flex items-center justify-between  px-5 py-7">
+                <button
+                  onClick={handlePrev}
+                  disabled={currentPage === 1}
+                  className="rounded-full border-2 bg-gray-800 px-5 py-2 text-white hover:bg-blue-500"
+                >
+                  Previous
+                </button>
+                <span>{`Page ${currentPage} of ${totalPages}`}</span>
+                <button
+                  onClick={handleNext}
+                  disabled={currentPage === totalPages}
+                  className="rounded-full border-2 bg-gray-800 px-5 py-2 text-white hover:bg-blue-500"
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </div>
         </section>
       </div>

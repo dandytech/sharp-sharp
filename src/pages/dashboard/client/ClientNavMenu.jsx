@@ -10,7 +10,11 @@ import {
 } from "@material-tailwind/react";
 import { Cog6ToothIcon, PowerIcon } from "@heroicons/react/24/solid";
 import logo from "../../../../src/data/logo.png";
-import { MdDashboard, MdNotificationsNone } from "react-icons/md";
+import {
+  MdDashboard,
+  MdMedicalServices,
+  MdNotificationsNone,
+} from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import YesModal from "../../../ui/YesModal";
@@ -79,10 +83,10 @@ export default function ClientNavMenus({ hideNav }) {
             </ListItem>
           </NavLink>
 
-          <NavLink to="services">
+          {/* <NavLink to="services">
             <ListItem className="flex gap-1">
               <ListItemPrefix>
-                <MdNotificationsNone className="h-5 w-5" />
+                <MdMedicalServices className="h-5 w-5" />
               </ListItemPrefix>
               <span className={`${!hideNav ? "hidden" : ""}`}>Services</span>
 
@@ -98,7 +102,7 @@ export default function ClientNavMenus({ hideNav }) {
                 </span>
               </ListItemSuffix>
             </ListItem>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="payments">
             <ListItem className="flex gap-1">

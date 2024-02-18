@@ -4,7 +4,7 @@ export default function KYC() {
   const [utility, setUtility] = useState("");
   const [nin, setNin] = useState("");
   const [nextOfKinPhone, setNextOfKinPhone] = useState("");
-  const [nextOfKEmail, setNextOfKEmail] = useState("");
+  const [nextOfKin, setNextOfKin] = useState("");
   const [nextOfKinAddress, setNextOfKinAddress] = useState("");
   const [nextOfKinID, setNextOfKinID] = useState("");
 
@@ -14,7 +14,7 @@ export default function KYC() {
       !utility ||
       !nin ||
       !nextOfKinPhone ||
-      !nextOfKEmail ||
+      !nextOfKin ||
       !nextOfKinAddress ||
       !nextOfKinID
     )
@@ -48,7 +48,16 @@ export default function KYC() {
               onChange={(e) => setNin(e.target.value)}
             />
           </div>
-
+          <div className="mt-2 ">
+            <p className="font-light">Next Of Kin</p>
+            <input
+              type="text"
+              value={nextOfKin}
+              className="w-[100%]  rounded-lg border-2 border-gray-300  px-3 py-1 hover:border-blue-500"
+              placeholder="Fullname"
+              onChange={(e) => setNextOfKin(e.target.value)}
+            />
+          </div>
           <div className="mt-2 ">
             <p className="font-light">Next Of Kin Phone</p>
             <input
@@ -59,16 +68,7 @@ export default function KYC() {
               onChange={(e) => setNextOfKinPhone(e.target.value)}
             />
           </div>
-          <div className="mt-2 ">
-            <p className="font-light">Next Of Kin Email</p>
-            <input
-              type="text"
-              value={nextOfKEmail}
-              className="w-[100%]  rounded-lg border-2 border-gray-300  px-3 py-1 hover:border-blue-500"
-              placeholder="Next Of Kin Email"
-              onChange={(e) => setNextOfKEmail(e.target.value)}
-            />
-          </div>
+          
           <div className="mt-2 ">
             <p className="font-light">Next Of Kin Address</p>
             <input

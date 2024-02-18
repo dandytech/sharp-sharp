@@ -43,9 +43,9 @@ export default function Footer() {
       <div className=" overflow-x-hidden bg-gradient-to-t  from-gray-900 to-blue-700 pt-10 sm:p-10 ">
         <div className="m-auto  text-center  text-gray-400 sm:grid-cols-3 sm:gap-10  sm:py-[10px] lg:grid lg:w-[70%]">
           <div className="flex flex-col items-center text-left">
-            <span>
+            <NavLink to="">
               <img src={logo2} alt="logo2" width="80" height="80" />
-            </span>
+            </NavLink>
 
             <p className=" mt-[-5px] text-left">
               We are Service Provider Agent!!!
@@ -133,7 +133,7 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <div className="mt-20 lg:mt-0 ">
+            <div className="mt-20 px-3 lg:mt-0">
               <p className="mb-5 text-[20px]">
                 <span className="border-b-2 border-blue-500">A</span>DDRESS
               </p>

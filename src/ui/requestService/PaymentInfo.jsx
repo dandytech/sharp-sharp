@@ -89,18 +89,19 @@ export default function PaymentInfo() {
               </div>
             </div>
 
-            <div className="mt-5 items-center justify-between gap-5 space-y-5 lg:flex">
+            <div className="mt-5  items-center justify-between gap-5 space-y-5 lg:space-y-0 lg:flex">
+
               <div className="w-full">
                 <label>Country</label>
 
-                <p>
-                  {" "}
+                <p >
                   <select className={style}>
                     <option>Nigeria</option>
                     <option>United State</option>
                   </select>
                 </p>
               </div>
+
               <div className="w-full">
                 <label>ZIP</label>
                 <p className={style}>
@@ -108,6 +109,7 @@ export default function PaymentInfo() {
                   <input type="text" placeholder="12345" className="w-full" />
                 </p>
               </div>
+
             </div>
           </div>
         )}

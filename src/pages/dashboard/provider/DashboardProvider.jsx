@@ -385,7 +385,7 @@ export default function DashboardProvider() {
     "text-bold flex w-[100%] lg:w-[40%] mt-10 gap-2 flex-col lg:gap-5  md:gap-3 rounded-2xl border-2  lg:p-5 w-[30%] p-3  lg:h-auto md:h-auto text-center md:text-[18px] text-[12px] lg:text-[20px]  shadow-2xl ";
 
   return (
-    <div className="servicebg mt-[100px] w-[100%] overflow-y-auto shadow-lg lg:px-5 lg:pr-10 lg:pl-10">
+    <div className="servicebg mt-[100px] w-[100%] overflow-y-auto shadow-lg lg:px-5 lg:pl-10 lg:pr-10">
       <div className="justify-between lg:flex lg:gap-5">
         <div className="lg:w-[70%]">
           <div className="flex items-center justify-between gap-1 px-1 text-[14px] text-black lg:gap-10 lg:px-0 lg:text-[20px] ">
@@ -425,7 +425,7 @@ export default function DashboardProvider() {
 
         <div className="bg-white-700 mt-[90px] rounded-2xl text-center shadow-2xl md:text-[18px]  lg:mt-0 lg:w-[30%] lg:text-[18px]">
           <div className="rounded-bl-xl rounded-br-xl">
-            <div className="flex h-[20px] mt-2 items-center justify-center border-b-2 border-white bg-blue-500 py-10 text-center font-bold text-white">
+            <div className="mt-2 flex h-[20px] items-center justify-center border-b-2 border-white bg-blue-500 py-10 text-center font-bold text-white">
               <p> Completed Service Summary !!!</p>
             </div>
 
@@ -448,13 +448,14 @@ export default function DashboardProvider() {
           </div>
         </div>
       </div>
-      <div className="mt-[50px] h-[400px] px-2 text-center lg:p-5 lg:px-0 lg:text-left">
-        <p className="py-10 font-bold">Monthy Completed & Canceled Requests </p>{" "}
-        <Chart linechartdata={linechartdata} />
-      </div>
-      <div className="mb-[70px] mt-[170px] h-[400px] px-2 lg:px-0  ">
-        <p className="py-10 font-bold ">Monthy Income </p>{" "}
+
+      <div className="mb-[70px] mt-[50px] h-[400px] px-2 lg:px-0  ">
+        <p className="py-3 font-bold ">Monthy Income </p>{" "}
         <Barchart barchartData={barchartData} />
+      </div>
+      <div className="mt-[70px] h-[400px] px-2 text-center lg:p-5 lg:px-0 lg:text-left">
+        <p className="py-3 font-bold">Monthy Completed & Canceled Requests </p>{" "}
+        <Chart linechartdata={linechartdata} />
       </div>
     </div>
   );

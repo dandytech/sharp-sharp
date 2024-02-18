@@ -199,7 +199,7 @@ export default function Table({ columns, data }) {
     muiSelectCheckboxProps: ({ row }) => ({
       color: "secondary",
       disabled: row.original.isAccountLocked, //access the row data to determine if the checkbox should be disabled
-      className: "bg-style",
+     // className: "bg-style",
       fontWeight: row.getIsSelected() ? "bold" : "normal",
     }),
 
@@ -238,14 +238,6 @@ export default function Table({ columns, data }) {
         },
       },
     },
-
-    // muiCreateRowModalProps: {
-    //   className: "bg-style-table",
-    //   color: "#ed0a30",
-    //   sx: {
-    //     fontWeight: "normal",
-    //   },
-    // },
   });
 
   return <MaterialReactTable table={table} />;

@@ -75,7 +75,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
             </ListItem>
           </NavLink>
 
-          <NavLink to="services" onClick={!hideNav}>
+          {/* <NavLink to="services" onClick={!hideNav}>
             <ListItem className="flex gap-1">
               <ListItemPrefix>
                 <MdMedicalServices className="h-5 w-5" />
@@ -94,7 +94,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
                 </span>
               </ListItemSuffix>
             </ListItem>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="payments" onClick={!hideNav}>
             <ListItem className="flex gap-1">
