@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import Providers from "./Providers";
 import Modal from "../../ui/Modal";
 import Slider from "react-slick";
+import MyButton from "../../ui/MyButton";
 
 const providers = [
   {
@@ -84,7 +85,7 @@ export default function Services() {
         </p>
 
         <div className="gap-10 lg:flex ">
-          <div className="text-black-300 bg-wite-500 rounded-3xl p-2 text-center h-auto   lg:w-[70%]   ">
+          <div className="text-black-300 bg-wite-500 h-auto rounded-3xl p-2 text-center   lg:w-[70%]   ">
             <div className=" rounded-[40px] border-[10px] bg-gray-100 shadow-lg">
               <Slider {...settings}>
                 {providers.map((provider) => (
@@ -95,17 +96,17 @@ export default function Services() {
               </Slider>
               <p className="py-10">
                 {" "}
-                <button className="rounded-full bg-blue-500 px-10 py-5 font-light text-white hover:bg-gray-900 hover:text-blue-500">
+                <MyButton type="primary">
                   {" "}
-                  <NavLink to="/signup">Request Service</NavLink>
-                </button>
+                  <NavLink to="/services">Request Service</NavLink>
+                </MyButton>
               </p>
 
               {/* <SwiperComponent /> */}
             </div>
           </div>
 
-          <div className="text-black-300  bg-wite-500  mt-5 items-center  rounded-[40px] border-[10px] bg-gray-100  p-2 pb-10 text-center h-auto    lg:w-[30%] ">
+          <div className="text-black-300  bg-wite-500  mt-5 h-auto  items-center rounded-[40px] border-[10px]  bg-gray-100 p-2 pb-10 text-center    lg:w-[30%] ">
             <p className="py-10 font-bold">Best Rated Service Providers</p>
 
             {highestRate && (

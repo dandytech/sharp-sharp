@@ -10,10 +10,10 @@ export default function RequestForm() {
     <div id="quoteform"  className="h-auto overflow-x-hidden bg-gradient-to-b  from-gray-800 to-white sm:mt-[100px] ">
       <div className=" h-auto  bg-[url('/src/data/bg7.jpeg')]  bg-cover bg-center bg-no-repeat text-center  lg:h-[110vh]">
         <div className="float-right rounded-b-[10px] bg-gray-800  text-white lg:w-[50%] ">
-          <p className="mt-10 text-center text-4xl lg:px-20 lg:text-center lg:text-5xl">
+          <p className="mt-10 text-center text-3xl md:text-4xl lg:px-20 lg:text-center lg:text-5xl">
             SUBMIT REQUEST!!!
           </p>
-          <p className="p-5 text-center text-4xl   leading-relaxed lg:text-4xl xl:text-4xl">
+          <p className="p-5 text-center lg:text-4xl   leading-relaxed md:text-3xl text-2xl">
             Lets Help You Find The{" "}
             <span className="text-blue-500">Best Available</span> &{" "}
             <span className="text-blue-500">Affordable</span> Service Provider
