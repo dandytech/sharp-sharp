@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaCcAmex,
   FaCcMastercard,
@@ -14,6 +14,30 @@ export default function PaymentInfo() {
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
   };
+
+  //Countries API function
+  const [countries, setCountries] = useState([]); // Set Nigeria as default
+
+  const [countrySelect, setCountrySelect] = useState("Nigeria");
+
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await fetch("https://restcountries.com/v3.1/all");
+        if (!response.ok) {
+          throw new Error("Failed to fetch countries");
+        }
+        const data = await response.json();
+        setCountries(data);
+      } catch (error) {
+        console.error("Error fetching countries:", error);
+      }
+    };
+
+    fetchCountries();
+  }, []);
+
+  console.log(countries);
 
   const style =
     "flex w-full items-center gap-1 border-2 bg-white p-2 hover:border-blue-300";
@@ -54,7 +78,7 @@ export default function PaymentInfo() {
       <div>
         {activeTab === 1 && (
           <div>
-            <div className="items-center justify-between gap-3 space-y-5 lg:flex">
+            <div className="items-center justify-between gap-3 space-y-5 lg:flex lg:space-y-0">
               <div className="w-full">
                 <label>Card number</label>
                 <p className={style}>
@@ -89,15 +113,25 @@ export default function PaymentInfo() {
               </div>
             </div>
 
-            <div className="mt-5  items-center justify-between gap-5 space-y-5 lg:space-y-0 lg:flex">
-
+            <div className="mt-5  items-center justify-between gap-5 space-y-5 lg:flex lg:space-y-0">
               <div className="w-full">
                 <label>Country</label>
 
-                <p >
-                  <select className={style}>
-                    <option>Nigeria</option>
-                    <option>United State</option>
+                <p>
+                  <select
+                    className={style}
+                    value={countrySelect}
+                    onChange={(e) => setCountrySelect(e.target.value)}
+                  >
+                    {countries.map((country, index) => (
+                      <option
+                        className={style}
+                        key={index}
+                        value={country.name.common}
+                      >
+                        {country.name.common}
+                      </option>
+                    ))}
                   </select>
                 </p>
               </div>
@@ -109,7 +143,6 @@ export default function PaymentInfo() {
                   <input type="text" placeholder="12345" className="w-full" />
                 </p>
               </div>
-
             </div>
           </div>
         )}
