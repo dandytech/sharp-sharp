@@ -193,7 +193,33 @@ const GlobalStyles = createGlobalStyle`
     color:  var(--text-color);
    }
 
- 
+  
+  //MUI table used for provider
+    .css-bye78u-MuiTableRow-root:hover td{
+      background-color: none ;
+      color: black;
+    }
+
+    .css-bye78u-MuiTableRow-root td{
+      background-color: var(--color-grey-50) !important;
+    color: var(--text-color) !important; 
+    
+    }
+    //Material Tailwind table used for admin
+  .css-1ex1afd-MuiTableCell-root {
+    background-color: var(--color-grey-50) !important;
+    color: var(--text-color) !important; 
+    
+    }
+
+    .css-ptiqhd-MuiSvgIcon-root {
+      background-color: var(--color-grey-50) !important; 
+    color: var(--text-color) !important;
+    border: 2px solid red !important; 
+    
+    }
+
+
   .bgsummary{
     background-color: var(--color-blue-100);
     color: var(--text-color);
@@ -260,39 +286,6 @@ const GlobalStyles = createGlobalStyle`
     display: block;
   }
 }
-
-
-
-
- 
-  //MUI table used for provider
-    .css-bye78u-MuiTableRow-root:hover td{
-      background-color: none ;
-      color: black;
-    }
-
-    .css-bye78u-MuiTableRow-root td{
-      background-color: var(--color-grey-50) !important;
-    color: var(--text-color) !important; 
-    
-    }
-    //Material Tailwind table used for admin
-  .css-1ex1afd-MuiTableCell-root {
-    background-color: var(--color-grey-50) !important;
-    color: var(--text-color) !important; 
-    
-    }
-
-    .css-ptiqhd-MuiSvgIcon-root {
-      background-color: var(--color-grey-50) !important; 
-    color: var(--text-color) !important;
-    border: 2px solid red !important; 
-    
-    }
-
-   
-
-
     }
 `;
 
