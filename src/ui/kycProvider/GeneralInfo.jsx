@@ -2,12 +2,10 @@ import { useState } from "react";
 
 export default function GeneralInfo({ handleTabClick }) {
   const div =
-    "mb-10 flex h-[50px] items-center rounded-xl border-2 border-blue-500 bg-gray-800 text-center text-white focus:border-white lg:mb-0 lg:w-[50%] items-center justify-center";
-
- 
+    "mb-10 flex items-center rounded-xl border-2 border-gray-300 bg-white  text-center focus:border-white lg:mb-0 lg:w-[50%] hover:border-blue-500";
 
   const input =
-    " h-[45px] w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white rounded-xl items-center justify-center";
+    "w-[100%] bg-gray-800 bg-white px-3 py-2 font-semibold focus:border-2 focus:border-white rounded-xl";
 
   const [name, setName] = useState("");
   const [cac, setCac] = useState("");
@@ -96,16 +94,21 @@ export default function GeneralInfo({ handleTabClick }) {
       </div>
 
       <div className="mt-10 gap-10 lg:flex">
-        <div className={div}>
-          <span className="w-[150px] p-3 lg:w-[250px]">Utility Bill:</span>
-          <input
-            type="file"
-            id="utility"
-            name="utility"
-            className={input}
-            value={utility}
-            onChange={(e) => setUtility(e.target.value)}
-          />
+        <div className={`${div} flex items-center justify-between`}>
+          <span className="flex items-center">
+            {" "}
+            <span className="w-[30%] flex px-3">Utility Bill:</span>
+            <span className="w-[70%]">
+              <input
+                type="file"
+                id="utility"
+                name="utility"
+                className={input}
+                value={utility}
+                onChange={(e) => setUtility(e.target.value)}
+              />
+            </span>
+          </span>
           <span className="mt-[-20px] text-[30px] text-red-600">*</span>
         </div>
 
@@ -139,18 +142,19 @@ export default function GeneralInfo({ handleTabClick }) {
         </div>
 
         <div className={div}>
-          <span className="w-[150px] p-3 lg:w-[250px]">Service Category:</span>
-          <input
-            type="text"
-            disabled
-            id="servicecat"
-            name="servicecat"
-            className={input}
-            placeholder="Service Rendering"
-            required
-            value={servicecat}
-            onChange={(e) => setServicecat(e.target.value)}
-          />
+          <span className="flex w-[30%] px-3">Service Category:</span>
+          <span className="w-[70%]">
+            <input
+              type="text"
+              disabled
+              id="servicecat"
+              name="servicecat"
+              className={input}
+              required
+              value={servicecat}
+              onChange={(e) => setServicecat(e.target.value)}
+            />
+          </span>
         </div>
       </div>
 
@@ -169,22 +173,23 @@ export default function GeneralInfo({ handleTabClick }) {
           <span className="mt-[-20px] text-[30px] text-red-600">*</span>
         </div>
         <div className={div}>
-          <input
-            type="text"
-            id="service"
-            name="service"
-            className={input}
-            placeholder="Service Rendering"
-            required
-            value={service}
-            onChange={(e) => setService(e.target.value)}
-          />
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          <span className="flex w-[30%] px-3"> Business Address:</span>
+          <span className="w-[70%]">
+            <input
+              type="text"
+              name="service"
+              disabled
+              className={input}
+              placeholder="2 metalbox rd, ikeja Lagos"
+              value={service}
+              onChange={(e) => setService(e.target.value)}
+            />
+          </span>
         </div>
       </div>
 
       <button
-        className="lg:my-20 my-5 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black  "
+        className="my-5 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black lg:my-20  "
         onClick={handleNext}
       >
         Save & Continue

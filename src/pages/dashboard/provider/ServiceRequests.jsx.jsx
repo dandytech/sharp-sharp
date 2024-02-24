@@ -2,19 +2,32 @@ import { useState } from "react";
 import NewRequest from "../../../ui/providerRequests/NewRequests";
 import OngoingRequests from "../../../ui/providerRequests/OngoingRequests";
 import CancelledRequest from "../../../ui/providerRequests/CancelledRequest";
+import { NavLink, useNavigate } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export default function ServiceRequests() {
   const [activeTab, setActiveTab] = useState(1);
+  const navigate = useNavigate();
 
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
   };
 
   return (
-    <div className="servicebg mt-[80px] w-[100%] shadow-lg">
+    <div className="servicebg w-[100%]  pt-[150px]">
+      <div className="m-auto mb-7 flex items-center px-5">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /
+        <button onClick={() => navigate("/provider/dashboard")}>dashboard</button>
+        /<NavLink to="">Requests</NavLink>
+      </div>
+
+
       <div className="m-auto justify-center p-3 text-center shadow-2xl  lg:p-10 ">
         {" "}
-        <p className="mb-10 pt-0 text-center text-[24px] font-bold lg:pb-10">
+        <p className="mb-10 text-center text-[24px] font-bold lg:pb-10">
           Service Request Details !!!
         </p>
         <div>

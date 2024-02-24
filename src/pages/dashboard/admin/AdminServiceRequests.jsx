@@ -6,6 +6,9 @@ import PendingRequests from "../../../ui/admin/serviceRequests/PendingRequests";
 import OngoingRequests from "../../../ui/admin/serviceRequests/OngoingRequests";
 import CompletedRequests from "../../../ui/admin/serviceRequests/CompletedRequests";
 import CancelledRequests from "../../../ui/admin/serviceRequests/CancelledRequests";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export const requests = [
   {
@@ -108,9 +111,17 @@ export default function AdminServiceRequests() {
     ],
     [],
   );
+  const navigate = useNavigate();
 
   return (
     <div className="servicebg h-[100vh] overflow-y-auto px-5 pt-[80px] lg:w-[84%] lg:pr-10">
+      <div className="m-auto flex items-center px-5 pb-10">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /<button onClick={() => navigate("/admin/dashboard")}>dashboard</button>
+        /<NavLink to="">requests</NavLink>
+      </div>
       <div>
         <div className="tab-buttons">
           <div className="font-bold">

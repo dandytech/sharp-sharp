@@ -2,9 +2,12 @@ import { useState } from "react";
 import MyProfile from "../../../ui/clientSettings/MyProfile";
 import Security from "../../../ui/clientSettings/Security";
 import KYC from "../../../ui/clientSettings/KYC";
+import { NavLink, useNavigate } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export default function ClientSettings() {
   const [activeTab, setActiveTab] = useState(1);
+  const navigate = useNavigate();
 
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
@@ -12,6 +15,14 @@ export default function ClientSettings() {
 
   return (
     <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[50px] shadow-md lg:w-[85%]">
+      <div className="m-auto mb-5 mt-10 flex items-center px-5">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /
+        <button onClick={() => navigate("/client/dashboard")}>dashboard</button>
+        /<NavLink to="">Settings</NavLink>
+      </div>
       <div className="m-auto justify-center p-3 text-center ">
         {" "}
         <p className="mb-10 pt-5 text-center text-[24px] font-bold lg:pb-10">

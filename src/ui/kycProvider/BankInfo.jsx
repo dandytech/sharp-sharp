@@ -136,10 +136,10 @@ export default function BankInfo({ handleTabClick }) {
   };
 
   const div =
-    "mb-10 flex h-[50px] items-center rounded-xl border-2 border-blue-500 bg-gray-800 text-center text-white focus:border-white lg:mb-0 lg:w-[50%]";
+    "mb-10 flex h-[50px] items-center rounded-xl border-2 border-gray-300 bg-white  text-center focus:border-white lg:mb-0 lg:w-[50%] hover:border-blue-500";
 
   const input =
-    " h-[45px] w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white rounded-xl";
+    " h-[45px] w-[100%] bg-gray-800 bg-white px-5 font-semibold focus:border-2 focus:border-white rounded-xl";
 
   return (
     <div>

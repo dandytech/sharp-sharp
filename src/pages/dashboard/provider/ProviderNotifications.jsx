@@ -1,9 +1,12 @@
 import { useState } from "react";
 import AllNotifications from "../../../ui/adminNotifications/AllNotifications";
 import UnreadNotifications from "../../../ui/adminNotifications/UnreadNotifications";
+import { NavLink, useNavigate } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export default function ProvidersNotifications() {
   const [activeTab, setActiveTab] = useState(1);
+  const navigate = useNavigate();
 
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
@@ -11,6 +14,14 @@ export default function ProvidersNotifications() {
 
   return (
     <div className="servicebg mt-[80px] h-[100vh] w-[100%] overflow-y-auto shadow-2xl ">
+      <div className="m-auto mb-5 mt-20 flex items-center px-5">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /
+        <button onClick={() => navigate("/provider/dashboard")}>dashboard</button>
+        /<NavLink to="">Notification</NavLink>
+      </div>
       <div className="m-auto justify-center p-3 text-center ">
         {" "}
         <p className="mb-10 pt-5 text-center text-[24px] font-bold lg:pb-10">

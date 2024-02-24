@@ -1,6 +1,9 @@
 import { useState } from "react";
 import MyProfile from "../../../ui/providerSettings/MyProfile";
 import Security from "../../../ui/providerSettings/Security";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export default function AdminSettings() {
   const [activeTab, setActiveTab] = useState(1);
@@ -9,11 +12,21 @@ export default function AdminSettings() {
     setActiveTab(tabNumber);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="servicebg z-0 h-[100vh] overflow-y-auto text-center lg:w-[85%] lg:pr-10 ">
+      <div className="m-auto flex items-center px-5 mt-20">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /<button onClick={() => navigate("/admin/dashboard")}>dashboard</button>
+        /<NavLink to="">settings</NavLink>
+      </div>
+
       <div className="m-auto justify-center p-3 text-center ">
         {" "}
-        <p className="mb-10 pt-10 text-center text-[24px] font-bold lg:pb-10 lg:pt-20">
+        <p className="mb-10 pt-5 text-center text-[24px] font-bold lg:pb-10 lg:pt-20">
           Admin Account Settings !!!
         </p>
         <div className="gap-10 lg:flex">
@@ -47,7 +60,7 @@ export default function AdminSettings() {
             </button> */}
           </div>
 
-          <div className="tab-content lg:w-[85%] z-0">
+          <div className="tab-content z-0 lg:w-[85%]">
             {activeTab === 1 && (
               <p>
                 <MyProfile />

@@ -101,6 +101,8 @@ import MyButton from "../../../ui/MyButton";
 import StarRating from "../../../ui/StarRating";
 import StarRating1 from "../../../ui/StarRaring1";
 import { Tooltip } from "@material-tailwind/react";
+import { CiHome } from "react-icons/ci";
+import { NavLink } from "react-router-dom";
 
 export default function ClientDashboard() {
   const columns = useMemo(
@@ -183,6 +185,12 @@ export default function ClientDashboard() {
   return (
     <Modal>
       <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[100px] shadow-md lg:w-[85%]">
+        <div className="mb-12 flex items-center px-6">
+          <NavLink to="/">
+            <CiHome />
+          </NavLink>
+          /<NavLink to="">dashboard</NavLink>
+        </div>
         <section>
           <div className="justify-between lg:flex">
             <div className="lg:w-[70%]">

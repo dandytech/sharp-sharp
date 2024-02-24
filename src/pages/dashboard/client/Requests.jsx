@@ -4,8 +4,10 @@ import {
   MenuHandler,
   MenuItem,
   MenuList,
+  Tooltip,
 } from "@material-tailwind/react";
 import Table from "../../../ui/Table";
+
 const serviceRequest = [
   {
     id: 1,
@@ -76,10 +78,13 @@ const serviceRequest = [
 ];
 
 import { useMemo, useState } from "react";
-import { MenuButton } from "@mui/base";
 import MyButton from "../../../ui/MyButton";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaEllipsisV } from "react-icons/fa";
 import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
+import { HiFolderDownload } from "react-icons/hi";
+import jsPDF from "jspdf";
 
 export default function Requests() {
   const columns = useMemo(() => [
@@ -137,7 +142,9 @@ export default function Requests() {
             <MenuHandler>
               <Button className="bg-style text-black shadow-none">
                 {" "}
-                <span className="text-lg">...</span>
+                <span>
+                  <FaEllipsisV />
+                </span>
               </Button>
             </MenuHandler>
             <MenuList className="z-[1000] mt-[-80px] space-y-3">
@@ -157,16 +164,57 @@ export default function Requests() {
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
   };
+
+  //Download Table
+  const downloadAsPDF = () => {
+    const doc = new jsPDF();
+    doc.text("NEW SERVICE REQUESTS", 20, 10);
+    doc.autoTable({
+      head: [
+        [
+          "S/N",
+          "Service",
+          "Charge",
+          "Qty",
+          "Request Time",
+          "Delivery time",
+          "Provider",
+          "Phone",
+        ],
+      ],
+      body: serviceRequest.map((item) => [
+        item.id,
+        item.service,
+        item.charge,
+        item.quantity,
+        item.requestTime,
+        item.deliveryTime,
+        item.provider,
+        item.providerPhone,
+      ]),
+    });
+
+    doc.save("sharpapp-service-providers.pdf");
+  };
+
   const buttonStyle =
     "border-2 px-4 py-2 text-sm md:text-md w-full lg:text-lg bg-gray-300 text-black";
   const activeButtonstyle =
     "bg-blue-500 text-sm md:text-md w-full lg:text-lg px-4 py-2 text-white font-semibold";
+
   return (
     <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[50px] shadow-md lg:w-[85%]">
       {" "}
-      <div className="mb-10 flex items-center justify-between">
-        {" "}
-        <span className="w-[40%]">
+      <div className="flex items-center px-5 py-10 ">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /
+        <button onClick={() => navigate("/client/dashboard")}>dashboard</button>
+        /<NavLink to="">Requests</NavLink>
+      </div>
+      <div className="mb-10 flex items-center justify-between px-5 ">
+        <span className="lg:w-[45%]">
           <hr />
         </span>
         <span>
@@ -180,7 +228,7 @@ export default function Requests() {
             </p>
           </MyButton>
         </span>
-        <span className="w-[40%]">
+        <span className="lg:w-[40%]">
           <hr />
         </span>
       </div>
@@ -213,6 +261,16 @@ export default function Requests() {
       <div className="px-7 pt-10">
         {activeTab === 1 && (
           <div>
+            <div className="px-3 text-right text-2xl">
+              {" "}
+              <button onClick={downloadAsPDF}>
+                <Tooltip content="Download in PDF">
+                  <span>
+                    <HiFolderDownload />
+                  </span>
+                </Tooltip>
+              </button>
+            </div>
             <Table data={serviceRequest} columns={columns} />
           </div>
         )}{" "}

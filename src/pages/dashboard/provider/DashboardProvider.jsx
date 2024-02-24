@@ -345,8 +345,12 @@ import Barchart from "./Barchart";
 import Chart from "./LineChart";
 import Table from "./Table";
 import ViewDetails from "./ViewDetails";
+import { NavLink, useNavigate } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export default function DashboardProvider() {
+  const navigate = useNavigate();
+
   const columns = useMemo(
     () => [
       {
@@ -386,6 +390,12 @@ export default function DashboardProvider() {
 
   return (
     <div className="servicebg mt-[100px] w-[100%] overflow-y-auto shadow-lg lg:px-5 lg:pl-10 lg:pr-10">
+      <div className="m-auto mb-5 mt-10 flex items-center px-5">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /<NavLink to="">Dashboard</NavLink>
+      </div>
       <div className="justify-between lg:flex lg:gap-5">
         <div className="lg:w-[70%]">
           <div className="flex items-center justify-between gap-1 px-1 text-[14px] text-black lg:gap-10 lg:px-0 lg:text-[20px] ">

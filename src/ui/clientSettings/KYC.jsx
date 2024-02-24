@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MyButton from "../MyButton";
 
 export default function KYC() {
   const [utility, setUtility] = useState("");
@@ -44,7 +45,7 @@ export default function KYC() {
               type="text"
               value={nin}
               className="w-[100%]  rounded-lg border-2 border-gray-300  px-3 py-1 hover:border-blue-500"
-              placeholder="Enter New Password"
+              placeholder="Enter Your NIN"
               onChange={(e) => setNin(e.target.value)}
             />
           </div>
@@ -54,7 +55,7 @@ export default function KYC() {
               type="text"
               value={nextOfKin}
               className="w-[100%]  rounded-lg border-2 border-gray-300  px-3 py-1 hover:border-blue-500"
-              placeholder="Fullname"
+              placeholder="Next Of Kin Fullname"
               onChange={(e) => setNextOfKin(e.target.value)}
             />
           </div>
@@ -68,7 +69,7 @@ export default function KYC() {
               onChange={(e) => setNextOfKinPhone(e.target.value)}
             />
           </div>
-          
+
           <div className="mt-2 ">
             <p className="font-light">Next Of Kin Address</p>
             <input
@@ -91,9 +92,7 @@ export default function KYC() {
           </div>
         </div>
 
-        <button className="mt-10 cursor-pointer rounded-xl border-2 bg-blue-500 px-3 text-white hover:bg-black">
-          Submit
-        </button>
+        <div className="mt-10"><MyButton type="primary">Submit</MyButton></div>
       </div>
     </form>
   );

@@ -55,6 +55,7 @@ import { NavLink } from "react-router-dom";
 import "react-phone-number-input/style.css";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ProviderSignup() {
   const [password, setPassword] = useState("");
@@ -63,6 +64,7 @@ export default function ProviderSignup() {
   const [showcPassword, setShowcPassword] = useState(false);
   const [phone, setPhone] = useState();
   const [category, setCategory] = useState("");
+  const [captchaValue, setCaptchaValue] = useState("");
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -72,9 +74,21 @@ export default function ProviderSignup() {
     setShowcPassword(!showcPassword);
   };
 
+  const onChange = (value) => {
+    console.log("Captcha value:", value);
+    setCaptchaValue(value);
+  };
+  const onSubmit = () => {
+    // Validate captchaValue on form submission
+    if (!captchaValue) {
+      alert("Please complete the reCAPTCHA challenge.");
+      return;
+    }
+  };
+
   return (
     <div className="h-auto bg-[url('/src/data/bg2.jpeg')] bg-cover bg-center bg-no-repeat pt-20 ">
-      <form className=" lg:mt-0">
+      <form className=" lg:mt-0" onSubmit={onSubmit}>
         <div className="m-auto justify-center  p-5 text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-10">
           {" "}
           <p className="pb-10 pt-0 text-center font-semibold text-white">
@@ -248,13 +262,26 @@ export default function ProviderSignup() {
               </i>
             </div>
           </div>
-          <p className="text-white lg:mt-10">
-            Already Have An Account?{" "}
-            <NavLink to="/login" className="font-semibold text-blue-500">
-              Login
-            </NavLink>
-          </p>
-          <button className="my-20 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black  ">
+          <div className="flex justify-between px-2 lg:mt-3">
+            <p>
+              {" "}
+              <ReCAPTCHA
+                sitekey="6LcH_HYpAAAAAIe-pp3S2pPQd1yL-_qgKnk8Qj6f"
+                onChange={onChange}
+              />
+            </p>
+
+            <p className="text-white lg:mt-10">
+              Already Have An Account?{" "}
+              <NavLink to="/login" className="font-semibold text-blue-500">
+                Login
+              </NavLink>
+            </p>
+          </div>
+          <button
+            type="submit"
+            className="my-20 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black  "
+          >
             Submit
           </button>
         </div>

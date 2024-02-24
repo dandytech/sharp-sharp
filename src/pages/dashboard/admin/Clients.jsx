@@ -16,6 +16,9 @@ import "jspdf-autotable";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 
 import ViewClientKYC from "./ViewClientsKYC";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export const clients = [
   {
@@ -193,9 +196,18 @@ export default function Clients() {
 
     doc.save("sharpapp-clients.pdf");
   };
+  const navigate = useNavigate();
 
   return (
     <div className="bg-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
+      <div className="m-auto flex items-center px-5 pb-10">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /<button onClick={() => navigate("/admin/dashboard")}>dashboard</button>
+        /<NavLink to="">clients</NavLink>
+      </div>
+
       <p className="flex border-t-2 p-2 font-semibold">CLIENTS DETAILS</p>
       <button
         className="float-right mb-5 flex items-center px-3 text-right"

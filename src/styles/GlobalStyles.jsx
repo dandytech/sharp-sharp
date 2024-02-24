@@ -219,6 +219,7 @@ const GlobalStyles = createGlobalStyle`
     
     }
 
+ 
 
   .bgsummary{
     background-color: var(--color-blue-100);
@@ -244,7 +245,7 @@ const GlobalStyles = createGlobalStyle`
     z-index: 0 !important;
   }
 
-  input:hover,select:hover,textarea:hover{
+  input:hover, select:hover, textarea:hover{
     background-color:white;
     color: black;
    // border-top-left-radius: 0px;border-bottom-left-radius:0px;

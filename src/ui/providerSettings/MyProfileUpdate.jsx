@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MyButton from "../MyButton";
 
 export default function MyProfileUpdate() {
   const [firstName, setFirstName] = useState("Prince");
@@ -16,10 +17,8 @@ export default function MyProfileUpdate() {
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <div className="overflow-y-auto text-center  mb-10 p-5 py-10">
-        <div className="w-[360px] border-gray-300 lg:p-10 lg:w-[800px]">
-          
-
+      <div className="mb-10 overflow-y-auto  p-5 py-10 text-center">
+        <div className="w-[300px] border-gray-300 md:w-[600px] lg:w-[800px] lg:p-10">
           <div className="border-2 border-gray-300 p-3 lg:p-10 ">
             <div className="mb-5 flex items-center justify-between font-semibold">
               <p>Personal Information</p>
@@ -93,9 +92,10 @@ export default function MyProfileUpdate() {
             </div>
           </div>
         </div>
-        <button className="mt-5 cursor-pointer rounded-xl border-2 bg-blue-500 px-3 text-white hover:bg-black">
-          Submit
-        </button>
+
+        <div className="mt-10">
+          <MyButton type="primary">Submit</MyButton>
+        </div>
       </div>
     </form>
   );

@@ -335,6 +335,8 @@ export default function Services() {
       currency: "NGN",
     }).format(amount);
   };
+
+  
   return (
     <Modal>
       <div className="bg-gradient-to-r from-violet-100 to-blue-100  pb-10 pt-[85px] lg:mt-[0px] lg:py-0  lg:pb-10 lg:pt-0">

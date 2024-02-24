@@ -148,11 +148,20 @@ import AdminViewRecentRequests from "../../../ui/admin/AdminViewRecentRequests";
 
 import AdminAreaChart from "../../../ui/admin/AdminAreaChart";
 import AdminPieChart from "../../../ui/admin/AdminPieChart";
+import { NavLink } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export default function AdminDashboard() {
   return (
     <Modal>
       <div className="servicebg h-[100vh] overflow-y-auto px-5 pt-[60px] lg:w-[84%] lg:pr-10">
+        <div className="m-auto flex items-center px-5 pb-10">
+          <NavLink to="/">
+            <CiHome />
+          </NavLink>
+          /<NavLink to="">dashboard</NavLink>
+        </div>
+
         <div className="rounded-xl border-2 bg-blue-500 px-7 py-10 text-sm text-white shadow-md">
           <p>Total Services Amount</p>
           <p className="font-semibod py-2 text-xl">$8,898,878,073.00</p>

@@ -1,19 +1,21 @@
 import { useState } from "react";
 
 import Table from "../../pages/dashboard/provider/Table";
+import MyButton from "../MyButton";
 
 export default function ServiceInfo({
   handleTabClick,
-  serviceData,
   serviceColumns,
+  providerServices,
 }) {
-  console.log(serviceData);
+  console.log(providerServices);
+
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
 
-  const [services, setServices] = useState(serviceData);
+  const [services, setServices] = useState(providerServices);
 
   const handleShow = () => {
     setShow(!show);
@@ -29,7 +31,7 @@ export default function ServiceInfo({
     }
   };
 
-  let nextId = 4;
+  let nextId = services.length;
   const handleSave = (e) => {
     e.preventDefault();
     if (!name || !price || !description) return;
@@ -37,7 +39,7 @@ export default function ServiceInfo({
     setServices([
       ...services,
       {
-        id: nextId++,
+        id: nextId + 1,
         name: name,
         price: price,
         description: description,
@@ -55,27 +57,25 @@ export default function ServiceInfo({
     setName("");
     setPrice("");
     setDescription("");
+    setShow(false);
   };
 
   const div =
-    "mb-10 flex h-[50px] items-center rounded-xl border-2 border-blue-500 bg-gray-800 text-center text-white focus:border-white lg:mb-0 lg:w-[50%]";
+    "mb-10 flex h-[50px] items-center rounded-xl border-2 border-gray-300 bg-white  text-center focus:border-white lg:mb-0 lg:w-[50%] hover:border-blue-500";
 
   const input =
-    " h-[45px] w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white rounded-xl";
+    " h-[45px] w-[100%] bg-gray-800 bg-white px-5 font-semibold focus:border-2 focus:border-white rounded-xl";
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="mb-5 items-center justify-between md:mb-0 md:flex lg:mb-0 lg:flex">
         <p className="mb-3 mt-20 flex text-[18px] font-semibold lg:text-lg xl:text-xl ">
           Your Service Varieties Details
         </p>
 
-        <button
-          className="md:text-md my-5 mt-20 flex rounded-xl bg-blue-500 p-3 text-sm text-white lg:text-lg xl:text-xl"
-          onClick={handleShow}
-        >
-          + Add
-        </button>
+        <MyButton type="primary" onClick={handleShow}>
+          {show ? "Close" : " + Add"}
+        </MyButton>
       </div>
 
       {show && (
@@ -95,18 +95,20 @@ export default function ServiceInfo({
               <span className="mt-[-20px] text-[30px] text-red-600">*</span>
             </div>
 
-            <div className={`${div} lg:mb-5`}>
-              <span className="w-[250px] p-3 lg:w-[250px]">Price Range:</span>
-              <input
-                type="text"
-                id="price"
-                name="price"
-                className={input}
-                placeholder="N300 - N500"
-                required
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-              />
+            <div className={`${div} flex items-center justify-between lg:mb-5`}>
+              <span className="flex items-center">
+                <span className="w-full">Price (NGN):</span>{" "}
+                <input
+                  type="text"
+                  id="price"
+                  name="price"
+                  className={`${input}`}
+                  placeholder="6500"
+                  required
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+              </span>
               <span className="mt-[-20px] text-[30px] text-red-600">*</span>
             </div>
 
@@ -125,42 +127,28 @@ export default function ServiceInfo({
             </div>
           </div>
 
-          <div className="flex gap-5">
-            <button
-              className="my-5 flex rounded-xl bg-blue-500 p-3 text-white"
-              onClick={handleSave}
-            >
+          <div className="mb-10 flex lg:mt-5">
+            <MyButton type="primary" onClick={handleSave}>
+              {" "}
               Save Variety
-            </button>
-            <button
-              className="my-5 flex rounded-xl bg-red-500 p-3 text-white"
-              onClick={handleShow}
-            >
-              Close
-            </button>
+            </MyButton>
           </div>
 
-          <div className="flex gap-2">
-            <button
-              className="my-5 rounded-full border-2 bg-black px-3 py-3 text-sm text-white hover:bg-blue-500 lg:my-20 lg:px-7  "
-              onClick={() => handleTabClick(1)}
-            >
+          <div className="mb-5 flex items-center justify-between gap-2">
+            <MyButton type="primary" onClick={() => handleTabClick(1)}>
               ⬅️Previous
-            </button>
+            </MyButton>
 
-            <button
-              className="my-5 rounded-full border-2 bg-blue-500 px-7 py-3 text-sm text-white hover:bg-black lg:my-20  "
-              onClick={handleNext}
-            >
+            <MyButton type="primary" onClick={handleNext}>
               Save & Continue
-            </button>
+            </MyButton>
           </div>
         </div>
       )}
 
       <span>
         {" "}
-        <Table data={serviceData} columns={serviceColumns} />
+        <Table data={services} columns={serviceColumns} />
       </span>
     </div>
   );

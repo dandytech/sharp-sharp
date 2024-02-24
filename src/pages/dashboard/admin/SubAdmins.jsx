@@ -15,11 +15,14 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 import ViewSubAdminsDetails from "./ViewSubAdminsDetails";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export const subadmins = [
   {
     id: 1,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
+    photo: "https://i.pravatar.cc/48?u=44423896764",
     fullname: "Obi Nweke",
     gender: "Male",
     email: "obi@gmail.com",
@@ -29,114 +32,24 @@ export const subadmins = [
   },
   {
     id: 2,
-    photo: "https://i.pravatar.cc/48?u=4442446764",
+    photo: "https://i.pravatar.cc/48?u=44428226764",
     fullname: "Nwankwo Daniel Amaech",
     gender: "Male",
     email: "dannkwo@gmail.com",
     phone: "+2347098787875",
     role: "ICT",
-    homeaddress: "2 metalbox rd",
+    homeaddress: "2 ogba rd",
   },
   {
     id: 3,
-    photo: "",
+    photo: "https://i.pravatar.cc/48?u=4442895764",
     fullname: "Mary David",
     gender: "Male",
     email: "mary@gmail.com",
     phone: "+2347098787875",
     role: "maintenance",
-    homeaddress: "2 metalbox rd",
+    homeaddress: "2 ojah rd",
   },
-  // {
-  //   id: 4,
-  //   photo: "https://i.pravatar.cc/48?u=4442896764",
-  //   fullname: "Nwankwo Daniel Amaech",
-  //   gender: "Male",
-  //   email: "dannkwo@gmail.com",
-  //   phone: "+2347098787875",
-  //   role: "ICT",
-  //   homeaddress: "2 metalbox rd",
-  // },
-  // {
-  //   id: 5,
-  //   photo: "https://i.pravatar.cc/48?u=4442896764",
-  //   fullname: "Nwankwo Daniel Amaech",
-  //   gender: "Male",
-  //   email: "dannkwo@gmail.com",
-  //   phone: "+2347098787875",
-  //   role: "House Cleaning",
-  //   homeaddress: "2 metalbox rd",
-  // },
-  // {
-  //   id: 6,
-  //   photo: "",
-  //   fullname: "henry Daniel Amaech",
-  //   gender: "Male",
-  //   email: "dannkwo@gmail.com",
-  //   phone: "+2347098787875",
-  //   role: "ICT",
-  //   homeaddress: "2 metalbox rd",
-  // },
-  // {
-  //   id: 7,
-  //   photo: "https://i.pravatar.cc/48?u=4442896764",
-  //   fullname: "Sunday Kalu Daniel ",
-  //   gender: "Male",
-  //   email: "dannkwo@gmail.com",
-  //   phone: "+2347098787875",
-  //   role: "ICT",
-  //   homeaddress: "2 metalbox rd",
-  // },
-  // {
-  //   id: 8,
-  //   photo: "https://i.pravatar.cc/48?u=4442896764",
-  //   fullname: "Mary Daniel Amaech",
-  //   gender: "Male",
-  //   email: "dannkwo@gmail.com",
-  //   phone: "+2347098787875",
-  //   role: "Kitchen",
-  //   homeaddress: "2 metalbox rd",
-  // },
-  // {
-  //   id: 9,
-  //   photo: "https://i.pravatar.cc/48?u=4442896764",
-  //   fullname: "Marthina Kenn John",
-  //   gender: "Male",
-  //   email: "dannkwo@gmail.com",
-  //   phone: "+2347098787875",
-  //   role: "Maintain",
-  //   homeaddress: "2 metalbox rd",
-  // },
-  // {
-  //   id: 10,
-  //   photo: "https://i.pravatar.cc/48?u=4442896764",
-  //   fullname: "Paul Oke ",
-  //   gender: "Male",
-  //   email: "dannkwo@gmail.com",
-  //   phone: "+2347098787875",
-  //   role: "ICT",
-  //   homeaddress: "2 metalbox rd",
-  // },
-  // {
-  //   id: 11,
-  //   photo: "",
-  //   fullname: "Ikenna Daniel Oni",
-  //   gender: "Male",
-  //   email: "dannkwo@gmail.com",
-  //   phone: "+2347098787875",
-  //   role: "ICT",
-  //   homeaddress: "2 metalbox rd",
-  // },
-  // {
-  //   id: 12,
-  //   photo: "https://i.pravatar.cc/48?u=4442896764",
-  //   fullname: "Obi Ola Amah",
-  //   gender: "Male",
-  //   email: "dannkwo@gmail.com",
-  //   phone: "+2347098787875",
-  //   role: "ICT",
-  //   homeaddress: "2 metalbox rd",
-  // },
 ];
 
 export default function SubAdmins() {
@@ -150,7 +63,7 @@ export default function SubAdmins() {
   const [role, setRole] = useState("ICT Admin");
   const [homeaddress, setHomeaddress] = useState("");
 
-  let nextId = 13;
+  let nextId = newsubadmins.length;
   const handleSubmit = (e) => {
     console.log(gender);
     console.log(role);
@@ -171,7 +84,7 @@ export default function SubAdmins() {
       setNewsubadmins([
         ...newsubadmins,
         {
-          id: nextId++,
+          id: nextId + 1,
           photo: photo,
           fullname: fullname,
           gender: gender,
@@ -192,9 +105,9 @@ export default function SubAdmins() {
 
       toast.success("Submited Successfully");
 
-      setInterval(() => {
-        if (showAdd === true) setShowAdd(false);
-      }, 7000);
+      // setInterval(() => {
+      //   if (showAdd === true) setShowAdd(false);
+      // }, 7000);
     }
   };
 
@@ -203,9 +116,26 @@ export default function SubAdmins() {
     () => [
       {
         accessorKey: "id", //access nested data with dot notation
-        header: "S/N",
+        header: "ID",
         size: 10,
       },
+      // {
+      //   accessorKey: "photo",
+      //   header: "Photo",
+      //   size: 150,
+      //   Cell: ({ row }) => (
+      //     <TableCell>
+      //       <img
+      //         src={row.original.photo}
+      //         alt={row.original.photo}
+      //         width="50"
+      //         height="50"
+      //         className="h-[100px] w-[100px] rounded-full border-2 border-blue-500"
+      //       />
+      //     </TableCell>
+      //   ),
+      // },
+
       {
         accessorKey: "fullname", //access nested data with dot notation
         header: "Full Name",
@@ -257,7 +187,7 @@ export default function SubAdmins() {
 
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const slicedData = subadmins.slice(startIndex, endIndex);
+  const slicedData = newsubadmins.slice(startIndex, endIndex);
 
   //Download Table
   const downloadAsPDF = () => {
@@ -297,9 +227,17 @@ export default function SubAdmins() {
   const handleShowAdd = () => {
     setShowAdd(!showAdd);
   };
+  const navigate = useNavigate();
 
   return (
     <div className="bg-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
+      <div className="m-auto flex items-center px-5 pb-10">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /<button onClick={() => navigate("/admin/dashboard")}>dashboard</button>
+        /<NavLink to="">subadmins</NavLink>
+      </div>
       <p
         className="mb-5 w-auto cursor-pointer border-2 p-2 px-3 text-center font-bold text-blue-500"
         onClick={handleShowAdd}

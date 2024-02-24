@@ -1,6 +1,9 @@
 import { useState } from "react";
 import AllNotifications from "../../../ui/adminNotifications/AllNotifications";
 import UnreadNotifications from "../../../ui/adminNotifications/UnreadNotifications";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export default function AdminNotifications() {
   const [activeTab, setActiveTab] = useState(1);
@@ -9,8 +12,18 @@ export default function AdminNotifications() {
     setActiveTab(tabNumber);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="servicebg z-0 h-[100vh] overflow-y-auto text-center lg:w-[84%]">
+      <div className="m-auto mt-20 flex items-center px-5 lg:w-[70%]">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /<button onClick={() => navigate("/admin/dashboard")}>dashboard</button>
+        /<NavLink to="">notifications</NavLink>
+      </div>
+
       <div className="justify-center p-3 text-center">
         <p className="mb-10 pt-10 text-center text-[24px] font-bold lg:pb-10 lg:pt-20">
           Admin Notifications !!!

@@ -25,7 +25,7 @@ export default function MyProfile() {
           </div>
         </div>
 
-        <div className="border-2 border-gray-300 p-3 lg:p-10">
+        <div className="border-t-2 border-gray-300 p-3 lg:p-10">
           <div className="mb-5 flex items-center justify-between gap-1 font-semibold">
             <p>Personal Information</p>
             <Modal.Open opens="profile">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MyButton from "../MyButton";
 
 export default function Security() {
   const [oldpassword, setOldPassword] = useState("");
@@ -50,9 +51,9 @@ export default function Security() {
           </div>
         </div>
 
-        <button className="mt-10 cursor-pointer rounded-xl border-2 bg-blue-500 px-3 text-white hover:bg-black">
-          Submit
-        </button>
+        <div className="mt-10">
+          <MyButton type="primary">Submit</MyButton>
+        </div>
       </div>
     </form>
   );

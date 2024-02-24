@@ -15,6 +15,8 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import ViewProviderKYC from "./ViewProvidersKYC";
+import { NavLink, useNavigate } from "react-router-dom";
+import { CiHome } from "react-icons/ci";
 
 export const providers = [
   {
@@ -196,6 +198,28 @@ export default function Providers() {
     [],
   );
 
+  // Filter items based on the search input
+  const [data, setProvider] = useState(providers);
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSearch = () => {
+    if (searchInput !== "") {
+      const filteredItems = providers.filter(
+        (item) =>
+          item.fullname.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.phone.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.email.toLowerCase().includes(searchInput.toLowerCase()) ||
+          item.servicecategory
+            .toLowerCase()
+            .includes(searchInput.toLowerCase()),
+      );
+
+      setProvider(filteredItems);
+    } else {
+      setProvider(data);
+    }
+  };
+
   //Pagination
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -211,7 +235,7 @@ export default function Providers() {
 
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const slicedData = providers.slice(startIndex, endIndex);
+  const slicedData = data.slice(startIndex, endIndex);
 
   //Download Table
   const downloadAsPDF = () => {
@@ -245,20 +269,40 @@ export default function Providers() {
     doc.save("sharpapp-service-providers.pdf");
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="bg-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
-      <p className="flex border-t-2 p-2 font-semibold">
-        SERVICE PROVERS DETAILS
-      </p>
-      <button
-        className="float-right mb-5 flex items-center px-3 text-right"
-        onClick={downloadAsPDF}
-      >
-        <span> Download </span>
-        <span>
-          <FaCloudDownloadAlt />
+      <div className="m-auto flex items-center  pb-10">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /<button onClick={() => navigate("/admin/dashboard")}>dashboard</button>
+        /<NavLink to="">providers</NavLink>
+      </div>
+
+      <div className="items-center justify-between lg:flex">
+        <p className="mb-5 flex p-2 font-semibold">SERVICE PROVERS DETAILS</p>
+        <span className="mb-5 flex items-center gap-10 lg:w-[40%]">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full rounded-xl border-2 border-gray-300 px-3 py-1 "
+            value={searchInput}
+            onChange={(e) => handleSearch(setSearchInput(e.target.value))}
+          />
+
+          <button
+            className="float-right flex items-center px-3 text-right"
+            onClick={downloadAsPDF}
+          >
+            <span> Download </span>
+            <span>
+              <FaCloudDownloadAlt />
+            </span>
+          </button>
         </span>
-      </button>
+      </div>
 
       <TableContainer component={Paper}>
         <Table className="bg-style">

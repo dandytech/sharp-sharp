@@ -1,5 +1,8 @@
+import { CiHome } from "react-icons/ci";
 import AdminCategoryTable from "../../../ui/admin/AdminCategoryTable";
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -88,8 +91,19 @@ export default function AdminServiceCategories() {
     [],
   );
 
+
+  const navigate=useNavigate()
+
+
   return (
     <div className="servicebg h-[100vh] overflow-y-auto px-5 pt-[80px] lg:w-[84%] lg:pr-10">
+      <div className="m-auto flex items-center px-5 pb-10">
+        <NavLink to="/">
+          <CiHome />
+        </NavLink>
+        /<button onClick={() => navigate("/admin/dashboard")}>dashboard</button>
+        /<NavLink to="">categories</NavLink>
+      </div>
       <div>
         <div className="tab-buttons flex w-[100%] items-center justify-between">
           <div className="font-bold lg:w-[50%]">
