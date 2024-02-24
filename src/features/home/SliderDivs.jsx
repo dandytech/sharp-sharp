@@ -24,7 +24,7 @@ export default function SliderDivs() {
             REGISTER AS A{" "}
             <span className="text-blue-500">SERVICE PROVIDER</span>
           </p>
-          <p className="text-lg text-[24px] font-bold sm:w-[55%] md:text-xl lg:text-2xl">
+          <p className="text-lg text-[24px] font-bold sm:w-[55%] md:text-xl lg:text-2xl px-7">
             <NavLink to="/signup" className="font-semibold text-blue-500">
               {" "}
               Get Started
@@ -38,7 +38,7 @@ export default function SliderDivs() {
           <p className="mb-10 px-3 text-[34px] font-bold leading-[40px] sm:w-[50%]">
             REGISTER AS A <span className="text-blue-500">CLIENT</span>
           </p>
-          <p className="text-lg text-[24px] font-bold sm:w-[55%] md:text-xl lg:text-2xl">
+          <p className="text-lg text-[24px] font-bold sm:w-[55%] md:text-xl lg:text-2xl px-7">
             <NavLink to="/signup" className="font-semibold text-blue-500">
               {" "}
               Get Started
@@ -53,7 +53,7 @@ export default function SliderDivs() {
             YOUR <span className="text-blue-500">SATISFACTION & COMFORT </span>
             IS OUR PRIORITY
           </p>
-          <p className="text-lg px-3 text-[24px] font-bold sm:w-[55%] md:text-xl lg:text-2xl">
+          <p className="text-lg px-3 text-[24px] font-bold sm:w-[55%] md:text-xl lg:text-2xl px-7">
             We care for our Clients & Providers Welfare, you are covered!!!
           </p>
         </div>
