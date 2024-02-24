@@ -15,7 +15,7 @@ export default function ClientSettings() {
 
   return (
     <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[50px] shadow-md lg:w-[85%]">
-      <div className="m-auto mb-5 mt-10 flex items-center px-5">
+      <div className="m-auto mb-3 mt-3 flex items-center px-5">
         <NavLink to="/">
           <CiHome />
         </NavLink>
@@ -25,7 +25,7 @@ export default function ClientSettings() {
       </div>
       <div className="m-auto justify-center p-3 text-center ">
         {" "}
-        <p className="mb-10 pt-5 text-center text-[24px] font-bold lg:pb-10">
+        <p className="mb-10 pt-3 text-center text-[24px] font-bold lg:pb-10">
           Account Settings !!!
         </p>
         <div className="gap-10 lg:flex">

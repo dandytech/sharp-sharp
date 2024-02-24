@@ -14,8 +14,8 @@ export default function ServiceRequests() {
   };
 
   return (
-    <div className="servicebg w-[100%]  pt-[150px]">
-      <div className="m-auto mb-7 flex items-center px-5">
+    <div className="servicebg w-[100%]  pt-[120px]">
+      <div className="m-auto mb-5 flex items-center px-5">
         <NavLink to="/">
           <CiHome />
         </NavLink>

@@ -40,8 +40,8 @@ export default function ClientDashLayout() {
         }`}
       >
         <Outlet />
-        <div className="flex justify-center border-t-2 py-5 px-3 font-light shadow-md">
-          Copyright © {new Date().getFullYear()} Sharp Sharp. All Rights
+        <div className="text-xs md:text-md flex justify-center border-t-2 px-2 py-5 font-light shadow-md lg:text-lg">
+          Copyright©{new Date().getFullYear()} Sharp Sharp. All Rights
           Reserved.
         </div>
       </div>

@@ -72,7 +72,7 @@ export default function ProviderSettings() {
 
   return (
     <div className="servicebg mt-[80px] h-[100vh] w-[100%] overflow-y-auto shadow-2xl lg:px-5">
-      <div className="m-auto mb-5 mt-20 flex items-center px-5">
+      <div className="m-auto mt-14 flex items-center px-5">
         <NavLink to="/">
           <CiHome />
         </NavLink>

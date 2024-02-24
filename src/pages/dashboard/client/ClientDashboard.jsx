@@ -184,7 +184,7 @@ export default function ClientDashboard() {
 
   return (
     <Modal>
-      <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[100px] shadow-md lg:w-[85%]">
+      <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[50px] shadow-md lg:w-[85%]">
         <div className="mb-12 flex items-center px-6">
           <NavLink to="/">
             <CiHome />

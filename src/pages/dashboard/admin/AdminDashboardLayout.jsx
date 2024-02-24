@@ -46,7 +46,7 @@ export default function AdminDashboardLayout() {
         }`}
       >
         <Outlet />
-        <div className="flex justify-center py-5 font-light shadow-md border-t-2 px-3">
+        <div className="text-xs md:text-md flex justify-center border-t-2 px-3 py-5 font-light shadow-md lg:text-lg">
           Copyright © {new Date().getFullYear()} Sharp Sharp. All Rights
           Reserved.
         </div>

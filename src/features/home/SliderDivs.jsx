@@ -20,11 +20,11 @@ export default function SliderDivs() {
     <div className=" h-[600px] overflow-x-hidden">
       <Slider {...settings}>
         <div className="slider1 h-[600px] bg-[url('/src/data/bg2.jpeg')]  bg-cover bg-center bg-no-repeat ">
-          <p className="mb-10 text-[34px] font-bold leading-[40px] sm:w-[50%] lg:w-[50%]">
+          <p className="mb-10 px-3 text-[34px] font-bold leading-[40px] sm:w-[50%] lg:w-[50%]">
             REGISTER AS A{" "}
             <span className="text-blue-500">SERVICE PROVIDER</span>
           </p>
-          <p className="text-[24px] font-bold sm:w-[55%]">
+          <p className="text-lg text-[24px] font-bold sm:w-[55%] md:text-xl lg:text-2xl">
             <NavLink to="/signup" className="font-semibold text-blue-500">
               {" "}
               Get Started
@@ -35,10 +35,10 @@ export default function SliderDivs() {
         </div>
 
         <div className="slider1 h-[600px] bg-[url('/src/data/bg3.jpeg')]  from-white bg-cover bg-center bg-no-repeat lg:w-[50%] ">
-          <p className="mb-10 text-[34px] font-bold leading-[40px] sm:w-[50%]">
+          <p className="mb-10 px-3 text-[34px] font-bold leading-[40px] sm:w-[50%]">
             REGISTER AS A <span className="text-blue-500">CLIENT</span>
           </p>
-          <p className="text-[24px] font-bold sm:w-[55%]">
+          <p className="text-lg text-[24px] font-bold sm:w-[55%] md:text-xl lg:text-2xl">
             <NavLink to="/signup" className="font-semibold text-blue-500">
               {" "}
               Get Started
@@ -49,11 +49,11 @@ export default function SliderDivs() {
         </div>
 
         <div className="slider1 h-[600px] bg-[url('/src/data/bg11.jpeg')] bg-cover bg-center bg-no-repeat ">
-          <p className="mb-10 text-[34px] font-bold leading-[40px] sm:w-[50%]">
+          <p className="mb-10 px-3 text-[34px] font-bold leading-[40px] sm:w-[50%]">
             YOUR <span className="text-blue-500">SATISFACTION & COMFORT </span>
             IS OUR PRIORITY
           </p>
-          <p className="text-[24px] font-bold sm:w-[55%]">
+          <p className="text-lg px-3 text-[24px] font-bold sm:w-[55%] md:text-xl lg:text-2xl">
             We care for our Clients & Providers Welfare, you are covered!!!
           </p>
         </div>
@@ -65,9 +65,7 @@ export default function SliderDivs() {
           <img src={playstore} alt="PlaySotre" width="100" />
         </span>{" "}
         <span className="font-semibold text-blue-500">
-          <Marquee>
-            Sharp, Best & Affordable!{" "}
-          </Marquee>
+          <Marquee>Sharp, Best & Affordable! </Marquee>
         </span>
         <span>
           {" "}

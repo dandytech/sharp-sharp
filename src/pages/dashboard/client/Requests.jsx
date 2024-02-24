@@ -205,7 +205,7 @@ export default function Requests() {
   return (
     <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[50px] shadow-md lg:w-[85%]">
       {" "}
-      <div className="flex items-center px-5 py-10 ">
+      <div className="flex items-center px-5 pt-5 pb-7 ">
         <NavLink to="/">
           <CiHome />
         </NavLink>

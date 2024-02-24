@@ -16,7 +16,7 @@ export default function AdminSettings() {
 
   return (
     <div className="servicebg z-0 h-[100vh] overflow-y-auto text-center lg:w-[85%] lg:pr-10 ">
-      <div className="m-auto flex items-center px-5 mt-20">
+      <div className="m-auto mt-14 flex items-center px-5">
         <NavLink to="/">
           <CiHome />
         </NavLink>

@@ -16,7 +16,7 @@ export default function AdminNotifications() {
 
   return (
     <div className="servicebg z-0 h-[100vh] overflow-y-auto text-center lg:w-[84%]">
-      <div className="m-auto mt-20 flex items-center px-5 lg:w-[70%]">
+      <div className="m-auto mt-14 flex items-center px-5 lg:w-[70%]">
         <NavLink to="/">
           <CiHome />
         </NavLink>
@@ -25,7 +25,7 @@ export default function AdminNotifications() {
       </div>
 
       <div className="justify-center p-3 text-center">
-        <p className="mb-10 pt-10 text-center text-[24px] font-bold lg:pb-10 lg:pt-20">
+        <p className="mb-10 pt-5 text-center text-[24px] font-bold lg:pb-10 lg:pt-14">
           Admin Notifications !!!
         </p>
         <div>

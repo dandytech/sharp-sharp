@@ -16,7 +16,7 @@ export default function ClientNotifications() {
   return (
     <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3  shadow-md lg:w-[85%]">
 
-      <div className="flex items-center mt-20 px-5 lg:w-[70%] m-auto">
+      <div className="flex items-center mt-14 px-5 lg:w-[70%] m-auto">
         <NavLink to="/">
           <CiHome />
         </NavLink>
@@ -26,7 +26,7 @@ export default function ClientNotifications() {
       </div>
 
       <div className="justify-center p-3 text-center">
-        <p className="mb-10 pt-10 text-center text-[24px] font-bold lg:pb-10 lg:pt-10">
+        <p className="mb-10 pt-5 text-center text-[24px] font-bold lg:pb-10 lg:pt-7">
           Client Notifications !!!
         </p>
         <div>

@@ -262,7 +262,7 @@ export default function ProviderSignup() {
               </i>
             </div>
           </div>
-          <div className="flex justify-between px-2 lg:mt-3">
+          <div className="justify-between px-2 lg:mt-3 lg:flex">
             <p>
               {" "}
               <ReCAPTCHA

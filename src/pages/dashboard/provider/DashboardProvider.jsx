@@ -390,7 +390,7 @@ export default function DashboardProvider() {
 
   return (
     <div className="servicebg mt-[100px] w-[100%] overflow-y-auto shadow-lg lg:px-5 lg:pl-10 lg:pr-10">
-      <div className="m-auto mb-5 mt-10 flex items-center px-5">
+      <div className="m-auto mt-5 flex items-center px-5">
         <NavLink to="/">
           <CiHome />
         </NavLink>
