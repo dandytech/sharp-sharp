@@ -153,8 +153,8 @@ export default function ProviderSignup() {
                   type="text"
                   id="location"
                   name="location"
-                  className=" h-[45px] w-[90%] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
-                  placeholder="Enter Your Category"
+                  className=" h-[45px] rounded-xl  bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white "
+                  placeholder="Type Your Category"
                   required
                 />
               )}
@@ -211,11 +211,17 @@ export default function ProviderSignup() {
                   }
                 />
 
-                <p className={`absolute right-0 text-red-500 ${phone ? "block" : "hidden"}`}>
+                <p
+                  className={`absolute right-0 text-red-500 ${
+                    phone ? "block" : "hidden"
+                  }`}
+                >
                   {phone && isValidPhoneNumber(phone) ? "" : "invalid phone"}
                 </p>
               </span>
             </div>
+
+
           </div>
           <div className="mt-10 gap-10 lg:flex">
             <div className="mb-10 flex h-[50px] items-center rounded-xl border-2 border-blue-500 bg-gray-800 text-center text-white focus:border-white lg:mb-0 lg:w-[50%]">
@@ -262,7 +268,7 @@ export default function ProviderSignup() {
               </i>
             </div>
           </div>
-          <div className="justify-between px-2 lg:mt-3 lg:flex">
+          <div className="justify-between lg:mt-3 px-3 lg:flex">
             <p>
               {" "}
               <ReCAPTCHA
@@ -271,7 +277,7 @@ export default function ProviderSignup() {
               />
             </p>
 
-            <p className="text-white lg:mt-10">
+            <p className="mt-7 text-white lg:mt-10">
               Already Have An Account?{" "}
               <NavLink to="/login" className="font-semibold text-blue-500">
                 Login

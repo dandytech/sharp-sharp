@@ -101,7 +101,7 @@ export default function Partners() {
           {partners.map((partner) => (
             <div
               key={partner.id}
-              className="flex h-[200px] w-[300px] flex-col-reverse items-center justify-center gap-2 text-center "
+              className="flex h-[200px] w-[180px] flex-col-reverse items-center justify-center gap-2 text-center "
             >
               <p>{partner.name}</p>
               <p className="text-[45px] w-full">{partner.logo}</p>

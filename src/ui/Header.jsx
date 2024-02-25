@@ -128,15 +128,6 @@ import { IoMdArrowForward } from "react-icons/io";
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
 
-  //target ref link
-
-  // const myDivRef = useRef(null);
-
-  // const scrollToDiv = () => {
-  //   myDivRef.current.scrollIntoView({ behavior: "smooth" });
-  // };
-
-  //call the scrollToDiv on button and ref the target div  using ref={myDivRef}
 
   useEffect(() => {
     const handleScroll = () => {

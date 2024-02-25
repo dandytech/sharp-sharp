@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../data/logo.png";
+import { HashLink } from "react-router-hash-link";
 
 export default function SmallScreenHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,10 +56,15 @@ export default function SmallScreenHeader() {
               </NavLink>
             </li>
             <li>
-              {" "}
-              <NavLink to="/about" onClick={closeMenu}>
+              <HashLink
+                onClick={closeMenu}
+                smooth
+                className="cursor-pointer hover:font-bold "
+                to="home#about"
+                activeClassName="active"
+              >
                 About
-              </NavLink>
+              </HashLink>
             </li>
 
             <li>

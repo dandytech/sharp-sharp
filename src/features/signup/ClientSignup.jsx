@@ -79,6 +79,9 @@ export default function ClientSignup() {
             </div>
 
             <div className="mb-10 flex h-[50px] items-center rounded-xl border-2 border-blue-500 bg-gray-800 text-center text-white focus:border-white lg:mb-0 lg:w-[50%]">
+              <span className=" flex h-[45px] w-[10%]  items-center justify-center  border-r text-center text-[30px] text-white  ">
+                <IoIosPhonePortrait />
+              </span>
               <span className="relative w-full">
                 <PhoneInput
                   className="PhoneInputInput pl-5 font-semibold"

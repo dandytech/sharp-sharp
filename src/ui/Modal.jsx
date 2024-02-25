@@ -6,7 +6,7 @@ import { useOutSideClick } from "../hooks/useOutSideClick";
 
 const StyledModal = styled.div`
   position: fixed;
-  top: 65%;
+  top: 80%;
   left: 50%;
   height: auto;
   inset: 50;
@@ -21,10 +21,11 @@ const StyledModal = styled.div`
   overflow-y: auto;
   width: auto;
   // Media query for large screens
-  /* @media (min-width: 1024px) {
-    top: 50%;
+  @media (min-width: 1024px) {
+    top: 55%;
+   
   }
-  @media (min-width: 600px) {
+  /* @media (min-width: 600px) {
     width: auto;
     top: 50%;
    
@@ -33,7 +34,7 @@ const StyledModal = styled.div`
     & {
       width: auto;
     }
-  } */
+  }  */
 `;
 
 const Overlay = styled.div`

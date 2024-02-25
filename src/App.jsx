@@ -5,7 +5,6 @@ import Contact from "./pages/Contact";
 import { useEffect } from "react";
 import "./index.css";
 import Login from "./pages/Login";
-import About from "./pages/About";
 
 import GlobalStyles from "./styles/GlobalStyles";
 import PageNotFound from "./ui/PageNotFound";
@@ -66,7 +65,7 @@ export default function App() {
 
               <Route path="home" element={<Home />} />
               <Route path="contact" element={<Contact />} />
-              <Route path="about" element={<About />} />
+
               <Route path="signup" element={<SignupOption />} />
               <Route path="login" element={<Login />} />
 
