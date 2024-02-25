@@ -49,6 +49,7 @@ const actType = [
 ];
 
 import { useEffect, useState } from "react";
+import MyButton from "../MyButton";
 
 export default function BankInfo({ handleTabClick }) {
   const [actno, setActno] = useState("");
@@ -135,95 +136,108 @@ export default function BankInfo({ handleTabClick }) {
       alert("All Fields Are Required");
   };
 
-  const div =
-    "mb-10 flex h-[50px] items-center rounded-xl border-2 border-gray-300 bg-white  text-center focus:border-white lg:mb-0 lg:w-[50%] hover:border-blue-500";
-
   const input =
-    " h-[45px] w-[100%] bg-gray-800 bg-white px-5 font-semibold focus:border-2 focus:border-white rounded-xl";
+    "w-full bg-white px-3 py-2 font-semibold hover:border-blue-500 rounded-xl border-2 border-gray-300";
 
   return (
     <div>
-      <div className="mt-10 gap-10 lg:flex">
-        <div className={div}>
-          <span className="w-[200px] p-3 lg:w-[230px]">Bank Name:</span>
-          <select
-            className={input}
-            id="service"
-            name="service"
-            required
-            value={bankName}
-            onChange={(e) => setBankName(e.target.value)}
-          >
-            <option></option>
-            {bank?.map((item) => (
-              <option value={item.code} key={item.slug}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+      <div className="mt-10 gap-5 space-y-5 lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex">Bank Name</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              <select
+                className={input}
+                id="service"
+                name="service"
+                required
+                value={bankName}
+                onChange={(e) => setBankName(e.target.value)}
+              >
+                <option></option>
+                {bank?.map((item) => (
+                  <option value={item.code} key={item.slug}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </span>
+
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
         </div>
 
-        <div className={div}>
-          <input
-            type="number"
-            id="actno"
-            name="actno"
-            className={input}
-            placeholder="Account number"
-            required
-            value={actno}
-            onChange={(e) => setActno(e.target.value)}
-          />
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
-        </div>
-      </div>
-
-      <div className="mt-10 gap-10 lg:flex">
-        <div className={div}>
-          <input
-            type="text"
-            id="actname"
-            name="actname"
-            className={input}
-            placeholder="Account Name"
-            required
-            disabled
-            value={actname}
-            onChange={(e) => setActname(e.target.value)}
-          />
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
-        </div>
-
-        <div className={div}>
-          <span className="w-[300px] p-3 lg:w-[250px]">Account Type:</span>
-          <select className={input} id="service" name="service" required>
-            value={acttype}
-            onChange={(e) => setActtype(e.target.value)}
-            {actType.map((type) => (
-              <>
-                <option key={type.id}>{type.name}</option>
-              </>
-            ))}
-          </select>
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+        <div className="lg:w-[50%]">
+          <label className="flex">Account Number</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              {" "}
+              <input
+                type="number"
+                id="actno"
+                name="actno"
+                className={input}
+                placeholder="Correct Account Number"
+                required
+                value={actno}
+                onChange={(e) => setActno(e.target.value)}
+              />
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
         </div>
       </div>
 
-      <div className="flex gap-5">
-        <button
-          className="my-5 rounded-full border-2 bg-black px-7 py-3 text-white hover:bg-blue-500 lg:my-20  "
-          onClick={() => handleTabClick(2)}
-        >
+      <div className="mt-10 gap-5 space-y-5 lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex">Account Holder Name</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              <input
+                type="text"
+                id="actname"
+                name="actname"
+                className={input}
+                placeholder="Account Name"
+                required
+                disabled
+                value={actname}
+                onChange={(e) => setActname(e.target.value)}
+              />
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
+        </div>
+
+        <div className="lg:w-[50%]">
+          <label className="flex">Account Type</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              <select className={input} id="service" name="service" required>
+                value={acttype}
+                onChange={(e) => setActtype(e.target.value)}
+                {actType.map((type) => (
+                  <>
+                    <option key={type.id}>{type.name}</option>
+                  </>
+                ))}
+              </select>
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-10  flex justify-between">
+        <MyButton onClick={() => handleTabClick(2)} type="primary">
+          {" "}
           ⬅️Previous
-        </button>
+        </MyButton>
 
-        <button
-          className="5ext-white my-4 rounded-full border-2 bg-blue-500 px-7 py-3 hover:bg-black hover:text-white lg:my-20  "
-          onClick={handleSubmit}
-        >
+        <MyButton onClick={handleSubmit} type="primary">
+          {" "}
           Submit
-        </button>
+        </MyButton>
       </div>
     </div>
   );

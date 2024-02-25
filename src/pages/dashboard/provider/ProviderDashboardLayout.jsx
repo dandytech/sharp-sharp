@@ -43,7 +43,7 @@ export default function DashbordLayout() {
         <div className={` ${hideNav ? "m-auto w-[87%]" : "w-[100%]"}`}>
           {" "}
           <Outlet />
-          <div className="md:text-md lg:text-lgjustify-center flex border-t-2 px-2 py-5 text-xs font-light shadow-md">
+          <div className="md:text-md text flex justify-center border-t-2 px-2 py-5 text-xs font-light shadow-md lg:text-lg">
             Copyright©{new Date().getFullYear()} Sharp Sharp. All Rights
             Reserved.
           </div>

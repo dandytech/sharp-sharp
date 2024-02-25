@@ -149,7 +149,7 @@ export default function AdminServiceCategories() {
             </div>
           )}
           {activeTab === 2 && (
-            <div className="m-auto mt-10 space-y-5 lg:w-[70%]">
+            <div className="m-auto mt-10 border-2 p-5 space-y-5 lg:w-[70%]">
               <div>
                 <label>Service Name</label>
                 <p>
@@ -168,7 +168,7 @@ export default function AdminServiceCategories() {
                   <input
                     type="number"
                     className="border-2-gray-200 w-full border-2 border-gray-100 px-3 py-1"
-                    placeholder="Enter Category Name"
+                    placeholder="Enter Category Charge"
                     value={charge}
                     onChange={(e) => setCharge(e.target.value)}
                   />
@@ -182,7 +182,7 @@ export default function AdminServiceCategories() {
                     cols={2}
                     rows={5}
                     className="border-2-gray-200 w-full border-2 border-gray-100 px-3 py-1"
-                    placeholder="Enter Category Name"
+                    placeholder="Enter Category Description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   />

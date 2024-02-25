@@ -1,12 +1,6 @@
 import { useState } from "react";
 
 export default function GeneralInfo({ handleTabClick }) {
-  const div =
-    "mb-10 flex items-center rounded-xl border-2 border-gray-300 bg-white  text-center focus:border-white lg:mb-0 lg:w-[50%] hover:border-blue-500";
-
-  const input =
-    "w-[100%] bg-gray-800 bg-white px-3 py-2 font-semibold focus:border-2 focus:border-white rounded-xl";
-
   const [name, setName] = useState("");
   const [cac, setCac] = useState("");
   const [taxid, settaxid] = useState("");
@@ -37,68 +31,91 @@ export default function GeneralInfo({ handleTabClick }) {
     }
   };
 
+  const input =
+    "w-full bg-white px-3 py-2 font-semibold hover:border-blue-500 rounded-xl border-2 border-gray-300";
+
   return (
     <div>
-      <div className="mt-10 gap-10 lg:flex ">
-        <div className={div}>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            className={`${input} `}
-            placeholder="Organization/Business Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />{" "}
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+      <div className="mt-10 gap-5 space-y-5 lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex">Organizational Name</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              <input
+                type="text"
+                name="name"
+                required
+                className={input}
+                placeholder="Organization/Business Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
         </div>
-        <div className={div}>
+
+        <div className="lg:w-[50%]">
+          <label className="flex">CAC No</label>
           <input
             className={input}
             id="cac"
             name="caca"
             label="caca"
-            placeholder="Business Registration (CAC) No"
+            placeholder="(CAC) Business Registration No"
             value={cac}
             onChange={(e) => setCac(e.target.value)}
           />
         </div>
       </div>
-      <div className="mt-10 gap-10 lg:flex">
-        <div className={div}>
-          <input
-            className={input}
-            id="taxid"
-            name="taxid"
-            label="taxid"
-            placeholder="Tax ID"
-            value={taxid}
-            onChange={(e) => settaxid(e.target.value)}
-          />
+
+      <div className="mt-5 items-center gap-5 space-y-5  lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex">Tax ID</label>
+          <p>
+            {" "}
+            <input
+              className={input}
+              id="taxid"
+              name="taxid"
+              label="taxid"
+              placeholder="Tax ID"
+              value={taxid}
+              onChange={(e) => settaxid(e.target.value)}
+            />
+          </p>
         </div>
 
-        <div className={div}>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            className={input}
-            placeholder="Your Residential Address"
-            required
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+        <div className="lg:w-[50%]">
+          <label className="flex">Residential Address</label>
+          <p className="flex items-center">
+            {" "}
+            <spam className="w-full">
+              {" "}
+              <input
+                type="text"
+                id="address"
+                name="address"
+                className={input}
+                placeholder="Your Residential Address"
+                required
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </spam>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
         </div>
       </div>
 
-      <div className="mt-10 gap-10 lg:flex">
-        <div className={`${div} flex items-center justify-between`}>
-          <span className="flex items-center">
+      <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex">Utility Bill</label>
+
+          <p className="flex items-center">
             {" "}
-            <span className="w-[30%] flex px-3">Utility Bill:</span>
-            <span className="w-[70%]">
+            <span className="w-full">
+              {" "}
               <input
                 type="file"
                 id="utility"
@@ -108,42 +125,55 @@ export default function GeneralInfo({ handleTabClick }) {
                 onChange={(e) => setUtility(e.target.value)}
               />
             </span>
-          </span>
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
         </div>
 
-        <div className={div}>
-          <input
-            className={input}
-            type="text"
-            id="phone"
-            name="phone"
-            placeholder="Business Phone Number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+        <div className="lg:w-[50%]">
+          <label className="flex">Business Line</label>
+          <p className="flex items-center">
+            {" "}
+            <span className="w-full">
+              {" "}
+              <input
+                className={input}
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Business Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
         </div>
       </div>
 
-      <div className="mt-10 gap-10 lg:flex">
-        <div className={div}>
-          <input
-            type="nin"
-            id="nin"
-            name="nin"
-            className={input}
-            placeholder="NIN"
-            required
-            value={nin}
-            onChange={(e) => setNin(e.target.value)}
-          />
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+      <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex">National Identification Number</label>
+          <p className="flex items-center">
+            {" "}
+            <span className="w-full">
+              {" "}
+              <input
+                type="text"
+                name="nin"
+                className={input}
+                placeholder="NIN"
+                required
+                value={nin}
+                onChange={(e) => setNin(e.target.value)}
+              />
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
         </div>
 
-        <div className={div}>
-          <span className="flex w-[30%] px-3">Service Category:</span>
-          <span className="w-[70%]">
+        <div className="lg:w-[50%]">
+          <label className="flex">Service Category</label>
+          <span className="w-full">
             <input
               type="text"
               disabled
@@ -158,23 +188,29 @@ export default function GeneralInfo({ handleTabClick }) {
         </div>
       </div>
 
-      <div className="mt-10 gap-10 lg:flex">
-        <div className={div}>
-          <input
-            type="number"
-            id="expyr"
-            name="expyr"
-            className={input}
-            placeholder="Years of Experience"
-            required
-            value={expyr}
-            onChange={(e) => setExpyr(e.target.value)}
-          />
-          <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+      <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex">Years Of Experience</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              {" "}
+              <input
+                type="number"
+                id="expyr"
+                name="expyr"
+                className={input}
+                placeholder="Years of Work Experience"
+                required
+                value={expyr}
+                onChange={(e) => setExpyr(e.target.value)}
+              />
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
         </div>
-        <div className={div}>
-          <span className="flex w-[30%] px-3"> Business Address:</span>
-          <span className="w-[70%]">
+        <div className="lg:w-[50%]">
+          <label className="flex"> Business Address</label>
+          <span className="w-full">
             <input
               type="text"
               name="service"

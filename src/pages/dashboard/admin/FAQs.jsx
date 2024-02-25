@@ -128,7 +128,7 @@ export default function FAQs() {
         </div>
 
         {show && (
-          <div className="space-y-3">
+          <div className="space-y-3 border-2 p-5 rounded-xl">
             <p>
               {" "}
               <label>Question</label>
