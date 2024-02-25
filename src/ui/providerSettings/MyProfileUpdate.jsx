@@ -18,7 +18,7 @@ export default function MyProfileUpdate() {
   return (
     <form onSubmit={handleSubmitForm}>
       <div className="mb-10 overflow-y-auto  p-5 py-10 text-center">
-        <div className="w-[300px] border-gray-300 md:w-[600px] lg:w-[800px] lg:p-10">
+        <div className="w-[280px] border-gray-300 md:w-[600px] lg:w-[800px] lg:p-10">
           <div className="border-2 border-gray-300 p-3 lg:p-10 ">
             <div className="mb-5 flex items-center justify-between font-semibold">
               <p>Personal Information</p>

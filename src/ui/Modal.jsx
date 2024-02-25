@@ -4,37 +4,69 @@ import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import { useOutSideClick } from "../hooks/useOutSideClick";
 
+// const StyledModal = styled.div`
+//   position: fixed;
+//   top: 60%;
+//   left: 50%;
+//   height: auto;
+//   inset: 50;
+//   width: auto;
+//   transform: translate(-50%, -50%);
+//   background-color: var(--color-grey-0);
+//   border-radius: var(--border-radius-lg);
+//   box-shadow: var(--shadow-lg);
+//   //padding: 70px 25px 25px 25px;
+//   transition: all 0.5s;
+//   color: var(--text-color);
+//   overflow-y: auto;
+//   width: auto;
+//   // Media query for large screens
+//   /* @media (min-width: 1024px) {
+//     top: 55%;
+//   } */
+//   @media (max-width: 768px) {
+//     width: auto;
+//     top: 75%;
+
+//   }
+//   /* @media screen and (max-width: 768px) {
+//     & {
+//       width: auto;
+//     }
+//   }   */
+// `;
+
+// const Overlay = styled.div`
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100vh;
+//   background-color: var(--backdrop-color);
+//   backdrop-filter: blur(4px);
+//   z-index: 1000;
+//   transition: all 0.5s;
+//   overflow-y: auto;
+//   @media screen and (max-width: 768px) {
+//     & {
+//     }
+//   }
+// `;
+
 const StyledModal = styled.div`
   position: fixed;
-  top: 80%;
+  top: 50%;
   left: 50%;
-  height: auto;
-  inset: 50;
-  width: auto;
   transform: translate(-50%, -50%);
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
-  //padding: 70px 25px 25px 25px;
-  transition: all 0.5s;
+  padding: 25px;
   color: var(--text-color);
-  overflow-y: auto;
-  width: auto;
-  // Media query for large screens
-  @media (min-width: 1024px) {
-    top: 55%;
-   
-  }
-  /* @media (min-width: 600px) {
-    width: auto;
-    top: 50%;
-   
-  }
-  @media screen and (max-width: 768px) {
-    & {
-      width: auto;
-    }
-  }  */
+  max-height: 90vh; /* Maximum height of the modal */
+  overflow-y: auto; /* Enable vertical scrolling if the content exceeds the max height */
+  width: auto; /* Adjust width as needed */
+  max-width: auto; /* Maximum width of the modal */
 `;
 
 const Overlay = styled.div`
@@ -42,16 +74,10 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: var(--backdrop-color);
   backdrop-filter: blur(4px);
   z-index: 1000;
-  transition: all 0.5s;
-  overflow-y: auto;
-  @media screen and (max-width: 768px) {
-    & {
-    }
-  }
 `;
 
 const Button = styled.button`
