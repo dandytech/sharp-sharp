@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function SignupOption() {
   return (
-    <div className="h-[100vh] bg-gradient-to-b from-violet-200 to-blue-200 p-3 pb-20 pt-[120px] lg:w-[100%] ">
+    <div className="h-auto bg-gradient-to-b from-violet-100 to-blue-100 p-3 pb-40 pt-[120px] lg:w-[100%] ">
       <p className="mb-5 text-center text-lg font-bold ">
         Select The Profile Type You Want To Sign Up As:
       </p>

@@ -10,28 +10,53 @@ import {
   MenuList,
 } from "@material-tailwind/react";
 import { useState } from "react";
+import MyButton from "../MyButton";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function AdminEditCategories({ row, data }) {
-  const [deleteCat, setDeleteCat] = useState(data);
+export default function AdminEditCategories({ updateData, row, data }) {
   const [name, setName] = useState(row.name);
   const [charge, setCharge] = useState(row.charge);
   const [description, setDescription] = useState(row.description);
 
-  console.log(row);
+  // Function to update the selected category
+  const handleUpdateCategory = () => {
+    // Find the index of the category to update
+    const categoryIndex = data.findIndex((cat) => cat.id === row.id);
 
-  //Delete function
-  const handleDelete = (itemId) => {
+    // Create a copy of the categories array
+    const updatedCategories = [...data];
+
+    // Update the selected category with the new values
+    updatedCategories[categoryIndex] = {
+      ...updatedCategories[categoryIndex],
+      name,
+      charge,
+      description,
+    };
+
+    // Update the data array in the parent component
+    updateData(updatedCategories);
+
+    alert("Successfully Updated ✅");
+  };
+
+  // Function to delete the selected category
+  const handleDeleteCategory = () => {
     // Show confirmation dialog
     const isConfirmed = window.confirm(
-      "Are you sure you want to delete this item?",
+      "Are you sure you want to delete this category?",
     );
-
     if (isConfirmed) {
-      // Filter out the item with the specified ID
-      const updatedData = deleteCat.filter((item) => item.id !== itemId);
-
-      // Update the state with the modified array
-      setDeleteCat(updatedData);
+      // Find the index of the category to delete
+      const indexToDelete = data.findIndex((cat) => cat.id === row.id);
+      if (indexToDelete !== -1) {
+        // Create a copy of the categories array and remove the category
+        const updatedCategories = [...data];
+        updatedCategories.splice(indexToDelete, 1);
+        // Update the data array in the parent component
+        updateData(updatedCategories);
+        alert("Category Deleted Successfully ✅");
+      }
     }
   };
 
@@ -49,9 +74,7 @@ export default function AdminEditCategories({ row, data }) {
               <MenuItem className="bg-style ">Edit</MenuItem>
             </Modal.Open>
             <Modal.Open opens="delete">
-              <MenuItem className="bg-style">
-                <button onClick={() => handleDelete(item.id)}>Delete</button>
-              </MenuItem>
+              <MenuItem className="bg-style">Delete</MenuItem>
             </Modal.Open>
           </MenuList>
 
@@ -59,7 +82,7 @@ export default function AdminEditCategories({ row, data }) {
         </TableCell>
       </Menu>
       <Modal.Window name="edit">
-        <div className="bg-style border-2 shadow-md rounded-lg py-7">
+        <div className="bg-style rounded-lg border-2 py-7 shadow-md">
           <p className=" bg-black px-5 py-2 text-white">EDIT CATEGORY</p>
           <div className="space-y-3 p-5">
             <p>
@@ -95,14 +118,15 @@ export default function AdminEditCategories({ row, data }) {
               />
             </p>
             <p className="text-center">
-              <button className="mt-5 rounded-full bg-blue-500 px-5 py-2 text-center font-semibold text-white hover:bg-black">
-                Submit
-              </button>
+              <MyButton type="primary" onClick={handleUpdateCategory}>
+                <Modal.Close>Submit</Modal.Close>
+              </MyButton>
             </p>
           </div>
         </div>
       </Modal.Window>
-      {/* <Modal.Window name="delete">
+
+      <Modal.Window name="delete">
         <div>
           <p className="mt-10 bg-black px-5 py-3 text-white">
             DELETE CATEGORY ?
@@ -122,14 +146,14 @@ export default function AdminEditCategories({ row, data }) {
             <p className="text-center">
               <button
                 className="mt-7 rounded-full bg-blue-500 px-5 py-2 text-center font-semibold text-white hover:bg-black"
-                onClick={deleteItem}
+                onClick={handleDeleteCategory}
               >
                 <Modal.Close>Delete</Modal.Close>
               </button>
             </p>
           </div>
         </div>
-      </Modal.Window> */}
+      </Modal.Window>
     </Modal>
   );
 }

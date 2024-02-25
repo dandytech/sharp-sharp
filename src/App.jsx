@@ -47,6 +47,7 @@ import ServicesAvailable from "./pages/dashboard/client/ServicesAvailble.jsx";
 import ClientNotifications from "./pages/dashboard/client/ClientNotifications.jsx";
 import ClientSettings from "./pages/dashboard/client/ClientSettings.jsx";
 import ClientDashboard from "./pages/dashboard/client/ClientDashboard.jsx";
+import FAQs from "./pages/dashboard/admin/FAQs.jsx";
 
 export default function App() {
   //animation
@@ -109,6 +110,7 @@ export default function App() {
               <Route path="notifications" element={<AdminNotifications />} />
               <Route path="settings" element={<AdminSettings />} />
               <Route path="logout" />
+              <Route path="faqs" element={<FAQs />} />
               <Route path="*" element={<PageNotFound />} />
             </Route>
 

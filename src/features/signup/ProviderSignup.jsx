@@ -211,7 +211,7 @@ export default function ProviderSignup() {
                   }
                 />
 
-                <p className="absolute right-0 text-red-500">
+                <p className={`absolute right-0 text-red-500 ${phone ? "block" : "hidden"}`}>
                   {phone && isValidPhoneNumber(phone) ? "" : "invalid phone"}
                 </p>
               </span>

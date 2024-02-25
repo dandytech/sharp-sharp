@@ -26,6 +26,8 @@ import { IoIosGitPullRequest } from "react-icons/io";
 
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
+import { CgProfile } from "react-icons/cg";
+import { FaQuestionCircle } from "react-icons/fa";
 
 export default function AdminMobileNavMenus({ hideNav }) {
   const [open, setOpen] = React.useState(0);
@@ -40,7 +42,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
   return (
     <Modal>
       <Card
-        className={`absolute z-[1000] lg:hidden ${
+        className={`absolute z-[1000] h-auto lg:hidden ${
           hideNav
             ? "hidden"
             : "bg-style text-bg-text fixed left-0 top-0 z-[1000] mt-[98px] h-auto rounded-none rounded-b-xl pb-0 "
@@ -208,7 +210,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
               </ListItemSuffix>
             </ListItem>
           </NavLink>
-
+          {/* 
           <NavLink to="settings" onClick={!hideNav}>
             <ListItem>
               <ListItemPrefix>
@@ -216,7 +218,59 @@ export default function AdminMobileNavMenus({ hideNav }) {
               </ListItemPrefix>
               <span className={`${hideNav ? "hidden" : ""}`}>Settings</span>
             </ListItem>
-          </NavLink>
+          </NavLink> */}
+
+          <Accordion
+            open={open === 3}
+            icon={
+              <span className={`${hideNav ? "hidden" : ""}`}>
+                <ChevronDownIcon
+                  strokeWidth={2.5}
+                  className={`z-[1000] mx-auto h-4 w-4 transition-transform ${
+                    open === 3 ? "rotate-180" : ""
+                  }`}
+                />
+              </span>
+            }
+            className="z-[1000] overflow-hidden"
+          >
+            <ListItem className="p-0" selected={open === 3}>
+              <AccordionHeader
+                onClick={() => handleOpen(3)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <RiServiceLine className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography color="blue-gray" className="mr-auto font-normal">
+                  <span className={`${hideNav ? "hidden" : ""}`}>Settings</span>
+                </Typography>
+              </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+              <List className="p-0">
+                <NavLink to="settings" onClick={!hideNav}>
+                  <ListItem>
+                    <ListItemPrefix>
+                      <CgProfile strokeWidth={3} className="h-3 w-5" />
+                    </ListItemPrefix>
+                    <span className={`${hideNav ? "hidden" : ""}`}>
+                      Profile
+                    </span>
+                  </ListItem>
+                </NavLink>
+                <NavLink to="faqs" onClick={!hideNav}>
+                  <ListItem>
+                    <ListItemPrefix>
+                      <FaQuestionCircle strokeWidth={3} className="h-3 w-5" />
+                    </ListItemPrefix>
+                    <span className={`${hideNav ? "hidden" : ""}`}>FAQs</span>
+                  </ListItem>
+                </NavLink>
+              </List>
+            </AccordionBody>
+          </Accordion>
+
           <Modal.Open opens="logout">
             <button>
               <ListItem>

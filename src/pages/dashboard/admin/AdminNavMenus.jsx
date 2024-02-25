@@ -23,9 +23,11 @@ import { RiServiceLine, RiUserSearchFill } from "react-icons/ri";
 import { GrBusinessService, GrUserAdmin } from "react-icons/gr";
 import { FcCustomerSupport } from "react-icons/fc";
 import { IoIosGitPullRequest } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
 
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
+import { FaQuestionCircle } from "react-icons/fa";
 
 export default function AdminNavMenus({ hideNav }) {
   const [open, setOpen] = React.useState(0);
@@ -204,14 +206,60 @@ export default function AdminNavMenus({ hideNav }) {
             </ListItem>
           </NavLink>
 
-          <NavLink to="settings">
-            <ListItem>
-              <ListItemPrefix>
-                <Cog6ToothIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              <span className={`${!hideNav ? "hidden" : ""}`}>Settings</span>
+       
+          <Accordion
+            open={open === 3}
+            icon={
+              <span className={`${!hideNav ? "hidden" : ""}`}>
+                <ChevronDownIcon
+                  strokeWidth={2.5}
+                  className={`mx-auto h-4 w-4 transition-transform ${
+                    open === 3 ? "rotate-180" : ""
+                  }`}
+                />
+              </span>
+            }
+            className="overflow-hidden"
+          >
+            <ListItem className="p-0" selected={open === 3}>
+              <AccordionHeader
+                onClick={() => handleOpen(3)}
+                className="border-b-0 p-3"
+              >
+                <ListItemPrefix>
+                  <RiServiceLine className="h-5 w-5" />
+                </ListItemPrefix>
+                <Typography color="blue-gray" className="mr-auto font-normal">
+                  <span className={`${!hideNav ? "hidden" : ""}`}>
+                    Settings
+                  </span>
+                </Typography>
+              </AccordionHeader>
             </ListItem>
-          </NavLink>
+            <AccordionBody className="py-1">
+              <List className="p-0">
+                <NavLink to="settings">
+                  <ListItem>
+                    <ListItemPrefix>
+                      <CgProfile strokeWidth={3} className="h-3 w-5" />
+                    </ListItemPrefix>
+                    <span className={`${!hideNav ? "hidden" : ""}`}>
+                      Profile
+                    </span>
+                  </ListItem>
+                </NavLink>
+                <NavLink to="faqs">
+                  <ListItem>
+                    <ListItemPrefix>
+                      <FaQuestionCircle strokeWidth={3} className="h-3 w-5" />
+                    </ListItemPrefix>
+                    <span className={`${!hideNav ? "hidden" : ""}`}>FAQs</span>
+                  </ListItem>
+                </NavLink>
+              </List>
+            </AccordionBody>
+          </Accordion>
+
           <Modal.Open opens="logout">
             <button>
               <ListItem>

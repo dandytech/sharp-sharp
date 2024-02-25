@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 
 import "react-phone-number-input/style.css";
+import { isValidPhoneNumber } from "react-phone-number-input";
 
 export default function ClientSignup() {
   const [password, setPassword] = useState("");
@@ -78,18 +79,32 @@ export default function ClientSignup() {
             </div>
 
             <div className="mb-10 flex h-[50px] items-center rounded-xl border-2 border-blue-500 bg-gray-800 text-center text-white focus:border-white lg:mb-0 lg:w-[50%]">
-              <span className=" flex h-[45px] w-[10%]  items-center justify-center  border-r text-center text-[30px] text-white  ">
-                <IoIosPhonePortrait />
+              <span className="relative w-full">
+                <PhoneInput
+                  className="PhoneInputInput pl-5 font-semibold"
+                  placeholder="Phone number"
+                  country="NG"
+                  defaultCountry="NG"
+                  value={phone}
+                  onChange={setPhone}
+                  international={true}
+                  error={
+                    phone
+                      ? isValidPhoneNumber(phone)
+                        ? undefined
+                        : "Invalid phone number"
+                      : "Phone number required"
+                  }
+                />
+
+                <p
+                  className={`absolute right-0 text-red-500 ${
+                    phone ? "block" : "hidden"
+                  }`}
+                >
+                  {phone && isValidPhoneNumber(phone) ? "" : "invalid phone"}
+                </p>
               </span>
-              <PhoneInput
-                className="PhoneInputInput pl-5 font-semibold"
-                placeholder="Phone number"
-                country="NG"
-                defaultCountry="NG"
-                value={phone}
-                onChange={setPhone}
-                international={true}
-              />
             </div>
           </div>
           <div className="mt-10 gap-10 lg:flex">

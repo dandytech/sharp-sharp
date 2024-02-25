@@ -43,25 +43,32 @@ export default function AdminServiceCategories() {
   };
 
   //add category function
-  let nextId = 4;
+  let nextId = categories.length;
   const handleSave = (e) => {
     e.preventDefault();
-    if (!name || !charge || !description) return;
+    if (!name || !charge || !description) {
+      toast.error("All Fields are Required 😰");
+    } else {
+      setGategories([
+        ...categories,
+        {
+          id: nextId + 1,
+          name: name,
+          charge: charge,
+          description: description,
+        },
+      ]);
+      // const id = crypto.randomUUID();
+      setName("");
+      setCharge("");
+      setDescription("");
+      toast.success("Submited Successfully");
+    }
+  };
 
-    setGategories([
-      ...categories,
-      {
-        id: nextId++,
-        name: name,
-        charge: charge,
-        description: description,
-      },
-    ]);
-    // const id = crypto.randomUUID();
-    setName("");
-    setCharge("");
-    setDescription("");
-    toast.success("Submited Successfully");
+  //update the table function
+  const updateData = (updatedData) => {
+    setGategories(updatedData);
   };
 
   const columns = useMemo(
@@ -91,9 +98,7 @@ export default function AdminServiceCategories() {
     [],
   );
 
-
-  const navigate=useNavigate()
-
+  const navigate = useNavigate();
 
   return (
     <div className="servicebg h-[100vh] overflow-y-auto px-5 pt-[80px] lg:w-[84%] lg:pr-10">
@@ -135,7 +140,11 @@ export default function AdminServiceCategories() {
           {activeTab === 1 && (
             <div className="lag:mt-0 mt-10">
               <div>
-                <AdminCategoryTable data={categories} columns={columns} />
+                <AdminCategoryTable
+                  updateData={updateData}
+                  data={categories}
+                  columns={columns}
+                />
               </div>
             </div>
           )}

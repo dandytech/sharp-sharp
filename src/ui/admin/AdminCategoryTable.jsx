@@ -15,7 +15,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 
-export default function AdminCategoryTable({ data, columns }) {
+export default function AdminCategoryTable({ updateData, data, columns }) {
   //Pagination
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -87,7 +87,11 @@ export default function AdminCategoryTable({ data, columns }) {
                   </TableCell>
                 ))}
 
-                <AdminEditCategories row={row} data={data} />
+                <AdminEditCategories
+                  updateData={updateData}
+                  row={row}
+                  data={data}
+                />
               </TableRow>
             ))}
           </TableBody>
