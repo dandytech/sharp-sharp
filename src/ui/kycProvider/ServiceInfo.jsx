@@ -10,8 +10,7 @@ export default function ServiceInfo({
   serviceColumns,
   providerServices,
 }) {
-  console.log(providerServices);
-
+ 
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");

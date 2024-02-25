@@ -38,8 +38,8 @@ export default function ViewProviderKYC({ row }) {
           </Menu>
         </TableCell>
 
-        <Modal.Window name="clientkyc" >
-          <div className="w-auto overflow-y-auto pb-10 border-2 rounded-lg">
+        <Modal.Window name="clientkyc">
+          <div className="w-[300px] overflow-y-auto md:w-[600px] lg:w-[800px]">
             <p className="mt-8 bg-black px-3 py-2 text-lg font-bold text-white">
               CLIENT'S DETAILS{" "}
             </p>

@@ -10,7 +10,6 @@ import {
 } from "@material-tailwind/react";
 import Modal from "../../Modal";
 
-
 export default function AllRequestsActions({ row, data }) {
   return (
     <Modal>
@@ -39,7 +38,7 @@ export default function AllRequestsActions({ row, data }) {
         </TableCell>
       </Menu>
       <Modal.Window name="view">
-        <div className="bg-style border-2 rounded-lg py-7 shadow-md">
+        <div className="bg-style w-[300px] overflow-y-auto rounded-lg border-2 py-7 shadow-md md:w-[600px] lg:w-[800px]">
           <p className=" bg-black py-5 pl-5 pr-10 text-white">
             {" "}
             <span className="uppercase"> {row.status}</span> SERVICE REQUEST

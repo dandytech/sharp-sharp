@@ -82,7 +82,7 @@ export default function AdminEditCategories({ updateData, row, data }) {
         </TableCell>
       </Menu>
       <Modal.Window name="edit">
-        <div className="bg-style rounded-lg border-2 py-7 shadow-md">
+        <div className="w-[300px] md:w-[600px] lg:w-[800px] overflow-y-auto border-2">
           <p className=" bg-black px-5 py-2 text-white">EDIT CATEGORY</p>
           <div className="space-y-3 p-5">
             <p>
@@ -127,7 +127,7 @@ export default function AdminEditCategories({ updateData, row, data }) {
       </Modal.Window>
 
       <Modal.Window name="delete">
-        <div>
+        <div className="w-[300px] md:w-[600px] lg:w-[800px] overflow-y-auto border-2">
           <p className="mt-10 bg-black px-5 py-3 text-white">
             DELETE CATEGORY ?
           </p>

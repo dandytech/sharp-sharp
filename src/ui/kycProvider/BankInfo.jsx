@@ -56,7 +56,7 @@ export default function BankInfo({ handleTabClick }) {
   const [actname, setActname] = useState("");
 
   const [acttype, setActtype] = useState("Savings");
-  const [bankName, setBankName] = useState();
+  const [bankName, setBankName] = useState("");
 
   //Phone number API
   const [bank, setBank] = useState(null);
@@ -64,7 +64,7 @@ export default function BankInfo({ handleTabClick }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  //fetch baks on Load
+  //fetch banks on Load
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -109,9 +109,12 @@ export default function BankInfo({ handleTabClick }) {
         throw new Error("Account Doesn't exist");
       }
 
+      //console.log(actno);
+      //console.log(bankName);
+
       const data = await response.json();
-      // console.log(data);
-      // console.log(data.account_name);
+      //console.log(data);
+      //console.log(data.account_name);
 
       setActname(data.account_name);
     } catch (error) {
@@ -154,7 +157,6 @@ export default function BankInfo({ handleTabClick }) {
                 value={bankName}
                 onChange={(e) => setBankName(e.target.value)}
               >
-                <option></option>
                 {bank?.map((item) => (
                   <option value={item.code} key={item.slug}>
                     {item.name}

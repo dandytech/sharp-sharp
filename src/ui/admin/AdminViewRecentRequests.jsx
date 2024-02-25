@@ -54,7 +54,7 @@ export default function AdminViewRecentRequests({ serviceRequest }) {
           </div>
         </div>
         <Modal.Window name="requestdetails">
-          <div className="overflow-y-auto overflow-x-hidden md:mt-0 md:w-full  lg:mt-0 lg:w-full ">
+          <div className="w-[300px] overflow-y-auto md:w-[600px] lg:w-[800px] border-2">
             <p className="mb-4 mt-10 bg-black px-5 py-2 text-white">
               REQUEST DETAILS
             </p>

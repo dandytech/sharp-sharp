@@ -42,7 +42,7 @@ export default function ServiceActions({ row }) {
         </Menu>
 
         <Modal.Window name="edit">
-          <form>
+          <form className="w-[300px] md:w-[600px] lg:w-[800px]">
             <p className="mt-7 bg-black px-5 py-2 text-white">UPDATE DETAILS</p>
             <div className="space-y-3 p-5">
               <p>
@@ -86,7 +86,7 @@ export default function ServiceActions({ row }) {
         </Modal.Window>
 
         <Modal.Window name="details">
-          <form>
+          <form className="w-[300px] md:w-[600px] lg:w-[800px]">
             <p className="mt-7 bg-black px-5 py-2 text-white">DETAILS</p>
             <div className="space-y-3 p-5">
               <p>

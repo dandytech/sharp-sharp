@@ -15,7 +15,7 @@ export default function ViewDetails({ row }) {
       <div>
         <Menu>
           <MenuHandler>
-            <Button className="text-black shadow-none bg-style">
+            <Button className="bg-style text-black shadow-none">
               {" "}
               <BsThreeDotsVertical />
             </Button>
@@ -30,7 +30,7 @@ export default function ViewDetails({ row }) {
         </Menu>
 
         <Modal.Window name="detail">
-          <div className="">
+          <div className="w-[300px] md:w-[600px] lg:w-[800px]">
             <p className="mt-7 bg-black px-5 py-2 text-white">DETAILS</p>
             <div className="space-y-3 p-5">
               <p>

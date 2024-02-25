@@ -14,7 +14,7 @@ import Avatar from "react-avatar";
 export default function ViewClientKYC({ row }) {
   return (
     <Modal>
-      <div>
+      <div >
         <TableCell className="bg-style text-white">
           <Menu>
             <MenuHandler>
@@ -39,7 +39,7 @@ export default function ViewClientKYC({ row }) {
           </Menu>
         </TableCell>
         <Modal.Window name="providerkyc">
-          <div className="w-auto overflow-y-auto pb-10 border-2 rounded-lg">
+          <div className="w-[300px] md:w-[600px] lg:w-[800px] overflow-y-auto">
             <p className="mt-8 bg-black px-3 py-2 text-lg font-bold text-white">
               PROVIDER'S DETAILS{" "}
             </p>

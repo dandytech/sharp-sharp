@@ -39,7 +39,7 @@ export default function ViewSubAdminsDetails({ row }) {
         </TableCell>
 
         <Modal.Window name="providerkyc">
-          <div className="w-auto overflow-y-auto rounded-lg border-2 pb-10">
+          <div className="w-[300px] overflow-y-auto md:w-[600px] lg:w-[800px]">
             <p className="mt-8 bg-black px-3 py-2 text-lg font-semibold text-white">
               SUB-ADMIN'S DETAILS{" "}
             </p>
