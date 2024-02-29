@@ -49,13 +49,15 @@ import { MdOutlineAttachEmail } from "react-icons/md";
 import { IoIosPhonePortrait } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { createRef, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "react-phone-number-input/style.css";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+
 import ReCAPTCHA from "react-google-recaptcha";
+import MyButton from "../../ui/MyButton";
 
 export default function ProviderSignup() {
   const [password, setPassword] = useState("");
@@ -64,7 +66,6 @@ export default function ProviderSignup() {
   const [showcPassword, setShowcPassword] = useState(false);
   const [phone, setPhone] = useState();
   const [category, setCategory] = useState("");
-  const [captchaValue, setCaptchaValue] = useState("");
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -74,21 +75,22 @@ export default function ProviderSignup() {
     setShowcPassword(!showcPassword);
   };
 
-  const onChange = (value) => {
-    console.log("Captcha value:", value);
-    setCaptchaValue(value);
-  };
-  const onSubmit = () => {
-    // Validate captchaValue on form submission
-    if (!captchaValue) {
-      alert("Please complete the reCAPTCHA challenge.");
+  //recapTCHA
+  const recaptchaRef = createRef();
+
+  const handleFormSubmit = () => {
+    const isValid = recaptchaRef.current.getValue();
+    if (!isValid) {
+      alert("Please complete the reCAPTCHA challenge");
       return;
     }
+    // Proceed with form submission
   };
 
+  const navigate = useNavigate();
   return (
     <div className="h-auto bg-[url('/src/data/bg2.jpeg')] bg-cover bg-center bg-no-repeat pt-20 ">
-      <form className=" lg:mt-0" onSubmit={onSubmit}>
+      <form className=" lg:mt-0" onSubmit={handleFormSubmit}>
         <div className="m-auto justify-center  p-5 text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-10">
           {" "}
           <p className="pb-10 pt-0 text-center font-semibold text-white">
@@ -220,8 +222,6 @@ export default function ProviderSignup() {
                 </p>
               </span>
             </div>
-
-
           </div>
           <div className="mt-10 gap-10 lg:flex">
             <div className="mb-10 flex h-[50px] items-center rounded-xl border-2 border-blue-500 bg-gray-800 text-center text-white focus:border-white lg:mb-0 lg:w-[50%]">
@@ -268,12 +268,11 @@ export default function ProviderSignup() {
               </i>
             </div>
           </div>
-          <div className="justify-between lg:mt-3 px-3 lg:flex">
+          <div className="justify-between px-3 lg:mt-3 lg:flex">
             <p>
-              {" "}
               <ReCAPTCHA
-                sitekey="6LcH_HYpAAAAAIe-pp3S2pPQd1yL-_qgKnk8Qj6f"
-                onChange={onChange}
+                ref={recaptchaRef}
+                sitekey="6LcfiYApAAAAAFMqdZWPiQyu2Vpg1CjZF0jBBGqK" // Replace with your site key
               />
             </p>
 
@@ -284,12 +283,11 @@ export default function ProviderSignup() {
               </NavLink>
             </p>
           </div>
-          <button
-            type="submit"
-            className="my-20 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black  "
-          >
-            Submit
-          </button>
+          <p className="py-10">
+            <MyButton type="primary" onClick={() => navigate("/verifyemail")}>
+              Submit
+            </MyButton>
+          </p>
         </div>
       </form>
     </div>

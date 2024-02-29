@@ -113,7 +113,7 @@ export default function BankInfo({ handleTabClick }) {
       //console.log(bankName);
 
       const data = await response.json();
-      //console.log(data);
+      console.log(data);
       //console.log(data.account_name);
 
       setActname(data.account_name);

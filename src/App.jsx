@@ -47,6 +47,8 @@ import ClientNotifications from "./pages/dashboard/client/ClientNotifications.js
 import ClientSettings from "./pages/dashboard/client/ClientSettings.jsx";
 import ClientDashboard from "./pages/dashboard/client/ClientDashboard.jsx";
 import FAQs from "./pages/dashboard/admin/FAQs.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
+import VerifyEmail from "./features/signup/VerifyEmail.jsx";
 
 export default function App() {
   //animation
@@ -75,6 +77,8 @@ export default function App() {
               <Route path="requestService" element={<RequestService />} />
               <Route path="*" element={<PageNotFound />} />
             </Route>
+            <Route path="verifyemail" element={<VerifyEmail />} />
+            <Route path="forgotpassword" element={<ForgotPassword />} />
 
             {/* Provider Dashboard */}
             <Route path="provider" element={<ProviderDashbordLayout />}>

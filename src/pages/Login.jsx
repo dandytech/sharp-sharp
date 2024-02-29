@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Modal from "../ui/Modal";
+import MyButton from "../ui/MyButton";
 
 export default function Login() {
   const [password, setPassword] = useState("");
@@ -12,17 +13,18 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
+  const navigate = useNavigate();
+
   return (
     <Modal>
       <div className="h-auto  bg-[url('/src/data/bg2.jpeg')] bg-cover bg-center bg-no-repeat pt-[100px]  lg:p-10 lg:py-0 lg:pt-0 ">
         <form>
-          <div className="m-auto justify-center p-5 lg:p-10 pt-[10px] text-center  shadow-2xl md:w-[80%] lg:w-[70%] lg:pt-20">
+          <div className="m-auto justify-center p-5 pt-[10px] text-center shadow-2xl  md:w-[80%] lg:w-[70%] lg:p-10 lg:pt-20">
             {" "}
-           
             <div className="m-auto h-auto w-[100%] rounded-2xl border-2 border-white px-3 pt-20  text-center lg:w-[50%] lg:px-10">
-            <p className="pb-5  text-center font-semibold text-white">
-              Enter The Required Details!
-            </p>
+              <p className="pb-5  text-center font-semibold text-white">
+                Enter The Required Details!
+              </p>
               <div className="m-auto mb-10 flex h-[50px]  items-center rounded-2xl border-2 border-white bg-gray-800 text-center text-white focus:border-white lg:mb-10 lg:w-[100%]">
                 <span className=" flex h-[45px] w-[10%]  items-center justify-center  border-r text-center text-[30px] text-white  ">
                   <MdOutlineAttachEmail />
@@ -60,7 +62,7 @@ export default function Login() {
               </div>
 
               <Modal.Open opens="forgotpassword">
-                <p className="mb-5 mt-3 flex justify-end font-semibold text-blue-500 cursor-pointer">
+                <p className="mb-5 mt-3 flex cursor-pointer justify-end font-semibold text-blue-500">
                   Forgot Password?
                 </p>
               </Modal.Open>
@@ -71,29 +73,36 @@ export default function Login() {
                   Signup
                 </NavLink>
               </p>
-              <NavLink to="/provider">
-                <button className="my-20 rounded-full border-2 bg-blue-500 px-7 py-2 text-white hover:bg-black  ">
+
+              <p className="py-10 text-center">
+                <MyButton type="primary" onClick={() => navigate("/provider")}>
                   Login
-                </button>
-              </NavLink>
+                </MyButton>
+              </p>
             </div>
           </div>
         </form>
 
         <Modal.Window name="forgotpassword">
-          <form className="w-[300px] p-10"> 
-            <p className="font-semibold">FORGOT PASSWORD?</p>
-            <p className="py-7">
-              <input className="border-2 w-full border-gray-200 px-3 py-1 rounded-lg"
+          <form className="w-[290px] p-10 md:w-[400px] lg:w-[500px]">
+            <p className="text-center font-semibold">FORGOT PASSWORD?</p>
+            <p className="py-7 text-center">
+              <input
+                className="w-full rounded-lg border-2 border-gray-200 px-3 py-1"
                 type="email"
                 name="email"
                 id="email"
                 placeholder="Enter Your  Email"
               />
             </p>
-            <button className="rounded-full bg-blue-500 px-5 py-2 text-white hover:bg-black">
-              Submit
-            </button>
+            <p className="text-center">
+              <MyButton
+                type="primary"
+                onClick={() => navigate("/forgotpassword")}
+              >
+                Submit
+              </MyButton>
+            </p>
           </form>
         </Modal.Window>
       </div>

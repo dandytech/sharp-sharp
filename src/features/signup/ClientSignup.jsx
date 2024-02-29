@@ -5,11 +5,12 @@ import { IoIosPhonePortrait } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 
 import "react-phone-number-input/style.css";
 import { isValidPhoneNumber } from "react-phone-number-input";
+import MyButton from "../../ui/MyButton";
 
 export default function ClientSignup() {
   const [password, setPassword] = useState("");
@@ -24,6 +25,9 @@ export default function ClientSignup() {
   const togglecPasswordVisibility = () => {
     setShowcPassword(!showcPassword);
   };
+
+  const navigate = useNavigate();
+
   return (
     <div className="h-auto bg-[url('/src/data/bg2.jpeg')] bg-cover bg-center bg-no-repeat pt-20">
       <form className=" lg:mt-0">
@@ -161,9 +165,11 @@ export default function ClientSignup() {
               Login
             </NavLink>
           </p>
-          <button className="my-20 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black  ">
-            Submit
-          </button>
+          <p className="py-10">
+            <MyButton type="primary" onClick={() => navigate("/verifyemail")}>
+              Submit
+            </MyButton>
+          </p>
         </div>
       </form>
     </div>
