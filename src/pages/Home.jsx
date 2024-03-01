@@ -28,7 +28,7 @@ export default function Home() {
       <div className=" h-auto  overflow-x-hidden bg-gradient-to-r from-violet-100 to-blue-100 ">
         <di>
           {showBanner && (
-            <div className="fixed bottom-[20px] left-[20px] rounded-xl border-2 bg-white p-10 z-50 shadow-md">
+            <div className="fixed bottom-[20px] left-[10px] z-50 rounded-xl border-2 bg-white p-10 shadow-md">
               <p>This website uses cookies to improve user experience.</p>
               <button
                 onClick={handleAcceptCookies}
