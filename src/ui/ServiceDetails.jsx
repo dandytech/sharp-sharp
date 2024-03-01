@@ -30,7 +30,7 @@ export default function ServiceDetails({ service, formatCurrency }) {
           )}
 
           <Modal.Window name="more">
-            <div className="w-[16rem] overflow-y-auto p-5 md:w-[30rem] lg:w-[40rem] ">
+            <div className="w-[290px] overflow-y-auto p-5 md:w-[600px] lg:w-[800px] ">
               <p className="mb-3 font-semibold uppercase">
                 {service.serviceRender}
               </p>
