@@ -13,11 +13,33 @@ import RequestForm from "../features/home/RequestForm";
 import Partners from "../features/home/Partners";
 import FaqMobile from "../features/home/FaqMobile";
 
+import { useState } from "react";
+import Cookies from "js-cookie";
 
 export default function Home() {
+  const [showBanner, setShowBanner] = useState(!Cookies.get("cookiesAccepted"));
+
+  const handleAcceptCookies = () => {
+    Cookies.set("cookiesAccepted", true);
+    setShowBanner(false);
+  };
   return (
     <>
       <div className=" h-auto  overflow-x-hidden bg-gradient-to-r from-violet-100 to-blue-100 ">
+        <di>
+          {showBanner && (
+            <div className="fixed bottom-[20px] left-[20px] rounded-xl border-2 bg-white p-10 z-50 shadow-md">
+              <p>This website uses cookies to improve user experience.</p>
+              <button
+                onClick={handleAcceptCookies}
+                className="mt-5 rounded-lg border-2 p-3"
+              >
+                Accept Cookies
+              </button>
+            </div>
+          )}
+        </di>
+
         {/* Solutions */}
         <Solutions />
 
@@ -47,8 +69,6 @@ export default function Home() {
         <RequestForm />
 
         <Partners />
-
-      
       </div>
     </>
   );
