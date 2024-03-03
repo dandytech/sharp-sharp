@@ -104,7 +104,7 @@ export default function ClientNavMenus({ hideNav }) {
             </ListItem>
           </NavLink> */}
 
-          <NavLink to="payments">
+          <NavLink to="transactions">
             <ListItem className="flex gap-1">
               <ListItemPrefix>
                 <TbZoomMoney className="h-5 w-5" />

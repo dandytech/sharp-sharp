@@ -49,6 +49,7 @@ import ClientDashboard from "./pages/dashboard/client/ClientDashboard.jsx";
 import FAQs from "./pages/dashboard/admin/FAQs.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import VerifyEmail from "./features/signup/VerifyEmail.jsx";
+import ClientTransactions from "./pages/dashboard/client/ClientTransactions.jsx";
 
 export default function App() {
   //animation
@@ -126,6 +127,7 @@ export default function App() {
               <Route path="payments" element="" />
               <Route path="notifications" element={<ClientNotifications />} />
               <Route path="settings" element={<ClientSettings />} />
+              <Route path="transactions" element={<ClientTransactions />} />
 
               <Route path="*" element={<PageNotFound />} />
             </Route>

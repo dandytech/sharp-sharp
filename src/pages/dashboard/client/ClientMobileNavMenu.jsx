@@ -96,7 +96,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
             </ListItem>
           </NavLink> */}
 
-          <NavLink to="payments" onClick={!hideNav}>
+          <NavLink to="transactions" onClick={!hideNav}>
             <ListItem className="flex gap-1">
               <ListItemPrefix>
                 <TbZoomMoney className="h-5 w-5" />
