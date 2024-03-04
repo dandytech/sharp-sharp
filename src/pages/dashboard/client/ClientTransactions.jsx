@@ -222,10 +222,7 @@ export default function ClientTransactions() {
       <div className="z-50 text-right">
         <Menu>
           <MenuHandler>
-            <Button
-              onClick={downloadAsPDF}
-              className="text-xl text-black shadow-none"
-            >
+            <Button className="text-xl text-black shadow-none">
               <Tooltip content="Downoad Table">
                 <p>
                   {" "}
@@ -240,23 +237,23 @@ export default function ClientTransactions() {
               <button onClick={downloadAsPDF}>PDF</button>
             </MenuItem>
             <MenuItem>
-              <button>
-                <CSVLink data={transactions} headers={headers}>
-                  <p>CSV</p>
-                </CSVLink>
-              </button>
+              <CSVLink
+                data={transactions}
+                headers={headers}
+                filename={"Client_Transactions.csv"}
+              >
+                <button>CSV</button>
+              </CSVLink>
             </MenuItem>
             <MenuItem>
               {" "}
-              <button>
-                <CSVLink
-                  data={transactions}
-                  headers={headers}
-                  filename={"Client_Transactions.xls"}
-                >
-                  <p>EXcel</p>
-                </CSVLink>
-              </button>
+              <CSVLink
+                data={transactions}
+                headers={headers}
+                filename={"Client_Transactions.xls"}
+              >
+                <button>EXcel</button>
+              </CSVLink>
             </MenuItem>
           </MenuList>
         </Menu>
