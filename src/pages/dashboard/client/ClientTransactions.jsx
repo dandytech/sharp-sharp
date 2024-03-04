@@ -252,7 +252,7 @@ export default function ClientTransactions() {
                 headers={headers}
                 filename={"Client_Transactions.xls"}
               >
-                <button>EXcel</button>
+                <button>Excel</button>
               </CSVLink>
             </MenuItem>
           </MenuList>
