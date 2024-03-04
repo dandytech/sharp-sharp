@@ -4,8 +4,27 @@ import { NavLink } from "react-router-dom";
 import { CiHome } from "react-icons/ci";
 import Modal from "../../../ui/Modal";
 
-import { FaRegEye } from "react-icons/fa";
-import { Tooltip } from "@material-tailwind/react";
+import { FaCloudDownloadAlt, FaRegEye } from "react-icons/fa";
+import {
+  Button,
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
+  Tooltip,
+} from "@material-tailwind/react";
+import jsPDF from "jspdf";
+// import { ExcelFile, ExcelSheet, ExcelColumn } from "react-data-export";
+import { CSVLink } from "react-csv";
+
+const headers = [
+  { label: "SN", key: "id" },
+  { label: "Date", key: "date" },
+  { label: "Transaction Type", key: "transactiontype" },
+  { label: "Transaction ID", key: "transactionid" },
+  { label: "Amount", key: "amount" },
+  { label: "Status", key: "status" },
+];
 
 export const transactions = [
   {
@@ -58,7 +77,7 @@ export default function ClientTransactions() {
       {
         accessorKey: "id",
         header: "SN",
-        size: 110,
+        size: 100,
       },
 
       {
@@ -147,20 +166,106 @@ export default function ClientTransactions() {
     [],
   );
 
+  //Download Table in PDF
+  const downloadAsPDF = () => {
+    const now = new Date();
+    const options = {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
+    const formattedDateTime = now
+      .toLocaleDateString("en-US", options)
+      .replace(",", " ");
+
+    const doc = new jsPDF();
+    doc.text(`CLIENT TRANSACTION AS AT ${formattedDateTime}`, 20, 10);
+    doc.autoTable({
+      head: [
+        [
+          "S/N",
+          "Transaction ID",
+          "Transaction Type",
+          "Amount",
+          "Date",
+          "Status",
+        ],
+      ],
+      body: transactions.map((item) => [
+        item.id,
+        item.transactionid,
+        item.transactiontype,
+        item.amount,
+        item.date,
+        item.status,
+      ]),
+    });
+
+    doc.save("sharpapp-client-transactions.pdf");
+  };
+
   return (
     <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[50px] shadow-md lg:w-[85%]">
       <div className="mb-12 flex items-center px-6">
         <NavLink to="/">
           <CiHome />
         </NavLink>
-        /<NavLink to="/dashboard">dashboard</NavLink>/
+        /<NavLink to="/client/dashboard">dashboard</NavLink>/
         <NavLink to="">transactions</NavLink>
       </div>
-      <p className="mb-10 pt-3 text-center text-[24px] font-bold lg:pb-10">
+      <p className="mb-5 pt-3 text-center text-[24px] font-bold lg:pb-10">
         Transactions
       </p>
 
-      <Table data={transactions} columns={columns} />
+      <div className="z-50 text-right">
+        <Menu>
+          <MenuHandler>
+            <Button
+              onClick={downloadAsPDF}
+              className="text-xl text-black shadow-none"
+            >
+              <Tooltip content="Downoad Table">
+                <p>
+                  {" "}
+                  <FaCloudDownloadAlt />
+                </p>
+              </Tooltip>
+            </Button>
+          </MenuHandler>
+          <MenuList className="space-y-3">
+            <MenuItem>
+              {" "}
+              <button onClick={downloadAsPDF}>PDF</button>
+            </MenuItem>
+            <MenuItem>
+              <button>
+                <CSVLink data={transactions} headers={headers}>
+                  <p>CSV</p>
+                </CSVLink>
+              </button>
+            </MenuItem>
+            <MenuItem>
+              {" "}
+              <button>
+                <CSVLink
+                  data={transactions}
+                  headers={headers}
+                  filename={"Client_Transactions.xls"}
+                >
+                  <p>EXcel</p>
+                </CSVLink>
+              </button>
+            </MenuItem>
+          </MenuList>
+        </Menu>
+      </div>
+
+      <div className="relative z-0">
+        {" "}
+        <Table data={transactions} columns={columns} />
+      </div>
     </div>
   );
 }
