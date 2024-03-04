@@ -8,6 +8,18 @@ import {
 } from "@material-tailwind/react";
 import Table from "../../../ui/Table";
 
+const headers = [
+  { label: "SN", key: "id" },
+  { label: "Service", key: "service" },
+  { label: "Charge", key: "charge" },
+  { label: "Quantity", key: "quantity" },
+  { label: "Request Time", key: "requestTime" },
+  { label: "Delivery Time", key: "deliveryTime" },
+  { label: "Provider", key: "provider" },
+  { label: "Provider Phone", key: "providerPhone" },
+  { label: "Provider Photo", key: "photo" },
+];
+
 const serviceRequest = [
   {
     id: 1,
@@ -79,12 +91,13 @@ const serviceRequest = [
 
 import { useMemo, useState } from "react";
 import MyButton from "../../../ui/MyButton";
-import { FaCartPlus, FaEllipsisV } from "react-icons/fa";
+import { FaCartPlus, FaCloudDownloadAlt, FaEllipsisV } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 import { CiHome } from "react-icons/ci";
 import { HiFolderDownload } from "react-icons/hi";
 import jsPDF from "jspdf";
+import { CSVLink } from "react-csv";
 
 export default function Requests() {
   const columns = useMemo(() => [
@@ -205,7 +218,7 @@ export default function Requests() {
   return (
     <div className="boder-2 inset-0 h-[100vh] overflow-y-auto pr-3 pt-[50px] shadow-md lg:w-[85%]">
       {" "}
-      <div className="flex items-center px-5 pt-5 pb-7 ">
+      <div className="flex items-center px-5 pb-7 pt-5 ">
         <NavLink to="/">
           <CiHome />
         </NavLink>
@@ -261,16 +274,46 @@ export default function Requests() {
       <div className="px-7 pt-10">
         {activeTab === 1 && (
           <div>
-            <div className="px-3 text-right text-2xl">
-              {" "}
-              <button onClick={downloadAsPDF}>
-                <Tooltip content="Download in PDF">
-                  <span>
-                    <HiFolderDownload />
-                  </span>
-                </Tooltip>
-              </button>
+            <div className="z-50 text-right">
+              <Menu>
+                <MenuHandler>
+                  <Button className="text-xl text-black shadow-none">
+                    <Tooltip content="Downoad Table">
+                      <p>
+                        {" "}
+                        <FaCloudDownloadAlt />
+                      </p>
+                    </Tooltip>
+                  </Button>
+                </MenuHandler>
+                <MenuList className="z-50 space-y-3 bg-white">
+                  <MenuItem>
+                    {" "}
+                    <button onClick={downloadAsPDF}>PDF</button>
+                  </MenuItem>
+                  <MenuItem>
+                    <CSVLink
+                      data={serviceRequest}
+                      headers={headers}
+                      filename={"New_Requests.csv"}
+                    >
+                      <button>CSV</button>
+                    </CSVLink>
+                  </MenuItem>
+                  <MenuItem>
+                    {" "}
+                    <CSVLink
+                      data={serviceRequest}
+                      headers={headers}
+                      filename={"New_Requests.xls"}
+                    >
+                      <button>Excel</button>
+                    </CSVLink>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             </div>
+            
             <Table data={serviceRequest} columns={columns} />
           </div>
         )}{" "}

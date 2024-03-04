@@ -17,6 +17,27 @@ import { FaCloudDownloadAlt } from "react-icons/fa";
 import ViewProviderKYC from "./ViewProvidersKYC";
 import { NavLink, useNavigate } from "react-router-dom";
 import { CiHome } from "react-icons/ci";
+import { CSVLink } from "react-csv";
+import {
+  Button,
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
+  Tooltip,
+} from "@material-tailwind/react";
+
+const headers = [
+  { label: "SN", key: "id" },
+
+  { label: "Full Name", key: "fullname" },
+  { label: "Gender", key: "gender" },
+  { label: "Email", key: "email" },
+  { label: "Phone", key: "phone" },
+
+  { label: "Service Category", key: "servicecategory" },
+  { label: "Business Address", key: "businessaddress" },
+];
 
 export const providers = [
   {
@@ -245,22 +266,24 @@ export default function Providers() {
       head: [
         [
           "S/N",
-          "Photo",
+
           "Full Name",
           "Gender",
           "Email",
           "Phone",
+
           "Service Category",
           "business Address",
         ],
       ],
       body: providers.map((item) => [
         item.id,
-        item.photo,
+
         item.fullname,
         item.gender,
         item.email,
         item.phone,
+
         item.servicecategory,
         item.businessaddress,
       ]),
@@ -292,15 +315,45 @@ export default function Providers() {
             onChange={(e) => handleSearch(setSearchInput(e.target.value))}
           />
 
-          <button
-            className="float-right flex items-center px-3 text-right"
-            onClick={downloadAsPDF}
-          >
-            <span> Download </span>
-            <span>
-              <FaCloudDownloadAlt />
-            </span>
-          </button>
+          <div className="z-50 text-right">
+            <Menu>
+              <MenuHandler>
+                <Button className="text-xl text-black shadow-none">
+                  <Tooltip content="Downoad Table">
+                    <p>
+                      {" "}
+                      <FaCloudDownloadAlt />
+                    </p>
+                  </Tooltip>
+                </Button>
+              </MenuHandler>
+              <MenuList className="z-50 space-y-3 bg-white">
+                <MenuItem>
+                  {" "}
+                  <button onClick={downloadAsPDF}>PDF</button>
+                </MenuItem>
+                <MenuItem>
+                  <CSVLink
+                    data={slicedData}
+                    headers={headers}
+                    filename={"Providers.csv"}
+                  >
+                    <button>CSV</button>
+                  </CSVLink>
+                </MenuItem>
+                <MenuItem>
+                  {" "}
+                  <CSVLink
+                    data={slicedData}
+                    headers={headers}
+                    filename={"Providers.xls"}
+                  >
+                    <button>Excel</button>
+                  </CSVLink>
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </div>
         </span>
       </div>
 
