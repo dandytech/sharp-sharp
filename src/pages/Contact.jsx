@@ -4,8 +4,6 @@ import { FiPhoneCall } from "react-icons/fi";
 import Map from "../ui/Map";
 
 export default function Contact() {
-  const address = "2 Metalbox Road, Ikeja Lagos, Nigeria"; // Replace with the address you want to display
-
   return (
     <div className="bg-gradient-to-r from-violet-100 to-blue-100  pt-[85px] lg:mt-[0px] lg:py-0 lg:pt-0 ">
       <div className="h-[300px] bg-[url('/src/data/bgcontact.png')] bg-cover bg-center bg-no-repeat pt-10">
@@ -69,7 +67,7 @@ export default function Contact() {
           <div className="h-auto  lg:w-[50%]">
             <div className="flex flex-col-reverse gap-10 lg:flex-col">
               <div>
-                <p className="text-center text-[26px] font-semibold md:text-left md:text-[24px] lg:text-left lg:text-[34px] p-5">
+                <p className="p-5 text-center text-[26px] font-semibold md:text-left md:text-[24px] lg:text-left lg:text-[34px]">
                   Reach Out To Us Directly
                 </p>
                 <p className="mb-1 px-5 lg:px-3">
@@ -80,7 +78,7 @@ export default function Contact() {
 
               <div>
                 {" "}
-                <Map address={address} />
+                <Map />
               </div>
             </div>
           </div>
