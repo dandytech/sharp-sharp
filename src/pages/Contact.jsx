@@ -93,7 +93,7 @@ export default function Contact() {
                     type="text"
                     name="firstname"
                     placeholder="First Name"
-                    className="w-[100%] rounded-lg border-2 border-white bg-gray-800 bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-2  hover:border-black hover:bg-gradient-to-tr hover:from-white"
+                    className="w-[100%] rounded-lg border-2 border-white bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-1  hover:border-blue-500 hover:bg-white hover:bg-gradient-to-tr hover:from-white"
                   />
                 </p>
               </div>
@@ -105,7 +105,7 @@ export default function Contact() {
                     type="text"
                     name="lastname"
                     placeholder="Last Name"
-                    className="w-[100%] rounded-lg border-2 border-white bg-gray-800 bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-2 hover:border-black hover:bg-gradient-to-tr hover:from-white"
+                    className="w-[100%] rounded-lg border-2 border-white bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-1  hover:border-blue-500 hover:bg-white hover:bg-gradient-to-tr hover:from-white"
                   />
                 </p>
               </div>
@@ -120,7 +120,7 @@ export default function Contact() {
                     type="email"
                     name="email"
                     placeholder="Email Address"
-                    className="w-[100%] rounded-lg border-2 border-white bg-gray-800 bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-2  hover:border-black hover:bg-gradient-to-tr hover:from-white "
+                    className="w-[100%] rounded-lg border-2 border-white bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-1  hover:border-blue-500 hover:bg-white hover:bg-gradient-to-tr hover:from-white"
                   />
                 </p>
               </div>
@@ -132,7 +132,7 @@ export default function Contact() {
                     type="text"
                     name="phone"
                     placeholder="Phone Number"
-                    className="w-[100%] rounded-lg border-2 border-white bg-gray-800 bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-2  hover:border-black hover:bg-gradient-to-tr hover:from-white"
+                    className="w-[100%] rounded-lg border-2 border-white bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-1  hover:border-blue-500 hover:bg-white hover:bg-gradient-to-tr hover:from-white"
                   />
                 </p>
               </div>
@@ -146,7 +146,7 @@ export default function Contact() {
                   type="email"
                   name="email"
                   placeholder="Type Your Message Here"
-                  className="w-[100%] rounded-lg border-2 border-white bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-1  hover:border-black hover:bg-white hover:bg-gradient-to-tr hover:from-white"
+                  className="w-[100%] rounded-lg border-2 border-white bg-gradient-to-r from-violet-100 to-blue-100 px-3 py-1  hover:border-blue-500 hover:bg-white hover:bg-gradient-to-tr hover:from-white"
                   rows={7}
                 />
               </p>
