@@ -75,7 +75,12 @@ export default function Services() {
   );
   return (
     <Modal>
-      <div className="from-white-100 bg-gray-100 bg-gradient-to-r p-5  text-center">
+      <div
+        className="from-white-100 bg-gray-100 bg-gradient-to-r p-5  text-center"
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"
+      >
         <h2 className=" text-center  text-4xl font-bold lg:text-5xl ">
           SERVICES
         </h2>

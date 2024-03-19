@@ -238,6 +238,7 @@ export default function ProviderSignup() {
                 placeholder="Password"
                 required
               />
+
               <i
                 onClick={togglePasswordVisibility}
                 className="cursor-pointer p-5 text-[24px]"

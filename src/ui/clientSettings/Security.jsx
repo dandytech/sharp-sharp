@@ -16,7 +16,7 @@ export default function Security() {
       <div className="z-0 mt-5 rounded-xl border-2 p-5 py-5 text-center lg:py-10">
         <p className="mb-3 flex px-2 font-bold">Passwords</p>
 
-        <div className="border-2 border-gray-300 p-2 text-left lg:p-10">
+        <div className="border-t-2 border-gray-300 p-2 text-left lg:p-10">
           <div>
             <p className="font-light">Old </p>
             <input

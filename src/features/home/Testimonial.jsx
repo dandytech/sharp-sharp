@@ -135,7 +135,12 @@ export const testimonies = [
 
 export default function Testimonial() {
   return (
-    <div className="overflow-x-hidden bg-gradient-to-l  from-white pt-[100px] text-center lg:pt-[200px]  ">
+    <div
+      className="overflow-x-hidden bg-gradient-to-l  from-white pt-[100px] text-center lg:pt-[200px]"
+      data-aos="fade-down-right"
+      data-aos-duration="1000"
+      data-aos-easing="ease-out-sine"
+    >
       <h2 className=" p-5 text-center text-4xl font-bold lg:text-5xl">
         WHAT OUR <span className="text-blue-500">CLIENTS</span> SAY
       </h2>

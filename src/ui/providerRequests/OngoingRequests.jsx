@@ -138,7 +138,7 @@ export default function OngoingRequests({ children }) {
           ))}
         </div>
         <Modal.Window name="progress">
-          <div className="text-center p-5">
+          <div className="text-center p-5 w-[290px] md:w-[600px] lg:w-[800px]">
             <div className="mt-10 flex items-center justify-center gap-2">
               Progress
               <input

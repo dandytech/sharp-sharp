@@ -11,7 +11,11 @@ export default function WhoWeAre() {
       </div>
 
       <div className="who m-auto block  gap-10 p-5 lg:flex lg:w-[70%]  ">
-        <div>
+        <div
+          data-aos="flip-right"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-sine"
+        >
           <h1 className="border-l-2 border-blue-500 px-5 text-left text-[22px] font-extrabold  lg:text-[34px]">
             We Are Service Provider Agent, Ensuring That Clients Hire The Best,
             Affordable & Availble Service Providers!!!
@@ -25,7 +29,12 @@ export default function WhoWeAre() {
           </p>
         </div>
 
-        <div className="mt-20  flex items-center justify-center lg:mt-0">
+        <div
+          className="mt-20  flex items-center justify-center lg:mt-0"
+          data-aos="flip-left"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-sine"
+        >
           <ReactPlayer
             className="videoFrame"
             url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
