@@ -28,7 +28,7 @@ import MyButton from "../../../ui/MyButton";
 export default function ClientDashHeader({ handleHideNav, hideNav }) {
   const navigate = useNavigate();
 
-  const userName = "Admin Daniel";
+  const userName = "Adeleke Hamzat";
 
   return (
     <Modal>

@@ -28,7 +28,7 @@ import MyButton from "../../../ui/MyButton";
 export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
   const navigate = useNavigate();
 
-  const userName = "Daniel Amaechi";
+  const userName = "Provider Hamzat";
 
   return (
     <Modal>

@@ -15,6 +15,7 @@ import FaqMobile from "../features/home/FaqMobile";
 
 import { useState } from "react";
 import Cookies from "js-cookie";
+import HowItWorks from "../features/home/HowItWorks";
 
 export default function Home() {
   const [showBanner, setShowBanner] = useState(!Cookies.get("cookiesAccepted"));
@@ -51,6 +52,10 @@ export default function Home() {
 
         {/* WHY CHOSE US */}
         <WhyUs />
+
+        {/* How It works */}
+
+        <HowItWorks />
 
         {/* FAQs */}
         <Faqs />

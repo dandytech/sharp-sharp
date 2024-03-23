@@ -56,8 +56,8 @@ function FaqMobile() {
       data-aos-easing="ease-out-cubic"
       data-aos-duration="2000"
     >
-      <h3 className="text-[30px]">
-        FA<span className="text-blue-500">Q</span>s
+      <h3 className="text-4xl">
+        FA<span className="text-blue-500 font-semibold">Q</span>s
       </h3>
       Click for <span className="text-[30px] text-blue-500">A</span>nswers!
       <div className="grid-flow-col-3 m-auto grid w-[100%] gap-5 border-2 border-blue-50 p-5 shadow-sm">

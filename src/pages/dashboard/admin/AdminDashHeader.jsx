@@ -5,7 +5,7 @@ import {
   MenuItem,
   MenuList,
 } from "@material-tailwind/react";
-import { useState } from "react";
+
 import {
   IoIosArrowRoundForward,
   IoIosNotificationsOutline,
@@ -28,7 +28,7 @@ import MyButton from "../../../ui/MyButton";
 export default function AdminDashHeader({ handleHideNav, hideNav }) {
   const navigate = useNavigate();
 
-  const userName = "Admin Daniel";
+  const userName = "Admin Hamzat";
 
   return (
     <Modal>
