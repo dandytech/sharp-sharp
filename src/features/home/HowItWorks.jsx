@@ -27,7 +27,7 @@ export default function HowItWorks() {
 
       <div className=" m-auto space-y-10 px-10 lg:flex lg:space-y-0">
         <div className="flex flex-col items-center space-y-3">
-          <div className="flex h-[300px] w-[300px] items-center justify-center  rounded-full border-[10px] border-blue-500 bg-[url('/src/data/bg7.jpeg')] bg-cover bg-center bg-no-repeat text-center">
+          <div className="flex h-[300px] w-[300px] items-center  justify-center rounded-full border-[10px] border-blue-500 bg-[url('/src/data/bg7.jpeg')] bg-cover bg-center bg-no-repeat text-center transition-all duration-1000 hover:scale-110 hover:border-white">
             <img
               src={step1}
               alt="pic"
@@ -48,7 +48,7 @@ export default function HowItWorks() {
           <img src={arrowmobile} alt="pic" width="100" />
         </div>
         <div className="flex flex-col items-center space-y-3  border-2 lg:pt-[80px]">
-          <div className="flex h-[300px] w-[300px] items-center justify-center  rounded-full border-[10px] border-blue-500 bg-[url('/src/data/bg7.jpeg')]  bg-cover bg-center bg-no-repeat text-center ">
+          <div className="flex h-[300px] w-[300px] items-center  justify-center rounded-full border-[10px] border-blue-500 bg-[url('/src/data/bg7.jpeg')] bg-cover bg-center bg-no-repeat text-center transition-all duration-1000 hover:scale-110 hover:border-white">
             <img
               src={step2}
               alt="pic"
@@ -69,7 +69,7 @@ export default function HowItWorks() {
           <img src={arrowmobile} alt="pic" width="100" />
         </div>
         <div className="flex flex-col items-center space-y-3">
-          <div className="flex h-[300px] w-[300px] items-center justify-center  rounded-full border-[10px] border-blue-500 bg-[url('/src/data/bg7.jpeg')]  bg-cover bg-center bg-no-repeat text-center">
+          <div className="flex h-[300px] w-[300px] items-center  justify-center rounded-full border-[10px] border-blue-500 bg-[url('/src/data/bg7.jpeg')] bg-cover bg-center bg-no-repeat text-center transition-all duration-1000 hover:scale-110 hover:border-white">
             <img
               src={step3}
               alt="pic"
@@ -90,7 +90,7 @@ export default function HowItWorks() {
           <img src={arrowmobile} alt="pic" width="100" />
         </div>
         <div className="flex flex-col items-center space-y-3 lg:pt-[80px]">
-          <div className="flex h-[300px] w-[300px] items-center justify-center  rounded-full border-[10px] border-blue-500 bg-[url('/src/data/bg7.jpeg')]  bg-cover bg-center bg-no-repeat text-center">
+          <div className="flex h-[300px] w-[300px] items-center  justify-center rounded-full border-[10px] border-blue-500 bg-[url('/src/data/bg7.jpeg')] bg-cover bg-center bg-no-repeat text-center transition-all duration-1000 hover:scale-110 hover:border-white">
             <img
               src={step4}
               alt="pic"
