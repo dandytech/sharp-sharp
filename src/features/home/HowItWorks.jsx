@@ -185,7 +185,7 @@ export default function HowItWorks() {
                     />
                   </div>
                   <h1 className="text-lg font-bold">
-                    Accept Reject Service Request
+                    Accept or Reject Service Request
                   </h1>
                   <p>
                     Accept or Reject request from clients demanding for your
