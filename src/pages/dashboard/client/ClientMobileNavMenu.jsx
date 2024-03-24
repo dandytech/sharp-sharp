@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Card,
   Typography,
@@ -10,11 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { Cog6ToothIcon, PowerIcon } from "@heroicons/react/24/solid";
 import logo from "../../../../src/data/logo.png";
-import {
-  MdDashboard,
-  MdMedicalServices,
-  MdNotificationsNone,
-} from "react-icons/md";
+import { MdDashboard, MdNotificationsNone } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { FaCodePullRequest } from "react-icons/fa6";
@@ -46,7 +41,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
 
         <List>
           <NavLink to="dashboard" onClick={!hideNav}>
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <MdDashboard className="h-5 w-5" />
               </ListItemPrefix>
@@ -55,7 +50,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
           </NavLink>
 
           <NavLink to="requests" onClick={!hideNav}>
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <FaCodePullRequest className="h-5 w-5" />
               </ListItemPrefix>
@@ -75,29 +70,8 @@ export default function ClientMobileNavMenus({ hideNav }) {
             </ListItem>
           </NavLink>
 
-          {/* <NavLink to="services" onClick={!hideNav}>
-            <ListItem className="flex gap-1">
-              <ListItemPrefix>
-                <MdMedicalServices className="h-5 w-5" />
-              </ListItemPrefix>
-              <span>Services</span>
-
-              <ListItemSuffix>
-                <span>
-                  <Chip
-                    value="14"
-                    size="sm"
-                    variant="ghost"
-                    color="blue-gray"
-                    className="rounded-full"
-                  />
-                </span>
-              </ListItemSuffix>
-            </ListItem>
-          </NavLink> */}
-
           <NavLink to="transactions" onClick={!hideNav}>
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <TbZoomMoney className="h-5 w-5" />
               </ListItemPrefix>
@@ -106,7 +80,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
           </NavLink>
 
           <NavLink to="notifications" onClick={!hideNav}>
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <MdNotificationsNone className="h-5 w-5" />
               </ListItemPrefix>
@@ -127,7 +101,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
           </NavLink>
 
           <NavLink to="settings" onClick={!hideNav}>
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <Cog6ToothIcon className="h-5 w-5" />
               </ListItemPrefix>
@@ -136,7 +110,7 @@ export default function ClientMobileNavMenus({ hideNav }) {
           </NavLink>
           <Modal.Open opens="logout">
             <button>
-              <ListItem className="flex gap-1">
+              <ListItem className="flex gap-3">
                 <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
                 </ListItemPrefix>

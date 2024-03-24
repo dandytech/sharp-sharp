@@ -25,7 +25,7 @@ export default function HowItWorks() {
       data-aos-duration="1000"
       data-aos-easing="ease-in-sine"
     >
-      <div className="mb-10">
+      <div className="mb-3">
         <h2 className="mb-3 text-center text-4xl font-semibold lg:text-5xl">
           {" "}
           HOW IT <span className="text-blue-500">W</span>ORKS
@@ -71,8 +71,8 @@ export default function HowItWorks() {
                 <h1 className="text-lg font-bold">Register as a Client</h1>
                 <p>
                   Sign Up for free as a Client and complete your profile
-                  information to enable you request the services of Providers at
-                  the comfort of your home.
+                  information (KYC) to enable you request the services of
+                  Providers at the comfort of your home.
                 </p>
               </div>{" "}
               <div className="hidden pt-[150px] lg:block">
@@ -165,7 +165,7 @@ export default function HowItWorks() {
                   </h1>
                   <p>
                     Sign Up for free as a Service Provider and complete your
-                    profile information(KYC) to enable you get service requests
+                    profile information (KYC) to enable you get service requests
                     from Clients.
                   </p>
                 </div>{" "}

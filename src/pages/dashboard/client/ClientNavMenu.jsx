@@ -10,35 +10,16 @@ import {
 } from "@material-tailwind/react";
 import { Cog6ToothIcon, PowerIcon } from "@heroicons/react/24/solid";
 import logo from "../../../../src/data/logo.png";
-import {
-  MdDashboard,
-  MdMedicalServices,
-  MdNotificationsNone,
-} from "react-icons/md";
+import { MdDashboard, MdNotificationsNone } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import YesModal from "../../../ui/YesModal";
 import { FaCodePullRequest } from "react-icons/fa6";
 import { TbZoomMoney } from "react-icons/tb";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 
 export default function ClientNavMenus({ hideNav }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-
-  //Logout Modal Functions
-  const handleLogout = () => {
-    setIsModalOpen(true);
-  };
-  const handleYes = () => {
-    // Perform the logout action
-    console.log("Logged out");
-    navigate("/adminLogin");
-  };
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <Modal>
@@ -54,7 +35,7 @@ export default function ClientNavMenus({ hideNav }) {
         </div>
         <List>
           <NavLink to="dashboard">
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <MdDashboard className="h-5 w-5" />
               </ListItemPrefix>
@@ -63,7 +44,7 @@ export default function ClientNavMenus({ hideNav }) {
           </NavLink>
 
           <NavLink to="requests">
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <FaCodePullRequest className="h-5 w-5" />
               </ListItemPrefix>
@@ -83,29 +64,8 @@ export default function ClientNavMenus({ hideNav }) {
             </ListItem>
           </NavLink>
 
-          {/* <NavLink to="services">
-            <ListItem className="flex gap-1">
-              <ListItemPrefix>
-                <MdMedicalServices className="h-5 w-5" />
-              </ListItemPrefix>
-              <span className={`${!hideNav ? "hidden" : ""}`}>Services</span>
-
-              <ListItemSuffix>
-                <span className={`${!hideNav ? "hidden" : ""}`}>
-                  <Chip
-                    value="14"
-                    size="sm"
-                    variant="ghost"
-                    color="blue-gray"
-                    className="rounded-full"
-                  />
-                </span>
-              </ListItemSuffix>
-            </ListItem>
-          </NavLink> */}
-
           <NavLink to="transactions">
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <TbZoomMoney className="h-5 w-5" />
               </ListItemPrefix>
@@ -114,7 +74,7 @@ export default function ClientNavMenus({ hideNav }) {
           </NavLink>
 
           <NavLink to="notifications">
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <MdNotificationsNone className="h-5 w-5" />
               </ListItemPrefix>
@@ -137,16 +97,17 @@ export default function ClientNavMenus({ hideNav }) {
           </NavLink>
 
           <NavLink to="settings">
-            <ListItem className="flex gap-1">
+            <ListItem className="flex gap-3">
               <ListItemPrefix>
                 <Cog6ToothIcon className="h-5 w-5" />
               </ListItemPrefix>
               <span className={`${!hideNav ? "hidden" : ""}`}>Settings</span>
             </ListItem>
           </NavLink>
+
           <Modal.Open opens="logout">
             <button>
-              <ListItem className="flex gap-1">
+              <ListItem className="flex gap-3">
                 <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
                 </ListItemPrefix>

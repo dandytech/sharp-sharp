@@ -53,7 +53,7 @@ export default function AdminNavMenus({ hideNav }) {
         </div>
         <List>
           <NavLink to="dashboard">
-            <ListItem>
+            <ListItem className="space-x-3">
               <ListItemPrefix>
                 <MdDashboard className="h-5 w-5" />
               </ListItemPrefix>
@@ -83,7 +83,7 @@ export default function AdminNavMenus({ hideNav }) {
                 <ListItemPrefix>
                   <RiUserSearchFill className="h-5 w-5" />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal">
+                <Typography color="blue-gray" className="mr-auto font-normal px-3">
                   <span className={`${!hideNav ? "hidden" : ""}`}>Users</span>
                 </Typography>
               </AccordionHeader>
@@ -92,7 +92,7 @@ export default function AdminNavMenus({ hideNav }) {
             <AccordionBody className="py-1">
               <List className="p-0">
                 <NavLink to="providers">
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <GrBusinessService strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -102,7 +102,7 @@ export default function AdminNavMenus({ hideNav }) {
                   </ListItem>
                 </NavLink>
                 <NavLink to="clients">
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <FcCustomerSupport strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -112,7 +112,7 @@ export default function AdminNavMenus({ hideNav }) {
                   </ListItem>
                 </NavLink>
                 <NavLink to="subadmins">
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <GrUserAdmin strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -147,7 +147,7 @@ export default function AdminNavMenus({ hideNav }) {
                 <ListItemPrefix>
                   <RiServiceLine className="h-5 w-5" />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal">
+                <Typography color="blue-gray" className="mr-auto font-normal px-3">
                   <span className={`${!hideNav ? "hidden" : ""}`}>
                     Services
                   </span>
@@ -157,7 +157,7 @@ export default function AdminNavMenus({ hideNav }) {
             <AccordionBody className="py-1">
               <List className="p-0">
                 <NavLink to="serviceRequests">
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <IoIosGitPullRequest
                         strokeWidth={3}
@@ -170,7 +170,7 @@ export default function AdminNavMenus({ hideNav }) {
                   </ListItem>
                 </NavLink>
                 <NavLink to="categories">
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <GrBusinessService strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -184,7 +184,7 @@ export default function AdminNavMenus({ hideNav }) {
           </Accordion>
 
           <NavLink to="notifications">
-            <ListItem>
+            <ListItem className="space-x-3">
               <ListItemPrefix>
                 <MdNotificationsNone className="h-5 w-5" />
               </ListItemPrefix>
@@ -229,7 +229,7 @@ export default function AdminNavMenus({ hideNav }) {
                 <ListItemPrefix>
                   <RiServiceLine className="h-5 w-5" />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal">
+                <Typography color="blue-gray" className="mr-auto font-normal px-3">
                   <span className={`${!hideNav ? "hidden" : ""}`}>
                     Settings
                   </span>
@@ -239,7 +239,7 @@ export default function AdminNavMenus({ hideNav }) {
             <AccordionBody className="py-1">
               <List className="p-0">
                 <NavLink to="settings">
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <CgProfile strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -249,7 +249,7 @@ export default function AdminNavMenus({ hideNav }) {
                   </ListItem>
                 </NavLink>
                 <NavLink to="faqs">
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <FaQuestionCircle strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -262,7 +262,7 @@ export default function AdminNavMenus({ hideNav }) {
 
           <Modal.Open opens="logout">
             <button>
-              <ListItem>
+              <ListItem className="space-x-3">
                 <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
                 </ListItemPrefix>

@@ -60,7 +60,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
 
         <List>
           <NavLink to="dashboard" onClick={!hideNav}>
-            <ListItem>
+            <ListItem className="space-x-3">
               <ListItemPrefix>
                 <MdDashboard className="h-5 w-5" />
               </ListItemPrefix>
@@ -90,7 +90,10 @@ export default function AdminMobileNavMenus({ hideNav }) {
                 <ListItemPrefix>
                   <RiUserSearchFill className="h-5 w-5" />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal">
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto px-3 font-normal"
+                >
                   <span className={`${hideNav ? "hidden" : ""}`}>Users</span>
                 </Typography>
               </AccordionHeader>
@@ -99,7 +102,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
             <AccordionBody className="py-1">
               <List className="p-0">
                 <NavLink to="providers" onClick={!hideNav}>
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <GrBusinessService strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -109,7 +112,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
                   </ListItem>
                 </NavLink>
                 <NavLink to="clients" onClick={!hideNav}>
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <FcCustomerSupport strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -119,7 +122,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
                   </ListItem>
                 </NavLink>
                 <NavLink to="subadmins" onClick={!hideNav}>
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <GrUserAdmin strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -154,7 +157,10 @@ export default function AdminMobileNavMenus({ hideNav }) {
                 <ListItemPrefix>
                   <RiServiceLine className="h-5 w-5" />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal">
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto px-3 font-normal"
+                >
                   <span className={`${hideNav ? "hidden" : ""}`}>Services</span>
                 </Typography>
               </AccordionHeader>
@@ -162,7 +168,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
             <AccordionBody className="py-1">
               <List className="p-0">
                 <NavLink to="serviceRequests" onClick={!hideNav}>
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <IoIosGitPullRequest
                         strokeWidth={3}
@@ -175,7 +181,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
                   </ListItem>
                 </NavLink>
                 <NavLink to="categories" onClick={!hideNav}>
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <GrBusinessService strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -189,7 +195,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
           </Accordion>
 
           <NavLink to="notifications" onClick={!hideNav}>
-            <ListItem>
+            <ListItem className="space-x-3">
               <ListItemPrefix>
                 <MdNotificationsNone className="h-5 w-5" />
               </ListItemPrefix>
@@ -242,7 +248,10 @@ export default function AdminMobileNavMenus({ hideNav }) {
                 <ListItemPrefix>
                   <RiServiceLine className="h-5 w-5" />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal">
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto px-3 font-normal"
+                >
                   <span className={`${hideNav ? "hidden" : ""}`}>Settings</span>
                 </Typography>
               </AccordionHeader>
@@ -250,7 +259,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
             <AccordionBody className="py-1">
               <List className="p-0">
                 <NavLink to="settings" onClick={!hideNav}>
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <CgProfile strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -260,7 +269,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
                   </ListItem>
                 </NavLink>
                 <NavLink to="faqs" onClick={!hideNav}>
-                  <ListItem>
+                  <ListItem className="space-x-3">
                     <ListItemPrefix>
                       <FaQuestionCircle strokeWidth={3} className="h-3 w-5" />
                     </ListItemPrefix>
@@ -273,7 +282,7 @@ export default function AdminMobileNavMenus({ hideNav }) {
 
           <Modal.Open opens="logout">
             <button>
-              <ListItem>
+              <ListItem className="space-x-3">
                 <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
                 </ListItemPrefix>

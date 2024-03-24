@@ -22,7 +22,7 @@ export default function NavbarLayout({ hideNav }) {
             : "navDashboard fixed  left-0 z-[1000]  mt-[30px] h-[100vh] w-auto p-5 py-20 shadow-xl"
         }`}
       >
-        <div className="flex gap-2 ">
+        <div className="flex gap-3">
           <div className="text-[24px]">
             <div className="mb-8">
               <NavLink to="dashboard" activeClassName="active">

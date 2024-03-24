@@ -19,7 +19,7 @@ export default function NavbarMobileLayout({ hideNav }) {
         <NavLink to="/" className="md:hidden">
           <img src={logo} alt="logo" width="100" />
         </NavLink>
-        <div className="flex gap-2 ">
+        <div className="flex gap-3">
           <div className="text-[24px]">
             <div className="mb-5">
               <NavLink
