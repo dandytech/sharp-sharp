@@ -32,7 +32,7 @@ export default function HowItWorks() {
         </h2>{" "}
       </div>
 
-      <div className="tab-buttons">
+      <div className="tab-buttons font-bold">
         <button
           className={activeTab === 1 ? "active " : " "}
           onClick={() => handleTabClick(1)}
