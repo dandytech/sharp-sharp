@@ -56,7 +56,7 @@ export default function HowItWorks() {
               <span className="text-blue-500">Best</span> and{" "}
               <span className="text-blue-500">Affordable</span> Service
               Providers Closest to your House to Serve you at the comfort of
-              your Home
+              your Home.
             </p>
 
             <div className=" m-auto space-y-10 px-10 lg:flex lg:space-y-0">
