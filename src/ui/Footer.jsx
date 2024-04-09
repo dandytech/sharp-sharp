@@ -10,10 +10,10 @@ import logo2 from "../data/logo2.png";
 import { HashLink } from "react-router-hash-link";
 
 export default function Footer() {
-  const [visible, setVisible] = useState(false);
   const date = new Date();
   const today = date.getFullYear();
-
+  
+  const [visible, setVisible] = useState(false);
   //scroll to home
   const scroll = () => {
     window.scrollTo({

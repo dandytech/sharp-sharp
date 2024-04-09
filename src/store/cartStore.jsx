@@ -6,6 +6,8 @@ const useCartStore = create((set) => ({
   //add to cart
   addToCart: (product) =>
     set((state) => ({ items: [...state.items, product] })),
+
+    //
   removeFromCart: (index) =>
     set((state) => ({ items: state.items.filter((_, i) => i !== index) })),
 

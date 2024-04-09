@@ -224,6 +224,88 @@ export default function GeneralInfo({ handleTabClick }) {
         </div>
       </div>
 
+      <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex">Country of Service</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              {" "}
+              <select
+                type="number"
+                id="expyr"
+                name="expyr"
+                className={input}
+                required
+              >
+                <option>Nigeria</option>
+                <option>Ghana</option>
+              </select>
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
+        </div>
+        <div className="lg:w-[50%]">
+          <label className="flex">State of Service</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              {" "}
+              <select
+                type="number"
+                id="expyr"
+                name="expyr"
+                className={input}
+                required
+              >
+                <option>Lagos</option>
+                <option>Ebonyi</option>
+              </select>
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex">L.G.A of Service</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              {" "}
+              <select
+                type="number"
+                id="expyr"
+                name="expyr"
+                className={input}
+                required
+              >
+                <option>Ikeja</option>
+                <option>Ikoyi</option>
+              </select>
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
+        </div>
+        <div className="lg:w-[50%]">
+          <label className="flex">City of Service</label>
+          <p className="flex items-center">
+            <span className="w-full">
+              {" "}
+              <select
+                type="number"
+                id="expyr"
+                name="expyr"
+                className={input}
+                required
+              >
+                <option>Ogba</option>
+                <option>Orile</option>
+              </select>
+            </span>
+            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+          </p>
+        </div>
+      </div>
+
       <button
         className="my-5 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black lg:my-20  "
         onClick={handleNext}
