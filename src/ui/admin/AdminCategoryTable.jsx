@@ -15,7 +15,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 
-export default function AdminCategoryTable({ updateData, data, columns }) {
+export default function AdminCategoryTable({ data, columns }) {
   //Pagination
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -31,7 +31,7 @@ export default function AdminCategoryTable({ updateData, data, columns }) {
 
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const slicedData = data.slice(startIndex, endIndex);
+  const slicedData = data?.slice(startIndex, endIndex);
 
   //Download Table
   const downloadAsPDF = () => {
@@ -88,7 +88,7 @@ export default function AdminCategoryTable({ updateData, data, columns }) {
                 ))}
 
                 <AdminEditCategories
-                  updateData={updateData}
+                  // updateData={updateData}
                   row={row}
                   data={data}
                 />
@@ -100,7 +100,7 @@ export default function AdminCategoryTable({ updateData, data, columns }) {
           className="bg-style"
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={data.length}
+          count={data?.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

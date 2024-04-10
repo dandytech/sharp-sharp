@@ -12,13 +12,13 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import {
-  Cog6ToothIcon,
+
   PowerIcon,
   ChevronDownIcon,
 } from "@heroicons/react/24/solid";
 import logo from "../../../../src/data/logo.png";
 import { MdDashboard, MdNotificationsNone } from "react-icons/md";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { RiServiceLine, RiUserSearchFill } from "react-icons/ri";
 import { GrBusinessService, GrUserAdmin } from "react-icons/gr";
 import { FcCustomerSupport } from "react-icons/fc";
@@ -28,11 +28,13 @@ import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 import { CgProfile } from "react-icons/cg";
 import { FaQuestionCircle } from "react-icons/fa";
+import SpinnerMini from "../../../ui/SpinnerMini";
+import { useLogout } from "../../../features/authentication/admin/useLogout";
 
 export default function AdminMobileNavMenus({ hideNav }) {
   const [open, setOpen] = React.useState(0);
 
-  const navigate = useNavigate();
+const {logout, isLoading}=useLogout()
 
   //menu toggle function
   const handleOpen = (value) => {
@@ -304,8 +306,8 @@ export default function AdminMobileNavMenus({ hideNav }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={() => navigate("/")}>
-                Yes
+              <MyButton type="primary" onClick={logout}>
+              {!isLoading ? "Yes" : <SpinnerMini />}
               </MyButton>
             </p>
           </div>

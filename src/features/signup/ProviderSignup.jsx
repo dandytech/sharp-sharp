@@ -1,45 +1,45 @@
-const serviceCategories = [
-  {
-    id: 1,
-    name: "ICT",
-  },
-  {
-    id: 2,
-    name: "Dry Cleaning and Laundry",
-  },
-  {
-    id: 3,
-    name: "Cleaning",
-  },
-  {
-    id: 4,
-    name: "Clothing Alterations and Tailoring",
-  },
-  {
-    id: 5,
-    name: "Saloon, Hair Styling and Barbing",
-  },
-  {
-    id: 6,
-    name: "Makeup and Beauty",
-  },
-  {
-    id: 7,
-    name: "Massage Therapy",
-  },
-  {
-    id: 8,
-    name: "Shoe Repair and Maintenance",
-  },
-  {
-    id: 9,
-    name: "Spray Tanning",
-  },
-  {
-    id: 10,
-    name: "Others",
-  },
-];
+// const serviceCategories = [
+//   {
+//     id: 1,
+//     name: "ICT",
+//   },
+//   {
+//     id: 2,
+//     name: "Dry Cleaning and Laundry",
+//   },
+//   {
+//     id: 3,
+//     name: "Cleaning",
+//   },
+//   {
+//     id: 4,
+//     name: "Clothing Alterations and Tailoring",
+//   },
+//   {
+//     id: 5,
+//     name: "Saloon, Hair Styling and Barbing",
+//   },
+//   {
+//     id: 6,
+//     name: "Makeup and Beauty",
+//   },
+//   {
+//     id: 7,
+//     name: "Massage Therapy",
+//   },
+//   {
+//     id: 8,
+//     name: "Shoe Repair and Maintenance",
+//   },
+//   {
+//     id: 9,
+//     name: "Spray Tanning",
+//   },
+//   {
+//     id: 10,
+//     name: "Others",
+//   },
+// ];
 
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineHomeRepairService } from "react-icons/md";
@@ -58,6 +58,7 @@ import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import MyButton from "../../ui/MyButton";
+import useGetCategories from "../admin/useGetCategories";
 
 export default function ProviderSignup() {
   const [password, setPassword] = useState("");
@@ -67,6 +68,12 @@ export default function ProviderSignup() {
   const [phone, setPhone] = useState();
   const [category, setCategory] = useState("");
 
+  //service categories
+  const { serviceCategories, isLoadingCat, error } = useGetCategories();
+
+  console.log(serviceCategories);
+
+  //password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -140,14 +147,25 @@ export default function ProviderSignup() {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option>SELECT CATEGORY</option>
-                {serviceCategories.map((serviceCategory) => (
+                <option value="" disabled selected>
+                  SELECT CATEGORY
+                </option>
+
+                {!serviceCategories ? (
+                  "Loading..."
+                ) : (
                   <>
-                    <option key={serviceCategory.id}>
-                      {serviceCategory.name}
-                    </option>
+                    {serviceCategories &&
+                      serviceCategories.map((serviceCategory) => (
+                        <>
+                          <option key={serviceCategory.id}>
+                            {serviceCategory.catName}
+                          </option>
+                        </>
+                      ))}
                   </>
-                ))}
+                )}
+                <option>Others</option>
               </select>
 
               {category == "Others" && (
@@ -270,12 +288,12 @@ export default function ProviderSignup() {
             </div>
           </div>
           <div className="justify-between px-3 lg:mt-3 lg:flex">
-            <p>
+            {/* <p>
               <ReCAPTCHA
                 ref={recaptchaRef}
                 sitekey="6LcfiYApAAAAAFMqdZWPiQyu2Vpg1CjZF0jBBGqK" // Replace with your site key
               />
-            </p>
+            </p> */}
 
             <p className="mt-7 text-white lg:mt-10">
               Already Have An Account?{" "}

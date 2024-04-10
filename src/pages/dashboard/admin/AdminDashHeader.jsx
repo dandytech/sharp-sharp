@@ -24,11 +24,16 @@ import { GrStatusGood } from "react-icons/gr";
 import { MdAvTimer } from "react-icons/md";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
+import { useLogout } from "../../../features/authentication/admin/useLogout";
+import { HiArrowRightOnRectangle } from "react-icons/hi2";
+import SpinnerMini from "../../../ui/SpinnerMini";
 
 export default function AdminDashHeader({ handleHideNav, hideNav }) {
   const navigate = useNavigate();
 
   const userName = "Admin Hamzat";
+
+  const { logout, isLoading } = useLogout();
 
   return (
     <Modal>
@@ -204,8 +209,8 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={() => navigate("/")}>
-                Yes
+              <MyButton type="primary" onClick={logout}>
+                {!isLoading ? "Yes" : <SpinnerMini />}
               </MyButton>
             </p>
           </div>

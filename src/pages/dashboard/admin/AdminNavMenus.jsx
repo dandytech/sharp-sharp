@@ -11,11 +11,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import {
-  Cog6ToothIcon,
-  PowerIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/solid";
+import { PowerIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import logo from "../../../../src/data/logo.png";
 import { MdDashboard, MdNotificationsNone } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -28,17 +24,21 @@ import { CgProfile } from "react-icons/cg";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 import { FaQuestionCircle } from "react-icons/fa";
+import { useLogout } from "../../../features/authentication/admin/useLogout";
+import SpinnerMini from "../../../ui/SpinnerMini";
+
 
 export default function AdminNavMenus({ hideNav }) {
   const [open, setOpen] = React.useState(0);
 
-  const navigate = useNavigate();
+
 
   //menu toggle function
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
 
+  const { logout, isLoading } = useLogout();
   return (
     <Modal>
       <Card className="bg-style text-bg-text hidden h-[100vh] border-r-2 lg:block">
@@ -83,7 +83,10 @@ export default function AdminNavMenus({ hideNav }) {
                 <ListItemPrefix>
                   <RiUserSearchFill className="h-5 w-5" />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal px-3">
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto px-3 font-normal"
+                >
                   <span className={`${!hideNav ? "hidden" : ""}`}>Users</span>
                 </Typography>
               </AccordionHeader>
@@ -147,7 +150,10 @@ export default function AdminNavMenus({ hideNav }) {
                 <ListItemPrefix>
                   <RiServiceLine className="h-5 w-5" />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal px-3">
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto px-3 font-normal"
+                >
                   <span className={`${!hideNav ? "hidden" : ""}`}>
                     Services
                   </span>
@@ -206,7 +212,6 @@ export default function AdminNavMenus({ hideNav }) {
             </ListItem>
           </NavLink>
 
-       
           <Accordion
             open={open === 3}
             icon={
@@ -229,7 +234,10 @@ export default function AdminNavMenus({ hideNav }) {
                 <ListItemPrefix>
                   <RiServiceLine className="h-5 w-5" />
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal px-3">
+                <Typography
+                  color="blue-gray"
+                  className="mr-auto px-3 font-normal"
+                >
                   <span className={`${!hideNav ? "hidden" : ""}`}>
                     Settings
                   </span>
@@ -284,8 +292,8 @@ export default function AdminNavMenus({ hideNav }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={() => navigate("/")}>
-                Yes
+              <MyButton type="primary" onClick={logout}>
+                {!isLoading ? "Yes" : <SpinnerMini />}
               </MyButton>
             </p>
           </div>
