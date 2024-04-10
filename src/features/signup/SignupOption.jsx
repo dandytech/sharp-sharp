@@ -8,10 +8,10 @@ export default function SignupOption() {
       <p className="mb-5 text-center text-lg font-bold ">
         Select The Profile Type You Want To Sign Up As:
       </p>
-      <div className="m-auto items-center justify-between  px-3  md:flex lg:flex lg:w-[70%]">
+      <div className="m-auto items-center justify-between  px-3 lg:flex lg:w-[70%]">
         <NavLink
           to="/providerReg"
-          className="mb-5 flex items-center justify-between gap-2 border-4 bg-white px-5 py-10  shadow-md hover:bg-gray-200 lg:mb-0"
+          className="mb-5 flex items-center justify-center gap-2 border-4 bg-white px-5 py-10 shadow-md  hover:bg-gray-200 lg:mb-0 lg:justify-between"
         >
           <div className="text-[64px] text-blue-500">
             <GrUserSettings />
@@ -30,7 +30,7 @@ export default function SignupOption() {
         </NavLink>{" "}
         <NavLink
           to="/clientReg"
-          className="flex items-center justify-between gap-2 border-4 bg-white px-5 py-10 shadow-md hover:bg-gray-200"
+          className="flex items-center justify-center gap-2 border-4 bg-white px-5 py-10 shadow-md hover:bg-gray-200 lg:justify-between"
         >
           <div className="text-[64px] text-blue-500">
             <FaHouseUser />
