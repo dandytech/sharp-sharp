@@ -27,6 +27,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { CiHome } from "react-icons/ci";
 import ServiceActions from "../../../ui/kycProvider/ServiceActions";
 
+
 export default function ProviderSettings() {
   //should be memoized or stable
   const serviceColumns = useMemo(
@@ -69,6 +70,7 @@ export default function ProviderSettings() {
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
   };
+
 
   return (
     <div className="servicebg mt-[80px] h-[100vh] w-[100%] overflow-y-auto shadow-2xl lg:px-5">
@@ -126,7 +128,7 @@ export default function ProviderSettings() {
           <div className="tab-content lg:w-[85%]">
             {activeTab === 1 && (
               <p>
-                <MyProfile />
+                <MyProfile  />
               </p>
             )}
             {activeTab === 2 && (

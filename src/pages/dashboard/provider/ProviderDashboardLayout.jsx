@@ -3,6 +3,8 @@ import ProviderDashHeader from "./ProviderDashHeader";
 import ProviderNavLayout from "./ProviderNavLayout";
 import ProviderMobileNavLayout from "./ProviderMobileNavLayout";
 import { useState } from "react";
+import { useGetProvider } from "../../../features/authentication/provider/useGetProvider";
+import { useLogout } from "../../../features/authentication/provider/useProviderLogout";
 
 export default function DashbordLayout() {
   const [hideNav, setHideNav] = useState(true);
@@ -16,10 +18,18 @@ export default function DashbordLayout() {
     setHideMenu(!hideMenu);
   };
 
+  //retrieve Provider details using useGetProvider hook
+  const { user } = useGetProvider();
+
+  //logout Query called
+  const { logout, isLoading } = useLogout();
   return (
     <div className="bg-style flex  flex-col pb-[50px]">
       <div>
         <ProviderDashHeader
+          logout={logout}
+          isLoading={isLoading}
+          currentFullName={user?.user_metadata?.fullName}
           handleHideNav={handleHideNav}
           handleHideMenu={handleHideMenu}
         />
@@ -30,13 +40,14 @@ export default function DashbordLayout() {
             hideNav ? "w-[13%] p-10 " : "w-[4%] p-10"
           }`}
         >
-          <ProviderNavLayout hideNav={hideNav} />
+          <ProviderNavLayout hideNav={hideNav} logout={logout} />
         </div>
 
         <div className={`z-50 ${hideMenu ? "hidden" : "fixed"}`}>
           <ProviderMobileNavLayout
             hideNav={hideNav}
             handleHideNav={handleHideNav}
+            logout={logout}
           />
         </div>
 
@@ -48,14 +59,6 @@ export default function DashbordLayout() {
             Reserved.
           </div>
         </div>
-      </div>
-
-      <div>
-        {/* <Routes>
-            <Route path="" element={<DashboardProvider />} />
-            <Route path="kyc" element={<KycProvider />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes> */}
       </div>
     </div>
   );

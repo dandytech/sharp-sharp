@@ -53,6 +53,7 @@ import ClientTransactions from "./pages/dashboard/client/ClientTransactions.jsx"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
+import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 
 //set up react-query with some options overitting them as needed
 const queryClient = new QueryClient({
@@ -69,6 +70,7 @@ export default function App() {
   useEffect(() => {
     AOS.init(); // Initialize AOS library
   }, []);
+
   return (
     <>
       <DarkModeProvider>
@@ -85,6 +87,7 @@ export default function App() {
                 <Route path="contact" element={<Contact />} />
 
                 <Route path="signup" element={<SignupOption />} />
+
                 <Route path="login" element={<Login />} />
 
                 <Route path="services" element={<Services />} />
@@ -98,7 +101,14 @@ export default function App() {
               <Route path="forgotpassword" element={<ForgotPassword />} />
 
               {/* Provider Dashboard */}
-              <Route path="provider" element={<ProviderDashbordLayout />}>
+              <Route
+                path="provider"
+                element={
+                  <ProtectedRoute>
+                    <ProviderDashbordLayout />
+                  </ProtectedRoute>
+                }
+              >
                 <Route index element={<Navigate replace to="dashboard" />} />
 
                 <Route path="dashboard" element={<DashboardProvider />} />
@@ -119,7 +129,15 @@ export default function App() {
 
               {/* Admin Route */}
               <Route path="adminLogin" element={<AdminLogin />} />
-              <Route path="admin" element={<AdminDashboardLayout />}>
+
+              <Route
+                path="admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboardLayout />
+                  </ProtectedRoute>
+                }
+              >
                 <Route index element={<Navigate replace to="dashboard" />} />
                 <Route path="dashboard" element={<AdminDashboard />} />
                 <Route path="providers" element={<Providers />} />

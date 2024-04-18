@@ -25,10 +25,10 @@ import { MdAvTimer } from "react-icons/md";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 
-export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
+export default function ProviderHeader({ handleHideNav, handleHideMenu, currentFullName, logout }) {
   const navigate = useNavigate();
 
-  const userName = "Provider Hamzat";
+  const userName = currentFullName;
 
   return (
     <Modal>
@@ -196,7 +196,7 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={() => navigate("/")}>
+              <MyButton type="primary" onClick={logout}>
                 Yes
               </MyButton>
             </p>

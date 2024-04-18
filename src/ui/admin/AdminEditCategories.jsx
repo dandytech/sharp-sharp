@@ -16,19 +16,51 @@ import { useDeleteCategory } from "../../features/admin/useDeleteCategory";
 import useGetCategories from "../../features/admin/useGetCategories";
 import { useUpdateCategories } from "../../features/admin/useUpdateCategories";
 import SpinnerMini from "../SpinnerMini";
+import { useState } from "react";
+import Close from "../../ui/Modal";
+import Loader from "../Loader";
 
 export default function AdminEditCategories({ row, data }) {
+  
   //update Qury
   const { updateCategory, isUpdating } = useUpdateCategories();
 
-  //update function
-  function handleUpdate(e, field) {
-    const { value } = e.target;
-    if (!value) return;
+  //to use form submit once
+  const [catInputs, setCatInputs] = useState({
+    catName: "",
+    catCharge: 0,
+    catDescription: "",
+    id: "",
+  });
 
-    // update the matching id
-    updateCategory({ [field]: value });
-  }
+  const handleChange = (e, field, id) => {
+    const { value } = e.target;
+    setCatInputs({ ...catInputs, [field]: value, id: id });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const filtered = Object.fromEntries(
+      Object.entries(catInputs).filter(
+        ([key, value]) => value !== "" && value !== 0,
+      ),
+    );
+    console.log(filtered);
+    updateCategory(filtered);
+  };
+
+  //update function on mouse leave the field
+  // function handleUpdate(e, field, id) {
+  //   console.log(id);
+  //   const { value } = e.target;
+  //   if (!value) return;
+  //   const payload = {
+  //     id: id,
+  //     [field]: value,
+  //   }
+  //   // update the matching id
+  //   updateCategory(payload);
+  // }
 
   //DeleteQuery
   const { deleteCategory, isDeletingCategory } = useDeleteCategory();
@@ -63,60 +95,73 @@ export default function AdminEditCategories({ row, data }) {
           {/* Add other options as needed */}
         </TableCell>
       </Menu>
-      <Modal.Window name="edit">
-        <div className="w-[300px] overflow-y-auto border-2 md:w-[600px] lg:w-[800px]">
-          <p className=" bg-black px-5 py-2 text-white">EDIT CATEGORY</p>
-          <div className="space-y-3 p-5">
-            <p>
-              <label className="font-semibold">Name </label>{" "}
-              <span>
-                <input
-                  className="w-full border-2 px-2 py-1"
-                  type="text"
-                  disabled={isUpdating}
-                  id={catName}
-                  defaultValue={row.catName}
-                  onBlur={(e) => handleUpdate(e, "catName")}
-                  // onChange={(e) => setName(e.target.value)}
-                />
-              </span>
-            </p>
-            <p>
-              <label className="font-semibold">Charge </label>
-              <span>
-                <input
-                  className="w-full border-2 px-2 py-1"
-                  type="text"
-                  disabled={isUpdating}
-                  id={catCharge}
-                  defaultValue={row.catCharge}
-                  onBlur={(e) => handleUpdate(e, "catCharge")}
-                  // onChange={(e) => setCharge(e.target.value)}
-                />
-              </span>
-            </p>
-            <p>
-              <label className="font-semibold">Description </label>
-              <textarea
-                cols={20}
-                rows={5}
-                className="w-full border-2 px-2 py-1"
-                disabled={isUpdating}
-                id={catDescription}
-                defaultValue={row.catDescription}
-                onBlur={(e) => handleUpdate(e, "catDescription")}
-                // onChange={(e) => setDescription(e.target.value)}
-              />
-            </p>
-            <p className="text-center">
-              <MyButton type="primary">
-                <Modal.Close>Submit</Modal.Close>
-              </MyButton>
-            </p>
-          </div>
-        </div>
-      </Modal.Window>
 
+      {isLoadingCat ? (
+        <div className="inset-0 ">
+          {" "}
+          <Loader />
+        </div>
+      ) : (
+        <Modal.Window name="edit">
+          <form onSubmit={handleSubmit}>
+            <div className="w-[300px] overflow-y-auto border-2 md:w-[600px] lg:w-[800px]">
+              <p className=" bg-black px-5 py-2 text-white">EDIT CATEGORY</p>
+              <div className="space-y-3 p-5">
+                <p>
+                  <label className="font-semibold">Name </label>{" "}
+                  <span>
+                    <input
+                      className="w-full border-2 px-2 py-1"
+                      type="text"
+                      disabled={isUpdating}
+                      id={catName}
+                      defaultValue={row.catName}
+                      // onBlur={(e) => handleUpdate(e, "catName", row.id)}
+
+                      onChange={(e) => handleChange(e, "catName", row.id)}
+                    />
+                  </span>
+                </p>
+                <p>
+                  <label className="font-semibold">Charge </label>
+                  <span>
+                    <input
+                      className="w-full border-2 px-2 py-1"
+                      type="text"
+                      disabled={isUpdating}
+                      id={catCharge}
+                      defaultValue={row.catCharge}
+                      // onBlur={(e) => handleUpdate(e, "catCharge", row.id)}
+
+                      onChange={(e) => handleChange(e, "catCharge", row.id)}
+                    />
+                  </span>
+                </p>
+                <p>
+                  <label className="font-semibold">Description </label>
+                  <textarea
+                    cols={20}
+                    rows={5}
+                    className="w-full border-2 px-2 py-1"
+                    disabled={isUpdating}
+                    id={catDescription}
+                    defaultValue={row.catDescription}
+                    // onBlur={(e) => handleUpdate(e, "catDescription", row.id)}
+
+                    onChange={(e) => handleChange(e, "catDescription", row.id)}
+                  />
+                </p>
+                <p className="text-center">
+                  <MyButton type="primary">
+                    {/* <Modal.Close>Submit</Modal.Close> */}
+                    submit
+                  </MyButton>
+                </p>
+              </div>
+            </div>
+          </form>
+        </Modal.Window>
+      )}
       <Modal.Window name="delete">
         <div className="w-[300px] overflow-y-auto border-2 md:w-[600px] lg:w-[800px]">
           <p className="mt-0 bg-black px-5 py-3 text-white">

@@ -9,7 +9,8 @@ import useAddCategories from "../../../features/admin/useAddCategories";
 import { useForm } from "react-hook-form";
 import useGetCategories from "../../../features/admin/useGetCategories";
 
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
+import dayjs from "dayjs";
 
 // export const data = [
 //   {
@@ -125,12 +126,7 @@ export default function AdminServiceCategories() {
         accessorKey: "created_at",
         header: "Date Added",
         size: 150,
-        Cell: ({ value }) => {
-          const date = new Date(value);
-          const formattedDate =
-            date.toLocaleDateString() + " " + date.toLocaleTimeString();
-          return formattedDate;
-        },
+        format: (value) => dayjs(value).format('hh:mma DD-MMM-YYYY'),
       },
     ],
     [],
@@ -238,12 +234,11 @@ export default function AdminServiceCategories() {
                         required: "Field is required",
                       })}
                     />
-                     <p className="text-red-500">
-
-                    {errors.catDescription && (
-                      <span>This field is required</span>
+                    <p className="text-red-500">
+                      {errors.catDescription && (
+                        <span>This field is required</span>
                       )}
-                      </p>
+                    </p>
                   </p>
                 </div>
 

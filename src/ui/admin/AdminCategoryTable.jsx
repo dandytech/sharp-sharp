@@ -38,12 +38,13 @@ export default function AdminCategoryTable({ data, columns }) {
     const doc = new jsPDF();
     doc.text("SHARP APP SERVICE CATEGORY LIST", 20, 10);
     doc.autoTable({
-      head: [["S/N", "Category", "Charge", "Description"]],
+      head: [["S/N", "Category", "Charge", "Description", "Date_Added"]],
       body: data.map((item) => [
         item.id,
-        item.name,
-        item.charge,
-        item.description,
+        item.catName,
+        item.catCharge,
+        item.catDescription,
+        item.created_at,
       ]),
     });
 

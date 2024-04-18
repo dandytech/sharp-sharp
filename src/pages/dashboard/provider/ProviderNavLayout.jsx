@@ -10,7 +10,7 @@ import { IoIosNotifications } from "react-icons/io";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 
-export default function NavbarLayout({ hideNav }) {
+export default function NavbarLayout({ hideNav, logout }) {
   const navigate = useNavigate();
 
   return (
@@ -105,7 +105,7 @@ export default function NavbarLayout({ hideNav }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={() => navigate("/")}>
+              <MyButton type="primary" onClick={logout}>
                 Yes
               </MyButton>
             </p>

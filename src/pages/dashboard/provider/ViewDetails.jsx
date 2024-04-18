@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 
 export default function ViewDetails({ row }) {
-  console.log(row);
+ // console.log(row);
   return (
     <Modal>
       <div>

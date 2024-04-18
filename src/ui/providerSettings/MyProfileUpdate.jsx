@@ -1,12 +1,12 @@
 import { useState } from "react";
 import MyButton from "../MyButton";
 
-export default function MyProfileUpdate() {
-  const [firstName, setFirstName] = useState("Prince");
-  const [lastName, setLastName] = useState("Daniel");
-  const [email, setEmail] = useState("prince@gmail.com");
-  const [phone, setPhone] = useState("+234 7065123746");
-  const [gender, setGender] = useState("Male");
+export default function MyProfileUpdate({ user }) {
+  const [firstName, setFirstName] = useState(user?.user_metadata?.fullName);
+  //const [lastName, setLastName] = useState("Daniel");
+  const [email, setEmail] = useState(user?.user_metadata?.email);
+  const [phone, setPhone] = useState(user?.user_metadata?.phone);
+  const [gender, setGender] = useState(user?.user_metadata?.gender);
   const [address, setAddress] = useState("2 Metalbox Rd, Ikeja");
 
   const handleSubmitForm = (e) => {
@@ -26,7 +26,7 @@ export default function MyProfileUpdate() {
 
             <div className="justify-between text-left lg:flex ">
               <div>
-                <p className="font-light">First Name</p>
+                <p className="font-light">Full Name</p>
                 <input
                   type="text"
                   value={firstName}
@@ -35,7 +35,7 @@ export default function MyProfileUpdate() {
                 />
               </div>
 
-              <div className="mt-2  lg:text-right">
+              {/* <div className="mt-2  lg:text-right">
                 <p className="font-light">Last Name</p>
                 <input
                   type="text"
@@ -43,7 +43,7 @@ export default function MyProfileUpdate() {
                   className="w-[100%] rounded-lg border-2 border-blue-500 bg-gray-800 px-3 py-1 text-white lg:w-[300px]"
                   onChange={(e) => setLastName(e.target.value)}
                 />
-              </div>
+              </div> */}
             </div>
 
             <div className="justify-between text-left lg:flex ">

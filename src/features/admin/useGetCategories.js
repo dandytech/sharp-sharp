@@ -7,9 +7,10 @@ export default function useGetCategories() {
     data: serviceCategories,
     error,
   } = useQuery({
-    // queryKey: ["serviceCategories"],
+    queryKey: ["serviceCategories"],
     queryFn: getCategories,
   });
 
+  
   return { isLoadingCat, serviceCategories, error };
 }

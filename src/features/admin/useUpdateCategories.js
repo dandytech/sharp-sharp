@@ -6,31 +6,19 @@ export function useUpdateCategories() {
   const queryClient = useQueryClient();
 
   //edit category using useMutation
-  const { mutate: updateCategoryMutation, isLoading: isUpdating } = useMutation(
-    {
-      mutationFn: updateCategoryApi,
-      onSuccess: () => {
-        toast.success("Category Updated Successfully");
+  const { mutate: updateCategory, isLoading: isUpdating } = useMutation({
+    mutationFn: updateCategoryApi,
+    onSuccess: () => {
+      toast.success("Category Updated Successfully");
 
-        //reload immediately after update
-        queryClient.invalidateQueries(["serviceCategories"]);
-      },
-
-      onError: (err) => {
-        toast.error(err.message);
-      },
+      //reload immediately after update
+      queryClient.invalidateQueries(["serviceCategories"]);
     },
-  );
 
-  // Function to update a category
-  async function updateCategory(id, obj) {
-    try {
-      await updateCategoryMutation({ id, obj });
-    } catch (error) {
-      console.error("Error updating category:", error);
-      toast.error("Category could not be updated");
-    }
-  }
+    onError: (err) => {
+      toast.error(err.message);
+    },
+  });
 
   return { updateCategory, isUpdating };
 }

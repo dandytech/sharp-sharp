@@ -4,10 +4,32 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { NavLink, useNavigate } from "react-router-dom";
 import Modal from "../ui/Modal";
 import MyButton from "../ui/MyButton";
+import useProvicerLogin from "../features/authentication/provider/useLoginProviderApi";
+import SpinnerMini from "../ui/SpinnerMini";
 
 export default function Login() {
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+  const { providerLogin, isLoading } = useProvicerLogin();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!email || !password) return;
+
+    providerLogin(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+      },
+    );
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -18,7 +40,7 @@ export default function Login() {
   return (
     <Modal>
       <div className="h-auto  bg-[url('/src/data/bg2.jpeg')] bg-cover bg-center bg-no-repeat pt-[100px]  lg:p-10 lg:py-0 lg:pt-0 ">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="m-auto justify-center p-5 pt-[10px] text-center shadow-2xl  md:w-[80%] lg:w-[70%] lg:p-10 lg:pt-20">
             {" "}
             <div className="m-auto h-auto w-[100%] rounded-2xl border-2 border-white px-3 pt-20  text-center lg:w-[50%] lg:px-10">
@@ -32,7 +54,9 @@ export default function Login() {
                 <input
                   type="email"
                   id="email"
-                  name="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className=" h-[45px] w-[100%] rounded-xl bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white lg:w-[90%] "
                   placeholder="Email"
                   required
@@ -48,7 +72,8 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   id="password"
-                  name="password"
+                  autoComplete="current-password"
+                  disabled={isLoading}
                   className=" h-[45px] w-[100%] bg-gray-800 px-5 font-semibold text-white focus:border-2 focus:border-white lg:w-[90%] "
                   placeholder="Password"
                   required
@@ -75,8 +100,8 @@ export default function Login() {
               </p>
 
               <p className="py-10 text-center">
-                <MyButton type="primary" onClick={() => navigate("/provider")}>
-                  Login
+                <MyButton type="primary" disabled={isLoading}>
+                  {!isLoading ? "Login" : <SpinnerMini />}
                 </MyButton>
               </p>
             </div>
@@ -84,7 +109,7 @@ export default function Login() {
         </form>
 
         <Modal.Window name="forgotpassword">
-          <form className="w-[290px] p-10 md:w-[400px] lg:w-[500px]">
+          <div className="w-[290px] p-10 md:w-[400px] lg:w-[500px]">
             <p className="text-center font-semibold">FORGOT PASSWORD?</p>
             <p className="py-7 text-center">
               <input
@@ -103,7 +128,7 @@ export default function Login() {
                 Submit
               </MyButton>
             </p>
-          </form>
+          </div>
         </Modal.Window>
       </div>
     </Modal>

@@ -23,30 +23,25 @@ export async function getCategories() {
   return data;
 }
 
-export async function updateCategoryApi(id, obj) {
-  try {
-    console.log("Updating category with id:", id);
-    console.log("Update payload:", obj);
 
-    const { data, error } = await supabase
-      .from("serviceCategories")
-      .update(obj)
-      .eq("id", id)
-      .select()
-      .single();
+export async function updateCategoryApi(obj) {
+  //console.log(obj.id);
+  const { data, error } = await supabase
+    .from("serviceCategories")
+    .update(obj)
+    .eq("id", obj.id)
+    .select()
+    .single();
 
-    if (error) {
-      console.log(error);
-      throw new Error("category could not be updated");
-    }
-
-    console.log("Category updated successfully:", data);
-    return data;
-  } catch (error) {
-    console.error("Error updating category:", error);
-    throw new Error("Category could not be updated");
+  if (error) {
+    console.log(error);
+    throw new Error("category could not be updated");
   }
+
+  return data;
 }
+
+
 
 export async function deleteCategoryApi(id) {
   // REMEMBER RLS POLICIES

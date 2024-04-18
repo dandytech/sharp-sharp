@@ -3,15 +3,15 @@ import { GrServices } from "react-icons/gr";
 import { IoSettingsSharp } from "react-icons/io5";
 import { MdOutlinePayments } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import logo from "../../../../src/data/logo.png";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 
-export default function NavbarMobileLayout({ hideNav }) {
-  const navigate = useNavigate();
+export default function NavbarMobileLayout({ hideNav, logout }) {
+ 
 
   return (
     <Modal>
@@ -125,7 +125,7 @@ export default function NavbarMobileLayout({ hideNav }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={() => navigate("/")}>
+              <MyButton type="primary" onClick={logout}>
                 Yes
               </MyButton>
             </p>
