@@ -388,9 +388,11 @@ export default function Services() {
           <div className="mb-5 hidden text-center lg:block">
             {" "}
             <Tooltip content="Let Service Providers bid for your service">
+
               <HashLink smooth to="/home#quoteform">
                 <MyButton type="primary"> Request A Quote</MyButton>
               </HashLink>
+              
             </Tooltip>
           </div>
           <div>

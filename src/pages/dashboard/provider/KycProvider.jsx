@@ -15,7 +15,7 @@ export default function KycProvider({ serviceColumns, providerServices }) {
     <div className="z-0 mt-5 rounded-xl border-2 p-5 py-5 text-center lg:py-10">
       {" "}
       <p className="mb-10 pt-0 text-center text-lg font-bold ">
-        Complete Your KYC As A Service Provider !!!
+        Complete Your KYC As Service Provider !!!
       </p>
       <div>
         <div className="tab-buttons">

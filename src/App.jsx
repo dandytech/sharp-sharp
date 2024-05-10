@@ -54,6 +54,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./ui/ProtectedRoute.jsx";
+import ProtectedRouteAdmin from "./ui/ProtectedRouteAdmin.jsx";
 
 //set up react-query with some options overitting them as needed
 const queryClient = new QueryClient({
@@ -133,9 +134,9 @@ export default function App() {
               <Route
                 path="admin"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRouteAdmin>
                     <AdminDashboardLayout />
-                  </ProtectedRoute>
+                  </ProtectedRouteAdmin>
                 }
               >
                 <Route index element={<Navigate replace to="dashboard" />} />

@@ -18,18 +18,12 @@ export default function DashbordLayout() {
     setHideMenu(!hideMenu);
   };
 
-  //retrieve Provider details using useGetProvider hook
-  const { user } = useGetProvider();
-
   //logout Query called
   const { logout, isLoading } = useLogout();
   return (
     <div className="bg-style flex  flex-col pb-[50px]">
       <div>
         <ProviderDashHeader
-          logout={logout}
-          isLoading={isLoading}
-          currentFullName={user?.user_metadata?.fullName}
           handleHideNav={handleHideNav}
           handleHideMenu={handleHideMenu}
         />
@@ -40,7 +34,11 @@ export default function DashbordLayout() {
             hideNav ? "w-[13%] p-10 " : "w-[4%] p-10"
           }`}
         >
-          <ProviderNavLayout hideNav={hideNav} logout={logout} />
+          <ProviderNavLayout
+            hideNav={hideNav}
+            logout={logout}
+            isLoading={isLoading}
+          />
         </div>
 
         <div className={`z-50 ${hideMenu ? "hidden" : "fixed"}`}>
@@ -48,6 +46,7 @@ export default function DashbordLayout() {
             hideNav={hideNav}
             handleHideNav={handleHideNav}
             logout={logout}
+            isLoading={isLoading}
           />
         </div>
 

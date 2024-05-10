@@ -5,7 +5,7 @@ import {
 
 import { GiExpand } from "react-icons/gi";
 import logo from "../../../../src/data/logo.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import DarkModeToggle from "../../../ui/DarkModeToggle";
 import { RxDropdownMenu } from "react-icons/rx";
 import { IoChevronDownSharp, IoSettingsSharp } from "react-icons/io5";
@@ -24,11 +24,15 @@ import { GrStatusGood } from "react-icons/gr";
 import { MdAvTimer } from "react-icons/md";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
+import { useGetProvider } from "../../../features/authentication/provider/useGetProvider";
+import { useLogout } from "../../../features/authentication/provider/useProviderLogout";
 
-export default function ProviderHeader({ handleHideNav, handleHideMenu, currentFullName, logout }) {
-  const navigate = useNavigate();
+export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
+  //retrieve Provider details Query using useGetProvider hook
+  const { user } = useGetProvider();
 
-  const userName = currentFullName;
+  //logout Query called
+  const { logout, isLoading } = useLogout();
 
   return (
     <Modal>
@@ -142,15 +146,24 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu, currentF
                 {" "}
                 <div className="flex items-center  justify-start gap-3">
                   {" "}
-                  <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border-2 ">
-                    <Avatar
-                      name={userName}
-                      color="black"
-                      size="40"
-                      className=" rounded-full"
-                    />
+                  <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border ">
+                    {!user?.user_metadata.avatar ? (
+                      <Avatar
+                        name={user?.user_metadata.fullName}
+                        color="black"
+                        size="40"
+                        className=" rounded-full"
+                      />
+                    ) : (
+                      <img
+                        src={user?.user_metadata.avatar}
+                        className="rounded-full"
+                      />
+                    )}
                   </span>
-                  <span className="text-[14px] lg:text-[18px]">{userName}</span>
+                  <span className="text-[14px] lg:text-[18px]">
+                    {user?.user_metadata.fullName}
+                  </span>
                   <span className="text-[15px]">
                     <IoChevronDownSharp />
                   </span>
@@ -196,7 +209,7 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu, currentF
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={logout}>
+              <MyButton type="primary" onClick={logout} disabled={isLoading}>
                 Yes
               </MyButton>
             </p>

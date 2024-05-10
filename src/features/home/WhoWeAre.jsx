@@ -1,6 +1,7 @@
 import CountUp from "react-countup";
 import ReactPlayer from "react-player";
 // import CountUp from "react-countup/build/CountUp";
+import "../../index.css" 
 
 export default function WhoWeAre() {
   return (
@@ -10,17 +11,13 @@ export default function WhoWeAre() {
         ho We Are?
       </div>
 
-      <div className="who m-auto block  gap-10 p-5 lg:flex lg:w-[70%]  ">
-        <div
-          data-aos="flip-right"
-          data-aos-duration="1000"
-          data-aos-easing="ease-in-sine"
-        >
-          <h1 className="border-l-2 border-blue-500 px-5 text-left text-[22px] font-extrabold  lg:text-[34px]">
+      <div className="who m-auto gap-10 p-5 lg:flex lg:w-[70%]">
+        <div data-aos="flip-right" data-aos-duration="1000">
+          <h1 className="border-l-2 border-blue-500 px-5 text-left text-[22px] font-extrabold  lg:text-[34px] mb-5 lg:mb-0">
             We Are Service Provider Agent, Ensuring That Clients Hire The Best,
             Affordable & Availble Service Providers!!!
           </h1>
-          <p className="px-5 text-justify">
+          <p className="px-5 text-justify mb-10 lg:mb-0">
             We Are Responsible and dedicated In Helping Individuals or Corporate
             Bodies To Get Best Out Of Their Income By Hiring The Best,
             Affordable and Available Service Provider Nearest & Fast for Their

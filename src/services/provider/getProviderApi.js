@@ -9,7 +9,7 @@ export async function getCurrentProvider() {
 
   if (error) throw new Error(error.message);
 
-  console.log(data, error);
+  //console.log(data, error);
   
   return data?.user;
 }

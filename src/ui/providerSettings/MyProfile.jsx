@@ -1,6 +1,5 @@
-import { CiEdit } from "react-icons/ci";
 import Modal from "../Modal";
-import MyProfileUpdate from "./MyProfileUpdate";
+
 import { CiCamera } from "react-icons/ci";
 import { useState } from "react";
 import { useEditProvider } from "../../features/authentication/provider/useEditProvider";
@@ -8,13 +7,12 @@ import MyButton from "../MyButton";
 import { useGetProvider } from "../../features/authentication/provider/useGetProvider";
 
 export default function MyProfile() {
- 
   //get provider deatils
-  const { user } = useGetProvider();
+  const { user, refetch } = useGetProvider();
 
   const [fullName, setFullName] = useState(user?.user_metadata?.fullName);
 
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState(null); // null to prevent loss when other fields are updated with out avatar
   const [phone, setPhone] = useState(user?.user_metadata?.phone);
   const [resAddress, setResAddress] = useState(user?.user_metadata?.resAddress);
 
@@ -25,20 +23,18 @@ export default function MyProfile() {
 
     if (!user?.user_metadata.fullName) return;
 
-    updateProvider(
-      {
-        fullName,
-        avatar,
-        phone,
-        resAddress,
+    const payload = {
+      fullName: fullName,
+      avatar: avatar,
+      phone: phone,
+      resAddress: resAddress,
+    };
+    //console.log(payload);
+    updateProvider(payload, {
+      onSuccess: () => {
+        refetch; //Clear the fields
       },
-      {
-        onSuccess: () => {
-          setAvatar(null);
-          e.target.reset(); //Clear the fields
-        },
-      },
-    );
+    });
   }
 
   function handleClear(e) {
@@ -48,6 +44,8 @@ export default function MyProfile() {
     setPhone(user?.user_metadata?.phone);
     setResAddress(user?.user_metadata?.resAddress);
   }
+  const inputStyle =
+    "border hover:border-blue-500 py-1 w-full rounded-md px-1 border-stone-300 bg-white";
 
   return (
     <form onSubmit={handleSubmit}>
@@ -57,9 +55,14 @@ export default function MyProfile() {
 
           <div className="grid items-center justify-center gap-3  border-gray-300 p-5 lg:flex   lg:justify-start lg:p-10">
             <div className="relative z-0 grid h-[100px] w-[100px] items-center justify-center rounded-full bg-black text-[30px] text-white">
-              <spam>{user?.user_metadata?.avatar}</spam>
+              <spam>
+                <img
+                  src={user?.user_metadata?.avatar}
+                  className="w-full rounded-full"
+                />
+              </spam>
 
-              <span className="absolute bottom-0 right-0 z-50 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-[22px] text-black">
+              <span className="absolute bottom-[-20px] right-[-5px] z-50 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-[22px] text-black">
                 <CiCamera />
                 <input
                   className="absolute opacity-0"
@@ -80,8 +83,8 @@ export default function MyProfile() {
             </div>
           </div>
 
-          <div className="border-t-2 border-gray-300 p-3 lg:p-10">
-            <div className="mb-5 flex items-center justify-between gap-1 font-semibold">
+          <div className="border-t-2 border-gray-300 py-3 lg:p-10">
+            <div className="mb-5 flex items-center justify-between gap-1 font-semibold lg:w-[70%]">
               <p>Personal Information</p>
               {/* <Modal.Open opens="profile">
                 <button className="flex items-center">
@@ -103,10 +106,10 @@ export default function MyProfile() {
             </div>
 
             <div className="justify-between text-left lg:flex lg:w-[70%]">
-              <div>
+              <div className="w-[100%]">
                 <p className="font-light">Full Name</p>
                 <input
-                  className="border border-stone-300 bg-white"
+                  className={inputStyle}
                   id="fullName"
                   type="text"
                   value={fullName}
@@ -120,12 +123,12 @@ export default function MyProfile() {
             </div> */}
             </div>
 
-            <div className="justify-between text-left lg:flex lg:w-[70%]">
-              <div className="mt-2 ">
+            <div className="justify-between gap-5 py-1 text-left lg:flex lg:w-[70%]">
+              <div className="mt-2 lg:w-[50%] ">
                 <p className="font-light">Email</p>
                 <span>
                   <input
-                    className="border border-stone-300 bg-white"
+                    className={inputStyle}
                     id="email"
                     type="text"
                     value={user?.user_metadata.email}
@@ -133,12 +136,12 @@ export default function MyProfile() {
                   />
                 </span>
               </div>
-              <div className="mt-2  lg:text-right ">
+              <div className="mt-2  lg:w-[50%] lg:text-right ">
                 <p className="font-light">Phone</p>
                 <span>
                   {" "}
                   <input
-                    className="border border-stone-300 bg-white"
+                    className={inputStyle}
                     id="phone"
                     type="text"
                     value={phone}
@@ -149,13 +152,13 @@ export default function MyProfile() {
               </div>
             </div>
 
-            <div className="justify-between text-left lg:flex lg:w-[70%]">
-              <div className="mt-2 ">
+            <div className="justify-between gap-5 py-1 text-left lg:flex lg:w-[70%]">
+              <div className="mt-2 lg:w-[50%]">
                 <p className="font-light">Gender</p>
                 <span>
                   {" "}
                   <input
-                    className="border border-stone-300 bg-white"
+                    className={inputStyle}
                     id="gender"
                     type="text"
                     value={user?.user_metadata?.gender}
@@ -164,12 +167,12 @@ export default function MyProfile() {
                 </span>
               </div>
 
-              <div className="mt-2  lg:text-right">
+              <div className="mt-2  lg:w-[50%] lg:text-right">
                 <p className="font-light">Residential Address</p>
                 <span>
                   {" "}
                   <input
-                    className="border border-stone-300 bg-white"
+                    className={inputStyle}
                     id="resAddress"
                     type="text"
                     value={resAddress}

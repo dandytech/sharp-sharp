@@ -19,7 +19,7 @@
     overflow-x: hidden !important;
     padding: 0;
   }
-  .overflow-hidden{
+  .overflow-hidden {
     overflow: hidden !important;
   }
   @media (min-width: 640px) {
@@ -193,4 +193,10 @@
   background-color: rgb(18, 17, 17);
   height: 45px;
   border-radius: 10px;
+}
+
+@media screen and (width: 1280px) {
+  .who {
+    display: block !important;
+  }
 }

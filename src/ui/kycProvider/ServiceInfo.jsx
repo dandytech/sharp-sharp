@@ -4,76 +4,116 @@ import Table from "../../pages/dashboard/provider/Table";
 import MyButton from "../MyButton";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useEditProvider } from "../../features/authentication/provider/useEditProvider";
+import { useGetProvider } from "../../features/authentication/provider/useGetProvider";
 
 export default function ServiceInfo({
   handleTabClick,
   serviceColumns,
-  providerServices,
+  //providerServices,
 }) {
- 
   const [show, setShow] = useState(false);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
 
-  const [services, setServices] = useState(providerServices);
+  const [serviceName, setName] = useState("");
+  const [servicePrice, setPrice] = useState("");
+  const [serviceDescription, setDescription] = useState("");
 
-  const handleShow = () => {
+  //const [services, setServices] = useState(providerServices);
+
+  //get Provider's detail hook
+  const { user, refetch } = useGetProvider();
+
+  const handleShow = (e) => {
+    e.preventDefault();
+
     setShow(!show);
   };
 
   const handleNext = (e) => {
     e.preventDefault();
 
-    if (name === " " || price === "" || description === "")
-      alert("Fill All the Fields");
+    if (!servicePrice || !servicePrice || !serviceDescription)
+      toast.error("Fill All the Fields");
     else {
       handleTabClick(3);
     }
   };
 
-  let nextId = services.length;
-  const handleSave = (e) => {
+  // let nextId = services.length;
+  // const handleSave = (e) => {
+  //   e.preventDefault();
+  //   if (!serviceName || !servicePrice || !serviceDescription) {
+  //     toast.warning("All Fields are required 😃");
+  //   } else {
+  //     setServices([
+  //       ...services,
+  //       {
+  //         id: nextId + 1,
+  //         name: name,
+  //         price: price,
+  //         description: description,
+  //       },
+  //     ]);
+
+  //     // const id = crypto.randomUUID();
+  //     // const newService = {
+  //     //   id: id,
+  //     //   name,
+  //     //   price,
+  //     //   description,
+
+  //     // };
+  //     // handleAddService(newService);
+
+  //     setName("");
+  //     setPrice("");
+  //     setDescription("");
+
+  //     toast.success("Service Added Successfully ✅");
+  //     setShow(false);
+  //   }
+  // };
+
+  //update Provider's details hook
+  const { updateProvider, isUpdating } = useEditProvider();
+
+  //update function
+  function handleSubmit(e) {
     e.preventDefault();
-    if (!name || !price || !description) {
-      toast.warning("All Fields are required 😃");
-    } else {
-      setServices([
-        ...services,
-        {
-          id: nextId + 1,
-          name: name,
-          price: price,
-          description: description,
-        },
-      ]);
 
-      // const id = crypto.randomUUID();
-      // const newService = {
-      //   id: id,
-      //   name,
-      //   price,
-      //   description,
+    if (!user?.user_metadata.fullName) return;
 
-      // };
-      // handleAddService(newService);
+    const payload = {
+      services: {
+        serviceName: serviceName,
+        servicePrice: servicePrice,
+        serviceDescription: serviceDescription,
+      },
+    };
+    console.log(payload);
 
-      setName("");
-      setPrice("");
-      setDescription("");
-
-      toast.success("Service Added Successfully ✅");
-      setShow(false);
-    }
-  };
+    updateProvider(payload, {
+      onSuccess: () => {
+        refetch(); // Function to clear & trigger data refetching
+        handleTabClick(2);
+      },
+    });
+  }
 
   const input =
     "w-full bg-white px-3 py-2 font-semibold hover:border-blue-500 rounded-xl border-2 border-gray-300";
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
+      <p className="py-5">
+        <span className="font-extralight">Service Category:</span>
+        <span className="font-bold">
+          {" "}
+          {user?.user_metadata?.serviceCategory}
+        </span>
+      </p>
       <div className="mb-5 items-center justify-between md:mb-0 md:flex lg:mb-0 lg:flex">
-        <p className="mb-3 mt-20 flex text-[18px] font-semibold lg:text-lg xl:text-xl ">
+        <p className="md:text-md mb-3 mt-20 flex text-sm font-semibold lg:text-lg xl:text-xl ">
           Your Service Varieties Details
         </p>
 
@@ -92,12 +132,11 @@ export default function ServiceInfo({
                   {" "}
                   <input
                     type="text"
-                    id="servicetype"
-                    name="servicetype"
+                    id="serviceName"
                     className={input}
                     placeholder="Service Type"
-                    required
-                    value={name}
+                    disabled={isUpdating}
+                    value={serviceName}
                     onChange={(e) => setName(e.target.value)}
                   />
                 </span>
@@ -111,12 +150,11 @@ export default function ServiceInfo({
                 <span className="w-full">
                   <input
                     type="number"
-                    id="price"
-                    name="price"
+                    id="servicePrice"
                     className={input}
                     placeholder="6500"
-                    required
-                    value={price}
+                    disabled={isUpdating}
+                    value={servicePrice}
                     onChange={(e) => setPrice(e.target.value)}
                   />
                 </span>
@@ -132,10 +170,10 @@ export default function ServiceInfo({
                 <textarea
                   rows={5}
                   className={input}
-                  id="description"
-                  name="description"
+                  id="serviceDescription"
                   placeholder="Describe the Service You Offer"
-                  value={description}
+                  value={serviceDescription}
+                  disabled={isUpdating}
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </span>
@@ -144,7 +182,11 @@ export default function ServiceInfo({
           </div>
 
           <div className="mb-10 mt-5 flex lg:mt-5">
-            <MyButton type="primary" onClick={handleSave}>
+            <MyButton
+              type="primary"
+              onClick={handleSubmit}
+              disabled={isUpdating}
+            >
               {" "}
               Save Variety
             </MyButton>
@@ -162,10 +204,7 @@ export default function ServiceInfo({
         </div>
       )}
 
-      <span>
-        {" "}
-        <Table data={services} columns={serviceColumns} />
-      </span>
+      <span> {/* <Table data={services} columns={serviceColumns} /> */}</span>
 
       <ToastContainer
         position="top-center"
@@ -181,6 +220,6 @@ export default function ServiceInfo({
         transition:Bounce
         ToastContainer
       />
-    </div>
+    </form>
   );
 }

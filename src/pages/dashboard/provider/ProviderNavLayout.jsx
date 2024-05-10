@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 
 import { GrServices } from "react-icons/gr";
@@ -10,9 +10,7 @@ import { IoIosNotifications } from "react-icons/io";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 
-export default function NavbarLayout({ hideNav, logout }) {
-  const navigate = useNavigate();
-
+export default function NavbarLayout({ hideNav, logout, isLoading }) {
   return (
     <Modal>
       <div
@@ -105,7 +103,7 @@ export default function NavbarLayout({ hideNav, logout }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={logout}>
+              <MyButton type="primary" onClick={logout} disabled={isLoading}>
                 Yes
               </MyButton>
             </p>

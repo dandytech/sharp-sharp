@@ -177,10 +177,7 @@ export default function ClientDashboard() {
             </div>
           </Modal>
         ),
-
-
       },
-      
     ],
     [],
   );

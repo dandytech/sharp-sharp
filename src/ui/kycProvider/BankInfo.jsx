@@ -33,7 +33,7 @@
 //   },
 // ];
 
-const actType = [
+const actTypes = [
   {
     id: 1,
     name: "Savings",
@@ -51,16 +51,24 @@ const actType = [
 import { useEffect, useState } from "react";
 import MyButton from "../MyButton";
 
+import { useGetProvider } from "../../features/authentication/provider/useGetProvider";
+import { useEditProvider } from "../../features/authentication/provider/useEditProvider";
+import toast from "react-hot-toast";
+
 export default function BankInfo({ handleTabClick }) {
-  const [actno, setActno] = useState("");
-  const [actname, setActname] = useState("");
+  //get Provider's detail hook
+  const { user, refetch } = useGetProvider();
 
-  const [acttype, setActtype] = useState("Savings");
-  const [bankName, setBankName] = useState("");
+  const [bankName, setBankName] = useState(user?.user_metadata.bankName);
+  const [actNo, setActNo] = useState(user?.user_metadata.actNo);
+  const [actName, setActName] = useState(user?.user_metadata.actName);
+  const [bankActType, setActType] = useState(user?.user_metadata.actType);
 
-  //Phone number API
+  //update Provider's details hook
+  const { updateProvider, isUpdating } = useEditProvider();
+
+  //Bank act number API
   const [bank, setBank] = useState(null);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -86,43 +94,43 @@ export default function BankInfo({ handleTabClick }) {
     fetchData();
   }, []); // Empty dependency array means this effect will only run once, similar to componentDidMount
 
-  useEffect(() => {
-    if (actno.length >= 10) {
-      fetchBankInfo();
-    }
-  }, [actno]);
+  // useEffect(() => {
+  //   if (actNo.length >= 10) {
+  //     fetchBankInfo();
+  //   }
+  // }, [actNo]);
 
   //validate if Account Number exist
-  const fetchBankInfo = async () => {
-    try {
-      const response = await fetch(
-        `https://nubapi.com/api/verify?account_number=${actno}&bank_code=${bankName}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer piuMTZSsjy7Ce7gEvUEuaMZYYK7PEuxh4KEv7qTCc48e9c66",
-            "Content-Type": "application/json",
-          },
-        },
-      );
-      if (!response.ok) {
-        throw new Error("Account Doesn't exist");
-      }
+  // const fetchBankInfo = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://nubapi.com/api/verify?account_number=${actNo}&bank_code=${bankName}`,
+  //       {
+  //         headers: {
+  //           Authorization:
+  //             "Bearer piuMTZSsjy7Ce7gEvUEuaMZYYK7PEuxh4KEv7qTCc48e9c66",
+  //           "Content-Type": "application/json",
+  //         },
+  //       },
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Account Doesn't exist");
+  //     }
 
-      //console.log(actno);
-      //console.log(bankName);
+  //     //console.log(actno);
+  //     //console.log(bankName);
 
-      const data = await response.json();
-      console.log(data);
-      //console.log(data.account_name);
+  //     const data = await response.json();
+  //     console.log(data);
+  //     //console.log(data.account_name);
 
-      setActname(data.account_name);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     setActName(data.account_name);
+  //   } catch (error) {
+  //     setError(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -132,18 +140,42 @@ export default function BankInfo({ handleTabClick }) {
     return <p>Error: {error.message}</p>;
   }
 
-  const handleSubmit = (e) => {
+  //update function
+  function handleSubmit(e) {
     e.preventDefault();
 
-    if (actno === "" || actname === "" || bank === "" || acttype === "")
-      alert("All Fields Are Required");
-  };
+    if (!user?.user_metadata.fullName) return;
+
+    let toastShown = false; // Flag to track if toast has been shown
+
+    const payload = {
+      actName: actName,
+      actNo: actNo,
+      bankActType: bankActType,
+      bankName: bankName,
+    };
+    console.log(payload);
+
+    updateProvider(payload, {
+      onSuccess: () => {
+        refetch(); // Function to clear & trigger data refetching
+
+        // Check if toast has been shown already
+        if (!toastShown) {
+          setTimeout(() => {
+            toast.success("NOTE: ADMIN WILL VET YOUR DATA FOR APPROVAL");
+            toastShown = true; // Update flag to indicate toast has been shown
+          }, 5000);
+        }
+      },
+    });
+  }
 
   const input =
     "w-full bg-white px-3 py-2 font-semibold hover:border-blue-500 rounded-xl border-2 border-gray-300";
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div className="mt-10 gap-5 space-y-5 lg:flex lg:space-y-0">
         <div className="lg:w-[50%]">
           <label className="flex">Bank Name</label>
@@ -151,14 +183,13 @@ export default function BankInfo({ handleTabClick }) {
             <span className="w-full">
               <select
                 className={input}
-                id="service"
-                name="service"
-                required
+                id="bankName"
+                disabled={isUpdating}
                 value={bankName}
                 onChange={(e) => setBankName(e.target.value)}
               >
                 {bank?.map((item) => (
-                  <option value={item.code} key={item.slug}>
+                  <option value={item.name} key={item.slug}>
                     {item.name}
                   </option>
                 ))}
@@ -176,13 +207,12 @@ export default function BankInfo({ handleTabClick }) {
               {" "}
               <input
                 type="number"
-                id="actno"
-                name="actno"
+                id="actNo"
+                disabled={isUpdating}
                 className={input}
                 placeholder="Correct Account Number"
-                required
-                value={actno}
-                onChange={(e) => setActno(e.target.value)}
+                value={actNo}
+                onChange={(e) => setActNo(e.target.value)}
               />
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
@@ -198,13 +228,12 @@ export default function BankInfo({ handleTabClick }) {
               <input
                 type="text"
                 id="actname"
-                name="actname"
+                name="actName"
                 className={input}
                 placeholder="Account Name"
-                required
-                disabled
-                value={actname}
-                onChange={(e) => setActname(e.target.value)}
+                disabled={isUpdating}
+                value={actName}
+                onChange={(e) => setActName(e.target.value)}
               />
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
@@ -215,10 +244,14 @@ export default function BankInfo({ handleTabClick }) {
           <label className="flex">Account Type</label>
           <p className="flex items-center">
             <span className="w-full">
-              <select className={input} id="service" name="service" required>
-                value={acttype}
-                onChange={(e) => setActtype(e.target.value)}
-                {actType.map((type) => (
+              <select
+                className={input}
+                id="actType"
+                value={bankActType}
+                disabled={isUpdating}
+                onChange={(e) => setActType(e.target.value)}
+              >
+                {actTypes.map((type) => (
                   <>
                     <option key={type.id}>{type.name}</option>
                   </>
@@ -241,6 +274,6 @@ export default function BankInfo({ handleTabClick }) {
           Submit
         </MyButton>
       </div>
-    </div>
+    </form>
   );
 }

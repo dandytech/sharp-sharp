@@ -1,39 +1,128 @@
 import { supabase, supabaseUrl } from "../supabase";
 
 export async function updateCurrentUser({
+  //profile & Password
   password,
   fullName,
   avatar,
- 
+  phone,
+  gender,
+  resAddress,
+
+  //Kyc General info
+  orgName,
+  cacNo,
+  taxId,
+  utilityBill,
+  busPhone,
+  nin,
+  experience,
+  country,
+  state,
+  lga,
+  city,
+
+  //service Info
+  serviceName,
+  servicePrice,
+  serviceDescription,
+
+  //Bank Info
+  actName,
+  actNo,
+  bankActType,
+  bankName,
+
+  //kyc Approved
+  kyCApproved,
 }) {
-  //1. update password OR others
-  let updateData;
-  if (password) updateData = { password };
-  if (fullName) updateData = { data: { fullName } };
- 
-  const { data, error } = await supabase.auth.updateUser(updateData);
+  let updateData = {};
+  //profile & Password
+  if (password) updateData.password = password;
+  if (fullName) updateData.fullName = fullName;
+  if (phone) updateData.phone = phone;
+  if (gender) updateData.phone = gender;
+  if (resAddress) updateData.resAddress = resAddress;
+
+  //Kyc General info
+  if (orgName) updateData.orgName = orgName;
+  if (cacNo) updateData.cacNo = cacNo;
+  if (taxId) updateData.taxId = taxId;
+  if (busPhone) updateData.busPhone = busPhone;
+  if (nin) updateData.nin = nin;
+  if (experience) updateData.experience = experience;
+  if (country) updateData.country = country;
+  if (state) updateData.state = state;
+  if (lga) updateData.lga = lga;
+  if (city) updateData.city = city;
+
+  //service info
+  if (serviceName) updateData.serviceName = serviceName;
+  if (servicePrice) updateData.servicePrice = servicePrice;
+  if (serviceDescription) updateData.serviceDescription = serviceDescription;
+
+  //Bank Info
+  if (actName) updateData.actName = actName;
+  if (actNo) updateData.actNo = actNo;
+  if (bankActType) updateData.actType = bankActType;
+  if (bankName) updateData.bankName = bankName;
+
+  //kyc approved
+  if (kyCApproved) updateData.kyCApproved = kyCApproved;
+
+  const { data, error } = await supabase.auth.updateUser({
+    data: updateData,
+    password: updateData.password,
+  });
 
   if (error) throw new Error(error.message);
 
-  if (!avatar) return data;
+  if (!avatar && !utilityBill) return data;
 
-  //2. upload the avatar image, Note: set your supabase bucket and the policy
   const fileName = `avatar-${data.user.id}-${Math.random()}`;
+  const fileName2 = `utilityBill-${data.user.id}-${Math.random()}`;
 
-  const { error: storageError } = await supabase.storage
-    .from("avatars") //image bucket name in supabase
-    .upload(fileName, avatar);
+  const uploadPromises = [];
 
-  if (storageError) throw new Error(storageError.message);
+  if (avatar) {
+    uploadPromises.push(
+      supabase.storage.from("avatars").upload(fileName, avatar),
+    );
+  }
 
-  //3. Update avatar in the user
-  const { data: updatedUser, error: error2 } = await supabase.auth.updateUser({
-    data: {
-      //upload an image and get the url of the supabase avatar and then modify it as below
-      avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`,
-    },
-  });
+  if (utilityBill) {
+    uploadPromises.push(
+      supabase.storage.from("utilityBills").upload(fileName2, utilityBill),
+    );
+  }
 
-  if (error2) throw new Error(error2.message);
-  return updatedUser;
+  try {
+    await Promise.all(uploadPromises);
+
+    const updatedData = {};
+    if (avatar) {
+      const updatedAvatarUrl = `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`;
+      updatedData.avatar = updatedAvatarUrl;
+    }
+
+    if (utilityBill) {
+      const updatedUtilityBillUrl = `${supabaseUrl}/storage/v1/object/public/utilityBills/${fileName2}`;
+      updatedData.utilityBill = updatedUtilityBillUrl;
+    }
+
+    const { data: updatedUser, error: updateError } =
+      await supabase.auth.updateUser({
+        data: updatedData,
+      });
+
+    if (updateError) {
+      console.log(updateError, "update error");
+      throw new Error(updateError.message);
+    }
+
+    return updatedUser;
+  } catch (uploadError) {
+    console.log(uploadError, "upload error");
+    throw new Error(uploadError.message);
+  }
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import MyProfile from "../../../ui/providerSettings/MyProfile";
-import Security from "../../../ui/providerSettings/Security";
+import MyProfile from "../../../ui/adminSettings/MyProfile";
+import Security from "../../../ui/adminSettings/Security";
+
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 import { CiHome } from "react-icons/ci";

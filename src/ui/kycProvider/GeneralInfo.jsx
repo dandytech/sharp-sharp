@@ -1,41 +1,87 @@
 import { useState } from "react";
+import { useGetProvider } from "../../features/authentication/provider/useGetProvider";
+import SpinnerMini from "../../ui/SpinnerMini";
+import { useEditProvider } from "../../features/authentication/provider/useEditProvider";
+import MyButton from "../MyButton";
+import { FaRegEye } from "react-icons/fa6";
+import { Tooltip } from "@material-tailwind/react";
+
+//import { Country, State, City } from "country-state-city";
+
+import { Country, State, City } from "country-state-city";
 
 export default function GeneralInfo({ handleTabClick }) {
-  const [name, setName] = useState("");
-  const [cac, setCac] = useState("");
-  const [taxid, settaxid] = useState("");
-  const [address, setAddress] = useState("");
-  const [utility, setUtility] = useState("");
-  const [phone, setPhone] = useState("");
-  const [nin, setNin] = useState("");
-  const [servicecat, setServicecat] = useState("ICT");
-  const [expyr, setExpyr] = useState("");
-  const [service, setService] = useState("");
+  //get Provider's detail hook
+  const { user, refetch } = useGetProvider();
 
-  const handleNext = (e) => {
+  //console.log(user);
+  const [orgName, setorgName] = useState(user?.user_metadata?.orgName);
+  const [cacNo, setCacNo] = useState(user?.user_metadata?.cacNo);
+  const [taxId, setTaxId] = useState(user?.user_metadata?.taxId);
+  const [utilityBill, setUtilityBill] = useState(null);
+  const [busPhone, setBusPhone] = useState(user?.user_metadata?.busPhone);
+  const [nin, setNin] = useState(user?.user_metadata.nin);
+  const [experience, setExperience] = useState(user?.user_metadata?.experience);
+
+  const [country, setCountry] = useState(user?.user_metadata?.country);
+  const [state, setState] = useState(user?.user_metadata?.state);
+
+  const [lga, setLga] = useState(user?.user_metadata?.lga);
+  const [city, setCity] = useState(user?.user_metadata?.city);
+
+  //
+  const countries = Country.getAllCountries();
+
+  const states = State.getStatesOfCountry(country);
+
+  // const countryCode = Country.getCountryByCode(country);
+  // const c_code = countryCode.isoCode;
+  // console.log(c_code);
+
+  const cities = City.getCitiesOfCountry(country);
+
+  //console.log(countries);
+  //console.log(states);
+  console.log(cities);
+
+  //update Provider's details hook
+  const { updateProvider, isUpdating } = useEditProvider();
+
+  //update function
+  function handleSubmit(e) {
     e.preventDefault();
 
-    if (
-      name === "" ||
-      address === "" ||
-      utility === "" ||
-      phone === "" ||
-      nin === "" ||
-      servicecat === "" ||
-      expyr === "" ||
-      service === ""
-    ) {
-      alert("Fill the required * fields");
-    } else {
-      handleTabClick(2);
-    }
-  };
+    if (!user?.user_metadata.fullName) return;
 
-  const input =
+    const payload = {
+      orgName: orgName,
+      cacNo: cacNo,
+      taxId: taxId,
+      utilityBill: utilityBill,
+      busPhone: busPhone,
+      nin: nin,
+      experience: experience,
+      country: country,
+      state: state,
+      lga: lga,
+      city: city,
+    };
+
+    console.log(payload);
+
+    updateProvider(payload, {
+      onSuccess: () => {
+        refetch(); // Function call to clear & trigger data refetching
+        handleTabClick(2);
+      },
+    });
+  }
+
+  const inputStyle =
     "w-full bg-white px-3 py-2 font-semibold hover:border-blue-500 rounded-xl border-2 border-gray-300";
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div className="mt-10 gap-5 space-y-5 lg:flex lg:space-y-0">
         <div className="lg:w-[50%]">
           <label className="flex">Organizational Name</label>
@@ -43,12 +89,12 @@ export default function GeneralInfo({ handleTabClick }) {
             <span className="w-full">
               <input
                 type="text"
-                name="name"
-                required
-                className={input}
+                id="orgName"
+                className={inputStyle}
                 placeholder="Organization/Business Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={orgName}
+                onChange={(e) => setorgName(e.target.value)}
+                disabled={isUpdating}
               />
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
@@ -58,13 +104,12 @@ export default function GeneralInfo({ handleTabClick }) {
         <div className="lg:w-[50%]">
           <label className="flex">CAC No</label>
           <input
-            className={input}
-            id="cac"
-            name="caca"
-            label="caca"
+            className={inputStyle}
+            id="cacNo"
             placeholder="(CAC) Business Registration No"
-            value={cac}
-            onChange={(e) => setCac(e.target.value)}
+            value={cacNo}
+            onChange={(e) => setCacNo(e.target.value)}
+            disabled={isUpdating}
           />
         </div>
       </div>
@@ -75,40 +120,16 @@ export default function GeneralInfo({ handleTabClick }) {
           <p>
             {" "}
             <input
-              className={input}
-              id="taxid"
-              name="taxid"
-              label="taxid"
+              className={inputStyle}
+              id="taxId"
               placeholder="Tax ID"
-              value={taxid}
-              onChange={(e) => settaxid(e.target.value)}
+              value={taxId}
+              onChange={(e) => setTaxId(e.target.value)}
+              disabled={isUpdating}
             />
           </p>
         </div>
 
-        <div className="lg:w-[50%]">
-          <label className="flex">Residential Address</label>
-          <p className="flex items-center">
-            {" "}
-            <spam className="w-full">
-              {" "}
-              <input
-                type="text"
-                id="address"
-                name="address"
-                className={input}
-                placeholder="Your Residential Address"
-                required
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </spam>
-            <span className="mt-[-20px] text-[30px] text-red-600">*</span>
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0">
         <div className="lg:w-[50%]">
           <label className="flex">Utility Bill</label>
 
@@ -117,16 +138,43 @@ export default function GeneralInfo({ handleTabClick }) {
             <span className="w-full">
               {" "}
               <input
+                className={inputStyle}
+                id="utilityBill"
                 type="file"
-                id="utility"
-                name="utility"
-                className={input}
-                value={utility}
-                onChange={(e) => setUtility(e.target.value)}
+                accept="image/*"
+                onChange={(e) => setUtilityBill(e.target.files[0])}
+                disabled={isUpdating}
               />
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
+            {user?.user_metadata?.utilityBill && (
+              <Tooltip content="View Existing File">
+                <buntton
+                  className="cursor-pointer"
+                  onClick={() =>
+                    window.open(user?.user_metadata?.utilityBill, "_blank")
+                  }
+                >
+                  {" "}
+                  <FaRegEye />
+                </buntton>
+              </Tooltip>
+            )}{" "}
           </p>
+        </div>
+      </div>
+
+      <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0">
+        <div className="lg:w-[50%]">
+          <label className="flex"> Business Address</label>
+          <span className="w-full">
+            <input
+              type="text"
+              disabled
+              className={inputStyle}
+              value={!user ? <SpinnerMini /> : user?.user_metadata?.busAddress}
+            />
+          </span>
         </div>
 
         <div className="lg:w-[50%]">
@@ -136,13 +184,13 @@ export default function GeneralInfo({ handleTabClick }) {
             <span className="w-full">
               {" "}
               <input
-                className={input}
+                className={inputStyle}
                 type="text"
-                id="phone"
-                name="phone"
+                id="busPhone"
                 placeholder="Business Phone Number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={busPhone}
+                onChange={(e) => setBusPhone(e.target.value)}
+                disabled={isUpdating}
               />
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
@@ -159,36 +207,17 @@ export default function GeneralInfo({ handleTabClick }) {
               {" "}
               <input
                 type="text"
-                name="nin"
-                className={input}
+                className={inputStyle}
                 placeholder="NIN"
-                required
                 value={nin}
+                id="nin"
                 onChange={(e) => setNin(e.target.value)}
+                disabled={isUpdating}
               />
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
           </p>
         </div>
-
-        <div className="lg:w-[50%]">
-          <label className="flex">Service Category</label>
-          <span className="w-full">
-            <input
-              type="text"
-              disabled
-              id="servicecat"
-              name="servicecat"
-              className={input}
-              required
-              value={servicecat}
-              onChange={(e) => setServicecat(e.target.value)}
-            />
-          </span>
-        </div>
-      </div>
-
-      <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0">
         <div className="lg:w-[50%]">
           <label className="flex">Years Of Experience</label>
           <p className="flex items-center">
@@ -196,33 +225,20 @@ export default function GeneralInfo({ handleTabClick }) {
               {" "}
               <input
                 type="number"
-                id="expyr"
-                name="expyr"
-                className={input}
+                id="experience"
+                className={inputStyle}
                 placeholder="Years of Work Experience"
-                required
-                value={expyr}
-                onChange={(e) => setExpyr(e.target.value)}
+                value={experience}
+                onChange={(e) => setExperience(e.target.value)}
+                disabled={isUpdating}
               />
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
           </p>
         </div>
-        <div className="lg:w-[50%]">
-          <label className="flex"> Business Address</label>
-          <span className="w-full">
-            <input
-              type="text"
-              name="service"
-              disabled
-              className={input}
-              placeholder="2 metalbox rd, ikeja Lagos"
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-            />
-          </span>
-        </div>
       </div>
+
+      <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0"></div>
 
       <div className="mt-5 gap-5 space-y-5 lg:flex lg:space-y-0">
         <div className="lg:w-[50%]">
@@ -231,14 +247,18 @@ export default function GeneralInfo({ handleTabClick }) {
             <span className="w-full">
               {" "}
               <select
-                type="number"
-                id="expyr"
-                name="expyr"
-                className={input}
-                required
+                type="text"
+                id="country"
+                value={country}
+                className={inputStyle}
+                onChange={(e) => setCountry(e.target.value)}
+                disabled={isUpdating}
               >
-                <option>Nigeria</option>
-                <option>Ghana</option>
+                {countries.map((country) => (
+                  <option value={country.isoCode} key={country.name}>
+                    {country.name}
+                  </option>
+                ))}
               </select>
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
@@ -250,14 +270,18 @@ export default function GeneralInfo({ handleTabClick }) {
             <span className="w-full">
               {" "}
               <select
-                type="number"
-                id="expyr"
-                name="expyr"
-                className={input}
-                required
+                type="text"
+                id="state"
+                value={state}
+                className={inputStyle}
+                onChange={(e) => setState(e.target.value)}
+                disabled={isUpdating}
               >
-                <option>Lagos</option>
-                <option>Ebonyi</option>
+                <option value="">Select a state</option>
+                {states &&
+                  states.map((state) => (
+                    <option key={state.name}>{state.name}</option>
+                  ))}
               </select>
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
@@ -272,11 +296,12 @@ export default function GeneralInfo({ handleTabClick }) {
             <span className="w-full">
               {" "}
               <select
-                type="number"
-                id="expyr"
-                name="expyr"
-                className={input}
-                required
+                type="text"
+                id="lga"
+                value={lga}
+                className={inputStyle}
+                onChange={(e) => setLga(e.target.value)}
+                disabled={isUpdating}
               >
                 <option>Ikeja</option>
                 <option>Ikoyi</option>
@@ -291,27 +316,32 @@ export default function GeneralInfo({ handleTabClick }) {
             <span className="w-full">
               {" "}
               <select
-                type="number"
-                id="expyr"
-                name="expyr"
-                className={input}
-                required
+                type="text"
+                id="city"
+                className={inputStyle}
+                placeholder="City You Render Service"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                disabled={isUpdating}
               >
-                <option>Ogba</option>
-                <option>Orile</option>
+                <option value="">Select a City</option>
+                {cities &&
+                  cities.map((city) => (
+                    <option key={city.name}>{city.name}</option>
+                  ))}
               </select>
             </span>
             <span className="mt-[-20px] text-[30px] text-red-600">*</span>
           </p>
         </div>
       </div>
-
-      <button
-        className="my-5 rounded-full border-2 bg-blue-500 px-7 py-3 text-white hover:bg-black lg:my-20  "
-        onClick={handleNext}
-      >
-        Save & Continue
-      </button>
-    </div>
+      <p className="mt-5">
+        {" "}
+        <MyButton type="primary" onClick={handleSubmit} disabled={isUpdating}>
+          {" "}
+          Save & Continue
+        </MyButton>
+      </p>
+    </form>
   );
 }

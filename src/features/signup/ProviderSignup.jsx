@@ -61,6 +61,7 @@ import MyButton from "../../ui/MyButton";
 import useGetCategories from "../admin/useGetCategories";
 import { useProviderSignup } from "../authentication/provider/useSignup";
 import { useForm } from "react-hook-form";
+import SpinnerMini from "../../ui/SpinnerMini";
 
 export default function ProviderSignup() {
   const [showPassword, setShowPassword] = useState(false);
@@ -202,6 +203,9 @@ export default function ProviderSignup() {
               <span className={spanIcon}>
                 <MdOutlineHomeRepairService />
               </span>
+              {!serviceCategories ? (
+                  <SpinnerMini />
+                ) : (
               <select
                 className={input}
                 type="text"
@@ -212,12 +216,10 @@ export default function ProviderSignup() {
                 })}
               >
                 <option value="" disabled selected>
-                  SELECT CATEGORY
+                  SELECT SERVICE CATEGORY
                 </option>
 
-                {!serviceCategories ? (
-                  "Loading..."
-                ) : (
+              
                   <>
                     {serviceCategories &&
                       serviceCategories.map((serviceCategory) => (
@@ -228,9 +230,10 @@ export default function ProviderSignup() {
                         </>
                       ))}
                   </>
-                )}
+                
                 <option>Others</option>
               </select>
+                )}
               <span className=" text-red-500">
                 {errors?.serviceCategory?.message}
               </span>

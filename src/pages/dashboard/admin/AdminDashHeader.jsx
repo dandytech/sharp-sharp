@@ -25,13 +25,15 @@ import { MdAvTimer } from "react-icons/md";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 import { useLogout } from "../../../features/authentication/admin/useLogout";
-import { HiArrowRightOnRectangle } from "react-icons/hi2";
+
 import SpinnerMini from "../../../ui/SpinnerMini";
+import { useGetAdmin } from "../../../features/authentication/admin/useGetAdmin";
 
 export default function AdminDashHeader({ handleHideNav, hideNav }) {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
-  const userName = "Admin Hamzat";
+  //get provider deatils
+  const { user, refetch } = useGetAdmin();
 
   const { logout, isLoading } = useLogout();
 
@@ -160,14 +162,25 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
                 <div className="flex items-center justify-start gap-3">
                   {" "}
                   <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border-2 ">
-                    <Avatar
-                      name={userName}
-                      color="black"
-                      size="40"
-                      className=" rounded-full"
-                    />
+                    {user?.user_metadata?.avatar ? (
+                      <img
+                        src={user?.user_metadata?.avatar}
+                        alt="pic"
+                        width="100%"
+                        className="w-full rounded-full"
+                      />
+                    ) : (
+                      <Avatar
+                        name={user?.user_metadata?.fullName}
+                        color="black"
+                        size="40"
+                        className=" rounded-full"
+                      />
+                    )}
                   </span>
-                  <span className="text-[14px] lg:text-[18px]">{userName}</span>
+                  <span className="text-[14px] lg:text-[18px]">
+                    {user?.user_metadata?.fullName}
+                  </span>
                   <span className="text-[15px]">
                     <IoChevronDownSharp />
                   </span>

@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import {
   Table,
   TableBody,
@@ -26,155 +26,161 @@ import {
   MenuList,
   Tooltip,
 } from "@material-tailwind/react";
+import useGetProviders from "../../../features/admin/useGetProviders";
+import SpinnerMini from "../../../ui/SpinnerMini";
 
-const headers = [
-  { label: "SN", key: "id" },
-
-  { label: "Full Name", key: "fullname" },
-  { label: "Gender", key: "gender" },
-  { label: "Email", key: "email" },
-  { label: "Phone", key: "phone" },
-
-  { label: "Service Category", key: "servicecategory" },
-  { label: "Business Address", key: "businessaddress" },
-];
-
-export const providers = [
-  {
-    id: 1,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Nwankwo Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "ICT",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 2,
-    photo: "",
-    fullname: "Nwankwo Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "ICT",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 3,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Nwankwo Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "maintenance",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 4,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Nwankwo Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "ICT",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 5,
-    photo: "https://i.pravatar.cc/48?u=4442894364",
-    fullname: "Nwankwo Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "House Cleaning",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 6,
-    photo: "https://i.pravatar.cc/48?u=4443396764",
-    fullname: "henry Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "ICT",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 7,
-    photo: "https://i.pravatar.cc/48?u=4442296764",
-    fullname: "Sunday Kalu Daniel ",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "ICT",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 8,
-    photo: "",
-    fullname: "Mary Daniel Amaech",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "Kitchen",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 9,
-    photo: "https://i.pravatar.cc/48?u=4442116764",
-    fullname: "Marthina Kenn John",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "Maintain",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 10,
-    photo: "https://i.pravatar.cc/48?u=444896764",
-    fullname: "Paul Oke ",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "ICT",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 11,
-    photo: "",
-    fullname: "Ikenna Daniel Oni",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "ICT",
-    businessaddress: "2 metalbox rd",
-  },
-  {
-    id: 12,
-    photo: "https://i.pravatar.cc/48?u=4442896764",
-    fullname: "Obi Ola Amah",
-    gender: "Male",
-    email: "dannkwo@gmail.com",
-    phone: "+2347098787875",
-    utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
-    servicecategory: "ICT",
-    businessaddress: "2 metalbox rd",
-  },
-];
+// export const providers = [
+//   {
+//     id: 1,
+//     photo: "https://i.pravatar.cc/48?u=4442896764",
+//     fullname: "Nwankwo Daniel Amaech",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "ICT",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 2,
+//     photo: "",
+//     fullname: "Nwankwo Daniel Amaech",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "ICT",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 3,
+//     photo: "https://i.pravatar.cc/48?u=4442896764",
+//     fullname: "Nwankwo Daniel Amaech",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "maintenance",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 4,
+//     photo: "https://i.pravatar.cc/48?u=4442896764",
+//     fullname: "Nwankwo Daniel Amaech",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "ICT",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 5,
+//     photo: "https://i.pravatar.cc/48?u=4442894364",
+//     fullname: "Nwankwo Daniel Amaech",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "House Cleaning",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 6,
+//     photo: "https://i.pravatar.cc/48?u=4443396764",
+//     fullname: "henry Daniel Amaech",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "ICT",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 7,
+//     photo: "https://i.pravatar.cc/48?u=4442296764",
+//     fullname: "Sunday Kalu Daniel ",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "ICT",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 8,
+//     photo: "",
+//     fullname: "Mary Daniel Amaech",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "Kitchen",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 9,
+//     photo: "https://i.pravatar.cc/48?u=4442116764",
+//     fullname: "Marthina Kenn John",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "Maintain",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 10,
+//     photo: "https://i.pravatar.cc/48?u=444896764",
+//     fullname: "Paul Oke ",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "ICT",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 11,
+//     photo: "",
+//     fullname: "Ikenna Daniel Oni",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "ICT",
+//     businessaddress: "2 metalbox rd",
+//   },
+//   {
+//     id: 12,
+//     photo: "https://i.pravatar.cc/48?u=4442896764",
+//     fullname: "Obi Ola Amah",
+//     gender: "Male",
+//     email: "dannkwo@gmail.com",
+//     phone: "+2347098787875",
+//     utility: "https://dummyimage.com/600x400/000/fff&text=NEPA+Bill",
+//     servicecategory: "ICT",
+//     businessaddress: "2 metalbox rd",
+//   },
+// ];
 
 export default function Providers() {
+  const { providers: serviceProviders, isLoadingProvider } = useGetProviders();
+
+  console.log(serviceProviders);
+
+  const headers = [
+    { label: "SN", key: "id" },
+
+    { label: "Full Name", key: "fullname" },
+    { label: "Gender", key: "gender" },
+    { label: "Email", key: "email" },
+    { label: "Phone", key: "phone" },
+
+    { label: "Service Category", key: "servicecategory" },
+    { label: "Business Address", key: "busaddress" },
+  ];
+
   const columns = useMemo(
     () => [
       {
@@ -202,7 +208,7 @@ export default function Providers() {
       {
         accessorKey: "phone",
         header: "Phone",
-        size: 180,
+        size: 150,
       },
 
       {
@@ -211,7 +217,7 @@ export default function Providers() {
         size: 180,
       },
       {
-        accessorKey: "businessaddress",
+        accessorKey: "busaddress",
         header: "Business Address",
         size: 180,
       },
@@ -219,13 +225,19 @@ export default function Providers() {
     [],
   );
 
+  //  useEffect(() => {
+  //   if(serviceProviders){
+  //     setProvider(serviceProviders)
+  //   }
+  //  }, [serviceProviders])
+
   // Filter items based on the search input
-  const [data, setProvider] = useState(providers);
+  const [data, setProvider] = useState(serviceProviders);
   const [searchInput, setSearchInput] = useState("");
 
   const handleSearch = () => {
     if (searchInput !== "") {
-      const filteredItems = providers.filter(
+      const filteredItems = serviceProviders.filter(
         (item) =>
           item.fullname.toLowerCase().includes(searchInput.toLowerCase()) ||
           item.phone.toLowerCase().includes(searchInput.toLowerCase()) ||
@@ -256,7 +268,9 @@ export default function Providers() {
 
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-  const slicedData = data.slice(startIndex, endIndex);
+  const slicedData =
+    serviceProviders && serviceProviders.slice(startIndex, endIndex);
+  //console.log(slicedData, "this");
 
   //Download Table
   const downloadAsPDF = () => {
@@ -265,7 +279,7 @@ export default function Providers() {
     doc.autoTable({
       head: [
         [
-          "S/N",
+          "ID",
 
           "Full Name",
           "Gender",
@@ -276,16 +290,15 @@ export default function Providers() {
           "business Address",
         ],
       ],
-      body: providers.map((item) => [
+      body: serviceProviders?.map((item) => [
         item.id,
-
         item.fullname,
         item.gender,
         item.email,
         item.phone,
 
         item.servicecategory,
-        item.businessaddress,
+        item.busaddress,
       ]),
     });
 
@@ -293,6 +306,10 @@ export default function Providers() {
   };
 
   const navigate = useNavigate();
+
+  if (isLoadingProvider) {
+    return <SpinnerMini />;
+  }
 
   return (
     <div className="bg-style h-[100vh] overflow-y-auto px-5 pt-[70px] text-center lg:w-[84%] lg:pr-10 ">
@@ -361,7 +378,7 @@ export default function Providers() {
         <Table className="bg-style">
           <TableHead className="border-t-2 border-l-gray-500 border-r-gray-500 border-t-gray-500">
             <TableRow className="bg-gray-style font-bold ">
-              {columns.map((column, colIndex) => (
+              {columns?.map((column, colIndex) => (
                 <TableCell key={colIndex} className="bg-style font-bold">
                   <span className="font-bold"> {column.header}</span>
                 </TableCell>
@@ -373,11 +390,13 @@ export default function Providers() {
           </TableHead>
 
           <TableBody>
-            {slicedData.map((row, index) => (
+            {slicedData?.map((row, index) => (
               <TableRow key={index}>
                 {columns.map((column, colIndex) => (
                   <TableCell className="bg-style" key={colIndex}>
-                    {row[column.accessorKey]}
+                    {column.accessorKey === "id"
+                      ? index + 1
+                      : row[column.accessorKey]}
                   </TableCell>
                 ))}
 
@@ -390,7 +409,7 @@ export default function Providers() {
           className="bg-style"
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={providers.length}
+          count={serviceProviders?.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

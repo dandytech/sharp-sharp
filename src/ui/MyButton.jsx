@@ -13,7 +13,7 @@ export default function MyButton({ children, disabled, to, type, onClick }) {
       "px-3 md:px-4 lg:px-5 bg-blue-500 rounded-full py-1.5 md:py-2 lg:py-2.5 hover:bg-black hover:text-white border-2 tracking-wide transition-colors focus:ring focus:ring-offsets-2 focus:outline-none disabled:cursor-not-allowed text-sm md:text-md lg:text-lg text-white",
 
     secondary:
-      "px-4 py-2.5 md:py-3.5 text-sm  md:px-6 foucus:ring-stone-200 inline-block rounded-full bg-stone-200 font-semibold uppercase tracking-wide transition-colors duration-300 hover:bg-stone-300 focus:outline-none focus:ring focus:ring-offset-2 disabled:cursor-not-allowed focus:text-stone-800 focus:text-stone-800 text-stone-400 border-2 border-stone-300 hover:text-stone-700",
+      "px-4 py-1 md:py-3.5 text-sm  md:px-6 foucus:ring-stone-200 inline-block rounded-full bg-stone-200 font-semibold uppercase tracking-wide transition-colors duration-300 hover:bg-stone-300 focus:outline-none focus:ring focus:ring-offset-2 disabled:cursor-not-allowed focus:text-stone-800 focus:text-stone-800 text-stone-400 border-2 border-stone-300 hover:text-stone-700",
   };
 
   if (to)

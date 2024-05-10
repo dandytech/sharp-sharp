@@ -12,20 +12,17 @@ const FullPage = styled.div`
   justify-content: center;
   background-color: var(--color-grey-50);
 `;
-export default function ProtectedRoute({ children }) {
+export default function ProtectedRouteAdmin({ children }) {
   const navigate = useNavigate();
 
   //1. Load the authenticated user
   const { isAuthenticated, isLoading, user } = useGetProvider();
 
-  console.log(user);
-  //console.log(user?.user_metadata?.userType);
-
   //2. if there is NO authenticated user, redirect to the /login
   useEffect(
     function () {
-      if (!isAuthenticated && !isLoading) navigate("/login");
-      if (user?.user_metadata?.userType === "admin") navigate("/admin/dashboard");
+      if (!isAuthenticated && !isLoading) navigate("/adminLogin");
+      if (user?.user_metadata?.userType === "provider") navigate("/provider/dashboard");
     },
     [isAuthenticated, isLoading, navigate, user],
   );

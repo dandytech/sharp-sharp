@@ -14,7 +14,7 @@ import Avatar from "react-avatar";
 export default function ViewClientKYC({ row }) {
   return (
     <Modal>
-      <div >
+      <div>
         <TableCell className="bg-style text-white">
           <Menu>
             <MenuHandler>
@@ -39,7 +39,7 @@ export default function ViewClientKYC({ row }) {
           </Menu>
         </TableCell>
         <Modal.Window name="providerkyc">
-          <div className="w-[300px] md:w-[600px] lg:w-[800px] overflow-y-auto">
+          <div className="w-[300px] overflow-y-auto md:w-[600px] lg:w-[800px]">
             <p className="mt-8 bg-black px-3 py-2 text-lg font-bold text-white">
               PROVIDER'S DETAILS{" "}
             </p>
@@ -49,9 +49,9 @@ export default function ViewClientKYC({ row }) {
               </p>
               <p>
                 <span>
-                  {row.photo ? (
+                  {row.avatar ? (
                     // If a photo exists, display the image
-                    <img src={row.photo} alt={`Photo of ${row.fullname}`} />
+                    <img src={row.avatar} alt={`Photo of ${row.fullname}`} />
                   ) : (
                     // If no photo exists, display an Avatar component
                     <Avatar
@@ -84,11 +84,11 @@ export default function ViewClientKYC({ row }) {
               </p>
               <p>
                 <span className="font-semibold">Home Address: </span>
-                <span></span>
+                <span>{row.resaddress}</span>
               </p>
               <p>
                 <span className="font-semibold ">Utility Bill: </span>
-                <button onClick={() => window.open(row.utility, "blank")}>
+                <button onClick={() => window.open(row.utilitybill, "blank")}>
                   <span className="flex items-center">
                     <Tooltip content="View Document">
                       <FaEye />
@@ -139,19 +139,19 @@ export default function ViewClientKYC({ row }) {
               </p>
               <p>
                 <span className="font-semibold">Bank: </span>
-                <span></span>
+                <span>{row.bankname}</span>
               </p>
               <p>
                 <span className="font-semibold">Bank Name: </span>
-                <span></span>
+                <span>{row.actname}</span>
               </p>
               <p>
                 <span className="font-semibold">Account Number: </span>
-                <span></span>
+                <span>{row.actno}</span>
               </p>
               <p>
                 <span className="font-semibold">Bank Type: </span>
-                <span></span>
+                <span>{row.acttype}</span>
               </p>
 
               <p className="flex items-center justify-between gap-2 pt-5">

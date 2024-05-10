@@ -10,9 +10,7 @@ import logo from "../../../../src/data/logo.png";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 
-export default function NavbarMobileLayout({ hideNav, logout }) {
- 
-
+export default function NavbarMobileLayout({ hideNav, logout, isLoading }) {
   return (
     <Modal>
       <div className="bg-style z-5 fixed left-0 mt-[88px] h-auto w-auto p-10 shadow-xl lg:hidden">
@@ -125,7 +123,7 @@ export default function NavbarMobileLayout({ hideNav, logout }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={logout}>
+              <MyButton type="primary" onClick={logout} disabled={isLoading}>
                 Yes
               </MyButton>
             </p>

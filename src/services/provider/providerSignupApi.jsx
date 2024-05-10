@@ -3,13 +3,16 @@ import { supabase } from "../supabase";
 export async function signupProviderApi({
   email,
   password,
-  userType,
+
   fullName,
   gender,
   busAddress,
   phone,
   serviceCategory,
   avatar,
+  userType,
+  resAddress,
+
   orgName,
   taxId,
   utilityBill,
@@ -21,26 +24,28 @@ export async function signupProviderApi({
   city,
   cacNo,
   actName,
-  bank,
+  bankName,
   bankActType,
-  resAddress,
   busPhone,
   serviceName,
   servicePrice,
   serviceDescription,
+  kycApproved,
 }) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
-        userType,
         fullName,
         gender,
         busAddress,
         phone,
         serviceCategory,
         avatar,
+        userType,
+        resAddress,
+
         orgName,
         taxId,
         utilityBill,
@@ -52,20 +57,20 @@ export async function signupProviderApi({
         city,
         cacNo,
         actName,
-        bank,
+        bankName,
         bankActType,
-        resAddress,
         busPhone,
-        servives: {
+        services: [{
           serviceName,
           servicePrice,
           serviceDescription,
-        },
+        }],
+        kycApproved,
       },
     },
   });
 
   if (error) throw new Error(error.message);
-
+  console.log(error.message);
   return data;
 }

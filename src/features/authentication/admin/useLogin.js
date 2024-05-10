@@ -10,11 +10,17 @@ export default function useAdminLogin() {
 
   const { mutate: adminLogin, isLoading } = useMutation({
     mutationFn: ({ email, password }) => apiAdminLogin({ email, password }),
+
     onSuccess: (user) => {
-      queryClient.setQueriesData(["user"], user.user);
-      toast.success("Login Successfully");
-      navigate("/admin", { replace: true });
+      if (user.user?.user_metadata.userType === "admin") {
+        queryClient.setQueriesData(["user"], user.user);
+        toast.success("Login Successfully");
+        navigate("/admin", { replace: true });
+      } else {
+        toast.error("Email or Password are incorrect");
+      }
     },
+
 
     onError: (err) => {
       console.log("ERROR", err);
