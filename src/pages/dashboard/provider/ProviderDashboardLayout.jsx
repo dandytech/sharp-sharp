@@ -34,7 +34,7 @@ export default function DashbordLayout() {
       <div className="flex gap-5">
         <div
           className={`hidden lg:block  ${
-            hideNav ? "w-[13%] p-10 " : "w-[4%] p-10"
+            hideNav ? "w-[13%] p-10 " : "w-[4%] p-12"
           }`}
         >
           <ProviderNavLayout
