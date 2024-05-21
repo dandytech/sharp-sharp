@@ -72,7 +72,7 @@ export default function NavbarLayout({ hideNav, logout, isLoading }) {
                   Payments
                 </NavLink>
               </div>
-              <div className="mb-8">
+              <div className="mb-10">
                 <NavLink to="notifications" activeClassName="active">
                   Notifications
                 </NavLink>
