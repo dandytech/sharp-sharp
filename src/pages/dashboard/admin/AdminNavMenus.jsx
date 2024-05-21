@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Card,
   Typography,
@@ -14,7 +13,7 @@ import {
 import { PowerIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import logo from "../../../../src/data/logo.png";
 import { MdDashboard, MdNotificationsNone } from "react-icons/md";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { RiServiceLine, RiUserSearchFill } from "react-icons/ri";
 import { GrBusinessService, GrUserAdmin } from "react-icons/gr";
 import { FcCustomerSupport } from "react-icons/fc";
@@ -24,7 +23,7 @@ import { CgProfile } from "react-icons/cg";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 import { FaQuestionCircle } from "react-icons/fa";
-import { useLogout } from "../../../features/authentication/admin/useLogout";
+//import { useLogout } from "../../../features/authentication/admin/useLogout";
 import SpinnerMini from "../../../ui/SpinnerMini";
 import { useLogoutAdmin } from "../../../features/admin/auth/useLogoutAdmin";
 

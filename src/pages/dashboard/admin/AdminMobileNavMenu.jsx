@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Card,
   Typography,
@@ -25,7 +24,7 @@ import MyButton from "../../../ui/MyButton";
 import { CgProfile } from "react-icons/cg";
 import { FaQuestionCircle } from "react-icons/fa";
 import SpinnerMini from "../../../ui/SpinnerMini";
-import { useLogout } from "../../../features/authentication/admin/useLogout";
+//import { useLogout } from "../../../features/authentication/admin/useLogout";
 import { useLogoutAdmin } from "../../../features/admin/auth/useLogoutAdmin";
 
 export default function AdminMobileNavMenus({ hideNav }) {

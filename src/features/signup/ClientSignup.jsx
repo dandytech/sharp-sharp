@@ -5,7 +5,7 @@ import { IoIosPhonePortrait } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 
 import "react-phone-number-input/style.css";

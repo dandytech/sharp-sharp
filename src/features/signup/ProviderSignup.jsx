@@ -49,17 +49,17 @@ import { MdOutlineAttachEmail } from "react-icons/md";
 import { IoIosPhonePortrait } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
-import { createRef, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import "react-phone-number-input/style.css";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
-import ReCAPTCHA from "react-google-recaptcha";
+//import ReCAPTCHA from "react-google-recaptcha";
 import MyButton from "../../ui/MyButton";
-import useGetCategories from "../admin/useGetCategories";
-import { useProviderSignup } from "../authentication/provider/useSignup";
+//import useGetCategories from "../admin/useGetCategories";
+//import { useProviderSignup } from "../authentication/provider/useSignup";
 import { useForm } from "react-hook-form";
 import SpinnerMini from "../../ui/SpinnerMini";
 import useGetCat from "../admin/serviceCat/useGetCat";

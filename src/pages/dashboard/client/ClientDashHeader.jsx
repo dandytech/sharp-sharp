@@ -11,7 +11,7 @@ import {
   IoIosNotificationsOutline,
 } from "react-icons/io";
 import { RxDropdownMenu } from "react-icons/rx";
-import { useNavigate } from "react-router";
+
 import { NavLink } from "react-router-dom";
 import DarkModeToggle from "../../../ui/DarkModeToggle";
 import Avatar from "react-avatar";

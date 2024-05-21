@@ -4,7 +4,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { NavLink, useNavigate } from "react-router-dom";
 import Modal from "../ui/Modal";
 import MyButton from "../ui/MyButton";
-import useProvicerLogin from "../features/authentication/provider/useLoginProviderApi";
+//import useProvicerLogin from "../features/authentication/provider/useLoginProviderApi";
 import SpinnerMini from "../ui/SpinnerMini";
 
 import { useClientLogin } from "../features/client/auth/useClientLogin";

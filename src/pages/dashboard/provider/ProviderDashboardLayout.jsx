@@ -3,8 +3,8 @@ import ProviderDashHeader from "./ProviderDashHeader";
 import ProviderNavLayout from "./ProviderNavLayout";
 import ProviderMobileNavLayout from "./ProviderMobileNavLayout";
 import { useState } from "react";
-import { useGetProvider } from "../../../features/authentication/provider/useGetProvider";
-import { useLogout } from "../../../features/authentication/provider/useProviderLogout";
+//import { useGetProvider } from "../../../features/authentication/provider/useGetProvider";
+//mport { useLogout } from "../../../features/authentication/provider/useProviderLogout";
 import { useLogoutClient } from "../../../features/client/auth/useLogoutClient";
 
 export default function DashbordLayout() {
