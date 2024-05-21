@@ -62,7 +62,7 @@ export default function NavbarLayout({ hideNav, logout, isLoading }) {
                 </NavLink>
               </div>
 
-              <div className="mb-8 ">
+              <div className="mb-10">
                 <NavLink to="services" activeClassName="active">
                   Service Requests
                 </NavLink>
