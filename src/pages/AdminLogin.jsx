@@ -8,32 +8,45 @@ import { NavLink } from "react-router-dom";
 import useAdminLogin from "../features/authentication/admin/useLogin";
 import SpinnerMini from "../ui/SpinnerMini";
 import { ToastContainer } from "react-toastify";
+import { useLoginAdmin } from "../features/admin/auth/useLoginAdmin";
 
 export default function adminLogin() {
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const { adminLogin, isLoading } = useAdminLogin();
+  //const { adminLogin, isLoading } = useAdminLogin();
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   if (!email || !password) return;
+
+  //   adminLogin(
+  //     { email, password },
+  //     {
+  //       onSettled: () => {
+  //         setEmail("");
+  //         setPassword("");
+  //       },
+  //     },
+  //   );
+  // };
+
+  const { adminLogin, isLoading } = useLoginAdmin();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!email || !password) return;
 
-    adminLogin(
-      { email, password },
-      {
-        onSettled: () => {
-          setEmail("");
-          setPassword("");
-        },
-      },
-    );
+    const payload = { email, password };
+    adminLogin(payload);
   };
 
   return (

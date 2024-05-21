@@ -26,13 +26,15 @@ import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 import { useGetProvider } from "../../../features/authentication/provider/useGetProvider";
 import { useLogout } from "../../../features/authentication/provider/useProviderLogout";
+import { useLogoutClient } from "../../../features/client/auth/useLogoutClient";
 
 export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
   //retrieve Provider details Query using useGetProvider hook
   const { user } = useGetProvider();
 
   //logout Query called
-  const { logout, isLoading } = useLogout();
+  //const { logout, isLoading } = useLogout();
+  const { clientLogout, isLoading } = useLogoutClient();
 
   return (
     <Modal>
@@ -209,7 +211,11 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={logout} disabled={isLoading}>
+              <MyButton
+                type="primary"
+                onClick={clientLogout}
+                disabled={isLoading}
+              >
                 Yes
               </MyButton>
             </p>

@@ -62,6 +62,8 @@ import useGetCategories from "../admin/useGetCategories";
 import { useProviderSignup } from "../authentication/provider/useSignup";
 import { useForm } from "react-hook-form";
 import SpinnerMini from "../../ui/SpinnerMini";
+import useGetCat from "../admin/serviceCat/useGetCat";
+import { useProviderRegister } from "../provider/auth/useRegisterProvider";
 
 export default function ProviderSignup() {
   const [showPassword, setShowPassword] = useState(false);
@@ -69,10 +71,15 @@ export default function ProviderSignup() {
   const [showcPassword, setShowcPassword] = useState(false);
   const [phoneNo, setPhone] = useState();
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   //service categories
-  const { serviceCategories, isLoadingCat } = useGetCategories();
+  //const { serviceCategories, isLoadingCat } = useGetCategories();
+  const { serviceCategories, isLoadingCat, error } = useGetCat();
+
+  if (error) {
+    console.log(error);
+  }
 
   //password visibility
   const togglePasswordVisibility = () => {
@@ -95,39 +102,62 @@ export default function ProviderSignup() {
   //   // Proceed with form submission
   // };
 
-  const { signupProvider, isLoading } = useProviderSignup();
+  //const { signupProvider, isLoading } = useProviderSignup();
 
+  const { signupProvider, isLoading } = useProviderRegister();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
 
-  const [userType, setUserType] = useState("provider");
+  //const [userType, setUserType] = useState("provider");
 
   const { errors } = formState;
 
+  // function onSubmit({
+  //   fullName,
+  //   email,
+  //   password,
+  //   gender,
+  //   busAddress,
+  //   phone,
+  //   serviceCategory,
+  //   userType,
+  // }) {
+  //   signupProvider(
+  //     {
+  //       fullName,
+  //       email,
+  //       password,
+  //       gender,
+  //       busAddress,
+  //       phone,
+  //       serviceCategory,
+  //       userType,
+  //     },
+  //     { onSettled: reset },
+  //   );
+  // }
+
   function onSubmit({
-    fullName,
+    name,
     email,
-    password,
+    phone_number,
     gender,
-    busAddress,
-    phone,
-    serviceCategory,
-    userType,
+    address,
+    category_id,
+    password,
   }) {
     signupProvider(
       {
-        fullName,
+        name,
         email,
-        password,
+        phone_number,
         gender,
-        busAddress,
-        phone,
-        serviceCategory,
-        userType,
+        address,
+        category_id: Number(category_id),
+        password,
       },
-      { onSettled: reset },
+      // { onSettled: reset },
     );
   }
-
   const spanIcon =
     "flex h-[45px] w-[10%]  items-center justify-center  border-r text-center text-[30px] text-white ";
 
@@ -145,7 +175,7 @@ export default function ProviderSignup() {
           <p className="pb-10 pt-0 text-center font-semibold text-white">
             Signup As A Service Provider !
           </p>
-          <p className="hidden">
+          {/* <p className="hidden">
             <input
               type="text"
               id="userType"
@@ -157,7 +187,7 @@ export default function ProviderSignup() {
               className={input}
               placeholder="UserType"
             />
-          </p>
+          </p> */}
           <div className="gap-10 lg:flex">
             <div className="mb-10 flex h-[50px] items-center rounded-xl border-2 border-blue-500 bg-gray-800 text-center text-white focus:border-white lg:mb-0 lg:w-[50%]">
               <span className={spanIcon}>
@@ -165,15 +195,15 @@ export default function ProviderSignup() {
               </span>
               <input
                 type="text"
-                id="fullName"
+                id="name"
                 disabled={isLoading}
-                {...register("fullName", {
+                {...register("name", {
                   required: "This field is required",
                 })}
                 className={input}
                 placeholder="Full Name"
               />
-              <span className=" text-red-500">{errors?.fullName?.message}</span>
+              <span className=" text-red-500">{errors?.name?.message}</span>
             </div>
 
             <div className={div}>
@@ -203,39 +233,41 @@ export default function ProviderSignup() {
               <span className={spanIcon}>
                 <MdOutlineHomeRepairService />
               </span>
-              {!serviceCategories ? (
-                  <SpinnerMini />
-                ) : (
-              <select
-                className={input}
-                type="text"
-                id="serviceCategory"
-                disabled={isLoading}
-                {...register("serviceCategory", {
-                  required: "This field is required",
-                })}
-              >
-                <option value="" disabled selected>
-                  SELECT SERVICE CATEGORY
-                </option>
+              {!serviceCategories || isLoadingCat ? (
+                <SpinnerMini />
+              ) : (
+                <select
+                  className={input}
+                  type="number"
+                  id="category_id"
+                  disabled={isLoading}
+                  {...register("category_id", {
+                    required: "This field is required",
+                  })}
+                >
+                  <option value="" disabled selected>
+                    SELECT SERVICE CATEGORY
+                  </option>
 
-              
                   <>
                     {serviceCategories &&
                       serviceCategories.map((serviceCategory) => (
                         <>
-                          <option key={serviceCategory.id}>
-                            {serviceCategory.catName}
+                          <option
+                            key={serviceCategory.id}
+                            value={serviceCategory.id}
+                          >
+                            {serviceCategory.name}
                           </option>
                         </>
                       ))}
                   </>
-                
-                <option>Others</option>
-              </select>
-                )}
+
+                  <option>Others</option>
+                </select>
+              )}
               <span className=" text-red-500">
-                {errors?.serviceCategory?.message}
+                {errors?.category_id?.message}
               </span>
               {/* {category == "Others" && (
                 <input
@@ -255,17 +287,15 @@ export default function ProviderSignup() {
               </span>
               <input
                 type="text"
-                id="busAddress"
+                id="address"
                 disabled={isLoading}
-                {...register("busAddress", {
+                {...register("address", {
                   required: "This field is required",
                 })}
                 className={input}
                 placeholder="Business Address"
               />
-              <span className=" text-red-500">
-                {errors?.busAddress?.message}
-              </span>
+              <span className=" text-red-500">{errors?.address?.message}</span>
             </div>
           </div>
           <div className="mt-10 gap-10 lg:flex">
@@ -301,9 +331,9 @@ export default function ProviderSignup() {
                   placeholder="Phone number"
                   country="NG"
                   defaultCountry="NG"
-                  id="phone"
+                  id="phone_number"
                   disabled={isLoading}
-                  {...register("phone", {
+                  {...register("phone_number", {
                     required: "This field is required",
                   })}
                   onChange={setPhone}
@@ -327,6 +357,7 @@ export default function ProviderSignup() {
                     : "invalid phone"}
                 </p>
               </span>
+
               <span className=" text-red-500">
                 {errors?.serviceCategory?.message}
               </span>

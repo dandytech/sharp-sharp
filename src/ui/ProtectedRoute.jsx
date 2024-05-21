@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useGetProvider } from "../features/authentication/provider/useGetProvider";
 import SpinnerMini from "./SpinnerMini";
+import { is } from "date-fns/locale";
 
 const FullPage = styled.div`
   height: 100vh;
@@ -15,29 +16,40 @@ const FullPage = styled.div`
 export default function ProtectedRoute({ children }) {
   const navigate = useNavigate();
 
-  //1. Load the authenticated user
-  const { isAuthenticated, isLoading, user } = useGetProvider();
+  const isLoggedIn = window.localStorage.getItem("client_token");
 
-  console.log(user);
-  //console.log(user?.user_metadata?.userType);
+  // //1. Load the authenticated user
+  // const { isAuthenticated, isLoading, user } = useGetProvider();
 
-  //2. if there is NO authenticated user, redirect to the /login
-  useEffect(
-    function () {
-      if (!isAuthenticated && !isLoading) navigate("/login");
-      if (user?.user_metadata?.userType === "admin") navigate("/admin/dashboard");
-    },
-    [isAuthenticated, isLoading, navigate, user],
-  );
+  // console.log(user);
+  // //console.log(user?.user_metadata?.userType);
 
-  //3. while loading, show spinner
-  if (isLoading)
-    return (
-      <FullPage>
-        <SpinnerMini />
-      </FullPage>
-    );
+  // //2. if there is NO authenticated user, redirect to the /login
+  // useEffect(
+  //   function () {
+  //     if (!isAuthenticated && !isLoading) navigate("/login");
+  //     if (user?.user_metadata?.userType === "admin") navigate("/admin/dashboard");
+  //   },
+  //   [isAuthenticated, isLoading, navigate, user],
+  // );
+
+  // //3. while loading, show spinner
+  // if (isLoading)
+  //   return (
+  //     <FullPage>
+  //       <SpinnerMini />
+  //     </FullPage>
+  //   );
 
   //4. if there is a user, render the app
-  if (isAuthenticated) return children;
+  useEffect(() => {
+    if(!isLoggedIn){
+      navigate('/login')
+    }
+  }, [])
+  if (!isLoggedIn) {
+    return;
+  }
+  //if (isAuthenticated) return children;
+  if (isLoggedIn) return children;
 }

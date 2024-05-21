@@ -11,6 +11,9 @@ import useGetCategories from "../../../features/admin/useGetCategories";
 
 import { format, parseISO } from "date-fns";
 import dayjs from "dayjs";
+import { useAddCategory } from "../../../features/admin/serviceCat/useAddCategory";
+import useGetCat from "../../../features/admin/serviceCat/useGetCat";
+import SpinnerMini from "../../../ui/SpinnerMini";
 
 // export const data = [
 //   {
@@ -81,21 +84,25 @@ export default function AdminServiceCategories() {
   // };
 
   //React Query to add
-  const { addCategory, isLoading } = useAddCategories();
+  //const { addCategory, isLoading } = useAddCategories();
+  const { addCategory, isLoading } = useAddCategory();
 
-  const { serviceCategories, isLoadingCat, error } = useGetCategories();
-  //console.log(serviceCategories);
+  //React Query to Get Categories
+  // const { serviceCategories, isLoadingCat, error } = useGetCategories();
+  const { serviceCategories, isLoadingCat, error } = useGetCat();
 
-  //console.log(getValues());
+  //console.log("cats", serviceCategories);
+
   if (error) {
     console.log(error);
   }
 
+  //add category useForm
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
-  function onSubmit({ catName, catCharge, catDescription }) {
-    addCategory({ catName, catCharge, catDescription }, { onSettled: reset });
+  function onSubmit({ name, price, description }) {
+    addCategory({ name, price, description }, { onSettled: reset() });
   }
 
   const columns = useMemo(
@@ -106,33 +113,46 @@ export default function AdminServiceCategories() {
         size: 10,
       },
       {
-        accessorKey: "catName", //access nested data with dot notation
+        accessorKey: "name", //access nested data with dot notation
         header: "Name",
         size: 170,
       },
       {
-        accessorKey: "catCharge",
+        accessorKey: "price",
         header: "Charge(%)",
         size: 150,
       },
 
       {
-        accessorKey: "catDescription",
+        accessorKey: "description",
         header: "Description",
         size: 200,
       },
 
       {
-        accessorKey: "created_at",
+        accessorKey: "createdAt",
         header: "Date Added",
         size: 150,
-        format: (value) => dayjs(value).format('hh:mma DD-MMM-YYYY'),
+        format: (value) => dayjs(value).format("hh:mma DD-MMM-YYYY"),
+      },
+      {
+        accessorKey: "updatedAt",
+        header: "Date Updated",
+        size: 150,
+        format: (value) => dayjs(value).format("hh:mma DD-MMM-YYYY"),
       },
     ],
     [],
   );
 
   const navigate = useNavigate();
+
+  if (isLoadingCat)
+    return (
+      <>
+        <SpinnerMini />
+      </>
+    );
 
   return (
     <div className="servicebg h-[100vh] overflow-y-auto px-5 pt-[80px] lg:w-[84%] lg:pr-10">
@@ -189,15 +209,15 @@ export default function AdminServiceCategories() {
                       type="text"
                       className="border-2-gray-200 w-full border-2 border-gray-100 px-3 py-1"
                       placeholder="Enter Category Name"
-                      id="catName"
+                      id="name"
                       disabled={isLoading}
-                      {...register("catName", {
+                      {...register("name", {
                         required: "Field is required",
                       })}
                     />
                     <p className="text-red-500">
                       {" "}
-                      {errors.catName && <span>This field is required</span>}
+                      {errors.name && <span>This field is required</span>}
                     </p>
                   </p>
                 </div>
@@ -208,14 +228,14 @@ export default function AdminServiceCategories() {
                       type="number"
                       className="border-2-gray-200 w-full border-2 border-gray-100 px-3 py-1"
                       placeholder="Enter Category Charge"
-                      id="catCharge"
+                      id="price"
                       disabled={isLoading}
-                      {...register("catCharge", {
+                      {...register("price", {
                         required: "Field is required",
                       })}
                     />
                     <p className="text-red-500">
-                      {errors.catCharge && <span>This field is required</span>}
+                      {errors.price && <span>This field is required</span>}
                     </p>
                   </p>
                 </div>
@@ -228,14 +248,14 @@ export default function AdminServiceCategories() {
                       rows={5}
                       className="border-2-gray-200 w-full border-2 border-gray-100 px-3 py-1"
                       placeholder="Enter Category Description"
-                      id="catDescription"
+                      id="description"
                       disabled={isLoading}
-                      {...register("catDescription", {
+                      {...register("description", {
                         required: "Field is required",
                       })}
                     />
                     <p className="text-red-500">
-                      {errors.catDescription && (
+                      {errors.description && (
                         <span>This field is required</span>
                       )}
                     </p>

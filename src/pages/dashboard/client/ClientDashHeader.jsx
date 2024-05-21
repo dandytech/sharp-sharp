@@ -24,9 +24,12 @@ import { GrStatusGood } from "react-icons/gr";
 import { MdAvTimer } from "react-icons/md";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
+import { useLogoutClient } from "../../../features/client/auth/useLogoutClient";
 
 export default function ClientDashHeader({ handleHideNav, hideNav }) {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
+
+  const { clientLogout, isLoading } = useLogoutClient();
 
   const userName = "Adeleke Hamzat";
 
@@ -200,7 +203,7 @@ export default function ClientDashHeader({ handleHideNav, hideNav }) {
         <Modal.Window name="logout">
           <div>
             {" "}
-            <p className="mb-5 mt-7 bg-black px-5 text-center font-semibold text-white py-1">
+            <p className="mb-5 mt-7 bg-black px-5 py-1 text-center font-semibold text-white">
               Logout !!!
             </p>
             <p className="px-5 pb-4 text-center">Are You Sure?</p>
@@ -209,7 +212,11 @@ export default function ClientDashHeader({ handleHideNav, hideNav }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={() => navigate("/")}>
+              <MyButton
+                type="primary"
+                disabled={isLoading}
+                onClick={clientLogout}
+              >
                 Yes
               </MyButton>
             </p>

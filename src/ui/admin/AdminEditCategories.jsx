@@ -19,27 +19,32 @@ import SpinnerMini from "../SpinnerMini";
 import { useState } from "react";
 import Close from "../../ui/Modal";
 import Loader from "../Loader";
+import { useUpdateCat } from "../../features/admin/serviceCat/useUpdateCat";
+import useGetCat from "../../features/admin/serviceCat/useGetCat";
+import { useDeleteCat } from "../../features/admin/serviceCat/useDeleteCat";
 
 export default function AdminEditCategories({ row, data }) {
-  
   //update Qury
-  const { updateCategory, isUpdating } = useUpdateCategories();
+  //const { updateCategory, isUpdating } = useUpdateCategories();
+
+  const { updateCategory, isUpdating } = useUpdateCat();
 
   //to use form submit once
   const [catInputs, setCatInputs] = useState({
-    catName: "",
-    catCharge: 0,
-    catDescription: "",
-    id: "",
+    name: row.name,
+    price: row.price,
+    description: row.description,
+    category_id: row.id,
   });
 
   const handleChange = (e, field, id) => {
     const { value } = e.target;
-    setCatInputs({ ...catInputs, [field]: value, id: id });
+    setCatInputs({ ...catInputs, [field]: value, category_id: id });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const filtered = Object.fromEntries(
       Object.entries(catInputs).filter(
         ([key, value]) => value !== "" && value !== 0,
@@ -63,13 +68,24 @@ export default function AdminEditCategories({ row, data }) {
   // }
 
   //DeleteQuery
-  const { deleteCategory, isDeletingCategory } = useDeleteCategory();
+  //const { deleteCategory, isDeletingCategory } = useDeleteCategory();
+
+  const { deleteCategory, isDeleting } = useDeleteCat();
 
   //get values
-  const {
-    isLoadingCat,
-    useGetCategories: { catName, catCharge, catDescription } = {},
-  } = useGetCategories();
+  // const {
+  //   isLoadingCat,
+  //   useGetCategories: { catName, catCharge, catDescription } = {},
+  // } = useGetCategories();
+  const delCat = (id) => {
+    const payload = {
+      category_id: id,
+    };
+    deleteCategory(payload);
+  };
+
+  const { isLoadingCat, useGetCategories: { name, price, description } = {} } =
+    useGetCat();
 
   if (isLoadingCat) return <SpinnerMini />;
 
@@ -114,11 +130,11 @@ export default function AdminEditCategories({ row, data }) {
                       className="w-full border-2 px-2 py-1"
                       type="text"
                       disabled={isUpdating}
-                      id={catName}
-                      defaultValue={row.catName}
+                      id={name}
+                      defaultValue={row.name}
                       // onBlur={(e) => handleUpdate(e, "catName", row.id)}
 
-                      onChange={(e) => handleChange(e, "catName", row.id)}
+                      onChange={(e) => handleChange(e, "name", row.id)}
                     />
                   </span>
                 </p>
@@ -129,11 +145,11 @@ export default function AdminEditCategories({ row, data }) {
                       className="w-full border-2 px-2 py-1"
                       type="text"
                       disabled={isUpdating}
-                      id={catCharge}
-                      defaultValue={row.catCharge}
+                      id={price}
+                      defaultValue={row.price}
                       // onBlur={(e) => handleUpdate(e, "catCharge", row.id)}
 
-                      onChange={(e) => handleChange(e, "catCharge", row.id)}
+                      onChange={(e) => handleChange(e, "price", row.id)}
                     />
                   </span>
                 </p>
@@ -144,17 +160,17 @@ export default function AdminEditCategories({ row, data }) {
                     rows={5}
                     className="w-full border-2 px-2 py-1"
                     disabled={isUpdating}
-                    id={catDescription}
-                    defaultValue={row.catDescription}
+                    id={description}
+                    defaultValue={row.description}
                     // onBlur={(e) => handleUpdate(e, "catDescription", row.id)}
 
-                    onChange={(e) => handleChange(e, "catDescription", row.id)}
+                    onChange={(e) => handleChange(e, "description", row.id)}
                   />
                 </p>
                 <p className="text-center">
-                  <MyButton type="primary">
+                  <MyButton type="primary" onClick={handleSubmit}>
                     {/* <Modal.Close>Submit</Modal.Close> */}
-                    submit
+                    <Modal.Close>Submit</Modal.Close>
                   </MyButton>
                 </p>
               </div>
@@ -169,22 +185,22 @@ export default function AdminEditCategories({ row, data }) {
           </p>
           <div className="space-y-2 p-5">
             <p>
-              <span className="font-semibold">Name: </span> {row.catName}
+              <span className="font-semibold">Name: </span> {row.name}
             </p>
             <p>
               <span className="font-semibold">Cahrge: </span>
-              {row.catCharge}
+              {row.price}
             </p>
             <p>
               <span className="font-semibold">Description </span>
-              <p>{row.catDescription}</p>
+              <p>{row.description}</p>
             </p>
             <p className="text-center">
               <button
                 className="mt-7 rounded-full bg-blue-500 px-5 py-2 text-center font-semibold text-white hover:bg-black"
-                disabled={isDeletingCategory}
+                disabled={isDeleting}
                 // resourceName="serviceCategories"
-                onClick={() => deleteCategory(row.id)}
+                onClick={() => delCat(row.id)}
               >
                 <Modal.Close>Delete</Modal.Close>
               </button>

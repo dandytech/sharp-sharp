@@ -17,9 +17,11 @@ import { FaCodePullRequest } from "react-icons/fa6";
 import { TbZoomMoney } from "react-icons/tb";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
+import { useLogoutClient } from "../../../features/client/auth/useLogoutClient";
 
 export default function ClientNavMenus({ hideNav }) {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
+  const { clientLogout, isLoading } = useLogoutClient();
 
   return (
     <Modal>
@@ -129,7 +131,11 @@ export default function ClientNavMenus({ hideNav }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={() => navigate("/")}>
+              <MyButton
+                disabled={isLoading}
+                type="primary"
+                onClick={clientLogout}
+              >
                 Yes
               </MyButton>
             </p>

@@ -28,6 +28,7 @@ import { useLogout } from "../../../features/authentication/admin/useLogout";
 
 import SpinnerMini from "../../../ui/SpinnerMini";
 import { useGetAdmin } from "../../../features/authentication/admin/useGetAdmin";
+import { useLogoutAdmin } from "../../../features/admin/auth/useLogoutAdmin";
 
 export default function AdminDashHeader({ handleHideNav, hideNav }) {
   //const navigate = useNavigate();
@@ -35,7 +36,9 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
   //get provider deatils
   const { user, refetch } = useGetAdmin();
 
-  const { logout, isLoading } = useLogout();
+  //const { logout, isLoading } = useLogout();
+
+  const { adminLogout, isLoading } = useLogoutAdmin();
 
   return (
     <Modal>
@@ -222,8 +225,9 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={logout}>
-                {!isLoading ? "Yes" : <SpinnerMini />}
+              <MyButton type="primary" onClick={adminLogout}>
+                {isLoading && <SpinnerMini />}
+                {!isLoading && "Yes"}
               </MyButton>
             </p>
           </div>

@@ -7,28 +7,25 @@ import MyButton from "../ui/MyButton";
 import useProvicerLogin from "../features/authentication/provider/useLoginProviderApi";
 import SpinnerMini from "../ui/SpinnerMini";
 
+import { useClientLogin } from "../features/client/auth/useClientLogin";
+
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const { providerLogin, isLoading } = useProvicerLogin();
+  //const { providerLogin, isLoading } = useProvicerLogin();
+
+  const { login_Client, isLoading } = useClientLogin();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!email || !password) return;
 
-    providerLogin(
-      { email, password },
-      {
-        onSettled: () => {
-          setEmail("");
-          setPassword("");
-        },
-      },
-    );
+    const payload = { email, password };
+    login_Client(payload);
   };
 
   const togglePasswordVisibility = () => {

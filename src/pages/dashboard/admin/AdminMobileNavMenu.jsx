@@ -11,14 +11,10 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import {
-
-  PowerIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/solid";
+import { PowerIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import logo from "../../../../src/data/logo.png";
 import { MdDashboard, MdNotificationsNone } from "react-icons/md";
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { RiServiceLine, RiUserSearchFill } from "react-icons/ri";
 import { GrBusinessService, GrUserAdmin } from "react-icons/gr";
 import { FcCustomerSupport } from "react-icons/fc";
@@ -30,11 +26,13 @@ import { CgProfile } from "react-icons/cg";
 import { FaQuestionCircle } from "react-icons/fa";
 import SpinnerMini from "../../../ui/SpinnerMini";
 import { useLogout } from "../../../features/authentication/admin/useLogout";
+import { useLogoutAdmin } from "../../../features/admin/auth/useLogoutAdmin";
 
 export default function AdminMobileNavMenus({ hideNav }) {
   const [open, setOpen] = React.useState(0);
 
-const {logout, isLoading}=useLogout()
+  //const {logout, isLoading}=useLogout()
+  const { adminLogout, isLoading } = useLogoutAdmin();
 
   //menu toggle function
   const handleOpen = (value) => {
@@ -306,8 +304,8 @@ const {logout, isLoading}=useLogout()
               <MyButton type="primary">
                 <Modal.Close>No</Modal.Close>
               </MyButton>
-              <MyButton type="primary" onClick={logout}>
-              {!isLoading ? "Yes" : <SpinnerMini />}
+              <MyButton type="primary" onClick={adminLogout}>
+                {!isLoading ? "Yes" : <SpinnerMini />}
               </MyButton>
             </p>
           </div>

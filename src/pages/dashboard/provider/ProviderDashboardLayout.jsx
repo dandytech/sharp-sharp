@@ -5,6 +5,7 @@ import ProviderMobileNavLayout from "./ProviderMobileNavLayout";
 import { useState } from "react";
 import { useGetProvider } from "../../../features/authentication/provider/useGetProvider";
 import { useLogout } from "../../../features/authentication/provider/useProviderLogout";
+import { useLogoutClient } from "../../../features/client/auth/useLogoutClient";
 
 export default function DashbordLayout() {
   const [hideNav, setHideNav] = useState(true);
@@ -19,7 +20,9 @@ export default function DashbordLayout() {
   };
 
   //logout Query called
-  const { logout, isLoading } = useLogout();
+  //const { logout, isLoading } = useLogout();
+
+  const { clientLogout: logout, isLoading } = useLogoutClient();
   return (
     <div className="bg-style flex  flex-col pb-[50px]">
       <div>

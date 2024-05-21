@@ -1,0 +1,42 @@
+import { useMutation } from "@tanstack/react-query";
+import { loginClient } from "../../../services/api/auth-api";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
+
+export function useClientLogin() {
+  const navigate = useNavigate();
+
+  const { mutate: login_Client, isLoading } = useMutation({
+    mutationFn: ({ email, password }) => loginClient({ email, password }),
+
+    onSuccess: (data) => {
+      // Store the token in local storage
+      // localStorage.setItem("authToken", data.token);
+
+      localStorage.setItem("client_token", data.token);
+
+      // Handle other success actions (e.g., navigate to dashboard)
+      console.log("Login successfully", data);
+      toast.success("Login was successful");
+
+      if (data.message.account_type === "client") {
+        navigate("/client", { replace: true });
+      } else if (data.message.account_type === "Service Provider") {
+        console.log("i got gere");
+        navigate("/provider", { replace: true });
+      } else {
+        toast.error("Account Doesn't exist");
+      }
+    },
+    onError: (error) => {
+      // Handle error (e.g., display error message)
+      console.error("Login failed:", error);
+      toast.error("Email or Password not correct");
+    },
+  });
+
+  return {
+    login_Client,
+    isLoading,
+  };
+}

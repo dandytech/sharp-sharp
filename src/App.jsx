@@ -55,6 +55,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 import ProtectedRouteAdmin from "./ui/ProtectedRouteAdmin.jsx";
+import ResendVerifyEmail from "./features/signup/ResendVerifyEmail.jsx";
 
 //set up react-query with some options overitting them as needed
 const queryClient = new QueryClient({
@@ -99,6 +100,9 @@ export default function App() {
               </Route>
 
               <Route path="verifyemail" element={<VerifyEmail />} />
+
+              <Route path="resendVerifyemail" element={<ResendVerifyEmail />} />
+
               <Route path="forgotpassword" element={<ForgotPassword />} />
 
               {/* Provider Dashboard */}
@@ -157,7 +161,14 @@ export default function App() {
               </Route>
 
               {/* Client Route */}
-              <Route path="client" element={<ClientDashLayout />}>
+              <Route
+                path="client"
+                element={
+                  <ProtectedRoute>
+                    <ClientDashLayout />
+                  </ProtectedRoute>
+                }
+              >
                 <Route index element={<Navigate replace to="dashboard" />} />
                 <Route path="dashboard" element={<ClientDashboard />} />
                 <Route path="requests" element={<Requests />} />

@@ -16,6 +16,8 @@ import "jspdf-autotable";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 
 export default function AdminCategoryTable({ data, columns }) {
+
+  console.log(data);
   //Pagination
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -33,18 +35,33 @@ export default function AdminCategoryTable({ data, columns }) {
   const endIndex = startIndex + rowsPerPage;
   const slicedData = data?.slice(startIndex, endIndex);
 
+  // Ensure data is an array before slicing or add fallback
+  // const slicedData = Array.isArray(data)
+  //   ? data.slice(startIndex, endIndex)
+  //   : [];
+
   //Download Table
   const downloadAsPDF = () => {
     const doc = new jsPDF();
-    doc.text("SHARP APP SERVICE CATEGORY LIST", 20, 10);
+    doc.text("SHARP APP SERVICE CATEGORIES", 20, 10);
     doc.autoTable({
-      head: [["S/N", "Category", "Charge", "Description", "Date_Added"]],
+      head: [
+        [
+          "S/N",
+          "Category",
+          "Charge",
+          "Description",
+          "Date_Added",
+          "Date_Updated",
+        ],
+      ],
       body: data.map((item) => [
         item.id,
-        item.catName,
-        item.catCharge,
-        item.catDescription,
-        item.created_at,
+        item.name,
+        item.price,
+        item.description,
+        item.createdAt,
+        item.updatedAt,
       ]),
     });
 
