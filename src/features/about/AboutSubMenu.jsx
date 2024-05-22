@@ -33,7 +33,7 @@ export default function AboutSubMenu() {
             className="block"
             onClick={() => navigate(about.route)}
           >
-            <NavLink to={about.route} className=" flex gap-2">
+            <NavLink to={about.route} className=" flex gap-5">
               {" "}
               <span> {about.icon}</span>
               <span>{about.name}</span>
