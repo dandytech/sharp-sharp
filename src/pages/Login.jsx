@@ -98,7 +98,8 @@ export default function Login() {
 
               <p className="py-10 text-center">
                 <MyButton type="primary" disabled={isLoading}>
-                  {!isLoading ? "Login" : <SpinnerMini />}
+                  {/* {!isLoading ? "Login" : <SpinnerMini />} */}
+                  Login
                 </MyButton>
               </p>
             </div>

@@ -64,6 +64,7 @@ import { useForm } from "react-hook-form";
 import SpinnerMini from "../../ui/SpinnerMini";
 import useGetCat from "../admin/serviceCat/useGetCat";
 import { useProviderRegister } from "../provider/auth/useRegisterProvider";
+import useGetCategories from "../provider/auth/useGetCategories";
 
 export default function ProviderSignup() {
   const [showPassword, setShowPassword] = useState(false);
@@ -75,7 +76,10 @@ export default function ProviderSignup() {
 
   //service categories
   //const { serviceCategories, isLoadingCat } = useGetCategories();
-  const { serviceCategories, isLoadingCat, error } = useGetCat();
+  //const { serviceCategories, isLoadingCat, error } = useGetCat();
+
+  const { serviceCategories, isLoadingCat, error } = useGetCategories();
+  console.log(serviceCategories);
 
   if (error) {
     console.log(error);

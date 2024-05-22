@@ -11,6 +11,22 @@ axios.defaults.headers.common["Authorization"] = "";
 //     .then((response) => response.data);
 // };
 
+// Function to retrieve the token (modify this according to your token storage method)
+const getToken = () => {
+  // Example: Retrieve token from localStorage
+  return localStorage.getItem("admin_token");
+};
+
+// Function to set the Authorization header
+const setAuthHeader = () => {
+  const token = getToken();
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  } else {
+    throw new Error("No valid token found");
+  }
+};
+
 export const registerClient = async (payload) => {
   try {
     const response = await axios.post(`${ENDPOINT.REGISTER_USER}`, payload);
@@ -119,4 +135,23 @@ export const logoutAdmin = async () => {
       },
     )
     .then((response) => response.data);
+};
+
+//Update Profile API
+
+// Admin Updtate Profile API using PUT request
+export const updateProfile = async (payload) => {
+  try {
+    // Set the Authorization header before making the request
+    setAuthHeader();
+
+    const response = await axios.post(`${ENDPOINT.PROFILE_UPDATE}`, payload);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(error.response.data.message);
+    } else {
+      throw new Error("Failed to update Profile");
+    }
+  }
 };

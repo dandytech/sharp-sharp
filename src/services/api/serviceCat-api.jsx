@@ -55,6 +55,21 @@ export const getCategories = async () => {
   }
 };
 
+// Get Service category API using GET request
+export const getCategoriesProvider = async () => {
+  try {
+    const response = await axios.get(`${ENDPOINT.PROVIDER_GET_CAT}`);
+
+    return response.data.categories;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(error.response.data.message);
+    } else {
+      throw new Error("Failed to Fetch Categories");
+    }
+  }
+};
+
 // Admin Updtate Service category API using GET request
 export const updateCategoryApi = async (payload) => {
   try {

@@ -43,10 +43,10 @@ export default function ProtectedRoute({ children }) {
 
   //4. if there is a user, render the app
   useEffect(() => {
-    if(!isLoggedIn){
-      navigate('/login')
+    if (!isLoggedIn) {
+      navigate("/login");
     }
-  }, [])
+  }, []);
   if (!isLoggedIn) {
     return;
   }

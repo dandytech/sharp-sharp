@@ -16,13 +16,15 @@ export function useClientLogin() {
       localStorage.setItem("client_token", data.token);
 
       // Handle other success actions (e.g., navigate to dashboard)
-      console.log("Login successfully", data);
-      toast.success("Login was successful");
 
-      if (data.message.account_type === "client") {
+      if (data.message.account_type === "Client") {
+        console.log("Login successfully", data);
+        toast.success("Login was successful");
         navigate("/client", { replace: true });
       } else if (data.message.account_type === "Service Provider") {
-        console.log("i got gere");
+        console.log("Login successfully", data);
+        toast.success("Login was successful");
+
         navigate("/provider", { replace: true });
       } else {
         toast.error("Account Doesn't exist");
