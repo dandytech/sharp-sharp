@@ -56,7 +56,8 @@ import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 import ProtectedRouteAdmin from "./ui/ProtectedRouteAdmin.jsx";
 import ResendVerifyEmail from "./features/signup/ResendVerifyEmail.jsx";
-import VerifyForgotPassword from "./features/signup/verifyForgotPassword.jsx";
+// import VerifyForgotPassword from "./features/signup/verifyForgotPassword.jsx";
+
 import ChangePassword from "./features/signup/ChangePassword.jsx";
 
 //set up react-query with some options overitting them as needed
@@ -107,10 +108,11 @@ export default function App() {
 
               <Route path="forgotpassword" element={<ForgotPassword />} />
 
-              <Route
+              {/* <Route
                 path="checkpasswordcode"
                 element={<VerifyForgotPassword />}
-              />
+              /> */}
+
               <Route path="changepassword" element={<ChangePassword />} />
 
               {/* Provider Dashboard */}
