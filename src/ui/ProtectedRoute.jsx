@@ -1,20 +1,11 @@
-import styled from "styled-components";
-
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useGetProvider } from "../features/authentication/provider/useGetProvider";
-import SpinnerMini from "./SpinnerMini";
-import { is } from "date-fns/locale";
+//import useAuth from "../hooks/useAuth";
 
-const FullPage = styled.div`
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-grey-50);
-`;
 export default function ProtectedRoute({ children }) {
   const navigate = useNavigate();
+
+  //const { user, userType } = useAuth();
 
   const isLoggedIn = window.localStorage.getItem("client_token");
 

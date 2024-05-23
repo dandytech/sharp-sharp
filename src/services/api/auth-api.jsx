@@ -100,6 +100,7 @@ export const loginClient = async (payload) => {
 
 //Client Logout API
 export const logoutClient = async () => {
+  
   const token = localStorage.getItem("client_token");
   return axios
     .get(`${ENDPOINT.CLIENT_LOGOUT}`, {
@@ -112,6 +113,51 @@ export const logoutClient = async () => {
       console.error("Logout error:", error);
       throw error; // Re-throw the error to handle it in the calling function
     });
+};
+
+//Passord Reset
+export const resetPassword = async (payload) => {
+  try {
+    const response = await axios.post(`${ENDPOINT.PASSWORD_RESET}`, payload);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(error.response.data.message);
+    } else {
+      throw new Error("Passord Reset failed");
+    }
+  }
+};
+
+//check/confirm password reset OTP code
+export const checkPasswordCode = async (payload) => {
+  try {
+    const response = await axios.post(
+      `${ENDPOINT.CHECK_PASSWORD_CODE}`,
+      payload,
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(error.response.data.message);
+    } else {
+      throw new Error("Invalid Code!!!");
+    }
+  }
+};
+
+//Reset password
+export const changePassword = async (payload) => {
+  try {
+    const response = await axios.post(`${ENDPOINT.CHANGE_PASSWORD}`, payload);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(error.response.data.message);
+    } else {
+      throw new Error("Invalid Code!!!");
+    }
+  }
 };
 
 //Admin Login API

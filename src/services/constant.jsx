@@ -7,6 +7,10 @@ export const CLIENT_RESEND_VERIFY = `/auth/resend/verification/email`;
 export const LOGIN_USER = `/auth/login`;
 export const CLIENT_LOGOUT = `/logout`;
 
+export const PASSWORD_RESET = `/auth/password/email`;
+export const CHECK_PASSWORD_CODE = `/auth/password/code/check`;
+export const CHANGE_PASSWORD = `/auth/password/reset`;
+
 //Service Provicer Signup endpoint
 export const PROVIDER_SIGNUP = `/auth/service/provider/register`;
 export const PROVIDER_GET_CAT = `/categories/fetch`;

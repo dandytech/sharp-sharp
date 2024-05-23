@@ -47,7 +47,7 @@ import ClientNotifications from "./pages/dashboard/client/ClientNotifications.js
 import ClientSettings from "./pages/dashboard/client/ClientSettings.jsx";
 import ClientDashboard from "./pages/dashboard/client/ClientDashboard.jsx";
 import FAQs from "./pages/dashboard/admin/FAQs.jsx";
-import ForgotPassword from "./pages/ForgotPassword.jsx";
+import ForgotPassword from "./features/signup/ForgotPassword.jsx";
 import VerifyEmail from "./features/signup/VerifyEmail.jsx";
 import ClientTransactions from "./pages/dashboard/client/ClientTransactions.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -56,6 +56,8 @@ import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 import ProtectedRouteAdmin from "./ui/ProtectedRouteAdmin.jsx";
 import ResendVerifyEmail from "./features/signup/ResendVerifyEmail.jsx";
+import VerifyForgotPassword from "./features/signup/verifyForgotPassword.jsx";
+import ChangePassword from "./features/signup/ChangePassword.jsx";
 
 //set up react-query with some options overitting them as needed
 const queryClient = new QueryClient({
@@ -104,6 +106,12 @@ export default function App() {
               <Route path="resendVerifyemail" element={<ResendVerifyEmail />} />
 
               <Route path="forgotpassword" element={<ForgotPassword />} />
+
+              <Route
+                path="checkpasswordcode"
+                element={<VerifyForgotPassword />}
+              />
+              <Route path="changepassword" element={<ChangePassword />} />
 
               {/* Provider Dashboard */}
               <Route

@@ -14,6 +14,7 @@ export function useLoginAdmin() {
       // localStorage.setItem("authToken", data.token);
 
       localStorage.setItem("admin_token", data.token);
+      localStorage.setItem("user_sharp_data", JSON.stringify(data.message));
 
       // Handle other success actions (e.g., navigate to dashboard)
       console.log("Login successfully", data);

@@ -14,7 +14,7 @@ export function useClientLogin() {
       // localStorage.setItem("authToken", data.token);
 
       localStorage.setItem("client_token", data.token);
-
+      localStorage.setItem('user_sharp_data', JSON.stringify(data.message))
       // Handle other success actions (e.g., navigate to dashboard)
 
       if (data.message.account_type === "Client") {
