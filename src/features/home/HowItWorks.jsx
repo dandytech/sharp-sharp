@@ -32,7 +32,7 @@ export default function HowItWorks() {
         </h2>{" "}
       </div>
 
-      <div className="tab-buttons font-bold">
+      <div className="tab-buttons font-bold px-5">
         <button
           className={activeTab === 1 ? "active " : " "}
           onClick={() => handleTabClick(1)}
@@ -51,7 +51,7 @@ export default function HowItWorks() {
       <div className="tab-content">
         {activeTab === 1 && (
           <div>
-            <p className="my-10">
+            <p className="my-10 px-5">
               Four <span className="text-blue-500">Steps</span> to Hire the{" "}
               <span className="text-blue-500">Best</span> and{" "}
               <span className="text-blue-500">Affordable</span> Service
@@ -145,7 +145,7 @@ export default function HowItWorks() {
           <p className="mt-10 lg:mt-0">
             {" "}
             <div>
-              <p className="my-10">
+              <p className="my-10 px-5">
                 Four <span className="text-blue-500">Steps</span> to Get Hired
                 by <span className="text-blue-500">Verified</span> Home
                 Residents Closest to you.
