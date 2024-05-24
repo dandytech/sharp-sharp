@@ -2,8 +2,10 @@ import { CiEdit } from "react-icons/ci";
 import Modal from "../Modal";
 import MyProfileUpdate from "./MyProfileUpdate";
 import { CiCamera } from "react-icons/ci";
+import useAuth from "../../hooks/useAuth";
 
 export default function MyProfile() {
+  const { user } = useAuth();
   return (
     <Modal>
       <div className="z-0 mt-5 rounded-xl border-2 p-5 py-5 text-center lg:py-10">
@@ -22,7 +24,7 @@ export default function MyProfile() {
           </div>
 
           <div className="text-left">
-            <p className="font-semibold">Prince Daniel</p>{" "}
+            <p className="font-semibold">{user?.name}</p>{" "}
             <p>Service Provider</p>
           </div>
         </div>
@@ -40,30 +42,27 @@ export default function MyProfile() {
 
           <div className="justify-between text-left lg:flex lg:w-[70%]">
             <div>
-              <p className="font-light">First Name</p>
-              <span>Prince</span>
+              <p className="font-light">Full Name</p>
+              <span>{user?.name}</span>
             </div>
-            <div className="mt-2  lg:text-right">
-              <p className="font-light">Last Name</p>
-              <span>Daniel</span>
-            </div>
+           
           </div>
 
           <div className="justify-between text-left lg:flex lg:w-[70%]">
             <div className="mt-2 ">
               <p className="font-light">Email</p>
-              <span>prince@gmail.com</span>
+              <span>{user?.email}</span>
             </div>
             <div className="mt-2  lg:text-right ">
               <p className="font-light">Phone</p>
-              <span>+234 7065123746</span>
+              <span>{user?.phone_number}</span>
             </div>
           </div>
 
           <div className="justify-between text-left lg:flex lg:w-[70%]">
             <div className="mt-2 ">
               <p className="font-light">Gender</p>
-              <span>Male</span>
+              <span>{user?.gender}</span>
             </div>
 
             <div className="mt-2  lg:text-right">

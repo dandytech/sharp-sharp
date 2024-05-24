@@ -27,14 +27,16 @@ import MyButton from "../../../ui/MyButton";
 import { useGetProvider } from "../../../features/authentication/provider/useGetProvider";
 import { useLogout } from "../../../features/authentication/provider/useProviderLogout";
 import { useLogoutClient } from "../../../features/client/auth/useLogoutClient";
+import useAuth from "../../../hooks/useAuth";
 
 export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
   //retrieve Provider details Query using useGetProvider hook
-  const { user } = useGetProvider();
+  //const { user } = useGetProvider();
 
   //logout Query called
   //const { logout, isLoading } = useLogout();
   const { clientLogout, isLoading } = useLogoutClient();
+  const { user } = useAuth();
 
   return (
     <Modal>
@@ -149,22 +151,19 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
                 <div className="flex items-center  justify-start gap-3">
                   {" "}
                   <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border ">
-                    {!user?.user_metadata.avatar ? (
+                    {!user?.photo ? (
                       <Avatar
-                        name={user?.user_metadata.fullName}
+                        name={user?.name}
                         color="black"
                         size="40"
                         className=" rounded-full"
                       />
                     ) : (
-                      <img
-                        src={user?.user_metadata.avatar}
-                        className="rounded-full"
-                      />
+                      <img src={user?.photo} className="rounded-full" />
                     )}
                   </span>
                   <span className="text-[14px] lg:text-[18px]">
-                    {user?.user_metadata.fullName}
+                    {user?.name}
                   </span>
                   <span className="text-[15px]">
                     <IoChevronDownSharp />

@@ -11,7 +11,7 @@ import {
   IoIosNotificationsOutline,
 } from "react-icons/io";
 import { RxDropdownMenu } from "react-icons/rx";
-import { useNavigate } from "react-router";
+
 import { NavLink } from "react-router-dom";
 import DarkModeToggle from "../../../ui/DarkModeToggle";
 import Avatar from "react-avatar";
@@ -29,13 +29,14 @@ import { useLogout } from "../../../features/authentication/admin/useLogout";
 import SpinnerMini from "../../../ui/SpinnerMini";
 import { useGetAdmin } from "../../../features/authentication/admin/useGetAdmin";
 import { useLogoutAdmin } from "../../../features/admin/auth/useLogoutAdmin";
+import useAuth from "../../../hooks/useAuth";
 
 export default function AdminDashHeader({ handleHideNav, hideNav }) {
   //const navigate = useNavigate();
 
   //get provider deatils
-  const { user, refetch } = useGetAdmin();
-
+ // const { user, refetch } = useGetAdmin();
+const {user}=useAuth()
   //const { logout, isLoading } = useLogout();
 
   const { adminLogout, isLoading } = useLogoutAdmin();
@@ -165,16 +166,16 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
                 <div className="flex items-center justify-start gap-3">
                   {" "}
                   <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border-2 ">
-                    {user?.user_metadata?.avatar ? (
+                    {user?.photo ? (
                       <img
-                        src={user?.user_metadata?.avatar}
+                        src={user?.photo}
                         alt="pic"
                         width="100%"
                         className="w-full rounded-full"
                       />
                     ) : (
                       <Avatar
-                        name={user?.user_metadata?.fullName}
+                        name={user?.name}
                         color="black"
                         size="40"
                         className=" rounded-full"
@@ -182,7 +183,7 @@ export default function AdminDashHeader({ handleHideNav, hideNav }) {
                     )}
                   </span>
                   <span className="text-[14px] lg:text-[18px]">
-                    {user?.user_metadata?.fullName}
+                    {user?.name}
                   </span>
                   <span className="text-[15px]">
                     <IoChevronDownSharp />

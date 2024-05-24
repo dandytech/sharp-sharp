@@ -5,50 +5,54 @@ import { useState } from "react";
 import { useEditProvider } from "../../features/authentication/provider/useEditProvider";
 import MyButton from "../MyButton";
 import { useGetProvider } from "../../features/authentication/provider/useGetProvider";
+import useAuth from "../../hooks/useAuth";
+import Avatar from "react-avatar";
 
 export default function MyProfile() {
   //get provider deatils
-  const { user, refetch } = useGetProvider();
+  //const { user, refetch } = useGetProvider();
+  const { user } = useAuth();
+  const [name, setFullName] = useState(user?.name);
 
-  const [fullName, setFullName] = useState(user?.user_metadata?.fullName);
+  const [photo, setAvatar] = useState(null); // null to prevent loss when other fields are updated with out avatar
+  const [phone_number, setPhone] = useState(user?.phone);
+  const [resAddress, setResAddress] = useState("");
 
-  const [avatar, setAvatar] = useState(null); // null to prevent loss when other fields are updated with out avatar
-  const [phone, setPhone] = useState(user?.user_metadata?.phone);
-  const [resAddress, setResAddress] = useState(user?.user_metadata?.resAddress);
+  //const { updateProvider, isUpdating } = useEditProvider();
 
-  const { updateProvider, isUpdating } = useEditProvider();
+  // function handleSubmit(e) {
+  //   e.preventDefault();
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  //   if (!user?.name) return;
 
-    if (!user?.user_metadata.fullName) return;
+  //   const payload = {
+  //     fullName: fullName,
+  //     avatar: avatar,
+  //     phone: phone,
+  //     resAddress: resAddress,
+  //   };
+  //   //console.log(payload);
+  //   updateProvider(payload, {
+  //     onSuccess: () => {
+  //       refetch; //Clear the fields
+  //     },
+  //   });
+  // }
 
-    const payload = {
-      fullName: fullName,
-      avatar: avatar,
-      phone: phone,
-      resAddress: resAddress,
-    };
-    //console.log(payload);
-    updateProvider(payload, {
-      onSuccess: () => {
-        refetch; //Clear the fields
-      },
-    });
-  }
+  // function handleClear(e) {
+  //   e.preventDefault();
+  //   setFullName(user?.user_metadata?.fullName);
+  //   setAvatar(null);
+  //   setPhone(user?.user_metadata?.phone);
+  //   setResAddress(user?.user_metadata?.resAddress);
+  // }
 
-  function handleClear(e) {
-    e.preventDefault();
-    setFullName(user?.user_metadata?.fullName);
-    setAvatar(null);
-    setPhone(user?.user_metadata?.phone);
-    setResAddress(user?.user_metadata?.resAddress);
-  }
   const inputStyle =
     "border hover:border-blue-500 py-1 w-full rounded-md px-1 border-stone-300 bg-white";
 
   return (
-    <form onSubmit={handleSubmit}>
+    // <form onSubmit={handleSubmit}>
+    <form>
       <Modal>
         <div className="z-0 mt-5 rounded-xl border-2 p-5 py-5 text-center lg:py-10">
           <p className="mb-3 flex font-bold">My Profile</p>
@@ -56,10 +60,16 @@ export default function MyProfile() {
           <div className="grid items-center justify-center gap-3  border-gray-300 p-5 lg:flex   lg:justify-start lg:p-10">
             <div className="relative z-0 grid h-[100px] w-[100px] items-center justify-center rounded-full bg-black text-[30px] text-white">
               <spam>
-                <img
-                  src={user?.user_metadata?.avatar}
-                  className="w-full rounded-full"
-                />
+                {!user?.photo ? (
+                  <Avatar
+                    name={user?.name}
+                    color="black"
+                    size="40"
+                    className=" rounded-full"
+                  />
+                ) : (
+                  <img src={user?.photo} className="rounded-full" />
+                )}
               </spam>
 
               <span className="absolute bottom-[-20px] right-[-5px] z-50 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-[22px] text-black">
@@ -70,14 +80,14 @@ export default function MyProfile() {
                   type="file"
                   accept="image/*"
                   onChange={(e) => setAvatar(e.target.files[0])}
-                  disabled={isUpdating}
+                 
                 />
               </span>
             </div>
 
             <div className="text-left">
               <p className="font-semibold">
-                <span>{user?.user_metadata?.fullName}</span>
+                <span>{user?.name}</span>
               </p>{" "}
               <p className=" font-extralight">Service Provider</p>
             </div>
@@ -94,13 +104,13 @@ export default function MyProfile() {
               </Modal.Open> */}
               <MyButton
                 type="secondary"
-                disabled={isUpdating}
-                onClick={handleClear}
+                // disabled={isUpdating}
+                // onClick={handleClear}
               >
                 Clear
               </MyButton>
 
-              <MyButton type="primary" disabled={isUpdating}>
+              <MyButton type="primary" >
                 Update
               </MyButton>
             </div>
@@ -112,8 +122,8 @@ export default function MyProfile() {
                   className={inputStyle}
                   id="fullName"
                   type="text"
-                  value={fullName}
-                  disabled={isUpdating}
+                  value={user?.name}
+                 
                   onChange={(e) => setFullName(e.target.value)}
                 />
               </div>
@@ -131,7 +141,7 @@ export default function MyProfile() {
                     className={inputStyle}
                     id="email"
                     type="text"
-                    value={user?.user_metadata.email}
+                    value={user?.email}
                     disabled
                   />
                 </span>
@@ -144,8 +154,8 @@ export default function MyProfile() {
                     className={inputStyle}
                     id="phone"
                     type="text"
-                    value={phone}
-                    disabled={isUpdating}
+                    value={user?.phone_number}
+                  
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </span>
@@ -161,7 +171,8 @@ export default function MyProfile() {
                     className={inputStyle}
                     id="gender"
                     type="text"
-                    value={user?.user_metadata?.gender}
+
+                    value={user?.gender}
                     disabled
                   />
                 </span>
@@ -176,7 +187,7 @@ export default function MyProfile() {
                     id="resAddress"
                     type="text"
                     value={resAddress}
-                    disabled={isUpdating}
+                   
                     onChange={(e) => setResAddress(e.target.value)}
                   />
                 </span>

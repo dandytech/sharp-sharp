@@ -25,13 +25,18 @@ import { MdAvTimer } from "react-icons/md";
 import Modal from "../../../ui/Modal";
 import MyButton from "../../../ui/MyButton";
 import { useLogoutClient } from "../../../features/client/auth/useLogoutClient";
+import useAuth from "../../../hooks/useAuth";
 
 export default function ClientDashHeader({ handleHideNav, hideNav }) {
   //const navigate = useNavigate();
 
   const { clientLogout, isLoading } = useLogoutClient();
 
-  const userName = "Adeleke Hamzat";
+  const { user, userType } = useAuth();
+  console.log(userType);
+  console.log(user);
+
+  //const userName = "Adeleke Hamzat";
 
   return (
     <Modal>
@@ -159,13 +164,15 @@ export default function ClientDashHeader({ handleHideNav, hideNav }) {
                   {" "}
                   <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border-2 ">
                     <Avatar
-                      name={userName}
+                      name={user?.name}
                       color="black"
                       size="40"
                       className=" rounded-full"
                     />
                   </span>
-                  <span className="text-[14px] lg:text-[18px]">{userName}</span>
+                  <span className="text-[14px] lg:text-[18px]">
+                    {user?.name}
+                  </span>
                   <span className="text-[15px]">
                     <IoChevronDownSharp />
                   </span>
