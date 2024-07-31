@@ -1,28 +1,53 @@
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import { useUpdatePassword } from "../../features/admin/auth/useUpdatePassword";
 
 export default function Security() {
-  const [oldpassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [old_password, setOldPassword] = useState("");
+  const [new_password, setNewPassword] = useState("");
+  const [new_password_confirmation, setConfirmPassword] = useState("");
 
-  const handleSubmitForm = (e) => {
+  const { user } = useAuth();
+
+  //Profile Update
+  const { updatePassword, isLoading } = useUpdatePassword();
+
+  function handleSubmitForm(e) {
     e.preventDefault();
-    if (!oldpassword || !newPassword || !confirmPassword) return;
-  };
+    if (
+      !user?.email ||
+      !old_password ||
+      !new_password ||
+      !new_password_confirmation
+    )
+      return;
+
+    const payload = {
+      old_password: old_password,
+      new_password: new_password,
+      new_password_confirmation: new_password_confirmation,
+    };
+    console.log(payload);
+    updatePassword(payload);
+  }
+
+  const inputStyle =
+    "w-[100%] rounded-lg border-2 border-blue-500  px-3 py-1 text-white hover:bg-white hover:text-black";
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <div className="rounded-xl py-5 lg:py-0 text-center">
-        <p className="mb-3 px-2 flex font-bold">Passwords</p>
+      <div className="rounded-xl py-5 text-center lg:py-0">
+        <p className="mb-3 flex px-2 font-bold">Passwords</p>
 
-        <div className="border-2 border-gray-300 p-2 lg:p-10 text-left">
-          
+        <div className="border-2 border-gray-300 p-2 text-left lg:p-10">
           <div>
             <p className="font-light">Old </p>
             <input
               type="text"
-              value={oldpassword}
-              className="w-[100%] rounded-lg border-2 border-blue-500 bg-gray-800 px-3 py-1 text-white hover:bg-white hover:text-black"
+              id="old_password"
+              value={old_password}
+              disabled={isLoading}
+              className={inputStyle}
               placeholder="Enter Old Password"
               onChange={(e) => setOldPassword(e.target.value)}
             />
@@ -32,8 +57,10 @@ export default function Security() {
             <p className="font-light">New </p>
             <input
               type="text"
-              value={newPassword}
-              className="w-[100%]  rounded-lg border-2 border-blue-500 bg-gray-800 px-3 py-1 text-white"
+              id="new_password"
+              value={new_password}
+              disabled={isLoading}
+              className={inputStyle}
               placeholder="Enter New Password"
               onChange={(e) => setNewPassword(e.target.value)}
             />
@@ -43,15 +70,20 @@ export default function Security() {
             <p className="font-light">Re-Enter New</p>
             <input
               type="text"
-              value={confirmPassword}
-              className="w-[100%]  rounded-lg border-2 border-blue-500 bg-gray-800 px-3 py-1 text-white"
+              id="new_password_confirmation"
+              value={new_password_confirmation}
+              disabled={isLoading}
+              className={inputStyle}
               placeholder="Confirm Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
         </div>
 
-        <button className="mt-10 cursor-pointer rounded-xl border-2 bg-blue-500 px-3 text-white hover:bg-black">
+        <button
+          disabled={isLoading}
+          className="mt-10 cursor-pointer rounded-xl border-2 bg-blue-500 px-3 text-white hover:bg-black"
+        >
           Submit
         </button>
       </div>

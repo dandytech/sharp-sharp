@@ -163,12 +163,18 @@ export default function ClientDashHeader({ handleHideNav, hideNav }) {
                 <div className="flex items-center justify-start gap-3">
                   {" "}
                   <span className="flex h-[50px] w-[50px] items-center justify-center  rounded-full border-2 ">
-                    <Avatar
-                      name={user?.name}
-                      color="black"
-                      size="40"
-                      className=" rounded-full"
-                    />
+                    <spam>
+                      {!user?.photo ? (
+                        <Avatar
+                          name={user?.name}
+                          color="black"
+                          size="40"
+                          className=" rounded-full"
+                        />
+                      ) : (
+                        <img src={user?.photo} className="rounded-full" />
+                      )}
+                    </spam>
                   </span>
                   <span className="text-[14px] lg:text-[18px]">
                     {user?.name}

@@ -14,10 +14,10 @@ export default function NavbarLayout({ hideNav, logout, isLoading }) {
   return (
     <Modal>
       <div
-        className={`border-r-2 ${
+        className={`w-auto border-r-2 ${
           hideNav
-            ? "navDashboard fixed left-0 z-[1000] mt-[50px]  h-[100vh] w-auto  p-5 py-20 shadow-xl"
-            : "navDashboard fixed  left-0 z-[1000]  mt-[30px] h-[100vh] w-auto p-5 py-20 shadow-xl"
+            ? "navDashboard fixed  left-0 z-[1000] mt-[50px]  h-[100vh] w-auto  p-5 py-20"
+            : "navDashboard fixed  left-0 z-[1000]  mt-[30px] h-[100vh] w-auto p-5 py-20"
         }`}
       >
         <div className="flex gap-3">

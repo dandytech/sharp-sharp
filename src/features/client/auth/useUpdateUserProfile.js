@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { updateUserProfile } from "../../../services/api/auth-api";
 
-export function useUpdateProfile() {
+export function useUpdateUserProfile() {
   const queryClient = useQueryClient();
 
   //edit category using useMutation

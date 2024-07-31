@@ -1,16 +1,22 @@
 import MyButton from "../MyButton";
 import { useEditProvider } from "../../features/authentication/provider/useEditProvider";
 import { useForm } from "react-hook-form";
+import { useUpdateUserPassword } from "../../features/client/auth/useUpdateUserPassword";
 
 export default function Security() {
   const { register, handleSubmit, formState, getValues, reset } = useForm();
 
   const { errors } = formState;
 
-  const { updateProvider, isUpdating } = useEditProvider();
+  //const { updateProvider, isUpdating } = useEditProvider();
 
-  function onSubmit({ password }) {
-    updateProvider({ password }, { onSuccess: reset });
+  const { updatePassword, isLoading: isUpdating } = useUpdateUserPassword();
+
+  function onSubmit({ old_password, new_password, new_password_confirmation }) {
+    updatePassword(
+      { old_password, new_password, new_password_confirmation },
+      { onSuccess: reset },
+    );
   }
 
   const style =
@@ -23,15 +29,15 @@ export default function Security() {
 
         <div className=" border-gray-300 p-2 text-left lg:p-10">
           <div className="mt-2">
-            <p className="font-light">New </p>
+            <p className="font-light">Old Password </p>
             <input
               type="password"
               placeholder="Enter Old Password"
               className={style}
               disabled={isUpdating}
-              id="password"
-              autoComplete="current-password"
-              {...register("password", {
+              id="old_password"
+              autoComplete="old_password"
+              {...register("old_password", {
                 required: "This field is required",
                 minLength: {
                   value: 8,
@@ -39,26 +45,51 @@ export default function Security() {
                 },
               })}
             />
-            <span className=" text-red-500">{errors?.password?.message}</span>
+            <span className=" text-red-500">
+              {errors?.old_password?.message}
+            </span>
           </div>
 
-          <div className="mt-2 ">
-            <p className="font-light">Re-Enter New</p>
+          <div className="mt-2">
+            <p className="font-light">New password </p>
             <input
               type="password"
-              className={style}
               placeholder="Enter New Password"
-              autoComplete="new-password"
-              id="passwordConfirm"
+              className={style}
               disabled={isUpdating}
-              {...register("passwordConfirm", {
+              id="new_password"
+              autoComplete="new_password"
+              {...register("new_password", {
                 required: "This field is required",
-                validate: (value) =>
-                  getValues().password === value || "Passwords need to match",
+                minLength: {
+                  value: 8,
+                  message: "Password needs a minimum of 8 characters",
+                },
               })}
             />
             <span className=" text-red-500">
-              {errors?.passwordConfirm?.message}
+              {errors?.new_password?.message}
+            </span>
+          </div>
+
+          <div className="mt-2 ">
+            <p className="font-light">Re-Enter New Password</p>
+            <input
+              type="password"
+              className={style}
+              placeholder="Confirm New Password"
+              autoComplete="new_password_confirmation"
+              id="new_password_confirmation"
+              disabled={isUpdating}
+              {...register("new_password_confirmation", {
+                required: "This field is required",
+                validate: (value) =>
+                  getValues().new_password === value ||
+                  "Passwords need to match",
+              })}
+            />
+            <span className=" text-red-500">
+              {errors?.new_password_confirmation?.message}
             </span>
           </div>
         </div>

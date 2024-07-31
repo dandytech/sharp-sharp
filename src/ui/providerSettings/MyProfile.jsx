@@ -1,98 +1,147 @@
 import Modal from "../Modal";
 
 import { CiCamera } from "react-icons/ci";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useEditProvider } from "../../features/authentication/provider/useEditProvider";
 import MyButton from "../MyButton";
 import { useGetProvider } from "../../features/authentication/provider/useGetProvider";
 import useAuth from "../../hooks/useAuth";
 import Avatar from "react-avatar";
+import { useUpdateUserProfilePhoto } from "../../features/client/auth/useUpdateUserPhoto";
+import { useUpdateUserProfile } from "../../features/client/auth/useUpdateUserProfile";
+import { fileToBase64 } from "../../utils/formats";
 
 export default function MyProfile() {
   //get provider deatils
   //const { user, refetch } = useGetProvider();
-  const { user } = useAuth();
-  const [name, setFullName] = useState(user?.name);
+  const { user, z } = useAuth();
 
-  const [photo, setAvatar] = useState(null); // null to prevent loss when other fields are updated with out avatar
-  const [phone_number, setPhone] = useState(user?.phone);
-  const [resAddress, setResAddress] = useState("");
+  const [photo, setPhoto] = useState();
 
-  //const { updateProvider, isUpdating } = useEditProvider();
+  // const [name, setFullName] = useState(user?.name);
+  // const [email, setEmail] = useState(user?.email);
+  // const [phone_number, setPhone] = useState(user?.phone_number);
+  // const [gender, setGender] = useState(user?.gender);
+  // const [address, setResAddress] = useState(user?.address);
+
+  //Photo update
+  const { updatePhoto, isLoading: isUploading } = useUpdateUserProfilePhoto();
+
+  //upoate photo
+  async function handleUpdatePhoto(photo) {
+    await fileToBase64(photo).then((res) => {
+      updatePhoto(res);
+    });
+    // updatePhoto(toBase64);
+  }
+
+  //Profile Update
+  const { profileUpdate, isUpdating } = useUpdateUserProfile();
 
   // function handleSubmit(e) {
   //   e.preventDefault();
-
-  //   if (!user?.name) return;
+  //   if (!user?.email) return;
 
   //   const payload = {
-  //     fullName: fullName,
-  //     avatar: avatar,
-  //     phone: phone,
-  //     resAddress: resAddress,
+  //     name: name,
+  //     email: email,
+  //     phone_number: phone_number,
+  //     gender: gender,
+  //     address: address,
   //   };
-  //   //console.log(payload);
-  //   updateProvider(payload, {
-  //     onSuccess: () => {
-  //       refetch; //Clear the fields
-  //     },
-  //   });
+  //   console.log(payload);
+  //   profileUpdate(payload);
   // }
+
+  //to use form submit once
+  const [catInputs, setCatInputs] = useState({
+    name: user?.name,
+    email: user?.email,
+    gender: user?.gender,
+    phone_number: user?.phone_number,
+    address: user?.address,
+    category_id: "",
+  });
+
+  const handleChange = (e, field, id) => {
+    const { value } = e.target;
+    setCatInputs({ ...catInputs, [field]: value, category_id: id });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const filtered = Object.fromEntries(
+      Object.entries(catInputs).filter(
+        ([key, value]) => value !== "" && value !== 0,
+      ),
+    );
+    console.log(filtered);
+    profileUpdate(filtered);
+  };
 
   // function handleClear(e) {
   //   e.preventDefault();
-  //   setFullName(user?.user_metadata?.fullName);
-  //   setAvatar(null);
-  //   setPhone(user?.user_metadata?.phone);
-  //   setResAddress(user?.user_metadata?.resAddress);
+  //   setFullName(user?.name);
+  //   setEmail(user?.email);
+  //   setPhone(user?.phone_number);
+  //   setGender(user?.gender);
+  //   setResAddress(user?.address);
   // }
 
   const inputStyle =
     "border hover:border-blue-500 py-1 w-full rounded-md px-1 border-stone-300 bg-white";
 
+  if (isUpdating) return <div>Loading...</div>;
+
   return (
-    // <form onSubmit={handleSubmit}>
-    <form>
-      <Modal>
-        <div className="z-0 mt-5 rounded-xl border-2 p-5 py-5 text-center lg:py-10">
-          <p className="mb-3 flex font-bold">My Profile</p>
+    <Modal>
+      <div className="z-0 mt-5 rounded-xl border-2 p-5 py-5 text-center lg:py-10">
+        <p className="mb-3 flex font-bold">My Profile</p>
 
-          <div className="grid items-center justify-center gap-3  border-gray-300 p-5 lg:flex   lg:justify-start lg:p-10">
-            <div className="relative z-0 grid h-[100px] w-[100px] items-center justify-center rounded-full bg-black text-[30px] text-white">
-              <spam>
-                {!user?.photo ? (
-                  <Avatar
-                    name={user?.name}
-                    color="black"
-                    size="40"
-                    className=" rounded-full"
-                  />
-                ) : (
-                  <img src={user?.photo} className="rounded-full" />
-                )}
-              </spam>
-
-              <span className="absolute bottom-[-20px] right-[-5px] z-50 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-[22px] text-black">
-                <CiCamera />
-                <input
-                  className="absolute opacity-0"
-                  id="avatar"
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => setAvatar(e.target.files[0])}
-                 
+        <div className="grid items-center justify-center gap-3  border-gray-300 p-5 lg:flex   lg:justify-start lg:p-10">
+          {/* photo section */}
+          <div className="relative z-0 grid h-[100px] w-[100px] items-center justify-center rounded-full bg-black text-[30px] text-white">
+            <spam>
+              {!user?.photo ? (
+                <Avatar
+                  name={user?.name}
+                  color="black"
+                  size="40"
+                  className=" rounded-full"
                 />
-              </span>
-            </div>
+              ) : (
+                <img src={user?.photo} className="rounded-full" />
+              )}
+            </spam>
 
-            <div className="text-left">
-              <p className="font-semibold">
-                <span>{user?.name}</span>
-              </p>{" "}
-              <p className=" font-extralight">Service Provider</p>
-            </div>
+            <span className="absolute bottom-[-20px] right-[-5px] z-50 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-[22px] text-black">
+              <CiCamera />
+              <input
+                className="absolute opacity-0"
+                id="photo"
+                type="file"
+                accept="image/*"
+                disabled={isUploading}
+                onChange={(e) => {
+                  const selectedPhoto = e.target.files[0];
+                  setPhoto(selectedPhoto);
+                  handleUpdatePhoto(selectedPhoto);
+                }}
+              />
+            </span>
           </div>
 
+          <div className="text-left">
+            <p className="font-semibold">
+              <span>{user?.name}</span>
+            </p>{" "}
+            <p className=" font-extralight">Service Provider</p>
+          </div>
+        </div>
+
+        {/* form section */}
+        <form onSubmit={handleSubmit}>
           <div className="border-t-2 border-gray-300 py-3 lg:p-10">
             <div className="mb-5 flex items-center justify-between gap-1 font-semibold lg:w-[70%]">
               <p>Personal Information</p>
@@ -102,15 +151,19 @@ export default function MyProfile() {
                   <CiEdit />
                 </button>
               </Modal.Open> */}
-              <MyButton
+              {/* <MyButton
                 type="secondary"
-                // disabled={isUpdating}
-                // onClick={handleClear}
+                disabled={isUpdating}
+                onClick={handleClear}
               >
                 Clear
-              </MyButton>
+              </MyButton> */}
 
-              <MyButton type="primary" >
+              <MyButton
+                type="primary"
+                disabled={isUpdating}
+                onClick={handleSubmit}
+              >
                 Update
               </MyButton>
             </div>
@@ -120,17 +173,13 @@ export default function MyProfile() {
                 <p className="font-light">Full Name</p>
                 <input
                   className={inputStyle}
-                  id="fullName"
+                  id="name"
                   type="text"
-                  value={user?.name}
-                 
-                  onChange={(e) => setFullName(e.target.value)}
+                  defaultValue={user?.name}
+                  onChange={(e) => handleChange(e, "name", user.id)}
+                  // onChange={(e) => setFullName(e.target.value)}
                 />
               </div>
-              {/* <div className="mt-2  lg:text-right">
-              <p className="font-light">Last Name</p>
-              <span>Daniel</span>
-            </div> */}
             </div>
 
             <div className="justify-between gap-5 py-1 text-left lg:flex lg:w-[70%]">
@@ -140,9 +189,11 @@ export default function MyProfile() {
                   <input
                     className={inputStyle}
                     id="email"
-                    type="text"
-                    value={user?.email}
-                    disabled
+                    type="email"
+                    defaultValue={user?.email}
+                    disabled={isUpdating}
+                    onChange={(e) => handleChange(e, "email", user.id)}
+                    // onChange={(e) => setEmail(e.target.value)}
                   />
                 </span>
               </div>
@@ -152,11 +203,12 @@ export default function MyProfile() {
                   {" "}
                   <input
                     className={inputStyle}
-                    id="phone"
+                    id="phone_number"
                     type="text"
-                    value={user?.phone_number}
-                  
-                    onChange={(e) => setPhone(e.target.value)}
+                    disabled={isUpdating}
+                    defaultValue={user?.phone_number}
+                    onChange={(e) => handleChange(e, "phone_number", user.id)}
+                    // onChange={(e) => setPhone(e.target.value)}
                   />
                 </span>
               </div>
@@ -166,15 +218,18 @@ export default function MyProfile() {
               <div className="mt-2 lg:w-[50%]">
                 <p className="font-light">Gender</p>
                 <span>
-                  {" "}
-                  <input
+                  <select
                     className={inputStyle}
                     id="gender"
                     type="text"
-
-                    value={user?.gender}
-                    disabled
-                  />
+                    defaultValue={user?.gender}
+                    disabled={isUpdating}
+                    onChange={(e) => handleChange(e, "gender", user.id)}
+                    // onChange={(e) => setGender(e.target.value)}
+                  >
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
                 </span>
               </div>
 
@@ -184,22 +239,22 @@ export default function MyProfile() {
                   {" "}
                   <input
                     className={inputStyle}
-                    id="resAddress"
+                    id="address"
                     type="text"
-                    value={resAddress}
-                   
-                    onChange={(e) => setResAddress(e.target.value)}
+                    defaultValue={user?.address}
+                    disabled={isUpdating}
+                    onChange={(e) => handleChange(e, "address", user.id)}
+                    // onChange={(e) => setResAddress(e.target.value)}
                   />
                 </span>
               </div>
             </div>
           </div>
-
-          {/* <Modal.Window name="profile">
+        </form>
+        {/* <Modal.Window name="profile">
           <MyProfileUpdate user={user} />
         </Modal.Window> */}
-        </div>
-      </Modal>
-    </form>
+      </div>
+    </Modal>
   );
 }

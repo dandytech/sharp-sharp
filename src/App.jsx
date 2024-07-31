@@ -1,4 +1,10 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import PageLayout from "./pages/PageLayout";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
@@ -76,6 +82,7 @@ export default function App() {
     AOS.init(); // Initialize AOS library
   }, []);
 
+  
   return (
     <>
       <DarkModeProvider>

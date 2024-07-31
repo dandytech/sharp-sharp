@@ -6,56 +6,64 @@ import { useGetAdmin } from "../../features/authentication/admin/useGetAdmin";
 import { useState } from "react";
 import { useEditAdmin } from "../../features/authentication/admin/useEditAdmin";
 import MyButton from "../MyButton";
-import useAuth from "../../hooks/useAuth";
+
 import Avatar from "react-avatar";
+import { useUpdateProfilePhoto } from "../../features/admin/auth/useUpdatePhoto";
+import { useUpdateProfile } from "../../features/admin/auth/useUpdateProfile";
+import useAuth from "../../hooks/useAuth";
 
 export default function MyProfile() {
+  const { user } = useAuth();
+
+  console.log(user?.name);
+
   //get provider deatils
   //const { user, refetch } = useGetAdmin();
 
-  const { user } = useAuth();
-  console.log(user);
+  const [photo, setPhoto] = useState(null);
 
-  const [fullName, setFullName] = useState(user?.user_metadata?.fullName);
+  const [name, setFullName] = useState(user?.name);
+  const [email, setEmail] = useState(user?.email);
+  const [phone_number, setPhone] = useState("");
+  const [gender, setGender] = useState("");
+  //const [address, setResAddress] = useState(user?.address);
 
-  const [avatar, setAvatar] = useState(null); // null to prevent loss when other fields are updated with out avatar
-  const [phone, setPhone] = useState(user?.phone_number);
-  const [gender, setGender] = useState(user?.gender);
-  const [resAddress, setResAddress] = useState("");
-  //const [userType, setUserType] = useState("admin");
+  //Photo update
+  const { updatePhoto, isLoading: isUploading } = useUpdateProfilePhoto();
 
-  //const { updateAdmin, isUpdating } = useEditAdmin();
+  function handleUpdatePhoto(e) {
+    e.preventDefault();
+    const payload = {
+      photo: photo,
+    };
+    updatePhoto(payload);
+  }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
+  //Profile Update
+  const { profileUpdate, isUpdating } = useUpdateProfile();
 
-  //   if (!user?.email) return;
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!user?.email) return;
 
-  //   const payload = {
-  //     fullName: fullName,
-  //     avatar: avatar,
-  //     phone: phone,
-  //     gender: gender,
-  //     resAddress: resAddress,
-  //     userType: userType,
-  //   };
-  //   //console.log(payload);
-  //   updateAdmin(payload, {
-  //     onSuccess: () => {
-  //       refetch; //Clear the fields
-  //     },
-  //   });
-  // }
+    const payload = {
+      name: user.name,
+      email: user.email,
+      phone_number: phone_number,
+      gender: gender,
+      // address: address,
+    };
+    console.log(payload);
+    profileUpdate(payload);
+  }
 
-  // function handleClear(e) {
-  //   e.preventDefault();
-
-  //   setFullName(user?.user_metadata?.fullName);
-  //   setAvatar(null);
-  //   setPhone(user?.user_metadata?.phone);
-  //   setPhone(user?.user_metadata?.gender);
-  //   setResAddress(user?.user_metadata?.resAddress);
-  // }
+  function handleClear(e) {
+    e.preventDefault();
+    setFullName(user.name);
+    setEmail(user.email);
+    setPhone("");
+    setPhone("");
+  }
   const inputStyle =
     "border hover:border-blue-500 py-1 w-full rounded-md px-1 border-stone-300 bg-white";
 
@@ -85,10 +93,12 @@ export default function MyProfile() {
                 <CiCamera />
                 <input
                   className="absolute opacity-0"
-                  id="avatar"
+                  id="photo"
                   type="file"
                   accept="image/*"
-                  onChange={(e) => setAvatar(e.target.files[0])}
+                  disabled={isUploading}
+                  onBlur={(e) => handleUpdatePhoto(e.target.files[0], "photo")}
+                  // onChange={(e) => setAvatar(e.target.files[0])}
                 />
               </span>
             </div>
@@ -112,8 +122,8 @@ export default function MyProfile() {
             </Modal.Open> */}
               <MyButton
                 type="secondary"
-                // disabled={isUpdating}
-                // onClick={handleClear}
+                disabled={isUpdating}
+                onClick={handleClear}
               >
                 Clear
               </MyButton>
@@ -121,7 +131,7 @@ export default function MyProfile() {
               <MyButton
                 type="primary"
                 // disabled={isUpdating}
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
               >
                 Update
               </MyButton>
@@ -132,10 +142,10 @@ export default function MyProfile() {
                 <p className="font-light">Full Name</p>
                 <input
                   className={inputStyle}
-                  id="fullName"
+                  id="name"
                   type="text"
-                  value={user?.name}
-                  // disabled={isUpdating}
+                  defaultValue={user?.name}
+                  disabled={isUpdating}
                   onChange={(e) => setFullName(e.target.value)}
                 />
               </div>
@@ -153,8 +163,8 @@ export default function MyProfile() {
                     className={inputStyle}
                     id="email"
                     type="text"
-                    value={user?.email}
-                    disabled
+                    defaultValue={user?.email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </span>
               </div>
@@ -166,8 +176,8 @@ export default function MyProfile() {
                     className={inputStyle}
                     id="phone"
                     type="text"
-                    value={user?.phone_number}
-                    // disabled={isUpdating}
+                    value={phone_number}
+                    disabled={isUpdating}
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </span>
@@ -184,6 +194,7 @@ export default function MyProfile() {
                     id="gender"
                     type="text"
                     value={gender}
+                    disabled={isUpdating}
                     onChange={(e) => setGender(e.target.value)}
                   >
                     <option value="">Select Gender</option>
@@ -193,20 +204,20 @@ export default function MyProfile() {
                 </span>
               </div>
 
-              <div className="mt-2  lg:w-[50%] lg:text-right">
+              {/* <div className="mt-2  lg:w-[50%] lg:text-right">
                 <p className="font-light">Residential Address</p>
                 <span>
                   {" "}
                   <input
                     className={inputStyle}
-                    id="resAddress"
+                    id="address"
                     type="text"
-                    value={resAddress}
-                    // disabled={isUpdating}
-                    onChange={(e) => setResAddress(e.target.value)}
+                    defaultValue={address}
+                    disabled={isUpdating}
+                    onChange={(e) => handleChange(e, "address", user?.id)}
                   />
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
 

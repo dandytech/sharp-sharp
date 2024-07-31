@@ -41,7 +41,8 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
   return (
     <Modal>
       <div className="dashHeader bg-style fixed top-0 z-50 flex h-[90px] w-[100%] items-center justify-between border-b-2 px-5 py-2 pb-3 shadow-2xl lg:pr-0">
-        <div className=" flex items-center justify-between  text-[24px] md:w-[30%] lg:w-[15%]">
+
+        <div className=" flex items-center justify-between  text-[24px] md:w-[30%] lg:w-[45%]">
           <span
             className="cursor-pointer text-[35px] lg:hidden"
             onClick={handleHideMenu}
@@ -55,13 +56,16 @@ export default function ProviderHeader({ handleHideNav, handleHideMenu }) {
               <img src={logo} alt="logo" width="80" to="/" />
             </NavLink>
           </span>
-
+         
           <span
             className="hidden cursor-pointer lg:block"
             onClick={handleHideNav}
           >
             <GiExpand />
           </span>
+
+          <span className="hidden lg:block">Provider Dashboard</span>
+
         </div>
 
         <div className="flex  items-center justify-between text-[28px] md:w-[50%] lg:w-[33%]">

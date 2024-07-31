@@ -28,3 +28,5 @@ export const ADMIN_DELETE_CAT = `/admin/category/delete`;
 
 //Profile Update
 export const PROFILE_UPDATE = `/profile/update`;
+export const PROFILE_UPDATE_PASSWORD = `/profile/update/password`;
+export const PROFILE_UPDATE_PHOTO = `/profile/upload/profile-picture`;

@@ -14,9 +14,10 @@ export function useClientLogin() {
       // localStorage.setItem("authToken", data.token);
 
       localStorage.setItem("client_token", data.token);
-      localStorage.setItem('user_sharp_data', JSON.stringify(data.message))
-      // Handle other success actions (e.g., navigate to dashboard)
 
+      localStorage.setItem("user_sharp_data", JSON.stringify(data.message));
+
+      // Handle other success actions (e.g., navigate to dashboard)
       if (data.message.account_type === "Client") {
         console.log("Login successfully", data);
         toast.success("Login was successful");
@@ -32,8 +33,8 @@ export function useClientLogin() {
     },
     onError: (error) => {
       // Handle error (e.g., display error message)
-      console.error("Login failed:", error);
-      toast.error("Email or Password not correct");
+      console.error("Login failed:", error.response.message);
+      toast.error("Login failed:", error.response.message);
     },
   });
 

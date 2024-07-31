@@ -1,15 +1,10 @@
 import axios from "axios";
 import * as ENDPOINT from "../constant";
+import useAuth from "../../hooks/useAuth";
+import { updateImage, updateLocalData } from "../../utils/helpers";
 
 axios.defaults.baseURL = ENDPOINT.BASE_URL;
 axios.defaults.headers.common["Authorization"] = "";
-
-//Clinet Signup API
-// export const registerClient = async (payload) => {
-//   return axios
-//     .post(`${ENDPOINT.REGISTER_USER}`, payload)
-//     .then((response) => response.data);
-// };
 
 // Function to retrieve the token (modify this according to your token storage method)
 const getToken = () => {
@@ -27,6 +22,22 @@ const setAuthHeader = () => {
   }
 };
 
+const getUserToken = () => {
+  // Example: Retrieve token from localStorage
+  return localStorage.getItem("client_token");
+};
+
+const setUserAuthHeader = () => {
+  const token = getUserToken();
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    console.log(`Authorization header set with token: ${token}`);
+  } else {
+    throw new Error("No valid token found");
+  }
+};
+
+//Signup Client API
 export const registerClient = async (payload) => {
   try {
     const response = await axios.post(`${ENDPOINT.REGISTER_USER}`, payload);
@@ -40,6 +51,7 @@ export const registerClient = async (payload) => {
   }
 };
 
+//Signup provider API
 export const registerProvider = async (payload) => {
   try {
     const response = await axios.post(`${ENDPOINT.PROVIDER_SIGNUP}`, payload);
@@ -100,7 +112,6 @@ export const loginClient = async (payload) => {
 
 //Client Logout API
 export const logoutClient = async () => {
-  
   const token = localStorage.getItem("client_token");
   return axios
     .get(`${ENDPOINT.CLIENT_LOGOUT}`, {
@@ -183,21 +194,74 @@ export const logoutAdmin = async () => {
     .then((response) => response.data);
 };
 
-//Update Profile API
+//USER Update Profile API
 
-// Admin Updtate Profile API using PUT request
-export const updateProfile = async (payload) => {
+// USER Updtate Profile API using PUT request
+export const updateUserProfilePhoto = async (file) => {
+  //to reload after upload
+  setUserAuthHeader();
+  try {
+    const payload = {
+      photo: file,
+    };
+    const response = await axios.put(
+      `${ENDPOINT.PROFILE_UPDATE_PHOTO}`,
+      payload,
+    );
+    console.log(response.data);
+
+    //update function after upload
+    updateImage(response.data.data);
+
+    return response.data;
+  } catch (error) {
+    console.error("Error updating photo:", error);
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(error.response.data.message);
+    } else {
+      throw new Error(error.response.data.message);
+    }
+  }
+};
+
+//USER profile update API
+export const updateUserProfile = async (payload) => {
   try {
     // Set the Authorization header before making the request
-    setAuthHeader();
+    setUserAuthHeader();
 
-    const response = await axios.post(`${ENDPOINT.PROFILE_UPDATE}`, payload);
+    const response = await axios.put(`${ENDPOINT.PROFILE_UPDATE}`, payload);
+    //update function after upload
+    updateLocalData(response.data.user);
+
+    //console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating profile:", error); // Log the entire error object for better debugging
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(error.response.data.message);
+    } else {
+      throw new Error(error.message);
+    }
+  }
+};
+
+//USER Password Update
+export const updateUserProfilePassword = async (payload) => {
+  try {
+    // Set the Authorization header before making the request
+    setUserAuthHeader();
+
+    const response = await axios.put(
+      `${ENDPOINT.PROFILE_UPDATE_PASSWORD}`,
+      payload,
+    );
     return response.data;
   } catch (error) {
     if (error.response && error.response.data && error.response.data.message) {
       throw new Error(error.response.data.message);
     } else {
-      throw new Error("Failed to update Profile");
+      throw new Error("Failed to update Photo");
     }
   }
 };

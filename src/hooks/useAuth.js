@@ -12,7 +12,15 @@ const useAuth = () => {
 
   const userType = user ? user.account_type : null;
 
-  return { user, userType };
+  const updateImage = (url) => {
+    const payload = {
+      ...user,
+      photo: url
+    }
+    localStorage.setItem('user_sharp_data', JSON.stringify(payload))
+  }
+
+  return { user, userType, updateImage };
 };
 
 export default useAuth;
